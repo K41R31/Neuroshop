@@ -77,7 +77,7 @@
                         <Image url="@../Resources/network.png" />
                      </image>
                   </ImageView>
-                  <VBox alignment="CENTER" layoutX="64.0" layoutY="415.0" spacing="3.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0">
+                  <VBox fx:id="trashBin_VB" alignment="CENTER" layoutX="64.0" layoutY="415.0" spacing="3.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0">
                      <children>
                         <SVGPath fx:id="trashBinDeckel_SVG" content="M40,60 C42,48 44,30 25,32" />
                         <SVGPath fx:id="trashBin_SVG" content="M40,60 C42,48 44,30 25,32" />
