@@ -1,7 +1,6 @@
 package Neuroshop.Controller;
 
 import Neuroshop.Model.AddMouseEvents;
-import Neuroshop.Model.RemoveWidget;
 import Neuroshop.Model.ScreenSize;
 import Neuroshop.Model.Widget;
 import javafx.animation.Interpolator;
@@ -51,7 +50,6 @@ public class MainViewController {
     private ArrayList<Widget> widgetList = new ArrayList<>();
     public static boolean toolMenuIsOpen = false;
     private AddMouseEvents addMouseEvents;
-    private RemoveWidget removeWidget;
 
     public MainViewController() {
         primaryStage.addEventHandler(WindowEvent.WINDOW_SHOWN, window -> initialize());
@@ -72,8 +70,6 @@ public class MainViewController {
         addMouseEvents.draggableWhiteboardOject(TESTOBJECT);
 
         whiteboardPane_AP.setPrefHeight(ScreenSize.screenHeight-30);
-        removeWidget = new RemoveWidget();
-        removeWidget.setVBox(toolMenuPane_VB);
 
         primaryStage.widthProperty().addListener(observable -> {
             toolMenuOpener_ST.setLayoutY(ScreenSize.screenHeight/2-30);
@@ -97,11 +93,10 @@ public class MainViewController {
                     sp.setAlignment(Pos.CENTER);
                     addMouseEvents.draggableToolMenuItem(sp);
                     sp.getChildren().add(aWidgetList.getThumbnail());
-                    sp.getChildren().add(aWidgetList.getRectangleColor());
                     sp.getChildren().add(aWidgetList.getRectangleBorder());
+                    sp.getChildren().add(aWidgetList.getRectangleColor());
                     sp.getChildren().add(aWidgetList.getLabel());
                     toolMenuPane_VB.getChildren().add(sp);
-                    sp.getChildren().remove(2, 3);
                 }
             });
             toolMenuIsOpen = true;
@@ -121,8 +116,6 @@ public class MainViewController {
 
     @FXML
     private void scaleTrashBin() {
-        System.out.println("X: "+(30-trashBin_VB.getBoundsInParent().getMinX()));
-        System.out.println("Y: "+(whiteboardPane_AP.getHeight()-30-trashBin_VB.getBoundsInParent().getMaxY()));
         Timeline timelineAnimation = new Timeline();
         timelineAnimation.getKeyFrames().addAll(
                 new KeyFrame(new Duration(200), new KeyValue(trashBin_VB.scaleXProperty(), 2, Interpolator.EASE_BOTH), new KeyValue(trashBin_VB.scaleYProperty(), 2, Interpolator.EASE_BOTH)),

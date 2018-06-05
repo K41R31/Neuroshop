@@ -17,11 +17,6 @@ public class AddMouseEvents { //TODO Vielleicht komplett in den Controller
     private double sceneCursorPosX, sceneCursorPosY;
     private double nodeTranslatedX, nodeTranslatedY;
     private double sceneWidth, sceneHeight;
-    private RemoveWidget removeWidget;
-
-    public AddMouseEvents() {
-        removeWidget = new RemoveWidget();
-    }
 
     public void draggableWhiteboardOject(Node node) {
 
@@ -122,7 +117,7 @@ public class AddMouseEvents { //TODO Vielleicht komplett in den Controller
                     else if (sp.getBoundsInParent().getMaxY() > sceneHeight) sp.setTranslateY(newTranslateY-(sp.getBoundsInParent().getMaxY()-sceneHeight));
 
                     if (MainViewController.toolMenuIsOpen & MouseInfo.getPointerInfo().getLocation().x > 300) {
-                        removeWidget.removeWidgetFromVBox(sp);
+ //                       removeWidget.removeWidgetFromVBox(sp);
                     }
                 };
 
