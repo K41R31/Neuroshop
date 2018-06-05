@@ -24,14 +24,6 @@
                         <Font name="LEIXO DEMO" size="22.0" />
                      </font>
                   </Text>
-                  <VBox fx:id="presetsPane_VB" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Text onMouseEntered="#presetsPaneEntered" onMouseExited="#presetsPaneExited" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="borderLabel" text="presets" textAlignment="CENTER" wrappingWidth="200.0" />
-                     </children>
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </VBox>
                   <Region fx:id="frameBorder_RE" HBox.hgrow="ALWAYS" />
                   <HBox>
                      <children>
@@ -47,6 +39,21 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" styleClass="underBorder">
+               <children>
+                  <VBox fx:id="presetsPane_VB" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text onMouseEntered="#presetsPaneEntered" onMouseExited="#presetsPaneExited" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="underBorderLabel" text="presets" textAlignment="CENTER" wrappingWidth="200.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
             </HBox>
             <AnchorPane fx:id="whiteboardPane_AP" VBox.vgrow="ALWAYS">
                <children>
