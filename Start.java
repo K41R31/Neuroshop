@@ -15,6 +15,7 @@ public class Start extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Start.primaryStage = primaryStage;
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Neuroshop/View/mainView.fxml" ));
         primaryStage.setTitle("Neuroshop" );
         new ScreenSize();
