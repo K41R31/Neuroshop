@@ -15,11 +15,13 @@ public class Widget {
     private Rectangle rectangleColor, rectangleBorder;
 
     public Widget(String name, Image image) {
-        label = new Text(name);
-        thumbnail = new ImageView(image);
-        rectangleColor = new Rectangle(250, 200);
-        rectangleBorder = new Rectangle(250, 200);
-        addStyle();
+        if (name != null & image != null) {
+            label = new Text(name);
+            thumbnail = new ImageView(image);
+            rectangleColor = new Rectangle(250, 200);
+            rectangleBorder = new Rectangle(250, 200);
+            addStyle();
+        }
     }
 
     private void addStyle() {
