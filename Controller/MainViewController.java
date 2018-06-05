@@ -121,11 +121,12 @@ public class MainViewController {
 
     @FXML
     private void scaleTrashBin() {
-                 trashBin_VB.setScaleX(2);
-                 trashBin_VB.setScaleY(2);
-                 trashBin_VB.setTranslateX(30-trashBin_VB.getBoundsInParent().getMinX());
-                 trashBin_VB.setTranslateY((whiteboardPane_AP.getHeight()-30-trashBin_VB.getBoundsInParent().getMaxY()));
-                 }
+        Timeline timelineAnimation = new Timeline();
+        timelineAnimation.getKeyFrames().addAll(
+                new KeyFrame(new Duration(500), new KeyValue(trashBin_VB.scaleXProperty(), 2, Interpolator.EASE_BOTH), new KeyValue(trashBin_VB.scaleYProperty(), 2, Interpolator.EASE_BOTH), new KeyValue(trashBin_VB.translateXProperty(), 30-trashBin_VB.getBoundsInParent().getMinX()), new KeyValue(trashBin_VB.translateYProperty(), whiteboardPane_AP.getHeight()-30-trashBin_VB.getBoundsInParent().getMaxY()))
+        );
+        timelineAnimation.play();
+    }
 
     @FXML
     private void minimize() {
