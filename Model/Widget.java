@@ -32,12 +32,12 @@ public class Widget {
         rectangleBorder.setFill(Color.TRANSPARENT);
         rectangleBorder.setOpacity(0);
         rectangleColor.setOpacity(0);
-        rectangleColor.setOnMouseEntered(event1 -> {
+        rectangleColor.setOnMouseEntered(event -> {
             rectangleColor.setOpacity(0.7);
             rectangleBorder.setOpacity(1);
             label.setOpacity(1);
         });
-        rectangleColor.setOnMouseExited(event1 -> {
+        rectangleColor.setOnMouseExited(event -> {
             rectangleColor.setOpacity(0);
             rectangleBorder.setOpacity(0);
             label.setOpacity(0);

@@ -79,8 +79,8 @@ public class MainViewController {
                     sp.setAlignment(Pos.CENTER);
                     addMouseEvents.draggableToolMenuItem(sp);
                     sp.getChildren().add(aWidgetList.getThumbnail());
-                    sp.getChildren().add(aWidgetList.getRectangleBorder());
                     sp.getChildren().add(aWidgetList.getRectangleColor());
+                    sp.getChildren().add(aWidgetList.getRectangleBorder());
                     sp.getChildren().add(aWidgetList.getLabel());
                     toolMenuPane_VB.getChildren().add(sp);
                     sp.getChildren().remove(2, 3);
