@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
@@ -25,6 +26,12 @@ import static Neuroshop.Start.primaryStage;
 
 public class MainViewController {
 
+    @FXML
+    private SVGPath trashBinDeckel_SVG;
+    @FXML
+    private SVGPath trashBin_SVG;
+    @FXML
+    private VBox trashBin_VB;
     @FXML
     private Region frameBorder_RE;
     @FXML
@@ -51,6 +58,13 @@ public class MainViewController {
     }
 
     private void initialize() {
+
+        trashBinDeckel_SVG.setContent("M91.754,48.489h-6.361v-3.686c0-2.906-2.065-5.262-4.615-5.262H69.15c-2.548,0-4.615,2.355-4.615,5.262v3.686h-6.29c-3.965,0-8.246,2.784-8.246,7.282v3.436h3.429H75h21.571H100v-3.436C100,51.273,95.72,48.489,91.754,48.489zM67.964,44.804c0-1.045,0.626-1.826,1.186-1.826h11.627c0.561,0,1.187,0.781,1.187,1.826v3.686H75h-7.036V44.804z M75,55.771H53.429c0-2.364,2.633-3.847,4.817-3.847H75h16.754c2.185,0,4.817,1.482,4.817,3.847H75z");
+        trashBin_SVG.setContent("M76.548,96.272c0,0.877-0.693,1.589-1.548,1.589l0,0c-0.855,0-1.548-0.712-1.548-1.589V76.928c0-0.877,0.693-1.588,1.548-1.588l0,0c0.855,0,1.548,0.711,1.548,1.588V96.272z"+
+                                                "M84.167,96.272c0,0.877-0.692,1.589-1.548,1.589l0,0c-0.854,0-1.548-0.712-1.548-1.589V76.928c0-0.877,0.693-1.588,1.548-1.588l0,0c0.855,0,1.548,0.711,1.548,1.588V96.272z"+
+                                                "M68.978,96.272c0,0.877-0.694,1.589-1.549,1.589l0,0c-0.855,0-1.547-0.712-1.547-1.589V76.928c0-0.877,0.692-1.588,1.547-1.588l0,0c0.854,0,1.549,0.711,1.549,1.588V96.272z"+
+                                                "M75,62.861H53.429l3.762,43.691c0,0.002,0.001,0.003,0.001,0.004c0.331,3.82,2.79,3.901,4.147,3.901H75h13.66c1.357,0,3.817-0.081,4.147-3.901c0-0.001,0.001-0.002,0.001-0.004l3.763-43.691H75z M89.399,107.255H60.601L57,66.225h36L89.399,107.255z"
+                                );
 
         addMouseEvents = new AddMouseEvents();
         addMouseEvents.draggablePrimaryStage(frameBorder_RE);
@@ -104,6 +118,14 @@ public class MainViewController {
             toolMenuIsOpen = false;
         }
     }
+
+    @FXML
+    private void scaleTrashBin() {
+                 trashBin_VB.setScaleX(2);
+                 trashBin_VB.setScaleY(2);
+                 trashBin_VB.setTranslateX(30-trashBin_VB.getBoundsInParent().getMinX());
+                 trashBin_VB.setTranslateY((whiteboardPane_AP.getHeight()-30-trashBin_VB.getBoundsInParent().getMaxY()));
+                 }
 
     @FXML
     private void minimize() {
