@@ -58,6 +58,12 @@
             </HBox>
             <AnchorPane fx:id="whiteboardPane_AP" VBox.vgrow="ALWAYS">
                <children>
+                  <VBox fx:id="trashBin_VB" alignment="CENTER" layoutX="64.0" layoutY="415.0" onMouseClicked="#scaleTrashBin" spacing="3.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0">
+                     <children>
+                        <SVGPath fx:id="trashBinDeckel_SVG" />
+                        <SVGPath fx:id="trashBin_SVG" />
+                     </children>
+                  </VBox>
                   <StackPane fx:id="toolMenuOpener_ST" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#toolsMenuButtonMouseEntered" onMouseExited="#toolsMenuButtonMouseExited" onMousePressed="#toolsMenuButtonMouseAction" prefHeight="40.0" prefWidth="20.0">
                      <children>
                         <ImageView fx:id="toolMenuButton_IV" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="toolsMenuButton" />
@@ -77,12 +83,6 @@
                         <Image url="@../Resources/network.png" />
                      </image>
                   </ImageView>
-                  <VBox fx:id="trashBin_VB" alignment="CENTER" layoutX="64.0" layoutY="415.0" onMouseClicked="#scaleTrashBin" spacing="3.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0">
-                     <children>
-                        <SVGPath fx:id="trashBinDeckel_SVG" />
-                        <SVGPath fx:id="trashBin_SVG" />
-                     </children>
-                  </VBox>
                </children>
             </AnchorPane>
          </children>
