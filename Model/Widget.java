@@ -44,8 +44,6 @@ public class Widget {
         });
     }
 
-
-
     public Text getLabel() {
         return label;
     }
