@@ -121,9 +121,12 @@ public class MainViewController {
 
     @FXML
     private void scaleTrashBin() {
+        System.out.println("X: "+(30-trashBin_VB.getBoundsInParent().getMinX()));
+        System.out.println("Y: "+(whiteboardPane_AP.getHeight()-30-trashBin_VB.getBoundsInParent().getMaxY()));
         Timeline timelineAnimation = new Timeline();
         timelineAnimation.getKeyFrames().addAll(
-                new KeyFrame(new Duration(500), new KeyValue(trashBin_VB.scaleXProperty(), 2, Interpolator.EASE_BOTH), new KeyValue(trashBin_VB.scaleYProperty(), 2, Interpolator.EASE_BOTH), new KeyValue(trashBin_VB.translateXProperty(), 30-trashBin_VB.getBoundsInParent().getMinX()), new KeyValue(trashBin_VB.translateYProperty(), whiteboardPane_AP.getHeight()-30-trashBin_VB.getBoundsInParent().getMaxY()))
+                new KeyFrame(new Duration(200), new KeyValue(trashBin_VB.scaleXProperty(), 2, Interpolator.EASE_BOTH), new KeyValue(trashBin_VB.scaleYProperty(), 2, Interpolator.EASE_BOTH)),
+                new KeyFrame(new Duration(200), new KeyValue(trashBin_VB.translateXProperty(), 25.5, Interpolator.EASE_BOTH), new KeyValue(trashBin_VB.translateYProperty(), -35.5, Interpolator.EASE_BOTH))
         );
         timelineAnimation.play();
     }
