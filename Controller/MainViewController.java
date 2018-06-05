@@ -1,6 +1,7 @@
 package Neuroshop.Controller;
 
 import Neuroshop.Model.AddMouseEvents;
+import Neuroshop.Model.RemoveWidget;
 import Neuroshop.Model.ScreenSize;
 import Neuroshop.Model.Widget;
 import javafx.animation.Interpolator;
@@ -43,6 +44,7 @@ public class MainViewController {
     private ArrayList<Widget> widgetList = new ArrayList<>();
     public static boolean toolMenuIsOpen = false;
     private AddMouseEvents addMouseEvents;
+    private RemoveWidget removeWidget;
 
     public MainViewController() {
         primaryStage.addEventHandler(WindowEvent.WINDOW_SHOWN, window -> initialize());
@@ -56,6 +58,8 @@ public class MainViewController {
         addMouseEvents.draggableWhiteboardOject(TESTOBJECT);
 
         whiteboardPane_AP.setPrefHeight(ScreenSize.screenHeight-30);
+        removeWidget = new RemoveWidget();
+        removeWidget.setVBox(toolMenuPane_VB);
 
         primaryStage.widthProperty().addListener(observable -> {
             toolMenuOpener_ST.setLayoutY(ScreenSize.screenHeight/2-30);
