@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
@@ -47,6 +48,7 @@ public class MainViewController {
     private ArrayList<Widget> widgetList = new ArrayList<>();
     public static boolean toolMenuIsOpen = false;
 
+    //Für Mouse Events
     private double windowCursorPosX, windowCursorPosY;
     private double sceneOnWindowPosX, sceneOnWindowPosY;
     private double sceneCursorPosX, sceneCursorPosY;
@@ -61,7 +63,11 @@ public class MainViewController {
 
         draggablePrimaryStage(frameBorder_RE);
         fullscreenOnDoubleclick(frameBorder_RE);
-        draggableWhiteboardOject(TESTOBJECT);
+        draggableWhiteboardObject(TESTOBJECT);
+
+        draggablePrimaryStage(frameBorder_RE);
+        fullscreenOnDoubleclick(frameBorder_RE);
+        draggableWhiteboardObject(TESTOBJECT);
 
         whiteboardPane_AP.setPrefHeight(ScreenSize.screenHeight-30);
 
@@ -87,11 +93,10 @@ public class MainViewController {
                     sp.setAlignment(Pos.CENTER);
                     draggableToolMenuItem(sp);
                     sp.getChildren().add(aWidgetList.getThumbnail());
-                    sp.getChildren().add(aWidgetList.getRectangleColor());
                     sp.getChildren().add(aWidgetList.getRectangleBorder());
+                    sp.getChildren().add(aWidgetList.getRectangleColor());
                     sp.getChildren().add(aWidgetList.getLabel());
                     toolMenuPane_VB.getChildren().add(sp);
-                    sp.getChildren().remove(2, 3);
                 }
             });
             toolMenuIsOpen = true;
@@ -146,7 +151,7 @@ public class MainViewController {
         presetsPane_VB.setStyle("-fx-background-color: TRANSPARENT");
     }
 
-    public void draggableWhiteboardOject(Node node) {
+    public void draggableWhiteboardObject(Node node) {
 
         EventHandler<MouseEvent> onMousePressed =
                 event -> {

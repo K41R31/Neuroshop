@@ -26,7 +26,10 @@
                   </Text>
                   <VBox fx:id="presetsPane_VB" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Text onMouseEntered="#presetsPaneEntered" onMouseExited="#presetsPaneExited" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="borderLabel" text="presets" textAlignment="CENTER" wrappingWidth="200.0" />
+                        <Text fill="#949494" onMouseEntered="#presetsPaneEntered" onMouseExited="#presetsPaneExited" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="borderLabel" text="presets" textAlignment="CENTER" wrappingWidth="200.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                           </font></Text>
                      </children>
                      <HBox.margin>
                         <Insets left="20.0" />

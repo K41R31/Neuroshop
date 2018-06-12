@@ -2,6 +2,7 @@ package Neuroshop.Model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -14,11 +15,13 @@ public class Widget {
     private Rectangle rectangleColor, rectangleBorder;
 
     public Widget(String name, Image image) {
-        label = new Text(name);
-        thumbnail = new ImageView(image);
-        rectangleColor = new Rectangle(250, 200);
-        rectangleBorder = new Rectangle(250, 200);
-        addStyle();
+        if (name != null & image != null) {
+            label = new Text(name);
+            thumbnail = new ImageView(image);
+            rectangleColor = new Rectangle(250, 200);
+            rectangleBorder = new Rectangle(250, 200);
+            addStyle();
+        }
     }
 
     private void addStyle() {
@@ -42,6 +45,14 @@ public class Widget {
             rectangleBorder.setOpacity(0);
             label.setOpacity(0);
         });
+    }
+
+    public void removeWidgetFromVBox(VBox toolMenuPane_VB) {
+
+    }
+
+    public void trashAnimation(VBox trashBin_VB) {
+
     }
 
     public Text getLabel() {

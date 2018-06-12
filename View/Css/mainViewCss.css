@@ -3,16 +3,18 @@
 }
 .borderPane {
     -fx-padding: 0 0 0 15;
-    -fx-background-color: TRANSPARENT;
-    -fx-border-width: 0 0 1 0;
-    -fx-border-color: BLACK;
+    -fx-border-insets: 0 0 1 0;
+    -fx-border-color: #222222;
 }
 .borderText {
     -fx-font-family: "LEIXO DEMO";
     -fx-font-size: 15pt;
     -fx-text-fill: #b8b8b8;
 }
-.borderLabel {
+.underBorder {
+    -fx-background-color: #333333;
+}
+.underBorderLabel {
     -fx-font-family: "Champagne & Limousines";
     -fx-font-size: 16pt;
     -fx-fill: #b2b2b2;
