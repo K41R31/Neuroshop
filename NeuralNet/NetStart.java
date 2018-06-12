@@ -26,7 +26,7 @@ public class NetStart {
         DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         df.setMaximumFractionDigits(20);
 
-        Double[][] _neuralDataSet = FileLoader.readDataFromFile("neuralnet/data/lilie.csv");
+        Double[][] _neuralDataSet = FileLoader.readDataFromFile("Neuroshop/NeuralNet/data/lilie.csv");
 
         int[] inputColumns = {0,1,2,3};
         int[] outputColumns = {4,5,6};
