@@ -17,7 +17,7 @@ public class Start extends Application {
         Start.primaryStage = primaryStage;
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Neuroshop/View/mainView.fxml" ));
-        primaryStage.setTitle("Neuroshop" );
+        primaryStage.setTitle("Neuroshop");
         new ScreenSize();
         primaryStage.setScene(new Scene(root, ScreenSize.screenWidth/1.5, ScreenSize.screenHeight/1.5));
         primaryStage.initStyle(StageStyle.UNDECORATED);

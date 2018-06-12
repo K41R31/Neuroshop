@@ -5,7 +5,7 @@ import static Neuroshop.Start.primaryStage;
 
 public class ScreenSize {
 
-    static boolean isFullscreen; //Wird von Methode die das Drag & Drop ermöglicht geändert
+    public static boolean isFullscreen; //Wird von Methode die das Drag & Drop ermöglicht geändert
     public static double screenHeight;
     public static double screenWidth;
     private static double oldX, oldY, oldWidth, oldHeight;
