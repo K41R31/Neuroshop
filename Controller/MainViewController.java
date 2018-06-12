@@ -1,16 +1,19 @@
 package Neuroshop.Controller;
 
-import Neuroshop.Model.AddMouseEvents;
 import Neuroshop.Model.ScreenSize;
 import Neuroshop.Model.Widget;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -18,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import static Neuroshop.Start.primaryStage;
@@ -42,7 +46,12 @@ public class MainViewController {
     private ImageView TESTOBJECT;
     private ArrayList<Widget> widgetList = new ArrayList<>();
     public static boolean toolMenuIsOpen = false;
-    private AddMouseEvents addMouseEvents;
+
+    private double windowCursorPosX, windowCursorPosY;
+    private double sceneOnWindowPosX, sceneOnWindowPosY;
+    private double sceneCursorPosX, sceneCursorPosY;
+    private double nodeTranslatedX, nodeTranslatedY;
+    private double sceneWidth, sceneHeight;
 
     public MainViewController() {
         primaryStage.addEventHandler(WindowEvent.WINDOW_SHOWN, window -> initialize());
@@ -50,10 +59,9 @@ public class MainViewController {
 
     private void initialize() {
 
-        addMouseEvents = new AddMouseEvents();
-        addMouseEvents.draggablePrimaryStage(frameBorder_RE);
-        addMouseEvents.fullscreenOnDoubleclick(frameBorder_RE);
-        addMouseEvents.draggableWhiteboardOject(TESTOBJECT);
+        draggablePrimaryStage(frameBorder_RE);
+        fullscreenOnDoubleclick(frameBorder_RE);
+        draggableWhiteboardOject(TESTOBJECT);
 
         whiteboardPane_AP.setPrefHeight(ScreenSize.screenHeight-30);
 
@@ -77,7 +85,7 @@ public class MainViewController {
                 for (Widget aWidgetList : widgetList) {
                     StackPane sp = new StackPane();
                     sp.setAlignment(Pos.CENTER);
-                    addMouseEvents.draggableToolMenuItem(sp);
+                    draggableToolMenuItem(sp);
                     sp.getChildren().add(aWidgetList.getThumbnail());
                     sp.getChildren().add(aWidgetList.getRectangleColor());
                     sp.getChildren().add(aWidgetList.getRectangleBorder());
@@ -136,5 +144,137 @@ public class MainViewController {
     @FXML
     private void presetsPaneExited() {
         presetsPane_VB.setStyle("-fx-background-color: TRANSPARENT");
+    }
+
+    public void draggableWhiteboardOject(Node node) {
+
+        EventHandler<MouseEvent> onMousePressed =
+                event -> {
+                    sceneCursorPosX = event.getSceneX();
+                    sceneCursorPosY = event.getSceneY();
+                    nodeTranslatedX = node.getTranslateX();
+                    nodeTranslatedY = node.getTranslateY();
+                    sceneWidth = node.getScene().getWidth();
+                    sceneHeight = node.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
+                };
+
+        EventHandler<MouseEvent> onMouseDragged =
+                event -> {
+                    double offsetX = event.getSceneX() - sceneCursorPosX;
+                    double offsetY = event.getSceneY() - sceneCursorPosY;
+                    double newTranslateX = nodeTranslatedX + offsetX;
+                    double newTranslateY = nodeTranslatedY + offsetY;
+
+                    //Collider, der das Objekt stoppt falls es an eine Wand stößt
+                    if ((node.getBoundsInParent().getMinX() > 0 || newTranslateX > node.getTranslateX()) & (node.getBoundsInParent().getMaxX() < sceneWidth || newTranslateX < node.getTranslateX())) node.setTranslateX(newTranslateX);
+                    if ((node.getBoundsInParent().getMinY() > 0 || newTranslateY > node.getTranslateY()) & (node.getBoundsInParent().getMaxY() < sceneHeight || newTranslateY < node.getTranslateY())) node.setTranslateY(newTranslateY);
+                    //Behebt einen glitch, bei dem das Objekt durch schnelles bewegen durch die Wand gezogen werden kann, indem es genau so weit zurück transliert wird, wie es durch geglitcht ist.
+                    if (node.getBoundsInParent().getMinX() < 0) node.setTranslateX(newTranslateX-node.getBoundsInParent().getMinX());
+                    else if (node.getBoundsInParent().getMaxX() > sceneWidth) node.setTranslateX(newTranslateX-(node.getBoundsInParent().getMaxX()-sceneWidth));
+                    if (node.getBoundsInParent().getMinY() < 0) node.setTranslateY(newTranslateY-node.getBoundsInParent().getMinY());
+                    else if (node.getBoundsInParent().getMaxY() > sceneHeight) node.setTranslateY(newTranslateY-(node.getBoundsInParent().getMaxY()-sceneHeight));
+                };
+
+        node.setOnMousePressed(onMousePressed);
+        node.setOnMouseDragged(onMouseDragged);
+    }
+
+    public void draggablePrimaryStage(Node node) {
+
+        EventHandler<MouseEvent> onMousePressed =
+                event -> {
+                    windowCursorPosX = MouseInfo.getPointerInfo().getLocation().x;
+                    windowCursorPosY = MouseInfo.getPointerInfo().getLocation().y;
+                    sceneOnWindowPosX = primaryStage.getX();
+                    sceneOnWindowPosY = primaryStage.getY();
+                };
+
+        EventHandler<MouseEvent> onMouseDragged =
+                event -> {
+                    double offsetX = MouseInfo.getPointerInfo().getLocation().x - windowCursorPosX;
+                    double offsetY = MouseInfo.getPointerInfo().getLocation().y - windowCursorPosY;
+                    double newPosX = sceneOnWindowPosX + offsetX;
+                    double newPosY = sceneOnWindowPosY + offsetY;
+
+                    if (ScreenSize.isFullscreen) {
+                        newPosX = MouseInfo.getPointerInfo().getLocation().x; //TODO Drag and Drop Vollbild zu nicht Vollbild Fehler: X Position muss relativ zu der Cursorposition errechnet werden
+                        ScreenSize.toggleFullScreen(); //Wenn das Fenster im Vollbildmodus gedraggt wird, wird es verkleinert
+                    }
+
+                    primaryStage.setX(newPosX);
+                    primaryStage.setY(newPosY);
+                };
+        EventHandler<MouseEvent> onMouseReleased =
+                event -> {
+                    if (MouseInfo.getPointerInfo().getLocation().y == 0) ScreenSize.toggleFullScreen(); //Wenn das Fenster oben losgelassen wird, wird es in den Vollbildmodus gesetzt
+                    else if (primaryStage.getY() < 0) primaryStage.setY(0); //Wenn das Fenster höher als 0 losgelassen wird, wird die Höhe auf 0 gesetzt
+                    else if (primaryStage.getY() + 30 > ScreenSize.screenHeight - 40) primaryStage.setY(ScreenSize.screenHeight - 70); //Wenn das Fenster in der Taskbar losgelassen wird, wird es drüber gesetzt
+                };
+
+        node.setOnMousePressed(onMousePressed);
+        node.setOnMouseDragged(onMouseDragged);
+        node.setOnMouseReleased(onMouseReleased);
+    }
+
+    public void draggableToolMenuItem(Node node) {
+
+        EventHandler<MouseEvent> onMousePressed =
+                event -> {
+                    sceneCursorPosX = event.getSceneX();
+                    sceneCursorPosY = event.getSceneY();
+                    nodeTranslatedX = node.getTranslateX();
+                    nodeTranslatedY = node.getTranslateY();
+                    sceneWidth = node.getScene().getWidth();
+                    sceneHeight = node.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
+                };
+
+        EventHandler<MouseEvent> onMouseDragged = //TODO duplicated code
+                event -> {
+                    double offsetX = event.getSceneX() - sceneCursorPosX;
+                    double offsetY = event.getSceneY() - sceneCursorPosY;
+                    double newTranslateX = nodeTranslatedX + offsetX;
+                    double newTranslateY = nodeTranslatedY + offsetY;
+
+                    //Collider, der das Objekt stoppt falls es an eine Wand stößt
+                    if ((node.getBoundsInParent().getMinX() > 0 || newTranslateX > node.getTranslateX()) & (node.getBoundsInParent().getMaxX() < sceneWidth || newTranslateX < node.getTranslateX())) node.setTranslateX(newTranslateX);
+                    if ((node.getBoundsInParent().getMinY() > 0 || newTranslateY > node.getTranslateY()) & (node.getBoundsInParent().getMaxY() < sceneHeight || newTranslateY < node.getTranslateY())) node.setTranslateY(newTranslateY);
+                    //Behebt einen glitch, bei dem das Objekt durch schnelles bewegen durch die Wand gezogen werden kann, indem es genau so weit zurück transliert wird, wie es durch geglitcht ist.
+                    if (node.getBoundsInParent().getMinX() < 0) node.setTranslateX(newTranslateX-node.getBoundsInParent().getMinX());
+                    else if (node.getBoundsInParent().getMaxX() > sceneWidth) node.setTranslateX(newTranslateX-(node.getBoundsInParent().getMaxX()-sceneWidth));
+                    if (node.getBoundsInParent().getMinY() < 0) node.setTranslateY(newTranslateY-node.getBoundsInParent().getMinY());
+                    else if (node.getBoundsInParent().getMaxY() > sceneHeight) node.setTranslateY(newTranslateY-(node.getBoundsInParent().getMaxY()-sceneHeight));
+
+                    if (MainViewController.toolMenuIsOpen & MouseInfo.getPointerInfo().getLocation().x > 300) {
+                        //sp.getChildren().remove(2, 3);
+                    }
+                };
+
+        EventHandler<MouseEvent> onMouseReleased =
+                event -> {
+                    if (MainViewController.toolMenuIsOpen & MouseInfo.getPointerInfo().getLocation().x < 300) {
+                        node.setTranslateX(0);
+                        node.setTranslateY(0);
+                    }
+                    else {
+                        System.out.println(node.getBoundsInParent());
+                    }
+                };
+
+        node.setOnMousePressed(onMousePressed);
+        node.setOnMouseDragged(onMouseDragged);
+        node.setOnMouseReleased(onMouseReleased);
+    }
+
+    public void fullscreenOnDoubleclick(Node node) {
+
+        EventHandler<MouseEvent> onMouseDoubleClicked =
+                event -> {
+
+                    if(event.getClickCount() == 2 && event.getButton() == MouseButton.PRIMARY){
+                        ScreenSize.toggleFullScreen();
+                    }
+
+                };
+        node.setOnMouseClicked(onMouseDoubleClicked);
     }
 }
