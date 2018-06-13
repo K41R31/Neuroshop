@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -50,13 +49,13 @@
             </HBox>
             <AnchorPane fx:id="whiteboardPane_AP" VBox.vgrow="ALWAYS">
                <children>
-                  <StackPane fx:id="toolMenuOpener_ST" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#toolsMenuButtonMouseEntered" onMouseExited="#toolsMenuButtonMouseExited" onMousePressed="#toolsMenuButtonMouseAction" prefHeight="40.0" prefWidth="20.0">
+                  <StackPane fx:id="toolMenuOpener_ST" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#toolsMenuButtonMouseEntered" onMouseExited="#toolsMenuButtonMouseExited" prefHeight="40.0" prefWidth="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <ImageView fx:id="toolMenuButton_IV" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="toolsMenuButton" />
-                        <ImageView fx:id="toolMenuButtonOpen_IV" fitHeight="40.0" fitWidth="20.0" layoutX="10.0" layoutY="335.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" styleClass="toolsMenuButton" />
+                        <ImageView fx:id="toolMenuButtonOpen_IV" fitHeight="40.0" fitWidth="20.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" styleClass="toolsMenuButton" />
                      </children>
                   </StackPane>
-                  <VBox fx:id="toolMenuPane_VB" alignment="TOP_CENTER" maxWidth="300.0" minWidth="0.0" prefWidth="0.0" spacing="10.0" style="-fx-background-color: #222222;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="toolMenuPane_VB" alignment="TOP_CENTER" maxWidth="300.0" minWidth="0.0" opacity="0.0" prefWidth="0.0" spacing="10.0" style="-fx-background-color: #222222;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <effect>
                         <InnerShadow blurType="GAUSSIAN" color="#0000005b" height="0.0" offsetX="-10.0" radius="9.5" width="40.0" />
                      </effect>
@@ -64,11 +63,6 @@
                         <Insets top="20.0" />
                      </padding>
                   </VBox>
-                  <ImageView fx:id="TESTOBJECT" fitHeight="431.0" fitWidth="493.0" layoutX="394.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Resources/network.png" />
-                     </image>
-                  </ImageView>
                </children>
             </AnchorPane>
          </children>
