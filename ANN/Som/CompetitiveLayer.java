@@ -1,5 +1,5 @@
-
 package Neuroshop.ANN.Som;
+
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.ANN.Neural.Neuron;
 import Neuroshop.ANN.Neural.OutputLayer;

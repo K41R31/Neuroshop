@@ -16,8 +16,8 @@ public class WidgetsModel extends Observable { //Kein "echtes" Model
     private StackPane draggPane;
 
     public WidgetsModel() {
-        previewWidgetsList.add(new Widget("neuralNet", new Image("Neuroshop/Resources/netThumb.png")));
-        previewWidgetsList.add(new Widget("diagram", new Image("Neuroshop/Resources/resultDiagramThumb.png")));
+        previewWidgetsList.add(new Widget("neuralNet", new Image("Neuroshop/Ressources/netThumb.png")));
+        previewWidgetsList.add(new Widget("diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png")));
     }
 
     public void setDraggPreview(StackPane draggPane) {
