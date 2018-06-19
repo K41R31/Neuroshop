@@ -1,9 +1,9 @@
 package Neuroshop;
 
-import Neuroshop.Border.BorderController;
-import Neuroshop.OptionsMenu.OptionsMenuController;
-import Neuroshop.Whiteboard.WhiteboardController;
-import Neuroshop.WidgetMenu.WidgetMenuController;
+import Neuroshop.Gui.Border.BorderController;
+import Neuroshop.Gui.OptionsMenu.OptionsMenuController;
+import Neuroshop.Gui.Whiteboard.WhiteboardController;
+import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,21 +23,21 @@ public class Start extends Application {
         new ScreenSize();
         VBox root = new VBox();
         root.setStyle("-fx-background-color: #2f2f2f");
-        FXMLLoader borderLoader = new FXMLLoader(getClass().getResource("Border/border.fxml"));
+        FXMLLoader borderLoader = new FXMLLoader(getClass().getResource("Gui/Border/border.fxml"));
         root.getChildren().add(borderLoader.load());
         BorderController borderController = borderLoader.getController();
 
-        FXMLLoader whiteboardLoader = new FXMLLoader(getClass().getResource("Whiteboard/whiteboard.fxml"));
+        FXMLLoader whiteboardLoader = new FXMLLoader(getClass().getResource("Gui/Whiteboard/whiteboard.fxml"));
         AnchorPane whiteboard = whiteboardLoader.load();
         whiteboard.setPrefWidth(ScreenSize.width);
         whiteboard.setPrefHeight(ScreenSize.height-70); //-70 -> 30px von Border + 40px von Taskleiste
         root.getChildren().add(whiteboard);
         WhiteboardController whiteboardController = whiteboardLoader.getController();
-        FXMLLoader optionsMenuLoader = new FXMLLoader(getClass().getResource("OptionsMenu/OptionsMenu.fxml"));
+        FXMLLoader optionsMenuLoader = new FXMLLoader(getClass().getResource("Gui/OptionsMenu/OptionsMenu.fxml"));
         whiteboard.getChildren().add(optionsMenuLoader.load());
         OptionsMenuController optionsMenuController = optionsMenuLoader.getController();
 
-        FXMLLoader toolMenuLoader = new FXMLLoader(getClass().getResource("WidgetMenu/WidgetMenu.fxml"));
+        FXMLLoader toolMenuLoader = new FXMLLoader(getClass().getResource("Gui/WidgetMenu/WidgetMenu.fxml"));
         whiteboard.getChildren().add(toolMenuLoader.load());
         WidgetMenuController widgetListController = toolMenuLoader.getController();
 
@@ -59,7 +59,7 @@ public class Start extends Application {
         primaryStage.show();
 
         ScreenSize.toggleFullScreen(false);
-        primaryStage.getIcons().add(new Image("Neuroshop/Resources/taskbarIcon.jpg"));
+        primaryStage.getIcons().add(new Image("Neuroshop/Gui/Resources/taskbarIcon.jpg"));
     }
 
     public static void main(String[] args) {

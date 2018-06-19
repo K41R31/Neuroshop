@@ -1,6 +1,6 @@
 package Neuroshop;
 
-import Neuroshop.Widgets.Widget;
+import Neuroshop.Gui.Widgets.Widget;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -16,8 +16,8 @@ public class WidgetsModel extends Observable { //Kein "echtes" Model
     private StackPane draggPane;
 
     public WidgetsModel() {
-        previewWidgetsList.add(new Widget("neuralNet", new Image("Neuroshop/Resources/netThumb.png")));
-        previewWidgetsList.add(new Widget("diagram", new Image("Neuroshop/Resources/resultDiagramThumb.png")));
+        previewWidgetsList.add(new Widget("neuralNet", new Image("Neuroshop/Gui/Resources/netThumb.png")));
+        previewWidgetsList.add(new Widget("diagram", new Image("Neuroshop/Gui/Resources/resultDiagramThumb.png")));
     }
 
     public void setDraggPreview(StackPane draggPane) {

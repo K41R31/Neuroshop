@@ -1,4 +1,4 @@
-package Neuroshop.Whiteboard;
+package Neuroshop.Gui.Whiteboard;
 
 import Neuroshop.WidgetsModel;
 import javafx.fxml.FXML;
