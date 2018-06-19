@@ -16,6 +16,7 @@ import Neuroshop.ANN.Math.RandomNumberGenerator;
 import Neuroshop.ANN.Math.Sigmoid;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
+import Neuroshop.ANN.Neural.Neuron;
 
 /**
  *
@@ -67,6 +68,8 @@ public class NetTest {
             System.out.println("2) Diabetes");
             System.out.println("99) Quit");
             int option = sc.nextInt();
+
+
 
             switch (option) {
                 case 1:
@@ -151,6 +154,8 @@ public class NetTest {
                 backprop.setTestingDataSet(neuralDataSetToTest);
                 backprop.printTraining = true;
                 backprop.showPlotError=true;
+
+
 
                 // train ANN:
                 try {

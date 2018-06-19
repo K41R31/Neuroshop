@@ -55,6 +55,8 @@ public class DeltaRule extends LearningAlgorithm {
                     this.newWeights.get(l).add(new ArrayList<Double>());
                     for(int i=0;i<=numberOfInputsInNeuron;i++){
                         this.newWeights.get(l).get(j).add(0.0);
+                        System.out.println(newWeights);
+
                     }
                 }
             }
