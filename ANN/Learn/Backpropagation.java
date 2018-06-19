@@ -380,7 +380,10 @@ public class Backpropagation extends DeltaRule {
                         double deltaWeight=(newWeight-n.getWeight(i));
                         lastDeltaWeights.get(l).get(j).set(i,(double)deltaWeight);
                         hl.getNeuron(j).updateWeight(i, newWeight);
-                        System.out.println(newWeight);
+                        System.out.print("Hidden Layer:" + l);
+                        System.out.print("Neuron:" + j);
+                        System.out.println("Neues Gewicht:" + newWeights);
+
                     }
                 }
             }

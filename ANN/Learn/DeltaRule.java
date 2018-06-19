@@ -44,18 +44,17 @@ public class DeltaRule extends LearningAlgorithm {
         this.newWeights=new ArrayList<>();
         int numberOfHiddenLayers=this.neuralNet.getNumberOfHiddenLayers();
         for(int l=0;l<=numberOfHiddenLayers;l++){
-            int numberOfNeuronsInLayer,numberOfInputsInNeuron;
+           int numberOfNeuronsInLayer,numberOfInputsInNeuron;
             this.newWeights.add(new ArrayList<ArrayList<Double>>());
             if(l<numberOfHiddenLayers){
                 numberOfNeuronsInLayer=this.neuralNet.getHiddenLayer(l)
                         .getNumberOfNeuronsInLayer();
                 for(int j=0;j<numberOfNeuronsInLayer;j++){
-                    numberOfInputsInNeuron=this.neuralNet.getHiddenLayer(l)
+                                        numberOfInputsInNeuron=this.neuralNet.getHiddenLayer(l)
                             .getNeuron(j).getNumberOfInputs();
                     this.newWeights.get(l).add(new ArrayList<Double>());
-                    for(int i=0;i<=numberOfInputsInNeuron;i++){
+                    for(int i=0;i<=numberOfInputsInNeuron;i++) {
                         this.newWeights.get(l).get(j).add(0.0);
-                        System.out.println(newWeights);
 
                     }
                 }
