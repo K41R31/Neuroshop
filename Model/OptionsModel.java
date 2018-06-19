@@ -1,4 +1,4 @@
-package Neuroshop;
+package Neuroshop.Model;
 
 import java.util.Observable;
 
