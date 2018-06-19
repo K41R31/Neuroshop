@@ -9,6 +9,8 @@ import Neuroshop.ANN.Neural.*;
 import org.jfree.chart.ChartFrame;
 
 import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +21,8 @@ import java.util.ArrayList;
  *
  */
 public class Backpropagation extends DeltaRule {
-    
+
+
     private double MomentumRate=0.7;
     
     public ArrayList<ArrayList<Double>> deltaNeuron;
@@ -361,53 +364,57 @@ public class Backpropagation extends DeltaRule {
     }
     
     @Override
-    public void applyNewWeights(){
-        int numberOfHiddenLayers=this.neuralNet.getNumberOfHiddenLayers();
-        for(int l=0;l<=numberOfHiddenLayers;l++){
-            int numberOfNeuronsInLayer,numberOfInputsInNeuron;
-            if(l<numberOfHiddenLayers){
-                HiddenLayer hl = this.neuralNet.getHiddenLayer(l);
-                numberOfNeuronsInLayer=hl.getNumberOfNeuronsInLayer();
-                for(int j=0;j<numberOfNeuronsInLayer;j++){
-                    numberOfInputsInNeuron=hl.getNeuron(j).getNumberOfInputs();
-                    for(int i=0;i<=numberOfInputsInNeuron;i++){
-                        Double lastDeltaWeight=lastDeltaWeights.get(l).get(j).get(i);
-                        double momentum=MomentumRate*lastDeltaWeight;
-                        double newWeight=this.newWeights.get(l).get(j).get(i)
-                                -momentum;
-                        this.newWeights.get(l).get(j).set(i,newWeight);
-                        Neuron n=hl.getNeuron(j);
-                        double deltaWeight=(newWeight-n.getWeight(i));
-                        lastDeltaWeights.get(l).get(j).set(i,(double)deltaWeight);
-                        hl.getNeuron(j).updateWeight(i, newWeight);
-                        System.out.print("Hidden Layer:" + l);
-                        System.out.print("Neuron:" + j);
-                        System.out.println("Neues Gewicht:" + newWeights);
+    public void applyNewWeights() {
 
+        try {
+            FileWriter writer = new FileWriter("Gewichte.txt");
+            int numberOfHiddenLayers = this.neuralNet.getNumberOfHiddenLayers();
+            for (int l = 0; l <= numberOfHiddenLayers; l++) {
+                int numberOfNeuronsInLayer, numberOfInputsInNeuron;
+                if (l < numberOfHiddenLayers) {
+                    HiddenLayer hl = this.neuralNet.getHiddenLayer(l);
+                    numberOfNeuronsInLayer = hl.getNumberOfNeuronsInLayer();
+                    for (int j = 0; j < numberOfNeuronsInLayer; j++) {
+                        numberOfInputsInNeuron = hl.getNeuron(j).getNumberOfInputs();
+                            for (int i = 0; i <= numberOfInputsInNeuron; i++) {
+                            Double lastDeltaWeight = lastDeltaWeights.get(l).get(j).get(i);
+                            double momentum = MomentumRate * lastDeltaWeight;
+                            double newWeight = this.newWeights.get(l).get(j).get(i)- momentum;
+                            this.newWeights.get(l).get(j).set(i, newWeight);
+                            Neuron n = hl.getNeuron(j);
+                            double deltaWeight = (newWeight - n.getWeight(i));
+                            lastDeltaWeights.get(l).get(j).set(i,deltaWeight);
+                            hl.getNeuron(j).updateWeight(i, newWeight);
+                            writer.write("Iteraion: " + epoch + " Hidden Layer " + l + " Neuron: " + j + " Gewichte: " + (deltaWeight) + "\n");
+
+                        }
+                    }
+                } else {
+                    OutputLayer ol = this.neuralNet.getOutputLayer();
+                    numberOfNeuronsInLayer = ol.getNumberOfNeuronsInLayer();
+                    for (int j = 0; j < numberOfNeuronsInLayer; j++) {
+                        numberOfInputsInNeuron = ol.getNeuron(j).getNumberOfInputs();
+
+                        for (int i = 0; i <= numberOfInputsInNeuron; i++) {
+                            Double lastDeltaWeight = lastDeltaWeights.get(l).get(j).get(i);
+                            double momentum = MomentumRate * lastDeltaWeight;
+                            Neuron n = ol.getNeuron(j);
+                            double newWeight = this.newWeights.get(l).get(j).get(i) + momentum;
+                            this.newWeights.get(l).get(j).set(i, newWeight);
+                            double deltaWeight = (newWeight - n.getWeight(i));
+                            lastDeltaWeights.get(l).get(j).set(i, deltaWeight);
+                            ol.getNeuron(j).updateWeight(i, newWeight);
+                        }
                     }
                 }
             }
-            else{
-                OutputLayer ol = this.neuralNet.getOutputLayer();
-                numberOfNeuronsInLayer=ol.getNumberOfNeuronsInLayer();
-                for(int j=0;j<numberOfNeuronsInLayer;j++){
-                    numberOfInputsInNeuron=ol.getNeuron(j).getNumberOfInputs();
-                    
-                    for(int i=0;i<=numberOfInputsInNeuron;i++){
-                        Double lastDeltaWeight=lastDeltaWeights.get(l).get(j).get(i);
-                        double momentum=MomentumRate*lastDeltaWeight;
-                        Neuron n=ol.getNeuron(j);
-                        double newWeight=this.newWeights.get(l).get(j).get(i) + momentum;
-                        this.newWeights.get(l).get(j).set(i,newWeight);
-                        double deltaWeight=(newWeight-n.getWeight(i));
-                        lastDeltaWeights.get(l).get(j).set(i,deltaWeight);
-                        ol.getNeuron(j).updateWeight(i, newWeight);
-                    }
-                }
-            }
+
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-    
     public void setMomentumRate(double _momentumRate){
         this.MomentumRate=_momentumRate;
     }
