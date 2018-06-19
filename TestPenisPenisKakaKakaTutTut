@@ -1,0 +1,27 @@
+Model für ANN
+
+ Setter:
+	- DataSet festlegen
+	(Import File)
+	- AbbruchBedingungen
+	(Iterations, MinOverallError)
+	- LearnRate
+	- Momentum
+	- Weights
+	- Input
+	(Anzahl Inputs, Columns)
+	- Normalization
+	(Modus)
+	- PercentageLearnAndTestData#
+	- Output
+	(Anzahl Output, Columns)
+
+
+ Getter:
+	- OverallError
+	- MinOverallError
+	- Iterations
+	- Weights
+	(Speichern pro Neuron/Layer/Iteration)
+
+	...to be continued
