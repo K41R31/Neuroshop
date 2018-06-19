@@ -17,7 +17,7 @@
          <children>
             <ImageView fx:id="openerIcon" disable="true" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Gui/Resources/toolsMenuButton.png" />
+                  <Image url="@../../Ressources/toolsMenuButton.png" />
                </image>
             </ImageView>
          </children></StackPane>
