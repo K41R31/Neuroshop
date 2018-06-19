@@ -33,7 +33,7 @@ public class Widget {
             case "diagram": {
                 //whiteboardPane = new DiagramWidget();
                 whiteboardPane = new AnchorPane();
-                whiteboardPane.getChildren().add(new ImageView(new Image("Neuroshop/Gui/Resources/resultDiagramFull.png")));
+                whiteboardPane.getChildren().add(new ImageView(new Image("Neuroshop/Resources/resultDiagramFull.png")));
             }
         }
     }
