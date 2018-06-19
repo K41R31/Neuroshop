@@ -1,6 +1,6 @@
 package Neuroshop.Gui.OptionsMenu;
 
-import Neuroshop.OptionsModel;
+import Neuroshop.Model.OptionsModel;
 import Neuroshop.Start;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;

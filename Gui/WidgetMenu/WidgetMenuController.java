@@ -1,6 +1,6 @@
 package Neuroshop.Gui.WidgetMenu;
 
-import Neuroshop.WidgetsModel;
+import Neuroshop.Model.WidgetsModel;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
