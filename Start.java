@@ -1,28 +1,65 @@
 package Neuroshop;
 
-import Neuroshop.Model.ScreenSize;
+import Neuroshop.Border.BorderController;
+import Neuroshop.OptionsMenu.OptionsMenuController;
+import Neuroshop.Whiteboard.WhiteboardController;
+import Neuroshop.WidgetMenu.WidgetMenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Start extends Application {
 
-    static public Stage primaryStage;
+    public static Stage primaryStage;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Start.primaryStage = primaryStage;
-
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Neuroshop/View/mainView.fxml" ));
-        primaryStage.setTitle("Neuroshop");
+    public void start(Stage stage) throws Exception {
+        primaryStage = stage;
         new ScreenSize();
-        primaryStage.setScene(new Scene(root, ScreenSize.screenWidth/1.5, ScreenSize.screenHeight/1.5));
+        VBox root = new VBox();
+        root.setStyle("-fx-background-color: #2f2f2f");
+        FXMLLoader borderLoader = new FXMLLoader(getClass().getResource("Border/border.fxml"));
+        root.getChildren().add(borderLoader.load());
+        BorderController borderController = borderLoader.getController();
+
+        FXMLLoader whiteboardLoader = new FXMLLoader(getClass().getResource("Whiteboard/whiteboard.fxml"));
+        AnchorPane whiteboard = whiteboardLoader.load();
+        whiteboard.setPrefWidth(ScreenSize.width);
+        whiteboard.setPrefHeight(ScreenSize.height-70); //-70 -> 30px von Border + 40px von Taskleiste
+        root.getChildren().add(whiteboard);
+        WhiteboardController whiteboardController = whiteboardLoader.getController();
+        FXMLLoader optionsMenuLoader = new FXMLLoader(getClass().getResource("OptionsMenu/OptionsMenu.fxml"));
+        whiteboard.getChildren().add(optionsMenuLoader.load());
+        OptionsMenuController optionsMenuController = optionsMenuLoader.getController();
+
+        FXMLLoader toolMenuLoader = new FXMLLoader(getClass().getResource("WidgetMenu/WidgetMenu.fxml"));
+        whiteboard.getChildren().add(toolMenuLoader.load());
+        WidgetMenuController widgetListController = toolMenuLoader.getController();
+
+        //Init Widgets
+        WidgetsModel widgetsModel = new WidgetsModel();
+        OptionsModel optionsModel = new OptionsModel();
+        whiteboardController.initModel(widgetsModel);
+        widgetListController.initModel(widgetsModel);
+
+        borderController.initModel(optionsModel);
+        optionsMenuController.initModel(optionsModel);
+
+        widgetsModel.addObserver(whiteboardController);
+        optionsModel.addObserver(optionsMenuController);
+
+        Scene scene = new Scene(root, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setScene(scene);
         primaryStage.show();
-        ScreenSize.toggleFullScreen();
+
+        ScreenSize.toggleFullScreen(false);
+        primaryStage.getIcons().add(new Image("Neuroshop/Resources/taskbarIcon.jpg"));
     }
 
     public static void main(String[] args) {
