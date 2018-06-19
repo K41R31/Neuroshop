@@ -3,7 +3,6 @@ package Neuroshop.Widgets;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -15,9 +14,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.QuadCurve;
 
 public class NeuronalNetWidget {
-    private Image menuThumbnail;
     private AnchorPane mainPane;
-    private boolean menuIsOpen;
     private double sceneCursorPosX, sceneCursorPosY;
     private double nodeTranslatedX, nodeTranslatedY;
 
