@@ -16,7 +16,7 @@ import Neuroshop.ANN.Math.RandomNumberGenerator;
 import Neuroshop.ANN.Math.Sigmoid;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
-import Neuroshop.ANN.Neural.Neuron;
+
 
 /**
  *
@@ -78,7 +78,7 @@ public class NetTest {
                     numberOfOutputs = 1;
 
                     // load Data
-                    dataSet = new DataSet("Data", "new_data.txt");
+                    dataSet = new DataSet("Neuroshop/Resources/Data", "new_data.txt");
                     inputColumns  = new int[] {0, 1, 2, 3};
                     outputColumns = new int[] {4};
 
