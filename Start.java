@@ -61,7 +61,7 @@ public class Start extends Application {
         primaryStage.show();
 
         ScreenSize.toggleFullScreen(false);
-        primaryStage.getIcons().add(new Image("Neuroshop/Resources/taskbarIcon.jpg"));
+        primaryStage.getIcons().add(new Image("Neuroshop/Ressources/taskbarIcon.jpg"));
     }
 
     public static void main(String[] args) {

@@ -1,22 +1,18 @@
 package Neuroshop.ANN;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Init.UniformInitialization;
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
-import Neuroshop.ANN.Math.ArrayOperations;
-import Neuroshop.ANN.Math.IActivationFunction;
-import Neuroshop.ANN.Math.Linear;
-import Neuroshop.ANN.Math.RandomNumberGenerator;
-import Neuroshop.ANN.Math.Sigmoid;
+import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
@@ -78,7 +74,7 @@ public class NetTest {
                     numberOfOutputs = 1;
 
                     // load Data
-                    dataSet = new DataSet("Neuroshop/Resources/Data", "new_data.txt");
+                    dataSet = new DataSet("Neuroshop/Ressources/Data", "new_data.txt");
                     inputColumns  = new int[] {0, 1, 2, 3};
                     outputColumns = new int[] {4};
 

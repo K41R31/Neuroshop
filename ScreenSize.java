@@ -1,7 +1,6 @@
 package Neuroshop;
 
 import java.awt.*;
-import static Neuroshop.Start.primaryStage;
 
 public class ScreenSize {
 
@@ -17,36 +16,36 @@ public class ScreenSize {
     }
 
     public static void toggleFullScreen(boolean dragged) {
-        if (primaryStage.getHeight() == height - 40 & primaryStage.getWidth() == width) {
+        if (Start.primaryStage.getHeight() == height - 40 & Start.primaryStage.getWidth() == width) {
             if (!dragged) {
-                primaryStage.setX(oldX);
-                primaryStage.setY(oldY);
+                Start.primaryStage.setX(oldX);
+                Start.primaryStage.setY(oldY);
             } else {
                 double mousePosX = MouseInfo.getPointerInfo().getLocation().x;
                 double screenWidthThird = ScreenSize.width / 3;
                 if (mousePosX <= screenWidthThird) {
-                    primaryStage.setX(1);
+                    Start.primaryStage.setX(1);
                 } else if (mousePosX > screenWidthThird & mousePosX < screenWidthThird * 2) {
-                    primaryStage.setX(ScreenSize.width / 2 - oldWidth / 2);
+                    Start.primaryStage.setX(ScreenSize.width / 2 - oldWidth / 2);
                 } else {
-                    primaryStage.setX(ScreenSize.width - oldWidth);
+                    Start.primaryStage.setX(ScreenSize.width - oldWidth);
                 }
             }
-            primaryStage.setWidth(oldWidth);
-            primaryStage.setHeight(oldHeight);
+            Start.primaryStage.setWidth(oldWidth);
+            Start.primaryStage.setHeight(oldHeight);
             isFullscreen = false;
         } else {
             if (!dragged) {
-                oldX = primaryStage.getX();
-                oldY = primaryStage.getY();
+                oldX = Start.primaryStage.getX();
+                oldY = Start.primaryStage.getY();
             }
-            oldWidth = primaryStage.getWidth();
-            oldHeight = primaryStage.getHeight();
+            oldWidth = Start.primaryStage.getWidth();
+            oldHeight = Start.primaryStage.getHeight();
 
-            primaryStage.setX(0);
-            primaryStage.setY(0);
-            primaryStage.setWidth(width);
-            primaryStage.setHeight(height - 40);
+            Start.primaryStage.setX(0);
+            Start.primaryStage.setY(0);
+            Start.primaryStage.setWidth(width);
+            Start.primaryStage.setHeight(height - 40);
             isFullscreen = true;
         }
     }
