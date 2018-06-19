@@ -1,6 +1,6 @@
 package Neuroshop.Gui.Border;
 
-import Neuroshop.OptionsModel;
+import Neuroshop.Model.OptionsModel;
 import Neuroshop.ScreenSize;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

@@ -4,6 +4,8 @@ import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.OptionsMenu.OptionsMenuController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
+import Neuroshop.Model.OptionsModel;
+import Neuroshop.Model.WidgetsModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -1,6 +1,6 @@
 package Neuroshop.Gui.Whiteboard;
 
-import Neuroshop.WidgetsModel;
+import Neuroshop.Model.WidgetsModel;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
