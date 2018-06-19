@@ -1,4 +1,4 @@
-package Neuroshop.Border;
+package Neuroshop.Gui.Border;
 
 import Neuroshop.OptionsModel;
 import Neuroshop.ScreenSize;

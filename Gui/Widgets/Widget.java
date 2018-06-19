@@ -1,4 +1,4 @@
-package Neuroshop.Widgets;
+package Neuroshop.Gui.Widgets;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

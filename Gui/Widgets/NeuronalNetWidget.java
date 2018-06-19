@@ -1,4 +1,4 @@
-package Neuroshop.Widgets;
+package Neuroshop.Gui.Widgets;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;

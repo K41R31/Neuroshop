@@ -1,6 +1,6 @@
 package Neuroshop;
 
-import Neuroshop.Widgets.Widget;
+import Neuroshop.Gui.Widgets.Widget;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;

@@ -1,4 +1,4 @@
-package Neuroshop.WidgetMenu;
+package Neuroshop.Gui.WidgetMenu;
 
 import Neuroshop.WidgetsModel;
 import javafx.animation.Interpolator;

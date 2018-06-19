@@ -1,4 +1,4 @@
-package Neuroshop.OptionsMenu;
+package Neuroshop.Gui.OptionsMenu;
 
 import Neuroshop.OptionsModel;
 import Neuroshop.Start;
