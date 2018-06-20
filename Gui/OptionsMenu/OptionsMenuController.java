@@ -43,6 +43,7 @@ public class OptionsMenuController implements Observer {
                 optionsMenuPane.getChildren().get(1).setOpacity(1);
                 optionsMenuPane.getChildren().get(2).setOpacity(1);
             });
+            optionsMenuPane.setVisible(true);
             optionsIsOpen = true;
         } else {
             Timeline closeMenuAnimation = new Timeline();
@@ -50,6 +51,9 @@ public class OptionsMenuController implements Observer {
                     new KeyFrame(new Duration(200), new KeyValue(optionsMenuPane.prefWidthProperty(), 0, Interpolator.EASE_BOTH))
             );
             closeMenuAnimation.play();
+            closeMenuAnimation.setOnFinished(event ->
+                    optionsMenuPane.setVisible(false)
+            );
             optionsMenuPane.getChildren().get(0).setOpacity(0);
             optionsMenuPane.getChildren().get(1).setOpacity(0);
             optionsMenuPane.getChildren().get(2).setOpacity(0);

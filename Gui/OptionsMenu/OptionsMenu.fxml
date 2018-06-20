@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="optionsMenuPane" alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="0.0" spacing="100.0" style="-fx-background-color: #222222;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.OptionsMenu.OptionsMenuController">
+<VBox fx:id="optionsMenuPane" alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="0.0" spacing="100.0" style="-fx-background-color: #222222; -fx-border-color: #181818;" visible="false" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.OptionsMenu.OptionsMenuController">
    <children>
       <Text fill="#c6c6c6" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="presets">
          <font>

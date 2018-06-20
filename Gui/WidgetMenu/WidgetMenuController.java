@@ -59,6 +59,7 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
                     draggablePreview(processPane);
                 }
             });
+            widgetMenuPane.setVisible(true);
             menuIsOpen = true;
         } else {
             Timeline closeMenuAnimation = new Timeline();
@@ -67,6 +68,9 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
                     new KeyFrame(new Duration(200), new KeyValue(widgetMenuPane.prefWidthProperty(), 0, Interpolator.EASE_BOTH))
             );
             closeMenuAnimation.play();
+            closeMenuAnimation.setOnFinished(event ->
+                    widgetMenuPane.setVisible(false)
+            );
             widgetMenuPane.getChildren().clear();
             menuIsOpen = false;
         }
