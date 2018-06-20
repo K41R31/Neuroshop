@@ -6,24 +6,24 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.stage.WindowEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.awt.*;
 
 import static Neuroshop.Start.primaryStage;
 
+
 public class BorderController {
 
+    @FXML
+    private AnchorPane frameBorderRootPane;
+    private OptionsModel model;
     private double windowCursorPosX, windowCursorPosY;
     private double sceneOnWindowPosX, sceneOnWindowPosY;
 
     @FXML
-    private StackPane frameBorder;
-    private OptionsModel model;
-
-    public BorderController() {
-        primaryStage.addEventHandler(WindowEvent.WINDOW_SHOWN, window -> draggablePrimaryStage());
+    private void initialize() {
+        draggablePrimaryStage();
     }
 
     private void draggablePrimaryStage() { //TODO resize Git https://github.com/goxr3plus/FX-BorderlessScene/blob/master/src/main/java/com/goxr3plus/fxborderlessscene/borderless/BorderlessController.java
@@ -68,10 +68,10 @@ public class BorderController {
 
                 };
 
-        frameBorder.setOnMousePressed(onMousePressed);
-        frameBorder.setOnMouseDragged(onMouseDragged);
-        frameBorder.setOnMouseReleased(onMouseReleased);
-        frameBorder.setOnMouseClicked(onMouseDoubleClicked);
+        frameBorderRootPane.setOnMousePressed(onMousePressed);
+        frameBorderRootPane.setOnMouseDragged(onMouseDragged);
+        frameBorderRootPane.setOnMouseReleased(onMouseReleased);
+        frameBorderRootPane.setOnMouseClicked(onMouseDoubleClicked);
     }
 
     @FXML
