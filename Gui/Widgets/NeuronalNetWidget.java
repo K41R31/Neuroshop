@@ -143,6 +143,7 @@ public class NeuronalNetWidget {
         node.setOnMouseReleased(onMouseReleased);
     }
 
+    public int getIndex() { return 0; }
     public AnchorPane getMainPane() {
         return mainPane;
     }

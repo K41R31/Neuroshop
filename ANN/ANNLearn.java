@@ -3,7 +3,6 @@ package Neuroshop.ANN;
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Init.UniformInitialization;
-import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 import Neuroshop.ANN.Math.RandomNumberGenerator;
@@ -27,7 +26,7 @@ public class ANNLearn {
 
         ANNLearn aNN = new ANNLearn();
 
-        Backpropagation.backprop = new Backpropagation(nn,  )
+        //Backpropagation.backprop = new Backpropagation(nn,  )
 
         }
 

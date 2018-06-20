@@ -3,42 +3,56 @@ package Neuroshop.Model;
 import Neuroshop.Gui.Widgets.Widget;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class WidgetsModel extends Observable { //Kein "echtes" Model
+public class WidgetsModel extends Observable {
 
     private ArrayList<Widget> previewWidgetsList = new ArrayList<>();
     private ArrayList<Widget> whiteboardWidgetsList = new ArrayList<>();
+    private ArrayList<Widget> allWidgetsList = new ArrayList<>();
 
-    private StackPane draggPane;
+    private Widget draggPane;
 
     public WidgetsModel() {
         previewWidgetsList.add(new Widget("neuralNet", new Image("Neuroshop/Ressources/netThumb.png")));
         previewWidgetsList.add(new Widget("diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png")));
+        allWidgetsList.addAll(previewWidgetsList);
     }
 
-    public void setDraggPreview(StackPane draggPane) {
-        this.draggPane = draggPane;
+    public void setDraggPreview(String name) {
+        for (Widget widget: allWidgetsList) {
+            if (name.equals(widget.getName())) {
+                this.draggPane = widget;
+            }
+        }
         setChanged();
         notifyObservers("setDraggPreview");
     }
-    public StackPane getDraggPreview() {
+
+    public Widget getDraggPreview() {
         return draggPane;
     }
+
     public void removeDraggPreview() {
         setChanged();
         notifyObservers("removeDraggPreview");
+        this.draggPane = null;
     }
-    public ArrayList<StackPane> getPreviewWidgets() {
-        ArrayList<StackPane> returnList = new ArrayList<>();
-        for (Widget procoessList: previewWidgetsList) {
-            returnList.add(procoessList.getPreviewPane());
-        }
-        return returnList;
+
+    public ArrayList<Widget> getPreviewWidgetList() {
+        return previewWidgetsList;
     }
+
+    public void addToPreviewList(Widget widget) {
+        previewWidgetsList.add(widget);
+    }
+
+    public void clearPreviewWidgetList() {
+        previewWidgetsList.clear();
+    }
+
     public ArrayList<AnchorPane> getWhiteboardWidgets() {
         ArrayList<AnchorPane> returnList = new ArrayList<>();
         for (Widget procoessList: whiteboardWidgetsList) {
@@ -47,11 +61,14 @@ public class WidgetsModel extends Observable { //Kein "echtes" Model
         return returnList;
     }
 
-    public void addWidgetToWhiteboard(int widgetIndex) {
-        whiteboardWidgetsList.add(previewWidgetsList.get(widgetIndex));
-        previewWidgetsList.remove(widgetIndex);
+    public void addWidgetToWhiteboard(Widget widget) {
+        whiteboardWidgetsList.add(widget);
         setChanged();
         notifyObservers("setWhiteboardWidget");
+    }
+
+    public ArrayList<Widget> getAllWidgetsList() {
+        return allWidgetsList;
     }
 
     public void removeWidgetFromWhiteboard(int widgetIndex) {

@@ -21,9 +21,9 @@ public class WhiteboardController implements Observer {
 
     @Override public void update(Observable o, Object arg ) {
         switch ((String)arg) {
-            case "removeDraggPreview": whiteboardPane.getChildren().remove(model.getDraggPreview());
+            case "setDraggPreview": whiteboardPane.getChildren().add(model.getDraggPreview().getPreviewPane());
                 break;
-            case "setDraggPreview": whiteboardPane.getChildren().add(model.getDraggPreview());
+            case "removeDraggPreview": whiteboardPane.getChildren().remove(model.getDraggPreview().getPreviewPane());
                 break;
             case "setWhiteboardWidget":
                 AnchorPane ap = model.getWhiteboardWidgets().get(model.getWhiteboardWidgets().size()-1);
