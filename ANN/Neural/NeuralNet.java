@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * NeuralNet
+ * ANNLearn
  * This class represents the Neural Network itself. It contains all the 
  * definitions that a Neural Network has, including method for calculation 
  * (forward).
@@ -73,7 +73,7 @@ public class NeuralNet {
     protected NeuralNetMode neuralNetMode = NeuralNetMode.BUILD;
     
     /**
-     * NeuralNet constructor
+     * ANNLearn constructor
      * This constructor initializes the neural network by initializing all of 
      * the underlying layers and their respective neurons.
      * 

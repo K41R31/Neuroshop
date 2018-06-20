@@ -75,6 +75,7 @@ public class NetTest {
 
                     // load Data
                     dataSet = new DataSet("Neuroshop/Ressources/Data", "new_data.txt");
+//                    dataSet.dropNaN();
                     inputColumns  = new int[] {0, 1, 2, 3};
                     outputColumns = new int[] {4};
 
@@ -114,7 +115,7 @@ public class NetTest {
                 NeuralNet nn = new NeuralNet(numberOfInputs, numberOfOutputs, numberOfHiddenNeurons, hiddenAcFnc, outputAcFnc,
                         new UniformInitialization(-1.0, 1.0));
                 System.out.println("Neural Network created!");
-                //nn.print();
+                nn.print();
 
                 // load Data
                 double[][] _neuralDataSet = dataSet.getData();
@@ -134,8 +135,8 @@ public class NetTest {
                 NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormalizedToTest, inputColumns, outputColumns);
 
                 //System.out.println("Dataset to train created");
-                //neuralDataSetToTrain.printInput();
-                //neuralDataSetToTrain.printTargetOutput();
+                neuralDataSetToTrain.printInput();
+                neuralDataSetToTrain.printTargetOutput();
 
                 System.out.println("Getting the first output of the neural network");
 
