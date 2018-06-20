@@ -12,7 +12,6 @@ import java.awt.*;
 
 import static Neuroshop.Start.primaryStage;
 
-
 public class BorderController {
 
     @FXML

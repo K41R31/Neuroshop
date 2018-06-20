@@ -8,6 +8,7 @@ import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 import Neuroshop.ANN.Math.RandomNumberGenerator;
 import Neuroshop.ANN.Neural.NeuralNet;
+import Neuroshop.Model.ANNModel;
 
 import java.util.Arrays;
 
@@ -32,28 +33,28 @@ public class ANNLearn {
 
     public NeuralNet createANN() {
 
-        int numberOfInputs = new ANNParams().getNumberOfInputs();
-        int numberOfOutputs = new ANNParams().getNumberOfOutputs();
-        int[] inputColumns = new ANNParams().getInputColumns();
-        int[] outputColumns = new ANNParams().getOutputColums();
+        int numberOfInputs = new ANNModel().getNumberOfInputs();
+        int numberOfOutputs = new ANNModel().getNumberOfOutputs();
+        int[] inputColumns = new ANNModel().getInputColumns();
+        int[] outputColumns = new ANNModel().getOutputColums();
 
         //Datensatz reinladen aus Pfad
         double[][] dataSet = new DataLoader().getDataSet();
 
-        int dataPercentage = new ANNParams().getDataPercentage();
-        int[] numberOfHiddenNeurons = new ANNParams().getNumberOfHiddenNeurons();
-        int numberNeuronsHdnLayer = new ANNParams().getNumberNeuronsHdnLayer();
-        IActivationFunction[] actFnc = new ANNParams().getActFnc();
-        Linear outputActFnc = new ANNParams().getOutputActFnc();
+        int dataPercentage = new ANNModel().getDataPercentage();
+        int[] numberOfHiddenNeurons = new ANNModel().getNumberOfHiddenNeurons();
+        int numberNeuronsHdnLayer = new ANNModel().getNumberNeuronsHdnLayer();
+        IActivationFunction[] actFnc = new ANNModel().getActFnc();
+        Linear outputActFnc = new ANNModel().getOutputActFnc();
 
-        double minOverallError = new ANNParams().getMinOverallError();
-        double learningRate = new ANNParams().getLearningRate();
-        double momentumRate = new ANNParams().getMomentumRate();
-        int iterations = new ANNParams().getIterations();
+        double minOverallError = new ANNModel().getMinOverallError();
+        double learningRate = new ANNModel().getLearningRate();
+        double momentumRate = new ANNModel().getMomentumRate();
+        int iterations = new ANNModel().getIterations();
 
         this.nn = new NeuralNet(numberOfInputs, numberOfOutputs, numberOfHiddenNeurons,actFnc, outputActFnc, new UniformInitialization(-1.0 , 1.0));
 
-        DataNormalization dataNormType = new ANNParams().getDataNormType();
+        DataNormalization dataNormType = new ANNModel().getDataNormType();
 
         double[][] dataNormalized = new double[dataSet.length][dataSet[0].length];
         dataNormalized = dataNormType.normalize(dataSet);
