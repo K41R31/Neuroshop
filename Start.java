@@ -25,8 +25,11 @@ public class Start extends Application {
         new ScreenSize();
         VBox root = new VBox();
         root.setStyle("-fx-background-color: #2f2f2f");
+
         FXMLLoader borderLoader = new FXMLLoader(getClass().getResource("Gui/Border/border.fxml"));
-        root.getChildren().add(borderLoader.load());
+        AnchorPane ap = borderLoader.load();
+        ap.getStylesheets().add("Neuroshop/Gui/Border/borderStyle.css");
+        root.getChildren().add(ap);
         BorderController borderController = borderLoader.getController();
 
         FXMLLoader whiteboardLoader = new FXMLLoader(getClass().getResource("Gui/Whiteboard/whiteboard.fxml"));
@@ -34,6 +37,7 @@ public class Start extends Application {
         whiteboard.setPrefWidth(ScreenSize.width);
         whiteboard.setPrefHeight(ScreenSize.height-70); //-70 -> 30px von Border + 40px von Taskleiste
         root.getChildren().add(whiteboard);
+
         WhiteboardController whiteboardController = whiteboardLoader.getController();
         FXMLLoader optionsMenuLoader = new FXMLLoader(getClass().getResource("Gui/OptionsMenu/OptionsMenu.fxml"));
         whiteboard.getChildren().add(optionsMenuLoader.load());

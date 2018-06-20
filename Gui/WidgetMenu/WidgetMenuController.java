@@ -14,7 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -35,7 +34,6 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
     private double nodeTranslatedX, nodeTranslatedY;
     private double sceneWidth, sceneHeight;
 
-    //Wird aufgerufen wenn die FXML-Datei initialisiert wurde
     @FXML
     private void initialize() {
         previewWidgetList = new ArrayList<>();
