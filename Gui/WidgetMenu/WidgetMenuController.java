@@ -34,7 +34,6 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
     private double nodeTranslatedX, nodeTranslatedY;
     private double sceneWidth, sceneHeight;
 
-    //Wird aufgerufen wenn die FXML-Datei initialisiert wurde
     @FXML
     private void initialize() {
         previewWidgetList = new ArrayList<>();
