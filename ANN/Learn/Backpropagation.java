@@ -367,8 +367,8 @@ public class Backpropagation extends DeltaRule {
     public void applyNewWeights() {
 
         try {
-            FileWriter writer = new FileWriter("Gewichte.txt");
-            int numberOfHiddenLayers = this.neuralNet.getNumberOfHiddenLayers();
+         int numberOfHiddenLayers = this.neuralNet.getNumberOfHiddenLayers();
+            FileWriter writer = new FileWriter("out/tempWeights/temp_wghts_iteration_" + epoch + ".txt");
             for (int l = 0; l <= numberOfHiddenLayers; l++) {
                 int numberOfNeuronsInLayer, numberOfInputsInNeuron;
                 if (l < numberOfHiddenLayers) {
@@ -385,10 +385,12 @@ public class Backpropagation extends DeltaRule {
                             double deltaWeight = (newWeight - n.getWeight(i));
                             lastDeltaWeights.get(l).get(j).set(i,deltaWeight);
                             hl.getNeuron(j).updateWeight(i, newWeight);
-                            writer.write("Iteraion: " + epoch + " Hidden Layer " + l + " Neuron: " + j + " Gewichte: " + (deltaWeight) + "\n");
+                            writer.write("Iteration: " + epoch + " Hidden Layer " + l + " Neuron: " + j + " Gewicht: " + (deltaWeight) + "\n");
 
                         }
-                    }
+
+                  }
+
                 } else {
                     OutputLayer ol = this.neuralNet.getOutputLayer();
                     numberOfNeuronsInLayer = ol.getNumberOfNeuronsInLayer();
@@ -407,9 +409,9 @@ public class Backpropagation extends DeltaRule {
                         }
                     }
                 }
-            }
 
-            writer.close();
+                writer.close();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
