@@ -79,8 +79,9 @@ public class OptionsMenuController implements Observer {
         // Add Extension Filters
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("All Files", "*.*"),
-                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG", "*.png"));
+                new FileChooser.ExtensionFilter("CSV", "*.csv"),
+                new FileChooser.ExtensionFilter("TXT", "*.txt")
+        );
     }//TODO---------------------------------------------------------------
 
     public void initModel(OptionsModel model) {

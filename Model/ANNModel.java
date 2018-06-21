@@ -39,6 +39,8 @@ public class ANNModel extends Observable {
 
     public void setNumberOfInputs(int numberOfInputs) {
         this.numberOfInputs = numberOfInputs;
+        this.setChanged();
+        this.notifyObservers(numberOfInputs);
     }
 
     public int getNumberOfOutputs() {
@@ -47,6 +49,8 @@ public class ANNModel extends Observable {
 
     public void setNumberOfOutputs() {
         this.numberOfOutputs = numberOfOutputs;
+        this.setChanged();
+        this.notifyObservers(numberOfOutputs);
     }
 
     public int[] getInputColumns() {
@@ -55,6 +59,8 @@ public class ANNModel extends Observable {
 
     public void setInputColumns(int[] inputColumns) {
         this.inputColumns = inputColumns;
+        this.setChanged();
+        this.notifyObservers(inputColumns);
     }
 
     public int[] getOutputColums() {
@@ -63,6 +69,8 @@ public class ANNModel extends Observable {
 
     public void setOutputColums(int[] outputColums) {
         this.outputColums = outputColums;
+        this.setChanged();
+        this.notifyObservers(outputColums);
     }
 
     public DataNormalization getDataNormType() {
@@ -103,6 +111,8 @@ public class ANNModel extends Observable {
 
     public void setNumberNeuronsHdnLayer(int numberNeuronsHdnLayer) {
         this.numberNeuronsHdnLayer = numberNeuronsHdnLayer;
+        this.setChanged();
+        this.notifyObservers(numberNeuronsHdnLayer);
     }
 
     public IActivationFunction[] getActFnc() {
@@ -152,4 +162,6 @@ public class ANNModel extends Observable {
     public void setIterations(int iterations) {
         this.iterations = iterations;
     }
+
+
 }
