@@ -36,6 +36,8 @@ public class Widget {
                 whiteboardPane.getChildren().add(new ImageView(new Image("Neuroshop/Ressources/resultDiagramFull.png")));
             }
         }
+        previewPane.setId(name);
+        whiteboardPane.setId(name);
     }
 
     private void addStyle() {
@@ -60,6 +62,9 @@ public class Widget {
         previewPane.getChildren().addAll(thumbnail, rectangleBorder, label);
     }
 
+    public String getName() {
+        return label.getText();
+    }
     public StackPane getPreviewPane() {
         return previewPane;
     }

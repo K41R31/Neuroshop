@@ -15,7 +15,7 @@
       </Text>
       <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="30.0" fitWidth="45.0" onMouseClicked="#toggleOptions" pickOnBounds="true" preserveRatio="true" styleClass="optionsButton" />
+            <ImageView fitHeight="30.0" fitWidth="45.0" onMousePressed="#toggleOptions" pickOnBounds="true" preserveRatio="true" styleClass="optionsButton" />
             <ImageView fitHeight="30.0" fitWidth="45.0" onMouseClicked="#minimize" pickOnBounds="true" preserveRatio="true" styleClass="minimizeButton" />
             <ImageView fitHeight="30.0" fitWidth="45.0" onMouseClicked="#minMax" pickOnBounds="true" preserveRatio="true" styleClass="minmaxButton" />
             <ImageView fitHeight="30.0" fitWidth="45.0" onMouseClicked="#exit" pickOnBounds="true" preserveRatio="true" styleClass="closeButton" />

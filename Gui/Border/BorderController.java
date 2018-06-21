@@ -19,6 +19,7 @@ public class BorderController {
     private OptionsModel model;
     private double windowCursorPosX, windowCursorPosY;
     private double sceneOnWindowPosX, sceneOnWindowPosY;
+    private boolean mousePressedInBorder = false;
 
     @FXML
     private void initialize() {
@@ -29,33 +30,40 @@ public class BorderController {
 
         EventHandler<MouseEvent> onMousePressed =
                 event -> {
-                    windowCursorPosX = MouseInfo.getPointerInfo().getLocation().x;
-                    windowCursorPosY = MouseInfo.getPointerInfo().getLocation().y;
-                    sceneOnWindowPosX = primaryStage.getX();
-                    sceneOnWindowPosY = primaryStage.getY();
+                    if (MouseInfo.getPointerInfo().getLocation().x < ScreenSize.width - 180) {
+                        mousePressedInBorder = true;
+                        windowCursorPosX = MouseInfo.getPointerInfo().getLocation().x;
+                        windowCursorPosY = MouseInfo.getPointerInfo().getLocation().y;
+                        sceneOnWindowPosX = primaryStage.getX();
+                        sceneOnWindowPosY = primaryStage.getY();
+                    }
                 };
 
         EventHandler<MouseEvent> onMouseDragged = //TODO old screensize beim pressen und nicht beim letzten dragg
                 event -> {
-                    double offsetX = MouseInfo.getPointerInfo().getLocation().x - windowCursorPosX;
-                    double offsetY = MouseInfo.getPointerInfo().getLocation().y - windowCursorPosY;
-                    double newPosX = sceneOnWindowPosX + offsetX;
-                    double newPosY = sceneOnWindowPosY + offsetY;
-
-                    if (ScreenSize.isFullscreen) {
-                        ScreenSize.toggleFullScreen(true); //Wenn das Fenster im Vollbildmodus gedraggt wird, wird es verkleinert
-                        sceneOnWindowPosX = primaryStage.getX();
-                    } else {
-                        primaryStage.setX(newPosX);
-                        primaryStage.setY(newPosY);
+                    if (mousePressedInBorder) {
+                        double offsetX = MouseInfo.getPointerInfo().getLocation().x - windowCursorPosX;
+                        double offsetY = MouseInfo.getPointerInfo().getLocation().y - windowCursorPosY;
+                        double newPosX = sceneOnWindowPosX + offsetX;
+                        double newPosY = sceneOnWindowPosY + offsetY;
+                        if (ScreenSize.isFullscreen) {
+                            ScreenSize.toggleFullScreen(true); //Wenn das Fenster im Vollbildmodus gedraggt wird, wird es verkleinert
+                            sceneOnWindowPosX = primaryStage.getX();
+                        } else {
+                            primaryStage.setX(newPosX);
+                            primaryStage.setY(newPosY);
+                        }
                     }
                 };
 
         EventHandler<MouseEvent> onMouseReleased =
                 event -> {
-                    if (MouseInfo.getPointerInfo().getLocation().y == 0) ScreenSize.toggleFullScreen(false); //Wenn das Fenster oben losgelassen wird, wird es in den Vollbildmodus gesetzt
-                    else if (primaryStage.getY() < 0) primaryStage.setY(0); //Wenn das Fenster höher als 0 losgelassen wird, wird die Höhe auf 0 gesetzt
-                    else if (primaryStage.getY() + 30 > ScreenSize.height - 40) primaryStage.setY(ScreenSize.height - 70); //Wenn das Fenster in der Taskbar losgelassen wird, wird es drüber gesetzt
+                    if (mousePressedInBorder) {
+                        mousePressedInBorder = false;
+                        if (MouseInfo.getPointerInfo().getLocation().y == 0) ScreenSize.toggleFullScreen(false); //Wenn das Fenster oben losgelassen wird, wird es in den Vollbildmodus gesetzt
+                        else if (primaryStage.getY() < 0) primaryStage.setY(0); //Wenn das Fenster höher als 0 losgelassen wird, wird die Höhe auf 0 gesetzt
+                        else if (primaryStage.getY() + 30 > ScreenSize.height - 40) primaryStage.setY(ScreenSize.height - 70); //Wenn das Fenster in der Taskbar losgelassen wird, wird es drüber gesetzt
+                    }
                 };
 
         EventHandler<MouseEvent> onMouseDoubleClicked =

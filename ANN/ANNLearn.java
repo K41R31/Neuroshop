@@ -4,9 +4,12 @@ import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Init.UniformInitialization;
+<<<<<<< HEAD
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.ArrayOperations;
+=======
+>>>>>>> 4c8c65423812cb2b1fe44fc406ae840a13899a36
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 import Neuroshop.ANN.Math.RandomNumberGenerator;
@@ -23,7 +26,17 @@ public class ANNLearn {
 
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
 
+<<<<<<< HEAD
         NeuralNet nn;
+=======
+        ANNLearn aNN = new ANNLearn();
+
+        //Backpropagation.backprop = new Backpropagation(nn,  )
+
+        }
+
+    public NeuralNet createANN() {
+>>>>>>> 4c8c65423812cb2b1fe44fc406ae840a13899a36
 
         int numberOfInputs = new ANNModel().getNumberOfInputs();
         int numberOfOutputs = new ANNModel().getNumberOfOutputs();

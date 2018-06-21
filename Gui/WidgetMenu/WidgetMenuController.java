@@ -1,5 +1,6 @@
 package Neuroshop.Gui.WidgetMenu;
 
+import Neuroshop.Gui.Widgets.Widget;
 import Neuroshop.Model.WidgetsModel;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -14,8 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
 import java.awt.*;
-import java.util.ArrayList;
 
 public class WidgetMenuController { //TODO dragged widget index of und int index an Widgetsloader
 
@@ -26,8 +27,8 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
     @FXML
     private ImageView openerIcon;
     private boolean menuIsOpen;
-    private ArrayList<StackPane> previewWidgetList;
     private WidgetsModel model;
+    private boolean menuIsBusy;
 
     //Für Mouse Events
     private double sceneCursorPosX, sceneCursorPosY;
@@ -36,7 +37,7 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
 
     @FXML
     private void initialize() {
-        previewWidgetList = new ArrayList<>();
+        menuIsBusy = false;
         menuIsOpen = false;
         AnchorPane.setTopAnchor(widgetMenuRootPane, (double)0);
         AnchorPane.setLeftAnchor(widgetMenuRootPane, (double)0);
@@ -44,8 +45,9 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
     }
 
     @FXML
-    private void toggleMenu() { //Wenn das Menu wieder geschlossen wird bevor es die Animation beendet hat, werden die Widgets nicht entfernt
-        if (!menuIsOpen) {
+    private void toggleMenu() {
+        if (!menuIsOpen & !menuIsBusy) {
+            menuIsBusy = true;
             Timeline openMenuAnimation = new Timeline();
             openMenuAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), -1, Interpolator.EASE_BOTH)),
@@ -53,42 +55,59 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
             );
             openMenuAnimation.play();
             openMenuAnimation.setOnFinished(event -> {
-                this.previewWidgetList = model.getPreviewWidgets();
-                for (StackPane processPane: previewWidgetList) { //Pane mit Widgets füllen
-                    widgetMenuPane.getChildren().add(processPane);
-                    draggablePreview(processPane);
+                //Alle Widgets von model PrviewWidgetList in previewWidgetList schreiben und Pane mit Previews füllen
+                StackPane widgetPane;
+                for (Widget widget: model.getPreviewWidgetList()) {
+                    widgetPane = widget.getPreviewPane();
+                    widgetMenuPane.getChildren().add(widgetPane);
+                    draggablePreview(widgetPane);
                 }
+                menuIsOpen = true;
+                menuIsBusy = false;
             });
             widgetMenuPane.setVisible(true);
-            menuIsOpen = true;
-        } else {
+
+        } else if (menuIsOpen & !menuIsBusy) {
+            menuIsBusy = true;
             Timeline closeMenuAnimation = new Timeline();
             closeMenuAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), 1, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(200), new KeyValue(widgetMenuPane.prefWidthProperty(), 0, Interpolator.EASE_BOTH))
             );
             closeMenuAnimation.play();
-            closeMenuAnimation.setOnFinished(event ->
-                    widgetMenuPane.setVisible(false)
-            );
+            closeMenuAnimation.setOnFinished(event -> {
+                widgetMenuPane.setVisible(false);
+                menuIsOpen = false;
+                menuIsBusy = false;
+            });
+            model.clearPreviewWidgetList();
+
+            //Fügt alle Widgets die im Menu sind in die model previewList ein
+            for (int i = 0; i < widgetMenuPane.getChildren().size(); i++) {
+                for (Widget widget: model.getAllWidgetsList()) {
+                    if (widgetMenuPane.getChildren().get(i).getId().equals(widget.getName())) { //Name von Widget ist bekannt. Es wird das passende Widget zu gesucht
+                        model.addToPreviewList(widget);
+                    }
+                }
+            }
             widgetMenuPane.getChildren().clear();
-            menuIsOpen = false;
         }
     }
 
-    private void draggablePreview(StackPane sp) {
+    private void draggablePreview(StackPane draggedNode) { //TODO Man muss im Moment noch warten bis sich das Menu komplett geöffnet hat
 
         EventHandler<MouseEvent> onMousePressed =
                 event -> {
                     sceneCursorPosX = event.getSceneX();
                     sceneCursorPosY = event.getSceneY();
-                    nodeTranslatedX = sp.getTranslateX();
-                    nodeTranslatedY = sp.getTranslateY();
-                    sceneWidth = sp.getScene().getWidth();
-                    sceneHeight = sp.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
+                    nodeTranslatedX = draggedNode.getTranslateX();
+                    nodeTranslatedY = draggedNode.getTranslateY();
+                    sceneWidth = draggedNode.getScene().getWidth();
+                    sceneHeight = draggedNode.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
 
-                    model.setDraggPreview(sp);
-                    widgetMenuPane.getChildren().remove(sp);
+                    widgetMenuPane.getChildren().remove(draggedNode);
+
+                    model.setDraggPreview(draggedNode.getId());
                 };
 
         EventHandler<MouseEvent> onMouseDragged =
@@ -99,37 +118,37 @@ public class WidgetMenuController { //TODO dragged widget index of und int index
                     double newTranslateY = nodeTranslatedY + offsetY;
 
                     //Collider, der das Objekt stoppt falls es an eine Wand stößt
-                    if ((sp.getBoundsInParent().getMinX() > 0 || newTranslateX > sp.getTranslateX()) & (sp.getBoundsInParent().getMaxX() < sceneWidth || newTranslateX < sp.getTranslateX())) sp.setTranslateX(newTranslateX);
-                    if ((sp.getBoundsInParent().getMinY() > 0 || newTranslateY > sp.getTranslateY()) & (sp.getBoundsInParent().getMaxY() < sceneHeight || newTranslateY < sp.getTranslateY())) sp.setTranslateY(newTranslateY);
+                    if ((draggedNode.getBoundsInParent().getMinX() > 0 || newTranslateX > draggedNode.getTranslateX()) & (draggedNode.getBoundsInParent().getMaxX() < sceneWidth || newTranslateX < draggedNode.getTranslateX())) draggedNode.setTranslateX(newTranslateX);
+                    if ((draggedNode.getBoundsInParent().getMinY() > 0 || newTranslateY > draggedNode.getTranslateY()) & (draggedNode.getBoundsInParent().getMaxY() < sceneHeight || newTranslateY < draggedNode.getTranslateY())) draggedNode.setTranslateY(newTranslateY);
                     //Behebt einen Glitch, bei dem das Objekt durch schnelles bewegen durch die Wand gezogen werden kann, indem es genau so weit zurück transliert wird, wie es durch geglitcht ist.
-                    if (sp.getBoundsInParent().getMinX() < 0) sp.setTranslateX(newTranslateX-sp.getBoundsInParent().getMinX());
-                    else if (sp.getBoundsInParent().getMaxX() > sceneWidth) sp.setTranslateX(newTranslateX-(sp.getBoundsInParent().getMaxX()-sceneWidth));
-                    if (sp.getBoundsInParent().getMinY() < 0) sp.setTranslateY(newTranslateY-sp.getBoundsInParent().getMinY());
-                    else if (sp.getBoundsInParent().getMaxY() > sceneHeight) sp.setTranslateY(newTranslateY-(sp.getBoundsInParent().getMaxY()-sceneHeight));
+                    if (draggedNode.getBoundsInParent().getMinX() < 0) draggedNode.setTranslateX(newTranslateX-draggedNode.getBoundsInParent().getMinX());
+                    else if (draggedNode.getBoundsInParent().getMaxX() > sceneWidth) draggedNode.setTranslateX(newTranslateX-(draggedNode.getBoundsInParent().getMaxX()-sceneWidth));
+                    if (draggedNode.getBoundsInParent().getMinY() < 0) draggedNode.setTranslateY(newTranslateY-draggedNode.getBoundsInParent().getMinY());
+                    else if (draggedNode.getBoundsInParent().getMaxY() > sceneHeight) draggedNode.setTranslateY(newTranslateY-(draggedNode.getBoundsInParent().getMaxY()-sceneHeight));
 
                     if (menuIsOpen & MouseInfo.getPointerInfo().getLocation().x > 300) {
                         toggleMenu();
-                    } else if (!menuIsOpen & sp.getBoundsInParent().getMinX() <= 30) {
+                    } else if (!menuIsOpen & draggedNode.getBoundsInParent().getMinX() <= 30) {
                         toggleMenu();
                     }
                 };
 
         EventHandler<MouseEvent> onMouseReleased =
                 event -> {
-                    if (!menuIsOpen & MouseInfo.getPointerInfo().getLocation().x > 300) {
+                    if (MouseInfo.getPointerInfo().getLocation().x > 300) {
+                        model.addWidgetToWhiteboard(model.getDraggPreview());
                         model.removeDraggPreview();
-                        model.addWidgetToWhiteboard(previewWidgetList.indexOf(sp));
                     } else if (menuIsOpen & MouseInfo.getPointerInfo().getLocation().x < 300) {
-                        widgetMenuPane.getChildren().add(sp);
+                        widgetMenuPane.getChildren().add(draggedNode);
                         model.removeDraggPreview();
-                        sp.setTranslateX(0);
-                        sp.setTranslateY(0);
+                        draggedNode.setTranslateX(0);
+                        draggedNode.setTranslateY(0);
                     }
                 };
 
-        sp.setOnMousePressed(onMousePressed);
-        sp.setOnMouseDragged(onMouseDragged);
-        sp.setOnMouseReleased(onMouseReleased);
+        draggedNode.setOnMousePressed(onMousePressed);
+        draggedNode.setOnMouseDragged(onMouseDragged);
+        draggedNode.setOnMouseReleased(onMouseReleased);
     }
 
     public void initModel(WidgetsModel model) {
