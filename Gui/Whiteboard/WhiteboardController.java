@@ -3,6 +3,7 @@ package Neuroshop.Gui.Whiteboard;
 import Neuroshop.Model.WidgetsModel;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import java.awt.*;
 import java.util.Observable;
@@ -26,10 +27,10 @@ public class WhiteboardController implements Observer {
             case "removeDraggPreview": whiteboardPane.getChildren().remove(model.getDraggPreview().getPreviewPane());
                 break;
             case "setWhiteboardWidget":
-                AnchorPane ap = model.getWhiteboardWidgets().get(model.getWhiteboardWidgets().size()-1);
-                whiteboardPane.getChildren().add(ap);
-                ap.setLayoutX(MouseInfo.getPointerInfo().getLocation().x - 120);
-                ap.setLayoutY(MouseInfo.getPointerInfo().getLocation().y - 180);
+                VBox vBox = model.getWhiteboardWidgets().get(model.getWhiteboardWidgets().size()-1);
+                whiteboardPane.getChildren().add(vBox);
+                vBox.setLayoutX(MouseInfo.getPointerInfo().getLocation().x - 120);
+                vBox.setLayoutY(MouseInfo.getPointerInfo().getLocation().y - 180);
         }
     }
 

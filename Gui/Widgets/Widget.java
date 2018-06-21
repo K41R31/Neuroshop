@@ -1,13 +1,17 @@
 package Neuroshop.Gui.Widgets;
 
+import Neuroshop.Gui.Widgets.NeuralNet.NeuralNetWidgetController;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class Widget {
 
@@ -15,32 +19,33 @@ public class Widget {
     private ImageView thumbnail;
     private Rectangle rectangleBorder;
     private StackPane previewPane;
-    private AnchorPane whiteboardPane;
+    private VBox widgetPane;
 
-    public Widget(String name, Image thumbnail) {
+    public Widget(String name, Image thumbnail) throws IOException {
         this.previewPane = new StackPane();
         this.thumbnail = new ImageView(thumbnail);
         this.label = new Text(name);
         this.rectangleBorder = new Rectangle(250, 200);
-        addStyle();
+        initPreview();
 
         switch (name) {
             case "neuralNet": {
-                NeuronalNetWidget nw = new NeuronalNetWidget();
-                whiteboardPane = nw.getMainPane();
+                FXMLLoader widgetViewLoader = new FXMLLoader(getClass().getResource("NeuralNet/NeuralNetWidgetView.fxml"));
+                widgetPane = widgetViewLoader.load();
+                NeuralNetWidgetController widgetController = widgetViewLoader.getController();
             }
             break;
             case "diagram": {
-                //whiteboardPane = new DiagramWidget();
-                whiteboardPane = new AnchorPane();
-                whiteboardPane.getChildren().add(new ImageView(new Image("Neuroshop/Ressources/resultDiagramFull.png")));
+                //widgetPane = new DiagramWidget();
+                widgetPane = new VBox();
+                widgetPane.getChildren().add(new ImageView(new Image("Neuroshop/Ressources/resultDiagramFull.png")));
             }
         }
         previewPane.setId(name);
-        whiteboardPane.setId(name);
+        widgetPane.setId(name);
     }
 
-    private void addStyle() {
+    private void initPreview() {
         label.setFont(new Font("Caviar Dreams", 35));
         label.setFill(Color.WHITE);
         label.setOpacity(0);
@@ -68,7 +73,7 @@ public class Widget {
     public StackPane getPreviewPane() {
         return previewPane;
     }
-    public AnchorPane getWhiteboardPane() {
-        return whiteboardPane;
+    public VBox getWidgetPane() {
+        return widgetPane;
     }
 }

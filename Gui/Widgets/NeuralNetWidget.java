@@ -1,53 +1,74 @@
 package Neuroshop.Gui.Widgets;
 
+import Neuroshop.ScreenSize;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.QuadCurve;
+import javafx.util.Duration;
 
-public class NeuronalNetWidget {
-    private AnchorPane mainPane;
+public class NeuralNetWidget {
+
+    private VBox mainPane;
     private double sceneCursorPosX, sceneCursorPosY;
     private double nodeTranslatedX, nodeTranslatedY;
+    private boolean menuIsOpen = false;
+    private boolean menuIsBusy = false;
+    private StackPaneMenu vGridMenu;
+    private HGrid vGridContainer;
 
-    public NeuronalNetWidget() {
+    public NeuralNetWidget() {
         //Unterste Pane auf die die Splines kommen
-        mainPane = new AnchorPane();
-        mainPane.setOnKeyPressed(event -> {
-            System.out.println(event.getCode());
-        });
+        mainPane = new VBox();
         mainPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
         mainPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
         //HBox in der die eizelnen VBoxes sind
-        HGrid hGrid = new HGrid();
+        vGridContainer = new HGrid();
         VGrid vGridInput = new VGrid(120, 300, 40);
         VGrid vGridOutput = new VGrid(120, 300, 40);
-        VGrid vGridMenu = new VGrid();
+        vGridMenu = new StackPaneMenu();
 
         vGridInput.addCircle(20);
         vGridInput.addCircle(20);
         vGridOutput.addCircle(20);
 
-        mainPane.getChildren().add(hGrid);
-        hGrid.getChildren().add(vGridInput);
-        hGrid.getChildren().add(vGridOutput);
-        hGrid.getChildren().add(vGridMenu);
+        mainPane.getChildren().add(vGridContainer);
+        vGridContainer.getChildren().add(vGridInput);
+        vGridContainer.getChildren().add(vGridOutput);
 
         VGrid columnGrid; //Muss mach dem Anzeigen auseführt werden (sonst sind die Koordinaten 0)
-        for (int c = 0; c < hGrid.getChildren().size()-1; c++) {
-            columnGrid = (VGrid)hGrid.getChildren().get(c);
+        for (int c = 0; c < vGridContainer.getChildren().size()-1; c++) {
+            columnGrid = (VGrid)vGridContainer.getChildren().get(c);
             for (int r = 0; r < columnGrid.getChildren().size(); r++) {
                 Circle neuron = (Circle)columnGrid.getChildren().get(r);
 
             }
+        }
+    }
+
+    class StackPaneMenu extends StackPane {
+        StackPaneMenu() {
+            setStyle("-fx-background-color: #222222");
+            setOpacity(0);
+            setMinWidth(Region.USE_PREF_SIZE);
+            setMinHeight(Region.USE_PREF_SIZE);
+            setPrefWidth(0);
+            setPrefHeight(0);
+            setMaxWidth(Region.USE_PREF_SIZE);
+            setMaxHeight(Region.USE_PREF_SIZE);
         }
     }
 
@@ -69,18 +90,6 @@ public class NeuronalNetWidget {
             setSpacing(spacing);
             setAlignment(Pos.CENTER);
         }
-        VGrid() {
-            setStyle("-fx-background-color: #222222");
-            setOpacity(0);
-            setMinWidth(Region.USE_PREF_SIZE);
-            setMinHeight(Region.USE_PREF_SIZE);
-            setPrefWidth(20);
-            setPrefHeight(300);
-            setMaxWidth(Region.USE_PREF_SIZE);
-            setMaxHeight(Region.USE_PREF_SIZE);
-            setSpacing(20);
-            setAlignment(Pos.CENTER);
-        }
         private void addCircle(double radius) { //20
             Circle circle = new Circle(radius);
             circle.setStrokeWidth(0);
@@ -98,6 +107,26 @@ public class NeuronalNetWidget {
 
     }
 
+    private void toggleMenu() {
+        if (!menuIsOpen) {
+            Bounds bounds = mainPane.getBoundsInParent();
+
+            if (bounds.getMaxY() < ScreenSize.height - 70) {
+                mainPane.getChildren().add(vGridMenu);
+                vGridContainer.toFront();
+                vGridMenu.setPrefWidth(100);
+                vGridMenu.setPrefHeight(100);
+            }
+
+            Timeline openMenuAnimation = new Timeline();
+            openMenuAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(100), new KeyValue(vGridMenu.opacityProperty(), 0.5, Interpolator.EASE_BOTH))
+            );
+            openMenuAnimation.play();
+            menuIsOpen = true;
+        }
+    }
+
     public void draggableNeuron(Node node) {
         EventHandler<MouseEvent> onMousePressed =
                 event -> {
@@ -109,7 +138,7 @@ public class NeuronalNetWidget {
 
 //                        vGridInput.setStyle("-fx-border-color: BLACK");
 //                        vGridOutput.setStyle("-fx-border-color: BLACK");
-
+                        toggleMenu();
                     }
                 };
 
@@ -122,10 +151,6 @@ public class NeuronalNetWidget {
                         double newTranslateY = nodeTranslatedY + offsetY;
                         node.setTranslateX(newTranslateX);
                         node.setTranslateY(newTranslateY);
-                        //Ist true, wenn ein gedraggtes Neuron weiter nach rechts gezogen wurde als das Widget groß ist
-                        if (node.getParent().getBoundsInParent().getMinX() + node.getBoundsInParent().getMaxX() == node.getParent().getParent().getBoundsInParent().getMaxX()) {
-                            //Ins Menu gedraggt
-                        }
                     }
                 };
 
@@ -144,7 +169,7 @@ public class NeuronalNetWidget {
     }
 
     public int getIndex() { return 0; }
-    public AnchorPane getMainPane() {
+    public VBox getMainPane() {
         return mainPane;
     }
 }

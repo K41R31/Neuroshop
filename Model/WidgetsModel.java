@@ -2,8 +2,9 @@ package Neuroshop.Model;
 
 import Neuroshop.Gui.Widgets.Widget;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -16,8 +17,12 @@ public class WidgetsModel extends Observable {
     private Widget draggPane;
 
     public WidgetsModel() {
-        previewWidgetsList.add(new Widget("neuralNet", new Image("Neuroshop/Ressources/netThumb.png")));
-        previewWidgetsList.add(new Widget("diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png")));
+        try {
+            previewWidgetsList.add(new Widget("neuralNet", new Image("Neuroshop/Ressources/netThumb.png")));
+            previewWidgetsList.add(new Widget("diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         allWidgetsList.addAll(previewWidgetsList);
     }
 
@@ -53,10 +58,10 @@ public class WidgetsModel extends Observable {
         previewWidgetsList.clear();
     }
 
-    public ArrayList<AnchorPane> getWhiteboardWidgets() {
-        ArrayList<AnchorPane> returnList = new ArrayList<>();
+    public ArrayList<VBox> getWhiteboardWidgets() {
+        ArrayList<VBox> returnList = new ArrayList<>();
         for (Widget procoessList: whiteboardWidgetsList) {
-            returnList.add(procoessList.getWhiteboardPane());
+            returnList.add(procoessList.getWidgetPane());
         }
         return returnList;
     }
