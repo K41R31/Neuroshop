@@ -1,6 +1,7 @@
 package Neuroshop.Model;
 
 import Neuroshop.ANN.Data.DataNormalization;
+import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 
@@ -26,6 +27,8 @@ public class ANNModel extends Observable {
     private double learningRate;
     private double momentumRate;
     private int iterations;
+
+    private LearningAlgorithm.LearningMode lMode;
 
     public ANNModel() {
     }
@@ -68,6 +71,14 @@ public class ANNModel extends Observable {
 
     public void setDataNormType(DataNormalization dataNormType) {
         this.dataNormType = dataNormType;
+    }
+
+    public LearningAlgorithm.LearningMode getLearnmode() {
+        return this.lMode;
+    }
+
+    public void setLearnMode(LearningAlgorithm.LearningMode lMode) {
+        this.lMode = lMode;
     }
 
     public int getDataPercentage() {
