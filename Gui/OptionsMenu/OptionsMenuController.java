@@ -59,7 +59,8 @@ public class OptionsMenuController implements Observer {
             optionsMenuPane.getChildren().get(2).setOpacity(0);
             optionsIsOpen = false;
         }
-    } //TODO ------------------------------------------------------------
+    }
+    //TODO ------------------------------------------------------------
 
     @FXML
     private File openFile() throws Exception {
@@ -81,7 +82,9 @@ public class OptionsMenuController implements Observer {
                 new FileChooser.ExtensionFilter("All Files", "*.*"),
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("PNG", "*.png"));
-    }//TODO---------------------------------------------------------------
+    }
+
+    //TODO---------------------------------------------------------------
 
     public void initModel(OptionsModel model) {
         this.model = model;
