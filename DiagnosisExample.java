@@ -10,6 +10,7 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;

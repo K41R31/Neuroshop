@@ -24,18 +24,7 @@ public class ANNLearn {
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
 
         NeuralNet nn;
-<<<<<<< HEAD
-
         ANNLearn aNN = new ANNLearn();
-=======
-        ANNLearn aNN = new ANNLearn();
-
-        //Backpropagation.backprop = new Backpropagation(nn,  )
-
-        }
-
-    public NeuralNet createANN() {
->>>>>>> 60351558e86d7e1a622bda53eea4a4ad90fd5b83
 
         int numberOfInputs = new ANNModel().getNumberOfInputs();
         int numberOfOutputs = new ANNModel().getNumberOfOutputs();
