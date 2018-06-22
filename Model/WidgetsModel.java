@@ -16,13 +16,18 @@ public class WidgetsModel extends Observable {
 
     private Widget draggPane;
 
-    public WidgetsModel() {
+    private Widget neuralNetWidget;
+    private Widget diagramWidget;
+
+    public WidgetsModel() { //Alle Widgets werden erstellt und der Preview ArrayList angefügt
         try {
-            previewWidgetsList.add(new Widget("neuralNet", new Image("Neuroshop/Ressources/netThumb.png")));
-            previewWidgetsList.add(new Widget("diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png")));
+            neuralNetWidget = new Widget("neuralNetWidget", new Image("Neuroshop/Ressources/netThumb.png"));
+            diagramWidget = new Widget("diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        previewWidgetsList.add(neuralNetWidget);
+        previewWidgetsList.add(diagramWidget);
         allWidgetsList.addAll(previewWidgetsList);
     }
 
@@ -81,3 +86,5 @@ public class WidgetsModel extends Observable {
         whiteboardWidgetsList.remove(widgetIndex);
     }
 }
+
+

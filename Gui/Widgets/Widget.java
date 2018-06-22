@@ -1,6 +1,5 @@
 package Neuroshop.Gui.Widgets;
 
-import Neuroshop.Gui.Widgets.NeuralNet.NeuralNetWidgetController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,6 +19,7 @@ public class Widget {
     private Rectangle rectangleBorder;
     private StackPane previewPane;
     private VBox widgetPane;
+    private Class widgetController;
 
     public Widget(String name, Image thumbnail) throws IOException {
         this.previewPane = new StackPane();
@@ -32,7 +32,7 @@ public class Widget {
             case "neuralNet": {
                 FXMLLoader widgetViewLoader = new FXMLLoader(getClass().getResource("NeuralNet/NeuralNetWidgetView.fxml"));
                 widgetPane = widgetViewLoader.load();
-                NeuralNetWidgetController widgetController = widgetViewLoader.getController();
+                widgetController = widgetViewLoader.getController();
             }
             break;
             case "diagram": {
