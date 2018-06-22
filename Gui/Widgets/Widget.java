@@ -19,7 +19,6 @@ public class Widget {
     private Rectangle rectangleBorder;
     private StackPane previewPane;
     private VBox widgetPane;
-    private Class widgetController;
 
     public Widget(String name, Image thumbnail) throws IOException {
         this.previewPane = new StackPane();
@@ -29,10 +28,9 @@ public class Widget {
         initPreview();
 
         switch (name) {
-            case "neuralNet": {
+            case "neuralNetWidget": {
                 FXMLLoader widgetViewLoader = new FXMLLoader(getClass().getResource("NeuralNet/NeuralNetWidgetView.fxml"));
                 widgetPane = widgetViewLoader.load();
-                widgetController = widgetViewLoader.getController();
             }
             break;
             case "diagram": {

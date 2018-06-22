@@ -84,7 +84,7 @@ public class OptionsMenuController implements Observer {
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
     }//TODO---------------------------------------------------------------
-    
+
     public void initModel(OptionsModel model) {
         this.model = model;
     }
