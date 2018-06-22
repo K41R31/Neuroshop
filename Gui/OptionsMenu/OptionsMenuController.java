@@ -60,7 +60,6 @@ public class OptionsMenuController implements Observer {
             optionsIsOpen = false;
         }
     }
-    //TODO ------------------------------------------------------------
 
     @FXML
     private File openFile() throws Exception {
@@ -80,6 +79,7 @@ public class OptionsMenuController implements Observer {
         // Add Extension Filters
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("All Files", "*.*"),
+<<<<<<< HEAD
 
                 new FileChooser.ExtensionFilter("CSV", "*.csv"),
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
@@ -89,6 +89,13 @@ public class OptionsMenuController implements Observer {
     //TODO---------------------------------------------------------------
 
 
+=======
+                new FileChooser.ExtensionFilter("CSV", "*.csv"),
+                new FileChooser.ExtensionFilter("TXT", "*.txt")
+        );
+    }
+
+>>>>>>> ce6d3510d29467b21d5e1c8ed55c722212ee8ea9
     public void initModel(OptionsModel model) {
         this.model = model;
     }
