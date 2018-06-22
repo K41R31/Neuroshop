@@ -12,7 +12,7 @@ public class ANNModel extends Observable {
     private int numberOfInputs;
     private int numberOfOutputs;
     private int[] inputColumns;
-    private int[] outputColums;
+    private int[] outputColumns;
 
     private DataNormalization dataNormType;
 
@@ -64,21 +64,23 @@ public class ANNModel extends Observable {
     }
 
     public int[] getOutputColums() {
-        return this.outputColums;
+        return this.outputColumns;
     }
 
-    public void setOutputColums(int[] outputColums) {
-        this.outputColums = outputColums;
+    public void setOutputColumns(int[] outputColumns) {
+        this.outputColumns = outputColumns;
         this.setChanged();
-        this.notifyObservers(outputColums);
+        this.notifyObservers(outputColumns);
     }
 
     public DataNormalization getDataNormType() {
         return this.dataNormType;
-    }
+            }
 
     public void setDataNormType(DataNormalization dataNormType) {
         this.dataNormType = dataNormType;
+        this.setChanged();
+        this.notifyObservers(dataNormType);
     }
 
     public LearningAlgorithm.LearningMode getLearnmode() {
@@ -87,6 +89,8 @@ public class ANNModel extends Observable {
 
     public void setLearnMode(LearningAlgorithm.LearningMode lMode) {
         this.lMode = lMode;
+        this.setChanged();
+        this.notifyObservers(lMode);
     }
 
     public int getDataPercentage() {
@@ -95,6 +99,8 @@ public class ANNModel extends Observable {
 
     public void setDataPercentage(int dataPercentage) {
         this.dataPercentage = dataPercentage;
+        this.setChanged();
+        this.notifyObservers(dataPercentage);
     }
 
     public int[] getNumberOfHiddenNeurons() {
@@ -121,6 +127,8 @@ public class ANNModel extends Observable {
 
     public void setActFnc(IActivationFunction[] actFnc) {
         this.actFnc = actFnc;
+        this.setChanged();
+        this.notifyObservers(actFnc);
     }
 
     public Linear getOutputActFnc() {
@@ -129,6 +137,8 @@ public class ANNModel extends Observable {
 
     public void setOutputActFnc(Linear outputActFnc) {
         this.outputActFnc = outputActFnc;
+        this.setChanged();
+        this.notifyObservers(outputActFnc);
     }
 
     public double getMinOverallError() {
@@ -137,6 +147,8 @@ public class ANNModel extends Observable {
 
     public void setMinOverallError(double minOverallError) {
         this.minOverallError = minOverallError;
+        this.setChanged();
+        this.notifyObservers(minOverallError);
     }
 
     public double getLearningRate() {
@@ -145,6 +157,8 @@ public class ANNModel extends Observable {
 
     public void setLearningRate(double learningRate) {
         this.learningRate = learningRate;
+        this.setChanged();
+        this.notifyObservers(learningRate);
     }
 
     public double getMomentumRate() {
@@ -153,6 +167,8 @@ public class ANNModel extends Observable {
 
     public void setMomentumRate(double momentumRate) {
         this.momentumRate = momentumRate;
+        this.setChanged();
+        this.notifyObservers(momentumRate);
     }
 
     public int getIterations() {
@@ -161,7 +177,10 @@ public class ANNModel extends Observable {
 
     public void setIterations(int iterations) {
         this.iterations = iterations;
+        this.setChanged();
+        this.notifyObservers(iterations);
     }
+
 
 
 }
