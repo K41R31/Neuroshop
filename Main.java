@@ -4,8 +4,6 @@ import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.OptionsMenu.OptionsMenuController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
-import Neuroshop.Model.OptionsModel;
-import Neuroshop.Model.WidgetsModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class Start extends Application {
+public class Main extends Application {
 
     public static Stage primaryStage;
 
@@ -37,19 +35,20 @@ public class Start extends Application {
         whiteboard.setPrefWidth(ScreenSize.width);
         whiteboard.setPrefHeight(ScreenSize.height-70); //-70 -> 30px von Border + 40px von Taskleiste
         root.getChildren().add(whiteboard);
-
         WhiteboardController whiteboardController = whiteboardLoader.getController();
+
         FXMLLoader optionsMenuLoader = new FXMLLoader(getClass().getResource("Gui/OptionsMenu/OptionsMenu.fxml"));
         whiteboard.getChildren().add(optionsMenuLoader.load());
         OptionsMenuController optionsMenuController = optionsMenuLoader.getController();
 
-        FXMLLoader toolMenuLoader = new FXMLLoader(getClass().getResource("Gui/WidgetMenu/WidgetMenu.fxml"));
-        whiteboard.getChildren().add(toolMenuLoader.load());
-        WidgetMenuController widgetListController = toolMenuLoader.getController();
+        FXMLLoader widgetMenuLoader = new FXMLLoader(getClass().getResource("Gui/WidgetMenu/WidgetMenu.fxml"));
+        whiteboard.getChildren().add(widgetMenuLoader.load());
+        WidgetMenuController widgetListController = widgetMenuLoader.getController();
 
         //Init Widgets
         WidgetsModel widgetsModel = new WidgetsModel();
         OptionsModel optionsModel = new OptionsModel();
+
         whiteboardController.initModel(widgetsModel);
         widgetListController.initModel(widgetsModel);
 

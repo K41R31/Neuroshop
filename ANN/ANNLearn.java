@@ -12,7 +12,6 @@ import Neuroshop.ANN.Math.Linear;
 import Neuroshop.ANN.Math.RandomNumberGenerator;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
-import Neuroshop.Model.ANNModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
