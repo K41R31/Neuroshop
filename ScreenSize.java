@@ -16,36 +16,36 @@ public class ScreenSize {
     }
 
     public static void toggleFullScreen(boolean dragged) {
-        if (Main.primaryStage.getHeight() == height - 40 & Main.primaryStage.getWidth() == width) {
+        if (Start.primaryStage.getHeight() == height - 40 & Start.primaryStage.getWidth() == width) {
             if (!dragged) {
-                Main.primaryStage.setX(oldX);
-                Main.primaryStage.setY(oldY);
+                Start.primaryStage.setX(oldX);
+                Start.primaryStage.setY(oldY);
             } else {
                 double mousePosX = MouseInfo.getPointerInfo().getLocation().x;
                 double screenWidthThird = ScreenSize.width / 3;
                 if (mousePosX <= screenWidthThird) {
-                    Main.primaryStage.setX(1);
+                    Start.primaryStage.setX(1);
                 } else if (mousePosX > screenWidthThird & mousePosX < screenWidthThird * 2) {
-                    Main.primaryStage.setX(ScreenSize.width / 2 - oldWidth / 2);
+                    Start.primaryStage.setX(ScreenSize.width / 2 - oldWidth / 2);
                 } else {
-                    Main.primaryStage.setX(ScreenSize.width - oldWidth);
+                    Start.primaryStage.setX(ScreenSize.width - oldWidth);
                 }
             }
-            Main.primaryStage.setWidth(oldWidth);
-            Main.primaryStage.setHeight(oldHeight);
+            Start.primaryStage.setWidth(oldWidth);
+            Start.primaryStage.setHeight(oldHeight);
             isFullscreen = false;
         } else {
             if (!dragged) {
-                oldX = Main.primaryStage.getX();
-                oldY = Main.primaryStage.getY();
+                oldX = Start.primaryStage.getX();
+                oldY = Start.primaryStage.getY();
             }
-            oldWidth = Main.primaryStage.getWidth();
-            oldHeight = Main.primaryStage.getHeight();
+            oldWidth = Start.primaryStage.getWidth();
+            oldHeight = Start.primaryStage.getHeight();
 
-            Main.primaryStage.setX(0);
-            Main.primaryStage.setY(0);
-            Main.primaryStage.setWidth(width);
-            Main.primaryStage.setHeight(height - 40);
+            Start.primaryStage.setX(0);
+            Start.primaryStage.setY(0);
+            Start.primaryStage.setWidth(width);
+            Start.primaryStage.setHeight(height - 40);
             isFullscreen = true;
         }
     }
