@@ -1,15 +1,4 @@
 package Neuroshop.Model;
 
-import java.util.Observable;
-
-public class OptionsModel extends Observable {
-
-
-    public OptionsModel() {
-    }
-
-    public void toggleOptions () {
-        setChanged();
-        notifyObservers("toggleOptions");
-    }
+public class OptionsModel {
 }

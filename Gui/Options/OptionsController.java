@@ -1,8 +1,8 @@
-package Neuroshop.Gui.Border;
+package Neuroshop.Gui.Options;
 
 import Neuroshop.Model.OptionsModel;
 
-public class BorderController {
+public class OptionsController {
 
     private OptionsModel optionsModel;
 
