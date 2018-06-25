@@ -1,9 +1,9 @@
 package Neuroshop.Widgets;
 
-import Neuroshop.Model.WidgetContainerModel;
-import Neuroshop.Model.WidgetModels.DataManagerWidgetModel;
-import Neuroshop.Model.WidgetModels.DiagramWidgetModel;
-import Neuroshop.Model.WidgetModels.NeuralNetWidgetModel;
+import Neuroshop.Models.WidgetContainerModel;
+import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
+import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
+import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
 import Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController;
 import Neuroshop.Widgets.DiagramWidget.DiagramWidgetController;
 import Neuroshop.Widgets.NeuralNetWidget.NeuralNetController;
@@ -47,7 +47,7 @@ public class WidgetContainer {
         DiagramWidgetController diagramWidgetController = diagramWidgetLoader.getController();
         NeuralNetController neuralNetController = neuralNetWidgetLoader.getController();
 
-        widgetBorderController.initModel(dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel);
+        widgetBorderController.initModel(widgetContainerModel);
         dataManagerWidgetController.initModel(dataManagerWidgetModel, widgetContainerModel);
         diagramWidgetController.initModel(diagramWidgetModel, widgetContainerModel);
         neuralNetController.initModel(neuralNetWidgetModel, widgetContainerModel);

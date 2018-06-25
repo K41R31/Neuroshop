@@ -1,18 +1,23 @@
 package Neuroshop.Widgets.WidgetBorder;
 
-import Neuroshop.Model.WidgetModels.DataManagerWidgetModel;
-import Neuroshop.Model.WidgetModels.DiagramWidgetModel;
-import Neuroshop.Model.WidgetModels.NeuralNetWidgetModel;
+import Neuroshop.Models.WidgetContainerModel;
+import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
+import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
+import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
+import Neuroshop.Widgets.WidgetContainer;
 
-public class WidgetBorderController {
+import java.util.Observable;
+import java.util.Observer;
 
-    private DataManagerWidgetModel dataManagerWidgetModel;
-    private DiagramWidgetModel diagramWidgetModel;
-    private NeuralNetWidgetModel neuralNetWidgetModel;
+public class WidgetBorderController implements Observer {
 
-    public void initModel(DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) {
-        this.dataManagerWidgetModel = dataManagerWidgetModel;
-        this.diagramWidgetModel = diagramWidgetModel;
-        this.neuralNetWidgetModel = neuralNetWidgetModel;
+    private WidgetContainerModel widgetContainerModel;
+
+    @Override
+    public void update(Observable o, Object arg) {
+    }
+
+    public void initModel(WidgetContainerModel widgetContainerModel) {
+        this.widgetContainerModel = widgetContainerModel;
     }
 }
