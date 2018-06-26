@@ -26,17 +26,17 @@ public class WidgetContainer {
     private AnchorPane neuralNetWidgetRoot;
 
     public WidgetContainer() throws IOException {
-        widgetBorderLoader = new FXMLLoader(getClass().getResource("Widgets/WidgetBorder/WidgetBorderView.fxml"));
-        widgetBorderRoot.getChildren().add(widgetBorderLoader.load());
+        widgetBorderLoader = new FXMLLoader(getClass().getResource("WidgetBorder/WidgetBorderView.fxml"));
+        widgetBorderRoot = widgetBorderLoader.load();
 
-        dataManagerLoader = new FXMLLoader(getClass().getResource("Widgets/DataManagerWidget/DataManagerWidgetView.fxml"));
-        dataManagerWidgetRoot.getChildren().add(dataManagerLoader.load());
+        dataManagerLoader = new FXMLLoader(getClass().getResource("DataManagerWidget/DataManagerWidgetView.fxml"));
+        dataManagerWidgetRoot = dataManagerLoader.load();
 
-        diagramWidgetLoader = new FXMLLoader(getClass().getResource("Widgets/DiagramWidget/DiagramWidgetView.fxml"));
-        dataManagerWidgetRoot.getChildren().add(diagramWidgetLoader.load());
+        diagramWidgetLoader = new FXMLLoader(getClass().getResource("DiagramWidget/DiagramWidgetView.fxml"));
+        dataManagerWidgetRoot = diagramWidgetLoader.load();
 
-        neuralNetWidgetLoader = new FXMLLoader(getClass().getResource("Widgets/NeuralNetWidget/NeuralNetWidgetView.fxml"));
-        dataManagerWidgetRoot.getChildren().add(neuralNetWidgetLoader.load());
+        neuralNetWidgetLoader = new FXMLLoader(getClass().getResource("NeuralNetWidget/NeuralNetView.fxml"));
+        dataManagerWidgetRoot = neuralNetWidgetLoader.load();
     }
 
         public void initModel(WidgetContainerModel widgetContainerModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) {

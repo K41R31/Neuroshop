@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Neuroshop.Gui.WidgetMenu.WidgetMenuView"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<HBox fx:id="widgetMenuRootPane" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" style="-fx-background-color: TRANSPARENT;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.WidgetMenu.WidgetMenuController">
+   <children>
+      <VBox fx:id="widgetMenuPane" alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: #222222; -fx-border-color: #181818;" visible="false">
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+      </VBox>
+      <StackPane maxWidth="-Infinity" minWidth="-Infinity" onMouseEntered="#toggleMenu" prefWidth="20.0">
+         <children>
+            <ImageView fx:id="openerIcon" disable="true" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/toolsMenuButton.png" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+   </children>
+</HBox>

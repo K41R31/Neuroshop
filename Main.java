@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,28 +29,30 @@ public class Main extends Application {
         primaryStage = stage;
         new ScreenSize();
         VBox root = new VBox();
-        root.setStyle("-fx-background-color: #2f2f2f");
+        root.setStyle("-fx-background-color: #2b2b2b");
 
         //Init Gui------------------------------------------------------------------------------------------------------
-        FXMLLoader borderLoader = new FXMLLoader(getClass().getResource("Gui/Border/border.fxml"));
+        FXMLLoader borderLoader = new FXMLLoader(getClass().getResource("Gui/Border/BorderView.fxml"));
         AnchorPane ap = borderLoader.load();
         ap.getStylesheets().add("Neuroshop/Gui/Border/borderStyle.css");
         root.getChildren().add(ap);
 
-        FXMLLoader whiteboardLoader = new FXMLLoader(getClass().getResource("Gui/Whiteboard/whiteboard.fxml"));
+        FXMLLoader whiteboardLoader = new FXMLLoader(getClass().getResource("Gui/Whiteboard/WhiteboardView.fxml"));
         AnchorPane whiteboard = whiteboardLoader.load();
         whiteboard.setPrefWidth(ScreenSize.width);
         whiteboard.setPrefHeight(ScreenSize.height-70); //-70 -> 30px von Border + 40px von Taskleiste
         root.getChildren().add(whiteboard);
 
-        FXMLLoader optionsMenuLoader = new FXMLLoader(getClass().getResource("Gui/OptionsMenu/OptionsMenu.fxml"));
+        FXMLLoader optionsMenuLoader = new FXMLLoader(getClass().getResource("Gui/Options/OptionsMenuView.fxml"));
         whiteboard.getChildren().add(optionsMenuLoader.load());
 
-        FXMLLoader widgetMenuLoader = new FXMLLoader(getClass().getResource("Gui/WidgetMenu/WidgetMenu.fxml"));
+        FXMLLoader widgetMenuLoader = new FXMLLoader(getClass().getResource("Gui/WidgetMenu/WidgetMenuView.fxml"));
         whiteboard.getChildren().add(widgetMenuLoader.load());
 
         FXMLLoader widgetSettingsLoader = new FXMLLoader(getClass().getResource("Gui/WidgetSettings/WidgetSettingsView.fxml"));
-        whiteboard.getChildren().add(widgetSettingsLoader.load());
+        AnchorPane widgetSettings = widgetSettingsLoader.load();
+        widgetSettings.getStylesheets().add("Neuroshop/Gui/WidgetSettings/widgetSettingsStyle.css");
+        whiteboard.getChildren().add(widgetSettings);
 
         //Init Ann------------------------------------------------------------------------------------------------------
 
@@ -75,7 +78,7 @@ public class Main extends Application {
         widgetContainer.initModel(widgetContainerModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel);
 
         //widgetContainerModel.addObserver(whiteboardController); //TODO NOCH ZU OBSERVERN
-        //optionsModel.addObserver(optionsMenuController);
+        optionsModel.addObserver(optionsMenuController);
 
         //Init Scene----------------------------------------------------------------------------------------------------
         Scene scene = new Scene(root, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);
