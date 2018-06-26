@@ -15,7 +15,7 @@ import javafx.scene.shape.CubicCurve;
 import java.util.Observable;
 import java.util.Observer;
 
-public class NeuralNetController implements Observer {
+public class NeuralNetController extends StackPane implements Observer {
 
     private NeuralNetWidgetModel neuralNetWidgetModel;
     private WidgetContainerModel widgetContainerModel;
@@ -23,14 +23,14 @@ public class NeuralNetController implements Observer {
     @FXML
     private AnchorPane splinesPane;
     @FXML
-    private StackPane menuPane;
+    private StackPane rootPane;
     @FXML
     private HBox vBoxContainer;
     private double sceneCursorPosX, sceneCursorPosY;
     private double nodeTranslatedX, nodeTranslatedY;
-    private boolean deleteFieldIsShowing;
     @FXML
     private void initialize() {
+
     }
 
     public void drawSplines() {

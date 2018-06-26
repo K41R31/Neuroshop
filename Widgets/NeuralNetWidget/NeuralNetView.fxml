@@ -6,46 +6,34 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.NeuralNetWidget.NeuralNetController">
+
+<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.NeuralNetWidget.NeuralNetController">
    <children>
-      <VBox fx:id="rootPane" layoutX="10.0" layoutY="10.0">
+      <AnchorPane fx:id="splinesPane">
          <children>
-            <AnchorPane fx:id="splinesPane">
+            <HBox fx:id="vBoxContainer" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox fx:id="vBoxContainer" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
                      <children>
-                        <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
-                           <children>
-                              <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                              <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                           </children>
-                           <padding>
-                              <Insets bottom="20.0" top="20.0" />
-                           </padding>
-                        </VBox>
-                        <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
-                           <children>
-                              <Circle layoutX="70.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                           </children>
-                           <padding>
-                              <Insets bottom="20.0" top="20.0" />
-                           </padding>
-                        </VBox>
+                        <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                      </children>
-                  </HBox>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
+                     <children>
+                        <Circle layoutX="70.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
                </children>
-            </AnchorPane>
-            <StackPane fx:id="menuPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0">
-               <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="TRANSPARENT" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" StackPane.alignment="CENTER" />
-                  <Line endX="15.0" endY="-15.0" startX="-15.0" startY="15.0" />
-                  <Line endX="15.0" endY="15.0" startX="-15.0" startY="-15.0" />
-               </children>
-            </StackPane>
+            </HBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>
