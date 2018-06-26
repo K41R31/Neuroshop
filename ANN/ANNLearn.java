@@ -19,20 +19,15 @@ import java.util.Arrays;
 
 public class ANNLearn {
 
-    NeuralNet nn; //TODO------------------------------------------------------------------------ Geändert
+    NeuralNet nn;
 
     public void train() {
 
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
 
         NeuralNet nn;
+
         ANNLearn aNN = new ANNLearn();
-
-        //Backpropagation.backprop = new Backpropagation(nn,  )
-
-        }
-
-    public NeuralNet createANN() {
 
         int numberOfInputs = new ANNModel().getNumberOfInputs();
         int numberOfOutputs = new ANNModel().getNumberOfOutputs();
@@ -131,7 +126,7 @@ public class ANNLearn {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null; //TODO------------------------------------------------------------------------ Geändert
+
 }
         private static double[][] extractMatrixByArrayList(int[] outputColumns, double[][] data, ArrayList<ArrayList<Double>> list) {
             double[][] matrix = new double[data.length][outputColumns.length];
