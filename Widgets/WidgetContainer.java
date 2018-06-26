@@ -10,22 +10,22 @@ import Neuroshop.Widgets.NeuralNetWidget.NeuralNetController;
 import Neuroshop.Widgets.WidgetBorder.WidgetBorderController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
 public class WidgetContainer {
 
-    private FXMLLoader widgetBorderLoader;
-    private FXMLLoader dataManagerLoader;
-    private FXMLLoader diagramWidgetLoader;
-    private FXMLLoader neuralNetWidgetLoader;
+    private FXMLLoader widgetBorderLoader, dataManagerLoader, diagramWidgetLoader, neuralNetWidgetLoader;
 
-    private AnchorPane widgetBorderRoot;
-    private AnchorPane dataManagerWidgetRoot;
-    private AnchorPane diagramWidgetRoot;
-    private AnchorPane neuralNetWidgetRoot;
+    private AnchorPane widgetBorderRoot, dataManagerWidgetRoot, diagramWidgetRoot, neuralNetWidgetRoot;
+
+    private StackPane dataManagerPrevRoot, diagramPrevRoot, neuralNetPrevRoot;
+
 
     public WidgetContainer() throws IOException {
+        dataManagerPrevRoot = new PreviewWidget();
+
         widgetBorderLoader = new FXMLLoader(getClass().getResource("WidgetBorder/WidgetBorderView.fxml"));
         widgetBorderRoot = widgetBorderLoader.load();
 
@@ -33,10 +33,10 @@ public class WidgetContainer {
         dataManagerWidgetRoot = dataManagerLoader.load();
 
         diagramWidgetLoader = new FXMLLoader(getClass().getResource("DiagramWidget/DiagramWidgetView.fxml"));
-        dataManagerWidgetRoot = diagramWidgetLoader.load();
+        diagramWidgetRoot = diagramWidgetLoader.load();
 
         neuralNetWidgetLoader = new FXMLLoader(getClass().getResource("NeuralNetWidget/NeuralNetView.fxml"));
-        dataManagerWidgetRoot = neuralNetWidgetLoader.load();
+        neuralNetWidgetRoot = neuralNetWidgetLoader.load();
     }
 
         public void initModel(WidgetContainerModel widgetContainerModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) {
