@@ -468,7 +468,7 @@ public class Backpropagation extends DeltaRule {
         String[] seriesNames = {"Train Error","Test Error"};
         Paint[] seriesColor = {Color.BLUE, Color.GREEN};
         Chart c = new Chart("Error Evolution",errors,seriesNames,0,seriesColor,Chart.SeriesType.LINES);
-        if(plotErrorEvolution ==null){
+        if(plotErrorEvolution == null){
             plotErrorEvolution = new ChartFrame("Error Evolution",c.scatterPlot("Epoch","Error"));
             plotErrorEvolution.pack();
             plotErrorEvolution.setVisible(true);

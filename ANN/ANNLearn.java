@@ -54,18 +54,9 @@ public class ANNLearn {
 
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
 
-        ANNLearn annLearn = new ANNLearn();
-
-
-
         LearningAlgorithm.LearningMode lMode = new NeuralNetWidgetModel().getLearnmode();
 
-        this.minOverallError = minOverallError;
-        this.learningRate = learningRate;
-        this.momentumRate = momentumRate;
-        this.iterations = iterations;
-
-        annLearn.createNN(dataSet, numberOfInputs, numberOfOutputs, inputColumns, outputColumns, numberOfHiddenNeurons, dataNormType, dataPercentage, actFnc, outputActFnc);
+        createNN(dataSet, numberOfInputs, numberOfOutputs, inputColumns, outputColumns, numberOfHiddenNeurons, dataNormType, dataPercentage, actFnc, outputActFnc);
 
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, lMode);
         backprop.setLearningRate(learningRate);
@@ -199,15 +190,3 @@ private void createNN(DataSet dataSet, int numberOfInputs, int numberOfOutputs, 
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-

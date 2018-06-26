@@ -77,7 +77,7 @@ public class Main extends Application {
         optionsMenuController.initModel(optionsModel);
         widgetContainer.initModel(widgetContainerModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel);
 
-        //widgetContainerModel.addObserver(whiteboardController); //TODO NOCH ZU OBSERVERN
+        widgetContainerModel.addObserver(widgetMenuController); //TODO NOCH ZU OBSERVERN
         optionsModel.addObserver(optionsMenuController);
 
         //Init Scene----------------------------------------------------------------------------------------------------

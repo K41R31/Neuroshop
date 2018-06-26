@@ -73,6 +73,7 @@ public class WidgetMenuController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        if (arg.equals("toggleWidgetMenu")) toggleMenu();
     }
 
     public void initModel(WidgetContainerModel widgetContainerModel) {
