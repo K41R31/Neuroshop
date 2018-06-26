@@ -18,20 +18,15 @@ import java.util.Arrays;
 
 public class ANNLearn {
 
-    NeuralNet nn; //TODO------------------------------------------------------------------------ Geändert
+    NeuralNet nn;
 
     public void train() {
 
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
 
         NeuralNet nn;
+
         ANNLearn aNN = new ANNLearn();
-
-        //Backpropagation.backprop = new Backpropagation(nn,  )
-
-        }
-
-    public NeuralNet createANN() {
 
 //        int numberOfInputs = new ANNModel().getNumberOfInputs();
 //        int numberOfOutputs = new ANNModel().getNumberOfOutputs();
@@ -57,10 +52,10 @@ public class ANNLearn {
 //        nn = new NeuralNet(numberOfInputs, numberOfOutputs, numberOfHiddenNeurons, actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
 //
 //        DataNormalization dataNormType = new ANNModel().getDataNormType();
-
+//
 //        double[][] dataNormalized = new double[dSet.length][dSet[0].length];
 //        dataNormalized = dataNormType.normalize(dSet);
-
+//
 //        double[][] dataNormToTrain = Arrays.copyOfRange(dataNormalized, 0, (int) Math.ceil((dataNormalized.length * (dataPercentage / 100))));
 //        double[][] dataNormToTest = Arrays.copyOfRange(dataNormalized, (int) Math.ceil(dataNormalized.length * (dataPercentage / 100)) + 1, dataNormalized.length);
 //
@@ -130,7 +125,7 @@ public class ANNLearn {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-//        return null; //TODO------------------------------------------------------------------------ Geändert
+//
 //}
 //        private static double[][] extractMatrixByArrayList(int[] outputColumns, double[][] data, ArrayList<ArrayList<Double>> list) {
 //            double[][] matrix = new double[data.length][outputColumns.length];
@@ -164,9 +159,7 @@ public class ANNLearn {
 //                }
 //            }
 //            return matrix;
-//
-//
-        return null; //TODO NUR ZUM TESTEN
+
         }
     }
 
