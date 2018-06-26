@@ -1,11 +1,11 @@
-package Neuroshop.Gui.Border;
+package Neuroshop.Gui.Options;
 
 import Neuroshop.Models.OptionsModel;
 
 import java.util.Observable;
 import java.util.Observer;
 
-public class BorderController implements Observer {
+public class OptionsController implements Observer {
 
     private OptionsModel optionsModel;
 
