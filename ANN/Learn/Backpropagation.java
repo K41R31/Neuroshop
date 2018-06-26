@@ -6,6 +6,7 @@ import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Data.TimeSeries;
 import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Neural.*;
+import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
 import org.jfree.chart.ChartFrame;
 
 import java.awt.*;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
  */
 public class Backpropagation extends DeltaRule {
 
+    DiagramWidgetModel dWM;
 
     private double MomentumRate=0.7;
     
@@ -450,9 +452,12 @@ public class Backpropagation extends DeltaRule {
         
     }    */
 
+
+
     @Override
     public void showErrorEvolution(){
 
+        this.dWM = new DiagramWidgetModel();
 //        Chart Charts = new Chart("Training",rndDataSet,seriesNames,0,seriesColor);
 //            ChartFrame frame = new ChartFrame("Training", Charts.scatterPlot("X", "Y"));
 //            frame.pack();
@@ -465,6 +470,9 @@ public class Backpropagation extends DeltaRule {
             errors[i][1]=trainingErrors[i];
             errors[i][2]=testingErrors[i];
         }
+
+        this.dWM.setErrorEvolution(errors);
+        
         String[] seriesNames = {"Train Error","Test Error"};
         Paint[] seriesColor = {Color.BLUE, Color.GREEN};
         Chart c = new Chart("Error Evolution",errors,seriesNames,0,seriesColor,Chart.SeriesType.LINES);

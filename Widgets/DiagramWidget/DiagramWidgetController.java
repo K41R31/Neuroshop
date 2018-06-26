@@ -1,5 +1,7 @@
 package Neuroshop.Widgets.DiagramWidget;
 
+import Neuroshop.ANN.ANNLearn;
+import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
 
@@ -18,5 +20,9 @@ public class DiagramWidgetController implements Observer {
     public void initModel(DiagramWidgetModel diagramWidgetModel, WidgetContainerModel widgetContainerModel) {
         this.diagramWidgetModel = diagramWidgetModel;
         this.widgetContainerModel = widgetContainerModel;
+    }
+
+    public void showError(ANNLearn aL) {
+
     }
 }
