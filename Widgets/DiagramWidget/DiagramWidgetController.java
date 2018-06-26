@@ -22,7 +22,5 @@ public class DiagramWidgetController implements Observer {
         this.widgetContainerModel = widgetContainerModel;
     }
 
-    public void showError(ANNLearn aL) {
-
-    }
+    
 }
