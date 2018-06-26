@@ -22,9 +22,9 @@ public class PreviewWidget extends StackPane {
         this.thumbnail = new ImageView(thumbnail);
         this.label = new Text(name);
         this.rectangleBorder = new Rectangle(250, 200);
-        initPreview();
+//        initPreview();
 
         previewPane.setId(name);
-        widgetPane.setId(name);
+//        widgetPane.setId(name);
     }
 }

@@ -24,7 +24,7 @@ public class WidgetContainer {
 
 
     public WidgetContainer() throws IOException {
-        dataManagerPrevRoot = new PreviewWidget();
+//        dataManagerPrevRoot = new PreviewWidget();
 
         widgetBorderLoader = new FXMLLoader(getClass().getResource("WidgetBorder/WidgetBorderView.fxml"));
         widgetBorderRoot = widgetBorderLoader.load();
