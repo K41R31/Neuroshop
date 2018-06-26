@@ -22,5 +22,5 @@ public class DiagramWidgetController implements Observer {
         this.widgetContainerModel = widgetContainerModel;
     }
 
-    
+
 }
