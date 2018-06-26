@@ -1,0 +1,56 @@
+Model für ANN
+
+ Setter:
+	- DataSet festlegen
+	(Import File)
+	- AbbruchBedingungen
+	(Iterations, MinOverallError)
+	- LearnRate
+	- Momentum
+	- Weights
+	- Input
+	(Anzahl Inputs, Columns)
+	- Normalization
+	(Modus)
+	- PercentageLearnAndTestData#
+	- Output
+	(Anzahl Output, Columns)
+
+
+ Getter:
+	- OverallError
+	- MinOverallError
+	- Iterations
+	- Weights
+	(Speichern pro Neuron/Layer/Iteration)
+
+	...to be continued
+
+
+Gui für ANN
+
+    >> Einstellungsmöglichkeiten für Lernphase
+        1. Datensatz importieren
+            - Text formatieren: ";" durch "," ersetzen, Wert Trennungen sollten nicht mit ";" gemacht werden
+                                "," durch "." ersetzen. Kommazahlen müssen mit "." getrennt werden
+            - Input Spalten festlegen, damit das Netz weiß welche Werte als Input gewertet werden
+            - Output Spalten festlegen. Netz benötigt "Target Werte" um auf etwas hinzutrainieren
+            - Prozentsatz festlegen, für Aufteilung des Datensatzes. Z.B. 70/30 Training/Test Anteile
+            - Normalisierungsbereich festlegen: -1.0 bis 1.0 oder 0.0 bis 1.0
+
+        2. Hidden Layer erstellen
+            - Aktivierungsfunktion für den Layer festlegen: Sigmoid, HyperTan, Step
+            - Neuronen zum jeweiligen Layer hinzuügen
+
+        3. Output Layer erstellen
+            - Aktivierungsfunktion festlegen: Linear. Für die Zukunft evtl. SoftMax Funktion einfügen
+
+        4. Abbruchbedingung festlegen
+            - Anzahl der Druchläufe (Iterations)
+            - Gewünschte Fehlerquote (MinGeneralOverallError)
+            - Manuell
+
+        5. Lernrate festlegen
+            - 0.01 - offen
+
+        6. Start und Stop Funktion

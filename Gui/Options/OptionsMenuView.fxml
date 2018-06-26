@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="optionsMenuPane" alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="0.0" spacing="100.0" style="-fx-background-color: #222222; -fx-border-color: #181818;" visible="false" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.Options.OptionsController">
+   <children>
+      <Text fill="#c6c6c6" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="presets">
+         <font>
+            <Font name="Champagne &amp; Limousines" size="27.0" />
+         </font>
+      </Text>
+      <Text fill="#c6c6c6" layoutX="-25.0" layoutY="82.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="widgets">
+         <font>
+            <Font name="Champagne &amp; Limousines" size="27.0" />
+         </font>
+      </Text>
+      <Text fill="#c6c6c6" layoutX="-28.0" layoutY="159.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="fileSearcher">
+         <font>
+            <Font name="Champagne &amp; Limousines" size="27.0" />
+         </font>
+      </Text>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>

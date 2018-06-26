@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="rootPane" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.WidgetSettings.WidgetSettingsController">
+   <children>
+      <StackPane maxHeight="-Infinity" minHeight="-Infinity" onMouseEntered="#toggleMenu" prefHeight="20.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ImageView fx:id="openerIcon" disable="true" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+               <image>
+                  <Image url="@../../Ressources/toolsMenuButton.png" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: #303030; -fx-border-color: #181818; -fx-border-insets: 0 -1 -1 -1;">
+         <children>
+            <HBox fx:id="contentPane" alignment="CENTER" opacity="0.0" spacing="70.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" spacing="20.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Slider majorTickUnit="10.0" prefWidth="400.0" />
+                        <Slider layoutX="10.0" layoutY="206.0" majorTickUnit="10.0" prefWidth="400.0" />
+                        <Slider layoutX="10.0" layoutY="213.0" majorTickUnit="10.0" prefWidth="400.0" />
+                        <Slider layoutX="10.0" layoutY="220.0" majorTickUnit="10.0" prefWidth="400.0" />
+                     </children>
+                  </VBox>
+                  <Group>
+                     <children>
+                        <Line endX="120.0" endY="130.0" startX="40.0" startY="340.0" stroke="#6589ff" />
+                        <Line endX="150.0" endY="75.0" startX="50.0" startY="333.0" stroke="#646464" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Group>
+                  <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text fill="#838383" strokeType="OUTSIDE" strokeWidth="0.0" text="IMPORT RECORD">
+                           <font>
+                              <Font name="Code-Light" size="40.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="50.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Group>
+                     <children>
+                        <Line endX="160.0" endY="333.0" startX="60.0" startY="75.0" stroke="#646464" />
+                        <Line endX="170.0" endY="340.0" startX="90.0" startY="130.0" stroke="#6589ff" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Group>
+                  <VBox alignment="CENTER" layoutX="349.0" layoutY="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Slider majorTickUnit="10.0" prefWidth="400.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
