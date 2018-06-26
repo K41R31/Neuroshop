@@ -8,19 +8,24 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-
 import java.util.Observable;
 import java.util.Observer;
 
 public class WidgetSettingsController implements Observer {
 
     @FXML
+    private ImageView openerIcon;
+    @FXML
+    private AnchorPane menuPane;
+    @FXML
     private HBox contentPane;
     @FXML
-    private AnchorPane rootPane;
+    private VBox rootPane;
     private DataManagerWidgetModel dataManagerWidgetModel;
     private DiagramWidgetModel diagramWidgetModel;
     private NeuralNetWidgetModel neuralNetWidgetModel;
@@ -34,25 +39,28 @@ public class WidgetSettingsController implements Observer {
         AnchorPane.setRightAnchor(rootPane, (double)0);
     }
 
-    private void toggleOptionsMenu() { //TODO Ka wann/ wie man das Menu öffen können soll
+    @FXML
+    private void toggleMenu() { //TODO Ka wann/ wie man das Menu öffen können soll
         if (!menuIsOpen) {
             Timeline openSettingsAnimation = new Timeline();
             openSettingsAnimation.getKeyFrames().addAll(
-                    new KeyFrame(new Duration(200), new KeyValue(rootPane.prefWidthProperty(), 350, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 350, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleYProperty(), -1, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(200), new KeyValue(contentPane.opacityProperty(), 1, Interpolator.EASE_BOTH)) //TODO Soll nach dem KeyFrame davor starten
             );
             openSettingsAnimation.play();
             openSettingsAnimation.setOnFinished(event -> contentPane.setDisable(false));
-            rootPane.setVisible(true);
+            contentPane.setVisible(true);
             menuIsOpen = true;
         } else {
             Timeline closeSettingsAnimation = new Timeline();
             closeSettingsAnimation.getKeyFrames().addAll(
-                    new KeyFrame(new Duration(200), new KeyValue(rootPane.prefWidthProperty(), 0, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleYProperty(), 1, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(200), new KeyValue(contentPane.opacityProperty(), 0, Interpolator.EASE_BOTH)) //TODO Soll nach dem KeyFrame davor starten
             );
             closeSettingsAnimation.play();
-            closeSettingsAnimation.setOnFinished(event -> rootPane.setVisible(false));
+            closeSettingsAnimation.setOnFinished(event -> contentPane.setVisible(false));
             contentPane.setDisable(true);
             menuIsOpen = false;
         }

@@ -50,7 +50,7 @@ public class Main extends Application {
         whiteboard.getChildren().add(widgetMenuLoader.load());
 
         FXMLLoader widgetSettingsLoader = new FXMLLoader(getClass().getResource("Gui/WidgetSettings/WidgetSettingsView.fxml"));
-        AnchorPane widgetSettings = widgetSettingsLoader.load();
+        VBox widgetSettings = widgetSettingsLoader.load();
         widgetSettings.getStylesheets().add("Neuroshop/Gui/WidgetSettings/widgetSettingsStyle.css");
         whiteboard.getChildren().add(widgetSettings);
 
