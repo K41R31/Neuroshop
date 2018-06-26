@@ -9,6 +9,7 @@ import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
+import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +29,11 @@ import java.util.Scanner;
  */
 public class NetTest {
 
+    DiagramWidgetModel dWM;
+
     public static void main(String[] args) {
+
+
 
         RandomNumberGenerator.setSeed(7);
 
@@ -39,6 +44,8 @@ public class NetTest {
         int[] outputColumns = null;
 
         DataSet dataSet = new DataSet();
+
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -116,6 +123,7 @@ public class NetTest {
                         new UniformInitialization(-1.0, 1.0));
                 System.out.println("Neural Network created!");
                 nn.print();
+
 
                 // load Data
                 double[][] _neuralDataSet = dataSet.getData();
@@ -226,12 +234,8 @@ public class NetTest {
                     System.out.println("\n### Confusion Matrix ###");
                     System.out.println( Arrays.deepToString(confusionMatrix).replaceAll("],", "]\n") );
 
-                    // calculate another performance measures
-                    neuralDataSetToTest.outputData.calculatePerformanceMeasures(confusionMatrix);
-
                     System.out.println("\n\n\n");
-
-                } catch (Exception e) {
+                   } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -240,6 +244,8 @@ public class NetTest {
         } //end while loop
 
     }
+
+
 
     private static double[][] extractMatrixByArrayList(int[] outputColumns, double[][] data, ArrayList<ArrayList<Double>> list) {
         double[][] matrix = new double[data.length][outputColumns.length];

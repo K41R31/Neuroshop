@@ -3,9 +3,7 @@ package Neuroshop.ANN;
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Data.NeuralDataSet;
-import Neuroshop.ANN.Init.UniformInitialization;
 import Neuroshop.ANN.Learn.Backpropagation;
-import Neuroshop.ANN.Learn.DeltaRule;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Math.IActivationFunction;
@@ -14,8 +12,6 @@ import Neuroshop.ANN.Math.RandomNumberGenerator;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
-
-import java.lang.reflect.AnnotatedArrayType;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -53,6 +49,8 @@ public class ANNLearn {
     public void train(DataSet dataSet, int[] numberOfHiddenNeurons, double learningRate, DataNormalization dataNormType, int iterations, double momentumRate, double minOverallError) {
 
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
+
+        ANNLearn annLearn = new ANNLearn();
 
         LearningAlgorithm.LearningMode lMode = new NeuralNetWidgetModel().getLearnmode();
 

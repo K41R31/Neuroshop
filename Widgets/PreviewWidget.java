@@ -45,7 +45,6 @@ public class PreviewWidget extends StackPane {
             rectangleBorder.setOpacity(0);
             label.setOpacity(0);
         });
-
         previewPane.getChildren().addAll(thumbnail, rectangleBorder, label);
     }
 }
