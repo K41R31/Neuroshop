@@ -45,23 +45,23 @@ public class WidgetSettingsController implements Observer {
             Timeline openSettingsAnimation = new Timeline();
             openSettingsAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 350, Interpolator.EASE_BOTH)),
-                    new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleYProperty(), -1, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), -1, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(200), new KeyValue(contentPane.opacityProperty(), 1, Interpolator.EASE_BOTH)) //TODO Soll nach dem KeyFrame davor starten
             );
             openSettingsAnimation.play();
-            openSettingsAnimation.setOnFinished(event -> contentPane.setDisable(false));
+            openSettingsAnimation.setOnFinished(event -> menuPane.setDisable(false));
             contentPane.setVisible(true);
             menuIsOpen = true;
         } else {
             Timeline closeSettingsAnimation = new Timeline();
             closeSettingsAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH)),
-                    new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleYProperty(), 1, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), 1, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(200), new KeyValue(contentPane.opacityProperty(), 0, Interpolator.EASE_BOTH)) //TODO Soll nach dem KeyFrame davor starten
             );
             closeSettingsAnimation.play();
             closeSettingsAnimation.setOnFinished(event -> contentPane.setVisible(false));
-            contentPane.setDisable(true);
+            menuPane.setDisable(true);
             menuIsOpen = false;
         }
     }
