@@ -28,12 +28,13 @@ public class NeuralNetController extends StackPane implements Observer {
     private HBox vBoxContainer;
     private double sceneCursorPosX, sceneCursorPosY;
     private double nodeTranslatedX, nodeTranslatedY;
+    private double splineTangent = 50; //TODO um kurvität von Splines zu ändern
     @FXML
     private void initialize() {
 
     }
 
-    public void drawSplines() {
+    private void drawSplines() {
         VBox endPane, startPane;
         Circle endCircle, startCircle;
         double startX, startY, endX, endY, controlX1, controlX2;
@@ -46,16 +47,19 @@ public class NeuralNetController extends StackPane implements Observer {
                 for (int r = 0; r < startPane.getChildren().size(); r++) { //1. Spalte 1. Neuron
                     startCircle = (Circle)startPane.getChildren().get(r);
 
+                    System.out.println("1: "+startPane.getChildren().get(r).getBoundsInParent());
+                    System.out.println("2: "+startCircle.getBoundsInParent());
+
                     startPaneBounds = startPane.getBoundsInParent();
                     endPaneBounds = endPane.getBoundsInParent();
                     startCircleBounds = startCircle.getBoundsInParent();
                     endCircleBounds = endCircle.getBoundsInParent();
-                    startX = startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
-                    startY = startCircleBounds.getMinY() + 20;
-                    endX = endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
-                    endY = endCircleBounds.getMinY() + 20;
-                    controlX1 = startX + 50;
-                    controlX2 = endX - 50;
+                    startX = startPaneBounds.getMinX() + startCircleBounds.getMinX() + startCircle.getRadius();
+                    startY = startCircleBounds.getMinY() + startCircle.getRadius();
+                    endX = endPaneBounds.getMinX() + endCircleBounds.getMinX() + startCircle.getRadius();
+                    endY = endCircleBounds.getMinY() + startCircle.getRadius();
+                    controlX1 = startX + splineTangent;
+                    controlX2 = endX - splineTangent;
 
                     System.out.println("startX: "+startX+", startY: "+startY+", controlX1: "+controlX1+", controlY1: "+startX+", controlX2: "+controlX1+", controlY2: "+endY+", endX: "+endX+", endY: "+endY);
                     CubicCurve spline = new CubicCurve(startX, startY, controlX1, startY, controlX2, endY, endX, endY);
@@ -65,12 +69,17 @@ public class NeuralNetController extends StackPane implements Observer {
                     spline.setStroke(Color.BLACK);
                     splinesPane.getChildren().add(spline);
                 }
+
             }
         }
     }
 
     @Override
     public void update(Observable o, Object arg) {
+        switch ((String)arg) {
+            case "initNeuralNet":
+                drawSplines();
+        }
     }
 
     public void initModel(NeuralNetWidgetModel neuralNetWidgetModel,WidgetContainerModel widgetContainerModel) {

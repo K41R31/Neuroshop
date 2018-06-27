@@ -23,12 +23,15 @@ public class WidgetContainer {
 
         dataManagerLoader = new FXMLLoader(getClass().getResource("DataManagerWidget/DataManagerWidgetView.fxml"));
         dataManagerWidgetRoot = dataManagerLoader.load();
+        dataManagerWidgetRoot.setId("Data Manager");
 
         diagramWidgetLoader = new FXMLLoader(getClass().getResource("DiagramWidget/DiagramWidgetView.fxml"));
         diagramWidgetRoot = diagramWidgetLoader.load();
+        dataManagerWidgetRoot.setId("Diagram");
 
         neuralNetWidgetLoader = new FXMLLoader(getClass().getResource("NeuralNetWidget/NeuralNetView.fxml"));
         neuralNetWidgetRoot = neuralNetWidgetLoader.load();
+        dataManagerWidgetRoot.setId("Neural Net");
 
         dataManagerPrevRoot = new PreviewWidget("Data Manager", new Image("Neuroshop/Ressources/thumbKommtNoch.png"), widgetContainerModel);
         diagramPrevRoot = new PreviewWidget("Diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png"), widgetContainerModel);
@@ -49,5 +52,7 @@ public class WidgetContainer {
         dataManagerWidgetController.initModel(dataManagerWidgetModel, widgetContainerModel);
         diagramWidgetController.initModel(diagramWidgetModel, widgetContainerModel);
         neuralNetController.initModel(neuralNetWidgetModel, widgetContainerModel);
+
+        widgetContainerModel.addObserver(neuralNetController); //TODO
     }
 }

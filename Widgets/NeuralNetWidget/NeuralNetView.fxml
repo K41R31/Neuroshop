@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
@@ -81,18 +80,6 @@
                               <Insets bottom="50.0" top="50.0" />
                            </padding>
                         </VBox>
-                        <HBox alignment="CENTER" spacing="5.0">
-                           <children>
-                              <Line endY="100.0" />
-                              <StackPane>
-                                 <children>
-                                    <Line endX="10.0" startX="-10.0" stroke="#545454" strokeWidth="4.0" />
-                                    <Line endY="10.0" startY="-10.0" stroke="#545454" strokeWidth="4.0" />
-                                 </children>
-                              </StackPane>
-                              <Line endY="100.0" layoutX="11.0" layoutY="71.0" />
-                           </children>
-                        </HBox>
                         <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
                            <children>
                               <Circle layoutX="70.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
