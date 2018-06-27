@@ -368,9 +368,7 @@ public class Backpropagation extends DeltaRule {
     @Override
     public void applyNewWeights() {
 
-        try {
          int numberOfHiddenLayers = this.neuralNet.getNumberOfHiddenLayers();
-            FileWriter writer = new FileWriter("out/tempWeights/temp_wghts_iteration_" + epoch + ".txt");
             for (int l = 0; l <= numberOfHiddenLayers; l++) {
                 int numberOfNeuronsInLayer, numberOfInputsInNeuron;
                 if (l < numberOfHiddenLayers) {
@@ -387,7 +385,6 @@ public class Backpropagation extends DeltaRule {
                             double deltaWeight = (newWeight - n.getWeight(i));
                             lastDeltaWeights.get(l).get(j).set(i,deltaWeight);
                             hl.getNeuron(j).updateWeight(i, newWeight);
-                            writer.write("Iteration: " + epoch + " Hidden Layer " + l + " Neuron: " + j + " Gewicht: " + (deltaWeight) + "\n");
 
                         }
 
@@ -411,14 +408,19 @@ public class Backpropagation extends DeltaRule {
                         }
                     }
                 }
-
-                writer.close();
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
+    public void saveLastDeltaWeight(ArrayList<ArrayList<ArrayList<Double>>> lastDeltaWeights) {
+        this.lastDeltaWeights = lastDeltaWeights;
+
+    }
+
+    public ArrayList<ArrayList<ArrayList<Double>>> getLastDeltaWeights() {
+        return this.lastDeltaWeights;
+    }
+
     public void setMomentumRate(double _momentumRate){
         this.MomentumRate=_momentumRate;
     }

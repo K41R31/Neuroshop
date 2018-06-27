@@ -6,11 +6,12 @@ import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Init.UniformInitialization;
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
-import Neuroshop.ANN.Math.IActivationFunction;
-import Neuroshop.ANN.Math.Linear;
-import Neuroshop.ANN.Math.RandomNumberGenerator;
+import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
+
+import javax.xml.crypto.Data;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ANNLearn {
@@ -26,34 +27,43 @@ public class ANNLearn {
     double momentumRate;
 
     IActivationFunction[] actFnc;
-    Linear outputActFnc;
+    IActivationFunction outputActFnc;
     LearningAlgorithm.LearningMode lMode;
     DataNormalization dataNormType;
 
     public void train(DataSet dataSet, int[] inputColumns, int[] outputColumns, double dataPercentage, int maxEpochs, int[] numberOfHiddenNeurons,
-                      double minOverallError, double learningRate, double momentumRate, IActivationFunction[] actFnc, Linear outputActFnc, LearningAlgorithm.LearningMode lMode, DataNormalization dataNormType) {
+                      double minOverallError, double learningRate, double momentumRate, IActivationFunction[] actFnc, IActivationFunction outputActFnc, LearningAlgorithm.LearningMode lMode, DataNormalization dataNormType) {
+//        RandomNumberGenerator.r = null;
+        RandomNumberGenerator.setSeed(5);
 
-        RandomNumberGenerator.setSeed(System.currentTimeMillis());
+        this.inputColumns = (inputColumns);
+        this.outputColumns = (outputColumns);
 
-        this.inputColumns = inputColumns;
-        this.outputColumns = outputColumns;
-        this.numberOfHiddenNeurons = numberOfHiddenNeurons;
+        this.numberOfHiddenNeurons = (numberOfHiddenNeurons);
+
         this.actFnc = actFnc;
-
         this.outputActFnc = outputActFnc;
 
         NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, numberOfHiddenNeurons, actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
+        System.out.println(nnWidget.isBiasActive());
 
         this.dataPercentage = dataPercentage;
-        double[][] dSet = dataSet.getData();
 
+        double[][] dSet = dataSet.getData();
         this.dataNormType = dataNormType;
+        System.out.print("Geladener Datensatz, unverändert: " + Arrays.deepToString(dSet));
+
         double[][] dataNormalized = new double[dSet.length][dSet[0].length];
         dataNormalized = dataNormType.normalize(dSet);
 
+        System.out.println("Datensatz normalisiert: " + Arrays.deepToString(dataNormalized));
+        System.out.println("Anzahl der Einträge im Datensatz: " + dataNormalized.length);
+
         double[][] dataNormToTrain = Arrays.copyOfRange(dataNormalized, 0, (int) Math.ceil(dataNormalized.length * (dataPercentage)));
         double[][] dataNormToTest = Arrays.copyOfRange(dataNormalized, (int) Math.ceil(dataNormalized.length * (dataPercentage)) + 1, dataNormalized.length);
+        System.out.println("Datensatz zum Trainieren: " + Arrays.deepToString(dataNormToTrain));
+        System.out.println("Datensatz zum Testen: " + Arrays.deepToString(dataNormToTest));
 
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
@@ -68,15 +78,16 @@ public class ANNLearn {
         backprop.setLearningRate(learningRate);
         backprop.setMaxEpochs(maxEpochs);
         backprop.setGeneralErrorMeasurement(Backpropagation.ErrorMeasurement.SimpleError);
-        backprop.setGeneralErrorMeasurement(Backpropagation.ErrorMeasurement.MSE);
-        backprop.setMinOverallError(minOverallError);
+        backprop.setOverallErrorMeasurement(Backpropagation.ErrorMeasurement.MSE);
         backprop.setMomentumRate(momentumRate);
+        backprop.setMinOverallError(minOverallError);
         backprop.setTestingDataSet(neuralDataSetToTest);
         backprop.printTraining = true;
         backprop.showPlotError = true;
 
         try {
             backprop.forward();
+//            System.out.println(backprop.applyNewWeights(lastDeltaWeights));
 
             backprop.train();
 
@@ -96,16 +107,15 @@ public class ANNLearn {
             backprop.showErrorEvolution();
 
             neuralDataSetToTrain.printTargetOutput();
-
+            neuralDataSetToTest.printTargetOutput();
             backprop.forward();
 
+//            backprop.backward();
             neuralDataSetToTrain.printNeuralOutput();
 
 
         } catch (NeuralException ne) {
             ne.printStackTrace();
         }
-
     }
-
 }
