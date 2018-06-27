@@ -26,7 +26,8 @@ public class PreviewWidget extends StackPane {
     private double nodeTranslatedX, nodeTranslatedY;
     private double sceneWidth, sceneHeight;
 
-    public PreviewWidget(String name, Image thumbnail) throws IOException {
+    public PreviewWidget(String name, Image thumbnail, WidgetContainerModel widgetContainerModel) throws IOException {
+        this.widgetContainerModel = widgetContainerModel;
         this.thumbnail = new ImageView(thumbnail);
         this.label = new Text(name);
         this.rectangleBorder = new Rectangle(250, 200);
@@ -53,9 +54,9 @@ public class PreviewWidget extends StackPane {
         });
         this.setId(name);
         this.getChildren().addAll(this.thumbnail, this.rectangleBorder, this.label);
-//        draggablePreview(this);
+        draggablePreview(this);
     }
-/*
+
     private void draggablePreview(StackPane node) {
 
         EventHandler<MouseEvent> onMousePressed =
@@ -67,9 +68,7 @@ public class PreviewWidget extends StackPane {
                     sceneWidth = node.getScene().getWidth();
                     sceneHeight = node.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
 
-                    widgetMenuPane.getChildren().remove(node);
-
-                    model.setDraggPreview(node.getId());
+                    widgetContainerModel.setDraggPreview(node);
                 };
 
         EventHandler<MouseEvent> onMouseDragged =
@@ -88,21 +87,22 @@ public class PreviewWidget extends StackPane {
                     if (node.getBoundsInParent().getMinY() < 0) node.setTranslateY(newTranslateY-node.getBoundsInParent().getMinY());
                     else if (node.getBoundsInParent().getMaxY() > sceneHeight) node.setTranslateY(newTranslateY-(node.getBoundsInParent().getMaxY()-sceneHeight));
 
-                    if (menuIsOpen & MouseInfo.getPointerInfo().getLocation().x > 300) {
-                        toggleMenu();
-                    } else if (!menuIsOpen & node.getBoundsInParent().getMinX() <= 30) {
-                        toggleMenu();
+                    if (widgetContainerModel.getWidgetMenuIsOpen() & MouseInfo.getPointerInfo().getLocation().x > 300) {
+                        widgetContainerModel.toggleWidgetMenu();
+                    } else if (!widgetContainerModel.getWidgetMenuIsOpen() & node.getBoundsInParent().getMinX() <= 30) {
+                        widgetContainerModel.toggleWidgetMenu();
                     }
                 };
 
         EventHandler<MouseEvent> onMouseReleased =
                 event -> {
                     if (MouseInfo.getPointerInfo().getLocation().x > 300) {
-                        model.addWidgetToWhiteboard(model.getDraggPreview());
-                        model.removeDraggPreview();
-                    } else if (menuIsOpen & MouseInfo.getPointerInfo().getLocation().x < 300) {
-                        widgetMenuPane.getChildren().add(node);
-                        model.removeDraggPreview();
+                        //model.addWidgetToWhiteboard(model.getDraggPreview()); //TODO Widget erstellen
+                        widgetContainerModel.removeDraggPreview();
+                        widgetContainerModel.changeWidgetStateById(node.getId(), 1);
+                    } else if (widgetContainerModel.getWidgetMenuIsOpen() & MouseInfo.getPointerInfo().getLocation().x < 300) {
+                        widgetContainerModel.changeWidgetStateById(node.getId(), 0);
+                        widgetContainerModel.removeDraggPreview();
                         node.setTranslateX(0);
                         node.setTranslateY(0);
                     }
@@ -112,7 +112,7 @@ public class PreviewWidget extends StackPane {
         node.setOnMouseDragged(onMouseDragged);
         node.setOnMouseReleased(onMouseReleased);
     }
-*/
+
     private void initModel(WidgetContainerModel widgetContainerModel) {
         this.widgetContainerModel = widgetContainerModel;
     }

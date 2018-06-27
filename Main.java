@@ -56,9 +56,6 @@ public class Main extends Application {
 
         //Init Ann------------------------------------------------------------------------------------------------------
 
-        //Init WidgetContainer------------------------------------------------------------------------------------------
-        WidgetContainer widgetContainer = new WidgetContainer();
-
         //Init Model----------------------------------------------------------------------------------------------------
         DataManagerWidgetModel dataManagerWidgetModel = new DataManagerWidgetModel();
         DiagramWidgetModel diagramWidgetModel = new DiagramWidgetModel();
@@ -75,12 +72,13 @@ public class Main extends Application {
         widgetMenuController.initModel(widgetContainerModel);
         borderController.initModel(optionsModel);
         optionsMenuController.initModel(optionsModel);
-        widgetContainer.initModel(widgetContainerModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel);
 
-        widgetContainerModel.addObserver(widgetMenuController); //TODO NOCH ZU OBSERVERN
+        widgetContainerModel.addObserver(whiteboardController);
+        widgetContainerModel.addObserver(widgetMenuController);
         optionsModel.addObserver(optionsMenuController);
 
-        widgetContainer.intitWidgets();
+        //Init WidgetContainer------------------------------------------------------------------------------------------
+        new WidgetContainer(widgetContainerModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel);
 
         //Init Scene----------------------------------------------------------------------------------------------------
         Scene scene = new Scene(root, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);

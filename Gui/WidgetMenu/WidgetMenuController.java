@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -43,7 +44,7 @@ public class WidgetMenuController implements Observer {
 
     @FXML
     private void toggleMenu() {
-        if (!menuIsOpen & !menuIsBusy) {
+        if (!widgetContainerModel.getWidgetMenuIsOpen() & !menuIsBusy) {
             menuIsBusy = true;
             Timeline openMenuAnimation = new Timeline();
             openMenuAnimation.getKeyFrames().addAll(
@@ -51,11 +52,14 @@ public class WidgetMenuController implements Observer {
                     new KeyFrame(new Duration(200), new KeyValue(widgetMenuPane.prefWidthProperty(), 300, Interpolator.EASE_BOTH))
             );
             openMenuAnimation.play();
-            menuIsOpen = true;
-            menuIsBusy = false;
+            openMenuAnimation.setOnFinished(event -> {
+                widgetMenuPane.getChildren().addAll(widgetContainerModel.getAllPreviews());
+                widgetContainerModel.setWidgetMenuIsOpen(true);
+                menuIsBusy = false;
+            });
             widgetMenuPane.setVisible(true);
 
-        } else if (menuIsOpen & !menuIsBusy) {
+        } else if (widgetContainerModel.getWidgetMenuIsOpen() & !menuIsBusy) {
             menuIsBusy = true;
             Timeline closeMenuAnimation = new Timeline();
             closeMenuAnimation.getKeyFrames().addAll(
@@ -65,15 +69,20 @@ public class WidgetMenuController implements Observer {
             closeMenuAnimation.play();
             closeMenuAnimation.setOnFinished(event -> {
                 widgetMenuPane.setVisible(false);
-                menuIsOpen = false;
+                widgetContainerModel.setWidgetMenuIsOpen(false);
                 menuIsBusy = false;
             });
+            widgetMenuPane.getChildren().clear();
         }
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg.equals("toggleWidgetMenu")) toggleMenu();
+        switch ((String)arg) {
+            case "toggleWidgetMenu":
+                toggleMenu();
+        }
+
     }
 
     public void initModel(WidgetContainerModel widgetContainerModel) {
