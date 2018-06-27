@@ -13,10 +13,10 @@ import Neuroshop.ANN.Math.Sigmoid;
 public class Prototyp {
 
     public static void main (String[] args)  {
+        new Thread();
 
         int x = 5;
         int[] numberOfHiddenNeurons = {x};
-        int numberNeuronsHdnlayer = 2;
         double learningRate = 0.001;
         int maxEpochs = 500;
         double momentumRate = 0.7;
@@ -24,16 +24,17 @@ public class Prototyp {
         int[] inputColumns = {0, 1, 2, 3};
         int[] outputColumns = {4};
         double dataPercentage = 0.8;
+
         Sigmoid h10Fnc = new Sigmoid(1.0);
-        LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
-        IActivationFunction[] actFnc = {h10Fnc};
         Linear outputActFnc = new Linear (1.0);
+        IActivationFunction[] actFnc = {h10Fnc};
+
+        LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
         DataNormalization dataNormType = new DataNormalization(-1.0, 1.0);
 
         DataSet dataSet = new DataSet("Neuroshop/Ressources/Data", "new_data.txt");
         ANNLearn aL = new ANNLearn();
-        aL.train(dataSet, numberNeuronsHdnlayer, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
-
+        aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
 
     }
 
