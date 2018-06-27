@@ -7,28 +7,20 @@ import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
 import Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController;
 import Neuroshop.Widgets.DiagramWidget.DiagramWidgetController;
 import Neuroshop.Widgets.NeuralNetWidget.NeuralNetController;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-import java.awt.*;
 import java.io.IOException;
-import java.util.Stack;
 
 public class WidgetContainer {
 
-    private FXMLLoader widgetBorderLoader, dataManagerLoader, diagramWidgetLoader, neuralNetWidgetLoader;
-    private StackPane widgetBorderRoot, dataManagerWidgetRoot, diagramWidgetRoot, neuralNetWidgetRoot;
+    private FXMLLoader dataManagerLoader, diagramWidgetLoader, neuralNetWidgetLoader;
+    private StackPane dataManagerWidgetRoot, diagramWidgetRoot, neuralNetWidgetRoot;
     private StackPane dataManagerPrevRoot, diagramPrevRoot, neuralNetPrevRoot;
 
-    public WidgetContainer() {
-    }
+    public WidgetContainer(WidgetContainerModel widgetContainerModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) throws IOException {
 
-    public void intitWidgets() throws IOException {
         dataManagerLoader = new FXMLLoader(getClass().getResource("DataManagerWidget/DataManagerWidgetView.fxml"));
         dataManagerWidgetRoot = dataManagerLoader.load();
 
@@ -38,19 +30,17 @@ public class WidgetContainer {
         neuralNetWidgetLoader = new FXMLLoader(getClass().getResource("NeuralNetWidget/NeuralNetView.fxml"));
         neuralNetWidgetRoot = neuralNetWidgetLoader.load();
 
-        StackPane[][] widgets = new StackPane[][]{
-                {
+        dataManagerPrevRoot = new PreviewWidget("Data Manager", new Image("Neuroshop/Ressources/thumbKommtNoch.png"), widgetContainerModel);
+        diagramPrevRoot = new PreviewWidget("Diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png"), widgetContainerModel);
+        neuralNetPrevRoot = new PreviewWidget("Neural Net", new Image("Neuroshop/Ressources/netThumb.png"), widgetContainerModel);
 
-                }
+        StackPane[][] widgets = new StackPane[][] {
+                { dataManagerPrevRoot, dataManagerWidgetRoot },
+                { diagramPrevRoot, diagramWidgetRoot },
+                { neuralNetPrevRoot, neuralNetWidgetRoot }
         };
-        dataManagerPrevRoot = new PreviewWidget("Data Manager", new Image("Neuroshop/Ressources/thumbKommtNoch.png"));
-        diagramPrevRoot = new PreviewWidget("Diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png"));
-        neuralNetPrevRoot = new PreviewWidget("Neural Net", new Image("Neuroshop/Ressources/netThumb.png"));
-    }
 
-        public void initModel(WidgetContainerModel widgetContainerModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) {
-
-//      widgetContainerModel.initWidgets();
+        widgetContainerModel.initWidgets(widgets);
         //Init Model----------------------------------------------------------------------------------------------------
         DataManagerWidgetController dataManagerWidgetController = dataManagerLoader.getController();
         DiagramWidgetController diagramWidgetController = diagramWidgetLoader.getController();

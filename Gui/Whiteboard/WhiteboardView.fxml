@@ -3,4 +3,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.Whiteboard.WhiteboardController" />
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.Whiteboard.WhiteboardController">
+   <children>
+      <AnchorPane fx:id="draggPane" layoutX="10.0" layoutY="10.0" />
+   </children>
+</AnchorPane>
