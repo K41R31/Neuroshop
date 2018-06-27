@@ -160,8 +160,6 @@ public class NetTest {
                 backprop.printTraining = true;
                 backprop.showPlotError=true;
 
-
-
                 // train ANN:
                 try {
                     backprop.forward();

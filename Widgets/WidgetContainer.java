@@ -7,7 +7,6 @@ import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
 import Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController;
 import Neuroshop.Widgets.DiagramWidget.DiagramWidgetController;
 import Neuroshop.Widgets.NeuralNetWidget.NeuralNetController;
-import Neuroshop.Widgets.WidgetBorder.WidgetBorderController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -51,7 +50,7 @@ public class WidgetContainer {
 
         public void initModel(WidgetContainerModel widgetContainerModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) {
 
-        widgetContainerModel.initWidgets();
+//      widgetContainerModel.initWidgets();
         //Init Model----------------------------------------------------------------------------------------------------
         DataManagerWidgetController dataManagerWidgetController = dataManagerLoader.getController();
         DiagramWidgetController diagramWidgetController = diagramWidgetLoader.getController();
