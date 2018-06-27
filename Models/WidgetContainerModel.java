@@ -9,10 +9,35 @@ public class WidgetContainerModel extends Observable {
 
     private final int totalWidgetsCounter = 3;
 
+    private boolean menuIsBusy = false;
     private boolean widgetMenuIsOpen = false;
-    private StackPane draggPreview;
+    private StackPane bufferedWidget;
     private StackPane[][] widgets = new StackPane[totalWidgetsCounter][2]; //Für jedes Preview eine Zeile
     private int[] widgetState = new int[totalWidgetsCounter]; //0 == preview, 1 == not preview
+
+    public void addWidgetToWhiteboard(String id) {
+        for (int i = 0; i < totalWidgetsCounter; i++) {
+            if (widgets[i][0].getId().equals(id)) {
+                bufferedWidget = widgets[i][1];
+            }
+        }
+        setChanged();
+        notifyObservers("addWidgetToWhiteboard");
+        initWidgetOnCreated(id); //TODO Später vielleicht anders
+    }
+
+    private void initWidgetOnCreated(String id) {
+        setChanged();
+        notifyObservers("init"+id.replace(" ", ""));
+    }
+
+    public boolean getMenuIsBusy() {
+        return menuIsBusy;
+    }
+
+    public void setMenuIsBusy(boolean menuIsBusy) {
+        this.menuIsBusy = menuIsBusy;
+    }
 
     public void changeWidgetStateById(String id, int state) {
         for (int i = 0; i < widgets.length; i++)
@@ -28,20 +53,25 @@ public class WidgetContainerModel extends Observable {
         return widgetMenuIsOpen;
     }
 
-    public void setDraggPreview(StackPane draggPreview) {
-        this.draggPreview = draggPreview;
+    public void adddWidgetToMenu() {
+        setChanged();
+        notifyObservers("adddWidgetToMenu");
+    }
+
+    public void setBufferedWidget(StackPane bufferedWidget) {
+        this.bufferedWidget = bufferedWidget;
         setChanged();
         notifyObservers("draggPreview");
     }
 
-    public void removeDraggPreview() {
-        this.draggPreview = null;
+    public void clearBufferedWidget() {
+        this.bufferedWidget = null;
         setChanged();
-        notifyObservers("removeDraggPreview");
+        notifyObservers("clearBufferedWidget");
     }
 
-    public StackPane getDraggPreview() {
-        return draggPreview;
+    public StackPane getBufferedWidget() {
+        return bufferedWidget;
     }
 
     public void toggleWidgetMenu() {

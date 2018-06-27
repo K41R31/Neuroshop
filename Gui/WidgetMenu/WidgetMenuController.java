@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -25,7 +24,7 @@ public class WidgetMenuController implements Observer {
     @FXML
     private ImageView openerIcon;
     private boolean menuIsOpen;
-    private boolean menuIsBusy;
+
     private WidgetContainerModel widgetContainerModel;
 
     //Für Mouse Events
@@ -35,7 +34,6 @@ public class WidgetMenuController implements Observer {
 
     @FXML
     private void initialize() {
-        menuIsBusy = false;
         menuIsOpen = false;
         AnchorPane.setTopAnchor(widgetMenuRootPane, (double)0);
         AnchorPane.setLeftAnchor(widgetMenuRootPane, (double)0);
@@ -44,8 +42,8 @@ public class WidgetMenuController implements Observer {
 
     @FXML
     private void toggleMenu() {
-        if (!widgetContainerModel.getWidgetMenuIsOpen() & !menuIsBusy) {
-            menuIsBusy = true;
+        if (!widgetContainerModel.getWidgetMenuIsOpen() & !widgetContainerModel.getMenuIsBusy()) {
+            widgetContainerModel.setMenuIsBusy(true);
             Timeline openMenuAnimation = new Timeline();
             openMenuAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), -1, Interpolator.EASE_BOTH)),
@@ -55,12 +53,12 @@ public class WidgetMenuController implements Observer {
             openMenuAnimation.setOnFinished(event -> {
                 widgetMenuPane.getChildren().addAll(widgetContainerModel.getAllPreviews());
                 widgetContainerModel.setWidgetMenuIsOpen(true);
-                menuIsBusy = false;
+                widgetContainerModel.setMenuIsBusy(false);
             });
             widgetMenuPane.setVisible(true);
 
-        } else if (widgetContainerModel.getWidgetMenuIsOpen() & !menuIsBusy) {
-            menuIsBusy = true;
+        } else if (widgetContainerModel.getWidgetMenuIsOpen() & !widgetContainerModel.getMenuIsBusy()) {
+            widgetContainerModel.setMenuIsBusy(true);
             Timeline closeMenuAnimation = new Timeline();
             closeMenuAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), 1, Interpolator.EASE_BOTH)),
@@ -70,7 +68,7 @@ public class WidgetMenuController implements Observer {
             closeMenuAnimation.setOnFinished(event -> {
                 widgetMenuPane.setVisible(false);
                 widgetContainerModel.setWidgetMenuIsOpen(false);
-                menuIsBusy = false;
+                widgetContainerModel.setMenuIsBusy(false);
             });
             widgetMenuPane.getChildren().clear();
         }
@@ -81,6 +79,9 @@ public class WidgetMenuController implements Observer {
         switch ((String)arg) {
             case "toggleWidgetMenu":
                 toggleMenu();
+                break;
+            case "adddWidgetToMenu":
+                widgetMenuPane.getChildren().add(widgetContainerModel.getBufferedWidget());
         }
 
     }
