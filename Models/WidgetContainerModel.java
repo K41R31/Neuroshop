@@ -23,12 +23,6 @@ public class WidgetContainerModel extends Observable {
         }
         setChanged();
         notifyObservers("addWidgetToWhiteboard");
-        initWidgetOnCreated(id); //TODO Später vielleicht anders
-    }
-
-    private void initWidgetOnCreated(String id) {
-        setChanged();
-        notifyObservers("init"+id.replace(" ", ""));
     }
 
     public boolean getMenuIsBusy() {
