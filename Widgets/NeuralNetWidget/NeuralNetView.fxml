@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -68,9 +70,10 @@
                   </HBox>
                </children>
             </VBox>
-            <AnchorPane fx:id="splinesPane">
+            <Group>
                <children>
-                  <HBox fx:id="vBoxContainer" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="splinesPane" />
+                  <HBox fx:id="vBoxContainer" alignment="CENTER">
                      <children>
                         <VBox alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="130.0" spacing="30.0">
                            <children>
@@ -94,9 +97,11 @@
                      </children>
                   </HBox>
                </children>
-            </AnchorPane>
+            </Group>
             <VBox alignment="CENTER">
                <children>
+                  <Slider fx:id="sliderWidth" max="10.0" onMouseDragged="#changeWidth" value="1.0" />
+                  <Slider fx:id="sliderTangent" max="200.0" onMouseDragged="#changeTangent" value="50.0" />
                   <Button mnemonicParsing="false" onAction="#drawSplines" text="Button" />
                </children></VBox>
          </children>

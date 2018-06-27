@@ -4,6 +4,7 @@ import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -29,24 +30,32 @@ public class NeuralNetController extends StackPane implements Observer {
     private double sceneCursorPosX, sceneCursorPosY;
     private double nodeTranslatedX, nodeTranslatedY;
     private double splineTangent = 50; //TODO um kurvität von Splines zu ändern
+    private double splineWidth = 1;
+
+    @FXML
+    private Slider sliderTangent;
+    @FXML
+    private Slider sliderWidth;
 
     @FXML
     private void initialize() {
     }
 
     @FXML
-    private void alignCircles() {
-        for (int c = 0; c < vBoxContainer.getChildren().size(); c++) {
-            AnchorPane column = (AnchorPane)vBoxContainer.getChildren().get(c);
-            for (int r = 0; r < column.getChildren().size(); r++) {
-                Circle circle = (Circle)column.getChildren().get(r);
-                System.out.println(column.getWidth());
-            }
-        }
+    private void changeTangent() {
+        splineTangent = sliderTangent.getValue();
+        drawSplines();
+    }
+
+    @FXML
+    private void changeWidth() {
+        splineWidth = sliderWidth.getValue();
+        drawSplines();
     }
 
     @FXML
     public void drawSplines() {
+        splinesPane.getChildren().clear();
         VBox endPane, startPane;
         Circle endCircle, startCircle;
         double startX, startY, endX, endY, controlX1, controlX2;
@@ -67,16 +76,16 @@ public class NeuralNetController extends StackPane implements Observer {
                     startY = startCircleBounds.getMinY() + 20;
                     endX = endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
                     endY = endCircleBounds.getMinY() + 20;
-                    controlX1 = startX + 50;
-                    controlX2 = endX - 50;
+                    controlX1 = startX + splineTangent;
+                    controlX2 = endX - splineTangent;
 
                     CubicCurve spline = new CubicCurve(startX, startY, controlX1, startY, controlX2, endY, endX, endY);
                     spline.setLayoutX(0);
                     spline.setLayoutY(0);
                     spline.setFill(Color.TRANSPARENT);
+                    spline.setStrokeWidth(splineWidth);
                     spline.setStroke(Color.BLACK);
                     splinesPane.getChildren().add(spline);
-                    spline.toBack();
                 }
             }
         }
