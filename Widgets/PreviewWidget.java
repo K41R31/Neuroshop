@@ -53,9 +53,9 @@ public class PreviewWidget extends StackPane {
         });
         this.setId(name);
         this.getChildren().addAll(this.thumbnail, this.rectangleBorder, this.label);
-        //draggablePreview(this);
+        draggablePreview(this);
     }
-/*
+
     private void draggablePreview(StackPane node) {
 
         EventHandler<MouseEvent> onMousePressed =
@@ -112,7 +112,7 @@ public class PreviewWidget extends StackPane {
         node.setOnMouseDragged(onMouseDragged);
         node.setOnMouseReleased(onMouseReleased);
     }
-*/
+
     private void initModel(WidgetContainerModel widgetContainerModel) {
         this.widgetContainerModel = widgetContainerModel;
     }

@@ -80,6 +80,8 @@ public class Main extends Application {
         widgetContainerModel.addObserver(widgetMenuController); //TODO NOCH ZU OBSERVERN
         optionsModel.addObserver(optionsMenuController);
 
+        widgetContainer.intitWidgets();
+
         //Init Scene----------------------------------------------------------------------------------------------------
         Scene scene = new Scene(root, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);
         primaryStage.initStyle(StageStyle.UNDECORATED);

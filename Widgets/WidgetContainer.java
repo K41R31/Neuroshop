@@ -18,18 +18,18 @@ import javafx.scene.layout.StackPane;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Stack;
 
 public class WidgetContainer {
 
     private FXMLLoader widgetBorderLoader, dataManagerLoader, diagramWidgetLoader, neuralNetWidgetLoader;
-    private AnchorPane widgetBorderRoot, dataManagerWidgetRoot, diagramWidgetRoot, neuralNetWidgetRoot;
+    private StackPane widgetBorderRoot, dataManagerWidgetRoot, diagramWidgetRoot, neuralNetWidgetRoot;
     private StackPane dataManagerPrevRoot, diagramPrevRoot, neuralNetPrevRoot;
 
-    public WidgetContainer() throws IOException {
+    public WidgetContainer() {
+    }
 
-        widgetBorderLoader = new FXMLLoader(getClass().getResource("WidgetBorder/WidgetBorderView.fxml"));
-        widgetBorderRoot = widgetBorderLoader.load();
-
+    public void intitWidgets() throws IOException {
         dataManagerLoader = new FXMLLoader(getClass().getResource("DataManagerWidget/DataManagerWidgetView.fxml"));
         dataManagerWidgetRoot = dataManagerLoader.load();
 
@@ -39,6 +39,11 @@ public class WidgetContainer {
         neuralNetWidgetLoader = new FXMLLoader(getClass().getResource("NeuralNetWidget/NeuralNetView.fxml"));
         neuralNetWidgetRoot = neuralNetWidgetLoader.load();
 
+        StackPane[][] widgets = new StackPane[][]{
+                {
+
+                }
+        };
         dataManagerPrevRoot = new PreviewWidget("Data Manager", new Image("Neuroshop/Ressources/thumbKommtNoch.png"));
         diagramPrevRoot = new PreviewWidget("Diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png"));
         neuralNetPrevRoot = new PreviewWidget("Neural Net", new Image("Neuroshop/Ressources/netThumb.png"));
@@ -46,13 +51,12 @@ public class WidgetContainer {
 
         public void initModel(WidgetContainerModel widgetContainerModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) {
 
+        widgetContainerModel.initWidgets();
         //Init Model----------------------------------------------------------------------------------------------------
-        WidgetBorderController widgetBorderController = widgetBorderLoader.getController();
         DataManagerWidgetController dataManagerWidgetController = dataManagerLoader.getController();
         DiagramWidgetController diagramWidgetController = diagramWidgetLoader.getController();
         NeuralNetController neuralNetController = neuralNetWidgetLoader.getController();
 
-        widgetBorderController.initModel(widgetContainerModel);
         dataManagerWidgetController.initModel(dataManagerWidgetModel, widgetContainerModel);
         diagramWidgetController.initModel(diagramWidgetModel, widgetContainerModel);
         neuralNetController.initModel(neuralNetWidgetModel, widgetContainerModel);

@@ -1,39 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
 <StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.NeuralNetWidget.NeuralNetController">
    <children>
-      <AnchorPane fx:id="splinesPane">
+      <VBox alignment="CENTER">
          <children>
-            <HBox fx:id="vBoxContainer" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+               <image>
+                  <Image url="@../../Ressources/toolsMenuButton.png" />
+               </image>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ImageView>
+            <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0">
                <children>
-                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
+                  <HBox maxHeight="-Infinity">
                      <children>
-                        <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <HBox.margin>
+                              <Insets left="10.0" right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text layoutX="33.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Text>
                      </children>
-                     <padding>
-                        <Insets bottom="20.0" top="20.0" />
-                     </padding>
-                  </VBox>
-                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
+                  </HBox>
+                  <HBox>
                      <children>
-                        <Circle layoutX="70.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Rectangle>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="20.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Rectangle>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Rectangle>
                      </children>
-                     <padding>
-                        <Insets bottom="20.0" top="20.0" />
-                     </padding>
-                  </VBox>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
+            <AnchorPane fx:id="splinesPane">
+               <children>
+                  <HBox fx:id="vBoxContainer" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
+                           <children>
+                              <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="50.0" top="50.0" />
+                           </padding>
+                        </VBox>
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Line endY="100.0" />
+                              <StackPane>
+                                 <children>
+                                    <Line endX="10.0" startX="-10.0" stroke="#545454" strokeWidth="4.0" />
+                                    <Line endY="10.0" startY="-10.0" stroke="#545454" strokeWidth="4.0" />
+                                 </children>
+                              </StackPane>
+                              <Line endY="100.0" layoutX="11.0" layoutY="71.0" />
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" spacing="40.0">
+                           <children>
+                              <Circle layoutX="70.0" layoutY="150.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="50.0" top="50.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <VBox />
          </children>
-      </AnchorPane>
+      </VBox>
    </children>
 </StackPane>
