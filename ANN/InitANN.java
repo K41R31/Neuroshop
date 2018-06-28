@@ -1,20 +1,17 @@
 package Neuroshop.ANN;
 
-import Neuroshop.ANN.Data.DataNormalization;
-import Neuroshop.ANN.Data.DataSet;
-import Neuroshop.ANN.Learn.LearningAlgorithm;
-import Neuroshop.ANN.Math.IActivationFunction;
-import Neuroshop.ANN.Math.Linear;
-import Neuroshop.ANN.Math.Sigmoid;
-import Neuroshop.Models.ANNModel;
 
-import java.io.File;
+import Neuroshop.ANN.Data.DataSet;
+import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.DataModel;
+
 import java.util.Observable;
 import java.util.Observer;
 
 public class InitANN implements Observer {
 
     private ANNModel annModel;
+    private DataModel dataModel;
     private DataSet dataset;
 
     public InitANN() {
@@ -29,7 +26,7 @@ public class InitANN implements Observer {
 
     private void loadDataSet() {
 
-        String datasetPath = annModel.getDatasetFile().getAbsolutePath();
+        String datasetPath = dataModel.getDatasetFile().getAbsolutePath();
         dataset = new DataSet(datasetPath); // Spalten müssen mit "," getrennt werden
     }
 
@@ -41,7 +38,8 @@ public class InitANN implements Observer {
         }
     }
 
-    public void initModel(ANNModel annModel) {
+    public void initModel(ANNModel annModel, DataModel dataModel) {
         this.annModel = annModel;
+        this.dataModel = dataModel;
     }
 }
