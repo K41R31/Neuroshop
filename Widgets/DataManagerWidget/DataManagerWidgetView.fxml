@@ -154,7 +154,7 @@
                   <Font name="Champagne &amp; Limousines" size="50.0" />
                </font>
             </Text>
-            <StackPane fx:id="button1Pane" layoutX="67.0" layoutY="275.0" onMouseEntered="#button1Entered" onMouseExited="#button1Exited" styleClass="importButton">
+            <StackPane fx:id="button1Pane" layoutX="119.0" layoutY="274.0" onMouseEntered="#button1Entered" onMouseExited="#button1Exited" styleClass="importButton">
                <children>
                   <Text fx:id="button1Text" disable="true" fill="#4490ff" strokeType="OUTSIDE" strokeWidth="0.0" text="LAST OPENED" textAlignment="CENTER" wrappingWidth="240.0">
                      <font>
@@ -169,7 +169,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </StackPane>
-            <StackPane fx:id="button2Pane" layoutX="568.0" layoutY="275.0" onMouseEntered="#button2Entered" onMouseExited="#button2Exited" styleClass="importButton">
+            <StackPane fx:id="button2Pane" layoutX="512.0" layoutY="275.0" onMouseClicked="#loadDataSet" onMouseEntered="#button2Entered" onMouseExited="#button2Exited" styleClass="importButton">
                <children>
                   <Text fx:id="button2Text" disable="true" fill="#4490ff" strokeType="OUTSIDE" strokeWidth="0.0" text="LOAD NEW" textAlignment="CENTER" wrappingWidth="240.0">
                      <font>

@@ -76,7 +76,7 @@ public class WidgetContainerModel extends Observable {
     public ArrayList<StackPane> getAllPreviews() {
         ArrayList<StackPane> processList = new ArrayList<>();
         for (int i = 0; i < totalWidgetsCounter; i++) {
-            if (widgetState[i] == 0) processList.add(widgets[i][widgetState[0]]);
+            if (widgetState[i] == 0) processList.add(widgets[i][0]);
         }
         return processList;
     }

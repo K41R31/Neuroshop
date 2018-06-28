@@ -1,5 +1,6 @@
 package Neuroshop.Widgets.DataManagerWidget;
 
+import Neuroshop.Main;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
@@ -7,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -25,6 +28,22 @@ public class DataManagerWidgetController implements Observer {
     private Text button1Text;
     @FXML
     private Text button2Text;
+
+
+    @FXML
+    private void loadDataSet() {
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select a dataset");
+
+        fileChooser.setInitialDirectory(new File("C:/Users"));
+
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("CSV", "*.csv"),
+                new FileChooser.ExtensionFilter("TXT", "*.txt")
+        );
+        File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
+        if (dataSetFile != null) annModel.setRawDataSetFile(dataSetFile);
+    }
 
     @Override
     public void update(Observable o, Object arg) {
