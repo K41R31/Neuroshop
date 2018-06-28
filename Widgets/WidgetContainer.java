@@ -29,11 +29,11 @@ public class WidgetContainer {
         diagramWidgetLoader = new FXMLLoader(getClass().getResource("DiagramWidget/DiagramWidgetView.fxml"));
         diagramWidgetRoot = diagramWidgetLoader.load();
         diagramWidgetRoot.getStylesheets().add("Neuroshop/Widgets/DataManagerWidget/DataManagerWidgetStyle.css");
-        dataManagerWidgetRoot.setId("Diagram");
+        diagramWidgetRoot.setId("Diagram");
 
         neuralNetWidgetLoader = new FXMLLoader(getClass().getResource("NeuralNetWidget/NeuralNetView.fxml"));
         neuralNetWidgetRoot = neuralNetWidgetLoader.load();
-        dataManagerWidgetRoot.setId("Neural Net");
+        neuralNetWidgetRoot.setId("Neural Net");
 
         dataManagerPrevRoot = new PreviewWidget("Data Manager", new Image("Neuroshop/Ressources/thumbKommtNoch.png"), widgetContainerModel);
         diagramPrevRoot = new PreviewWidget("Diagram", new Image("Neuroshop/Ressources/resultDiagramThumb.png"), widgetContainerModel);
