@@ -197,8 +197,8 @@ public class Backpropagation extends DeltaRule {
                 case BATCH:
                     if(k==trainingDataSet.numberOfRecords-1)
                         applyNewWeights();
-//                      if ((epoch % 10) == 0) annModel.setWeights(lastDeltaWeights);
-                        if ((epoch % 10) == 0) System.out.println(epoch);
+                      if ((epoch % 100) == 0) annModel.setWeights(lastDeltaWeights);
+
                     break;
                 case ONLINE:
                     applyNewWeights();
