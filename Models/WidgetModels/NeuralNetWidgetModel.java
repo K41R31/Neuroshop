@@ -9,8 +9,6 @@ import java.util.Observable;
 
 public class NeuralNetWidgetModel extends Observable {
 
-    private int numberOfInputs;
-    private int numberOfOutputs;
     private int[] inputColumns;
     private int[] outputColumns;
 
@@ -32,7 +30,7 @@ public class NeuralNetWidgetModel extends Observable {
 
     public NeuralNetWidgetModel() {
     }
-    
+
     public int[] getInputColumns() {
         return this.inputColumns;
     }

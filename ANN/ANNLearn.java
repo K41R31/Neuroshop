@@ -41,7 +41,7 @@ public class ANNLearn {
         this.actFnc = actFnc;
         this.outputActFnc = outputActFnc;
 
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, numberOfHiddenNeurons, actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, numberOfHiddenNeurons, actFnc, outputActFnc, new UniformInitialization(0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
