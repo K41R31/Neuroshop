@@ -12,11 +12,8 @@ public class Prototyp {
 
     public static void main (String[] args)  {
 
-<<<<<<< HEAD
-        int[] numberOfHiddenNeurons = {2};
-=======
         int[] numberOfHiddenNeurons = {6}; //JA
->>>>>>> 745123715676bcff96e46ff323ebead4ab49fd3c
+
         double learningRate = (0.9);
         int maxEpochs = (5000);
         double momentumRate = (0.7);
@@ -34,15 +31,8 @@ public class Prototyp {
         LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
         DataNormalization dataNormType = new DataNormalization(-1.0, 1.0);
 
-<<<<<<< HEAD
-
         DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
 
-
-=======
-        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
-
->>>>>>> 745123715676bcff96e46ff323ebead4ab49fd3c
         double[][] dSet = dataSet.getData();
         System.out.println(dataSet.numberOfColumns);
 

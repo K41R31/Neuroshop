@@ -32,27 +32,7 @@ public class NeuralNetWidgetModel extends Observable {
 
     public NeuralNetWidgetModel() {
     }
-
-    public int getNumberOfInputs() {
-        return this.numberOfInputs;
-    }
-
-    public void setNumberOfInputs(int numberOfInputs) {
-        this.numberOfInputs = numberOfInputs;
-        this.setChanged();
-        this.notifyObservers(numberOfInputs);
-    }
-
-    public int getNumberOfOutputs() {
-        return this.numberOfOutputs;
-    }
-
-    public void setNumberOfOutputs() {
-        this.numberOfOutputs = numberOfOutputs;
-        this.setChanged();
-        this.notifyObservers(numberOfOutputs);
-    }
-
+    
     public int[] getInputColumns() {
         return this.inputColumns;
     }
