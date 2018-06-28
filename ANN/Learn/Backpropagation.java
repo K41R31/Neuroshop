@@ -369,9 +369,7 @@ public class Backpropagation extends DeltaRule {
             //simpleError=simpleErrorEach.get(trainingDataSet.numberOfRecords-1);
     }
 
-    public double getNewWeight() {
-        return newWeights;
-    }
+
 
     @Override
     public void applyNewWeights() {
