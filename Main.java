@@ -16,7 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -89,7 +88,7 @@ public class Main extends Application {
         primaryStage.show();
 
         ScreenSize.toggleFullScreen(false);
-        primaryStage.getIcons().add(new Image("Neuroshop/Ressources/taskbarIcon.jpg"));
+        primaryStage.getIcons().add(new Image("Neuroshop/Ressources/Assets/taskbarIcon.jpg"));
         primaryStage.getIcons().size();
     }
 

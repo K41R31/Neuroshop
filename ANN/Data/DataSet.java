@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  * DataSet This class performs several Math calculation.
- * For example: correlation, standard devination, mean, append new Data
+ * For example: correlation, standard devination, mean, append new SavedData
  * 
  * @author Alan de Souza, Fábio Soares
  * @version 0.1

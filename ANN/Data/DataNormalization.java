@@ -4,7 +4,7 @@ import Neuroshop.ANN.Math.ArrayOperations;
 
 /**
  * 
- * DataNormalization This abstract class allows normalize and denormalize Data
+ * DataNormalization This abstract class allows normalize and denormalize SavedData
  * via MIN_MAX, AVG_STDDEV, MINUSONE_PLUSONE, MINUSTWO_PLUSTWO techniques
  * 
  * @author Alan de Souza, Fábio Soares
@@ -104,7 +104,7 @@ public class DataNormalization {
 	}
 
 	/**
-	 * Normalizes Data matrix
+	 * Normalizes SavedData matrix
 	 * 
 	 * @param data matrix to be normalized
 	 * @return normalized matrix
@@ -159,7 +159,7 @@ public class DataNormalization {
 	}
 
 	/**
-	 * Denormalizes Data matrix
+	 * Denormalizes SavedData matrix
 	 * 
 	 * @param data matrix of raw real numbers
 	 * @param data matrix of normalized real numbers
@@ -188,7 +188,7 @@ public class DataNormalization {
 	}
 
 	/**
-	 * Denormalizes Data vector
+	 * Denormalizes SavedData vector
 	 * 
 	 * @param data vector of raw real numbers
 	 * @param data vector of normalized real numbers

@@ -21,7 +21,7 @@
          <children>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                <image>
-                  <Image url="@../../Ressources/toolsMenuButton.png" />
+                  <Image url="@../../Ressources/Assets/toolsMenuButton.png" />
                </image>
                <VBox.margin>
                   <Insets />

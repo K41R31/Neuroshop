@@ -7,7 +7,7 @@ import Neuroshop.ANN.Math.RandomNumberGenerator;
 import java.util.ArrayList;
 
 /** 
- * This class keeps neural Data set parameters and operations
+ * This class keeps neural SavedData set parameters and operations
  * @author Alan de Souza, Fábio Soares
  * @version 0.1
  */

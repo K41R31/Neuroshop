@@ -1,5 +1,5 @@
 .slider .thumb {
-    -fx-background-image :url("../../Ressources/sliderMoveable.png");
+    -fx-background-image :url("../../Ressources/Assets/sliderMoveable.png");
     -fx-padding: 22;
     -fx-pref-height: 42;
     -fx-pref-width: 44;

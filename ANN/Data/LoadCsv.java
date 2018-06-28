@@ -19,7 +19,7 @@ public class LoadCsv {
 	 */
 	private String FILE_NAME;
 	/**
-	 * Data matrix to store values from CSV file 
+	 * SavedData matrix to store values from CSV file
 	 */
 	private double[][] dataMatrix;
 	
@@ -50,7 +50,7 @@ public class LoadCsv {
         }
         
 	/**
-	 * Gets Data matrix
+	 * Gets SavedData matrix
 	 * @param path
 	 * @param fileName
 	 * @return Java Matrix
