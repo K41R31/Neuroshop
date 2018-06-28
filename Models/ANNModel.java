@@ -21,6 +21,8 @@ public class ANNModel extends Observable {
 
     public void setDatasetFile(File dataSetFile) {
         this.datasetFile = dataSetFile;
+        setChanged();
+        notifyObservers("loadDataSet");
     }
 
     public File getDatasetFile() {
