@@ -42,7 +42,7 @@ public class DataManagerWidgetController implements Observer {
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
         File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
-        if (dataSetFile != null) annModel.setRawDataSetFile(dataSetFile);
+        if (dataSetFile != null) annModel.setDatasetFile(dataSetFile);
     }
 
     @Override

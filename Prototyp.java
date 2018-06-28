@@ -39,7 +39,7 @@ public class Prototyp {
 
         DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
 
-        annModel.setDataSet(dataSet.getData());
+        annModel.setDataset(dataSet.getData());
         ANNLearn aL = new ANNLearn();
         //Init Model----------------------------------------------------------------------------------------------------
         aL.initModel(annModel);

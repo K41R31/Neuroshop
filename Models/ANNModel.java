@@ -6,9 +6,9 @@ import java.util.Observable;
 
 public class ANNModel extends Observable {
 
-    private File dataSetFile;
+    private File datasetFile;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
-    private double[][] dataSet;
+    private double[][] dataset;
 
 
     public void setNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
@@ -19,19 +19,19 @@ public class ANNModel extends Observable {
         return newWeights;
     }
 
-    public void setRawDataSetFile(File dataSetFile) {
-        this.dataSetFile = dataSetFile;
+    public void setDatasetFile(File dataSetFile) {
+        this.datasetFile = dataSetFile;
     }
 
-    public File getRawDataSetFile() {
-        return dataSetFile;
+    public File getDatasetFile() {
+        return datasetFile;
     }
 
-    public void setDataSet(double[][] dataSet) {
-        this.dataSet = dataSet;
+    public void setDataset(double[][] dataSet) {
+        this.dataset = dataSet;
     }
 
     public double[][] getDataSet() {
-        return dataSet;
+        return dataset;
     }
 }
