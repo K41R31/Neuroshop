@@ -5,4 +5,6 @@ DataLoader wo Art der Lilie ausgewählt werden muss -- sobald checkLilie öffne 
 Spalte 1 als Input wählen -- enable Spalte 2 als Output wählen -- enable Start/Okay/Wasauchimmer
 WhiteBoard mit Pfeil auf linke Hidbar, need to draw NeuralNet Widget -- sobald auf dem Whiteboard setze check
 Enable EditNeuralNetWidget; füge neue HiddenLayer hinzu -- check; enable delete HiddenLayer -- check; setze gewichtung -- check; enable save
+Whiteboard mit Pfeil auf linke HidBar, need to draw Diagram Widget -- check
+Whiteboard mit Pfeil auf untere Hidbar, verschiebe NumberOfHiddenNeurons -- check; verschiebe learningRate -- check; verschiebe maxEpochs -- check; verschiebe momentumRate
 
