@@ -11,8 +11,6 @@ import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
 import org.jfree.chart.ChartFrame;
 
 import java.awt.*;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -197,14 +195,13 @@ public class Backpropagation extends DeltaRule {
                 case BATCH:
                     if(k==trainingDataSet.numberOfRecords-1)
                         applyNewWeights();
-//                      if ((epoch % 10) == 0) annModel.setWeights(lastDeltaWeights);
-                        if ((epoch % 10) == 0) System.out.println(epoch);
                     break;
                 case ONLINE:
                     applyNewWeights();
             }
             currentRecord=++k;
             if(k>=trainingDataSet.numberOfRecords){
+                annModel.setNewWeights(lastDeltaWeights); //Weights in Model schreiben
                 k=0;
                 currentRecord=0;
                 listOfErrorsByEpoch.add(overallGeneralError);

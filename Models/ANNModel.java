@@ -5,10 +5,22 @@ import java.util.Observable;
 
 public class ANNModel extends Observable {
 
-    int counter = 0;
+    private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
+    private double[][] dataSet;
 
-    public void setWeights(ArrayList weights) {
-        System.out.println(counter);
-        counter++;
+    public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
+        return newWeights;
+    }
+
+    public void setNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
+        this.newWeights = newWeights;
+    }
+
+    public double[][] getDataSet() {
+        return dataSet;
+    }
+
+    public void setDataSet(double[][] dataSet) {
+        this.dataSet = dataSet;
     }
 }

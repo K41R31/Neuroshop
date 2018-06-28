@@ -190,7 +190,7 @@ public class Neuron {
     }
     
     /**
-     * getWeights
+     * getNewWeights
      * @return Returns the neuron's weights in the form of vector
      */
     public double[] getWeights(){
