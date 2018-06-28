@@ -21,7 +21,6 @@ public class ANNModel extends Observable {
     private int dataPercentage;
     private int[] numberOfHiddenNeurons;
     private int numberNeuronsHdnLayer;
-    private double[][] dataSet;
 
     private File datasetFile;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
