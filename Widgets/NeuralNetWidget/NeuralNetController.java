@@ -1,6 +1,6 @@
 package Neuroshop.Widgets.NeuralNetWidget;
 
-import Neuroshop.ANN.ANNModel;
+import Neuroshop.Models.ANNModel;
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.fxml.FXML;
