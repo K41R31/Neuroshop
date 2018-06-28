@@ -82,12 +82,13 @@ public class ANNLearn {
         backprop.printTraining = true;
         backprop.showPlotError = true;
 
+
+
         try {
             backprop.forward();
 //            System.out.println(backprop.applyNewWeights(lastDeltaWeights));
 
             backprop.train();
-
 
             neuralDataSetToTest.printInput();
             neuralDataSetToTrain.printInput();

@@ -30,7 +30,7 @@ public class Backpropagation extends DeltaRule {
     public ArrayList<ArrayList<Double>> deltaNeuron;
     
     public ArrayList<ArrayList<ArrayList<Double>>> lastDeltaWeights;
-  
+
     public Backpropagation(NeuralNet _neuralNet){
         super(_neuralNet);
         initializeDeltaNeuron();
@@ -189,12 +189,13 @@ public class Backpropagation extends DeltaRule {
         int countRiseError=0;
         
         while(epoch<MaxEpochs && overallGeneralError>MinOverallError
-                && (testingDataSet==null || testErrorVariation<0.0 || countRiseError<4) ){
+                && (testingDataSet==null || testErrorVariation<0.0 || countRiseError<20000) ){
             backward();
             switch(learningMode){
                 case BATCH:
                     if(k==trainingDataSet.numberOfRecords-1)
                         applyNewWeights();
+
                     break;
                 case ONLINE:
                     applyNewWeights();
@@ -369,14 +370,6 @@ public class Backpropagation extends DeltaRule {
             //simpleError=simpleErrorEach.get(trainingDataSet.numberOfRecords-1);
     }
 
-<<<<<<< HEAD
-
-=======
-//    public double getNewWeight() {
-//        return newWeights;
-//    }
->>>>>>> c8c2f2a7cb8638290bfb2dd7625d28c2d9757f16
-
     @Override
     public void applyNewWeights() {
 
@@ -399,7 +392,6 @@ public class Backpropagation extends DeltaRule {
                             hl.getNeuron(j).updateWeight(i, newWeight);
 
                         }
-
                   }
 
                 } else {
@@ -421,8 +413,6 @@ public class Backpropagation extends DeltaRule {
                     }
                 }
             }
-
-
     }
 
     public void setMomentumRate(double _momentumRate){

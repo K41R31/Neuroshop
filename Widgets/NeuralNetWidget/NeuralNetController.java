@@ -1,5 +1,6 @@
 package Neuroshop.Widgets.NeuralNetWidget;
 
+import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
@@ -21,6 +22,7 @@ public class NeuralNetController extends StackPane implements Observer {
 
     private NeuralNetWidgetModel neuralNetWidgetModel;
     private ANNModel annModel;
+    private Backpropagation bP;
     private WidgetContainerModel widgetContainerModel;
 
     @FXML
@@ -51,6 +53,7 @@ public class NeuralNetController extends StackPane implements Observer {
 
     @FXML
     private void changeWidth() {
+
         splineWidth = sliderWidth.getValue();
         drawSplines();
     }
