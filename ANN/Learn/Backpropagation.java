@@ -197,12 +197,8 @@ public class Backpropagation extends DeltaRule {
                 case BATCH:
                     if(k==trainingDataSet.numberOfRecords-1)
                         applyNewWeights();
-<<<<<<< HEAD
-//                        if ((epoch % 10) == 0) annModel.setWeights(lastDeltaWeights);
-                    if ((epoch % 10) == 0) System.out.println(epoch);
-=======
-
->>>>>>> 285c6b415cb67050c2b64ca513b32a95d1bcaa30
+//                      if ((epoch % 10) == 0) annModel.setWeights(lastDeltaWeights);
+                        if ((epoch % 10) == 0) System.out.println(epoch);
                     break;
                 case ONLINE:
                     applyNewWeights();
@@ -399,11 +395,7 @@ public class Backpropagation extends DeltaRule {
                             hl.getNeuron(j).updateWeight(i, newWeight);
 
                         }
-<<<<<<< HEAD
-                    }
-=======
                   }
->>>>>>> 285c6b415cb67050c2b64ca513b32a95d1bcaa30
 
                 } else {
                     OutputLayer ol = this.neuralNet.getOutputLayer();
