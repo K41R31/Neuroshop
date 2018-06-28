@@ -1,44 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #252525;" stylesheets="@DataManagerWidgetStyle.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@DataManagerWidgetStyle.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController">
    <children>
       <SplitPane dividerPositions="0.2902684563758389" orientation="VERTICAL" style="-fx-background-color: TRANSPARENT;">
          <items>
             <HBox alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TEST">
+                  <Text fill="#c3c3c3" strokeType="OUTSIDE" strokeWidth="0.0" text="DataManager">
                      <font>
-                        <Font size="39.0" />
+                        <Font name="Champagne &amp; Limousines" size="39.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <SplitPane dividerPositions="0.6930803571428571" style="-fx-background-color: TRANSPARENT;">
+            <SplitPane dividerPositions="0.6930803571428571, 0.5" style="-fx-background-color: TRANSPARENT;">
                <items>
-                  <SplitPane dividerPositions="0.25, 0.5, 0.75" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;">
-                     <items>
-                        <VBox minWidth="100.0" />
-                        <VBox layoutX="10.0" layoutY="10.0" minWidth="100.0" />
-                        <VBox layoutX="10.0" layoutY="10.0" minWidth="100.0" />
-                        <VBox layoutX="10.0" layoutY="10.0" minWidth="100.0" />
-                     </items>
-                  </SplitPane>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
+                  <VBox alignment="TOP_CENTER" maxWidth="40.0" minWidth="20.0" prefHeight="200.0" prefWidth="30.0" spacing="2.0">
+                     <padding>
+                        <Insets top="40.0" />
+                     </padding>
+                     <children>
+                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                           <font>
+                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#c6c6c6" layoutX="26.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                           <font>
+                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#c6c6c6" layoutX="26.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                           <font>
+                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#c6c6c6" layoutX="26.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                           <font>
+                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" minWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <CheckBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                              <VBox alignment="TOP_CENTER" minWidth="100.0" spacing="2.0">
+                                 <children>
+                                    <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Reihepapeie">
+                                       <font>
+                                          <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#c6c6c6" layoutX="44.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reihepapeie">
+                                       <font>
+                                          <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#c6c6c6" layoutX="44.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reihepapeie">
+                                       <font>
+                                          <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#c6c6c6" layoutX="44.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reihepapeie">
+                                       <font>
+                                          <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" minWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <CheckBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                              <VBox alignment="TOP_CENTER" minWidth="100.0">
+                                 <children>
+                                    <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Reihepapeie">
+                                       <font>
+                                          <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" layoutX="315.0" layoutY="10.0" minWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <CheckBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                              <VBox alignment="TOP_CENTER" minWidth="100.0">
+                                 <children>
+                                    <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Reihepapeie">
+                                       <font>
+                                          <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" layoutX="520.0" layoutY="10.0" minWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <CheckBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                              <VBox alignment="TOP_CENTER" minWidth="100.0">
+                                 <children>
+                                    <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Reihepapeie">
+                                       <font>
+                                          <Font name="Champagne &amp; Limousines Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox maxWidth="-Infinity" minWidth="200.0" prefWidth="250.0" />
                </items>
             </SplitPane>
          </items>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
       </SplitPane>
    </children>
-   <effect>
-      <InnerShadow blurType="GAUSSIAN" height="32.0" radius="15.6525" width="32.61" />
-   </effect>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+   </padding>
 </StackPane>

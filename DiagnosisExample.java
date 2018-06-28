@@ -105,7 +105,7 @@ public class DiagnosisExample {
 
 				Sigmoid hl0Fnc = new Sigmoid(1.0);
 				Linear outputAcFnc = new Linear(1.0);
-			
+
 				IActivationFunction[] hiddenAcFnc = { hl0Fnc };
 			
 				System.out.println("Creating Neural Network...");
