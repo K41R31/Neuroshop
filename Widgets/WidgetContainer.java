@@ -62,5 +62,7 @@ public class WidgetContainer {
 
         //Show DataManager----------------------------------------------------------------------------------------------
         widgetContainerModel.addWidgetToWhiteboard("Data Manager");
+        widgetContainerModel.clearBufferedWidget();
+        widgetContainerModel.changeWidgetStateById("Data Manager", 1);
     }
 }
