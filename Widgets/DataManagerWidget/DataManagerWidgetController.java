@@ -1,7 +1,8 @@
 package Neuroshop.Widgets.DataManagerWidget;
 
+import Neuroshop.ANN.ANNModel;
 import Neuroshop.Main;
-import Neuroshop.Models.ANNModel;
+
 import Neuroshop.Models.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.fxml.FXML;
