@@ -7,8 +7,11 @@ import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 import Neuroshop.ANN.Math.Sigmoid;
+import Neuroshop.Models.ANNModel;
 
 public class Prototyp {
+
+    private static ANNModel annModel;
 
     public static void main (String[] args)  {
 
@@ -46,6 +49,10 @@ public class Prototyp {
 //        }
 
         ANNLearn aL = new ANNLearn();
+        //Init Model----------------------------------------------------------------------------------------------------
+        annModel = new ANNModel();
+        aL.initModel(annModel);
+
         aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
 
     }

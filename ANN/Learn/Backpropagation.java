@@ -6,6 +6,7 @@ import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Data.TimeSeries;
 import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Neural.*;
+import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
 import org.jfree.chart.ChartFrame;
 
@@ -25,6 +26,7 @@ public class Backpropagation extends DeltaRule {
 
     DiagramWidgetModel dWM;
 
+    private ANNModel annModel;
     private double MomentumRate=0.7;
     
     public ArrayList<ArrayList<Double>> deltaNeuron;
@@ -195,7 +197,8 @@ public class Backpropagation extends DeltaRule {
                 case BATCH:
                     if(k==trainingDataSet.numberOfRecords-1)
                         applyNewWeights();
-
+//                      if ((epoch % 10) == 0) annModel.setWeights(lastDeltaWeights);
+                        if ((epoch % 10) == 0) System.out.println(epoch);
                     break;
                 case ONLINE:
                     applyNewWeights();
@@ -399,7 +402,6 @@ public class Backpropagation extends DeltaRule {
                     numberOfNeuronsInLayer = ol.getNumberOfNeuronsInLayer();
                     for (int j = 0; j < numberOfNeuronsInLayer; j++) {
                         numberOfInputsInNeuron = ol.getNeuron(j).getNumberOfInputs();
-
                         for (int i = 0; i <= numberOfInputsInNeuron; i++) {
                             Double lastDeltaWeight = lastDeltaWeights.get(l).get(j).get(i);
                             double momentum = MomentumRate * lastDeltaWeight;
@@ -507,5 +509,8 @@ public class Backpropagation extends DeltaRule {
     public void showScatterFittingEvolution(){
         
     }
-    
+
+    public void initModel(ANNModel annModel) {
+        this.annModel = annModel;
+    }
 }
