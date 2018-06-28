@@ -60,6 +60,7 @@ public class Main extends Application {
 
         //Init Model----------------------------------------------------------------------------------------------------
         ANNModel annModel = new ANNModel();
+//        DataModel dataModel = new DataModel();
         DataManagerWidgetModel dataManagerWidgetModel = new DataManagerWidgetModel();
         DiagramWidgetModel diagramWidgetModel = new DiagramWidgetModel();
         NeuralNetWidgetModel neuralNetWidgetModel = new NeuralNetWidgetModel();

@@ -2,7 +2,6 @@ package Neuroshop.Widgets.DataManagerWidget;
 
 import Neuroshop.Main;
 import Neuroshop.Models.ANNModel;
-import Neuroshop.Models.DataModel;
 import Neuroshop.Models.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
@@ -10,12 +9,10 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,7 +20,6 @@ public class DataManagerWidgetController implements Observer {
 
     private DataManagerWidgetModel dataManagerWidgetModel;
     private ANNModel annModel;
-    private DataModel dataModel;
     private LastOpenedFiles lastOpened;
     private WidgetContainerModel widgetContainerModel;
 
@@ -52,7 +48,7 @@ public class DataManagerWidgetController implements Observer {
         );
         File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
         if (dataSetFile != null) {
-            dataModel.setDatasetFile(dataSetFile);
+            annModel.setDatasetFile(dataSetFile);
             importPane.setStyle("-fx-background-color: TRANSPARENT");
             importPane.setDisable(true);
         }
