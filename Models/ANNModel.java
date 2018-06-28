@@ -36,6 +36,7 @@ public class ANNModel extends Observable {
 
     private LearningAlgorithm.LearningMode lMode;
 
+<<<<<<< HEAD
     private File datasetFile;
     private double[][] dataset;
 
@@ -57,6 +58,8 @@ public class ANNModel extends Observable {
         return dataset;
     }
 
+=======
+>>>>>>> c6dd77e0c6f911f62ff1d8be40c6258041fde019
     public int[] getInputColumns() {
         return this.inputColumns;
     }

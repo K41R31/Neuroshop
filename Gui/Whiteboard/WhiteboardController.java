@@ -1,6 +1,7 @@
 package Neuroshop.Gui.Whiteboard;
 
 import Neuroshop.Models.WidgetContainerModel;
+import Neuroshop.ScreenSize;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
@@ -18,7 +19,13 @@ public class WhiteboardController implements Observer {
     private AnchorPane draggPane;
     private WidgetContainerModel widgetContainerModel;
 
-    private void addWidgetToWhiteboard(StackPane widget) {
+    private void addWidgetToWhiteboard(StackPane widget, boolean firstWidget) {
+        double offsetX = widget.getWidth();
+        double offsetY = widget.getHeight();
+        if (firstWidget) {
+            offsetX = ScreenSize.width / 2;
+            offsetY = ScreenSize.height / 2;
+        }
         whiteboardPane.getChildren().add(widget);
         widget.setLayoutX(MouseInfo.getPointerInfo().getLocation().x - 150); //TODO irgendwie Breite der Pane bekommen und Hälfte abzeiehen
         widget.setLayoutY(MouseInfo.getPointerInfo().getLocation().y - 150);
@@ -47,7 +54,12 @@ public class WhiteboardController implements Observer {
             case "addWidgetToWhiteboard":
                 removeDraggPane();
                 draggPane.toBack();
-                addWidgetToWhiteboard(widgetContainerModel.getBufferedWidget());
+                addWidgetToWhiteboard(widgetContainerModel.getBufferedWidget(), false);
+                break;
+            case "addFirstDataManager":
+                removeDraggPane();
+                draggPane.toBack();
+                addWidgetToWhiteboard(widgetContainerModel.getBufferedWidget(), true);
         }
     }
 

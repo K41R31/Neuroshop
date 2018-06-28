@@ -44,6 +44,7 @@ public class DataManagerWidgetController implements Observer {
                 new FileChooser.ExtensionFilter("CSV", "*.csv"),
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
+<<<<<<< HEAD
         File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
 
         if (dataSetFile != null) annModel.setDatasetFile(dataSetFile);
@@ -54,6 +55,15 @@ public class DataManagerWidgetController implements Observer {
             importPane.setDisable(true);
         }
 
+=======
+        File datasetFile = fileChooser.showOpenDialog(Main.primaryStage);
+
+        if (datasetFile != null) {
+            annModel.setDatasetFile(datasetFile);
+            importPane.setOpacity(0);
+            importPane.setDisable(true);
+        }
+>>>>>>> c6dd77e0c6f911f62ff1d8be40c6258041fde019
     }
 /*
     private void initializeDataQueue() {
@@ -123,8 +133,7 @@ public class DataManagerWidgetController implements Observer {
         button2Text.setFill(Color.web("#4490ff"));
     }
 
-    public void initModel(DataManagerWidgetModel dataManagerWidgetModel, ANNModel annModel, WidgetContainerModel widgetContainerModel) {
-        this.dataManagerWidgetModel = dataManagerWidgetModel;
+    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel) {
         this.annModel = annModel;
         this.widgetContainerModel = widgetContainerModel;
     }

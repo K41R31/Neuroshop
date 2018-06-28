@@ -1,8 +1,5 @@
 package Neuroshop.Gui.WidgetSettings;
 
-import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
-import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
-import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -26,9 +23,6 @@ public class WidgetSettingsController implements Observer {
     private HBox contentPane;
     @FXML
     private VBox rootPane;
-    private DataManagerWidgetModel dataManagerWidgetModel;
-    private DiagramWidgetModel diagramWidgetModel;
-    private NeuralNetWidgetModel neuralNetWidgetModel;
     private boolean menuIsOpen;
 
     @FXML
@@ -68,11 +62,5 @@ public class WidgetSettingsController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-    }
-
-    public void initModel(DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) {
-        this.dataManagerWidgetModel = dataManagerWidgetModel;
-        this.diagramWidgetModel = diagramWidgetModel;
-        this.neuralNetWidgetModel = neuralNetWidgetModel;
     }
 }
