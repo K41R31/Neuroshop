@@ -21,8 +21,8 @@ public class Prototyp {
         int maxEpochs = (5000);
         double momentumRate = (0.7);
         double minOverallError = (0.007);
-        int[] inputColumns = {0, 1, 2, 3};
-        int[] outputColumns = {4};
+        int[] inputColumns = {0, 1, 2, 3, 4, 5, 6, 7};
+        int[] outputColumns = {8, 9};
         double dataPercentage = (0.8);
 
         Sigmoid h10Fnc = new Sigmoid(1.0);
@@ -31,10 +31,11 @@ public class Prototyp {
         IActivationFunction outputActFnc = new Linear (1.0);
         IActivationFunction[] actFnc = {h10Fnc};
 
-        LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
-        DataNormalization dataNormType = new DataNormalization(-1.0, 1.0);
 
-        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
+        LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
+        DataNormalization dataNormType = new DataNormalization(0, 1.0);
+
+        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "diabetes_fulldata.txt" ); // Spalten müssen mit "," getrennt werden
 
         double[][] dSet = dataSet.getData();
         System.out.println(dataSet.numberOfColumns);
