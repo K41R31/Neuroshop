@@ -38,8 +38,8 @@ public class InitANN implements Observer {
         }
     }
 
-    public void initModel(ANNModel annModel, DataModel dataModel) {
+    public void initModel(ANNModel annModel/*, DataModel dataModel*/) {
         this.annModel = annModel;
-        this.dataModel = dataModel;
+//        this.dataModel = dataModel;
     }
 }

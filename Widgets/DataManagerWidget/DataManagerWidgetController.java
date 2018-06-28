@@ -51,44 +51,44 @@ public class DataManagerWidgetController implements Observer {
         if (dataSetFile != null) dataModel.setDatasetFile(dataSetFile);
     }
 
-    private void initializeDataQueue() {  //TODO Möglichkeit einzelne Images raus zu löschen
-        ArrayList<String> files = lastOpened.getOpenedFiles();
-        if (files.size() == 0) {
-            Text text = new Text("No recently opened files");
-            text.setFont(new Font("Walkway Bold",16)); //TODO An GUI anpassen, Schriftgröße etc.
-
-        } else {
-            for (String fileString : files) {
-                if (new File(fileString).exists()) {
-
-
-
-                    Image image = new Image(new File(fileString).toURI().toString());
-                    ImageView imageView = new ImageView(image);
-                    imageView.setOnMousePressed(e -> {
-                        quickLoadFile = new File(fileString);
-                        loadImage();
-                    });
-                    imageView.setFitWidth(windowWidth*0.0781 * 1.5);
-                    imageView.setFitHeight(windowWidth*0.0781);
-                    imageView.setViewport(new Rectangle2D((image.getWidth() - image.getHeight() * 1.5) / 2, 0, image.getHeight() * 1.5, image.getHeight()));
-                    imageView.setEffect(new DropShadow(windowWidth*0.0156, Color.BLACK));
-                    imageView.setOnMouseEntered(e -> imageView.setEffect(new Glow()));
-                    imageView.setOnMouseExited(e -> imageView.setEffect(new DropShadow(windowWidth*0.0156, Color.BLACK)));
-                    imageView.getStyleClass().add("images-Queue");
-                    list_queueImages.add(imageView);
-                }
-                else {
-                    try {
-                        lastOpenedFiles.deleteStringInFile(fileString);
-                    } catch (IOException e) {
-                        System.out.println("ERROR");
-                    }
-                }
-            }
-        }
-        updateDataQueue();
-    }
+//    private void initializeDataQueue() {  //TODO Möglichkeit einzelne Images raus zu löschen
+//        ArrayList<String> files = lastOpened.getOpenedFiles();
+//        if (files.size() == 0) {
+//            Text text = new Text("No recently opened files");
+//            text.setFont(new Font("Walkway Bold",16)); //TODO An GUI anpassen, Schriftgröße etc.
+//
+//        } else {
+//            for (String fileString : files) {
+//                if (new File(fileString).exists()) {
+//
+//
+//
+//                    Image image = new Image(new File(fileString).toURI().toString());
+//                    ImageView imageView = new ImageView(image);
+//                    imageView.setOnMousePressed(e -> {
+//                        quickLoadFile = new File(fileString);
+//                        loadImage();
+//                    });
+//                    imageView.setFitWidth(windowWidth*0.0781 * 1.5);
+//                    imageView.setFitHeight(windowWidth*0.0781);
+//                    imageView.setViewport(new Rectangle2D((image.getWidth() - image.getHeight() * 1.5) / 2, 0, image.getHeight() * 1.5, image.getHeight()));
+//                    imageView.setEffect(new DropShadow(windowWidth*0.0156, Color.BLACK));
+//                    imageView.setOnMouseEntered(e -> imageView.setEffect(new Glow()));
+//                    imageView.setOnMouseExited(e -> imageView.setEffect(new DropShadow(windowWidth*0.0156, Color.BLACK)));
+//                    imageView.getStyleClass().add("images-Queue");
+//                    list_queueImages.add(imageView);
+//                }
+//                else {
+//                    try {
+//                        lastOpenedFiles.deleteStringInFile(fileString);
+//                    } catch (IOException e) {
+//                        System.out.println("ERROR");
+//                    }
+//                }
+//            }
+//        }
+//        updateDataQueue();
+//    }
 
     @Override
     public void update(Observable o, Object arg) {

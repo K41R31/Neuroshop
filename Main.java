@@ -6,6 +6,7 @@ import Neuroshop.Gui.Options.OptionsController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.DataModel;
 import Neuroshop.Models.OptionsModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
@@ -60,6 +61,7 @@ public class Main extends Application {
 
         //Init Model----------------------------------------------------------------------------------------------------
         ANNModel annModel = new ANNModel();
+//        DataModel dataModel = new DataModel();
         DataManagerWidgetModel dataManagerWidgetModel = new DataManagerWidgetModel();
         DiagramWidgetModel diagramWidgetModel = new DiagramWidgetModel();
         NeuralNetWidgetModel neuralNetWidgetModel = new NeuralNetWidgetModel();
