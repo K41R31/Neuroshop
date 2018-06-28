@@ -13,11 +13,7 @@ public class LoadCsv {
 	/**
 	 * CSV file path 
 	 */
-	private String PATH;
-	/**
-	 * CSV file name 
-	 */
-	private String FILE_NAME;
+	private File FILE;
 	/**
 	 * SavedData matrix to store values from CSV file
 	 */
@@ -38,9 +34,8 @@ public class LoadCsv {
             
         }
         
-        public LoadCsv(String path,String fileName){
-            this.PATH=path;
-            this.FILE_NAME=fileName;
+        public LoadCsv(File file){
+            this.FILE=file;
         }
         
         public LoadCsv(String fileName,boolean _columnsInFirstRow,String _separator){
@@ -51,21 +46,19 @@ public class LoadCsv {
         
 	/**
 	 * Gets SavedData matrix
-	 * @param path
-	 * @param fileName
+	 * @param file
 	 * @return Java Matrix
 	 */
-	public double[][] getData(String path, String fileName){
-            return getData(path,fileName,false);
+	public double[][] getData(File file){
+            return getData(file, false);
 	}
         
-        public double[][] getData(String path,String fileName,boolean _columnsInFirstRow){
-            return getData(path,fileName,_columnsInFirstRow,",");
+        public double[][] getData(File file, boolean _columnsInFirstRow){
+            return getData(file, _columnsInFirstRow,",");
         }
-        
-        public double[][] getData(String path,String fileName,boolean _columnsInFirstRow,String _separator){
-            this.PATH = path;
-            this.FILE_NAME=fileName;
+
+        public double[][] getData(File file, boolean _columnsInFirstRow,String _separator){
+            this.FILE = file;
             this.columnsInFirstRow=_columnsInFirstRow;
             this.separator=_separator;
             try {
@@ -103,17 +96,10 @@ public class LoadCsv {
             }
             return this.dataMatrix;
         }
-        
-        public static DataSet getDataSet(String path,String fileName,boolean _columnsInFirstRow,String _separator){
-            LoadCsv lcsv = new LoadCsv(path, fileName);
-            try{
-                String fullPath=lcsv.defineAbsoluteFilePath();
-                return LoadCsv.getDataSet(fullPath, _columnsInFirstRow, _separator);
-            }
-            catch(IOException ioe){
-                System.out.println("Überraschung!");
-                return null;
-            }
+
+        public static DataSet getDataSet(File file, boolean _columnsInFirstRow,String _separator){
+            LoadCsv lcsv = new LoadCsv(file);
+            return LoadCsv.getDataSet(file, _columnsInFirstRow, _separator);
         }
         
         public static DataSet getDataSet(String fullPath,boolean _columnsInFirstRow,String _separator){
@@ -138,7 +124,7 @@ public class LoadCsv {
 	 */
 	private double[][] csvData2Matrix() throws IOException {
 
-		String fullPath = defineAbsoluteFilePath();
+		String fullPath = FILE.getAbsolutePath();
 
 		return csvData2Matrix(fullPath);
 
@@ -199,7 +185,7 @@ public class LoadCsv {
         
         public void save() throws IOException{
             if(fullFilePath==null)
-                fullFilePath=defineAbsoluteFilePath();
+                fullFilePath=FILE.getAbsolutePath();
             try(FileWriter w = new FileWriter(fullFilePath)) {
                 StringBuilder sb = new StringBuilder();
                 if(columnsInFirstRow){
@@ -234,10 +220,10 @@ public class LoadCsv {
             
         }
         
-        public static void dataMatrix2csv(double[][] data,String[] columnNames,String path,String filename,String separator){
-            LoadCsv lcsv = new LoadCsv(path, filename);
+        public static void dataMatrix2csv(double[][] data,String[] columnNames,File file,String filename,String separator){
+            LoadCsv lcsv = new LoadCsv(file);
             try{
-                lcsv.fullFilePath=lcsv.defineAbsoluteFilePath();
+                lcsv.fullFilePath=file.getAbsolutePath();
                 lcsv.dataMatrix=data;
                 lcsv.columnsInFirstRow=true;
                 lcsv.columnNames=columnNames;
@@ -262,39 +248,6 @@ public class LoadCsv {
                 System.err.println("Error while saving "+filename+":"+ioe.getMessage());
             }
         }
-        
-        
-	/**
-	 * Defines absolute file path according user folder and operation system 
-	 * @return absolute path
-	 * @throws IOException
-	 */
-	private String defineAbsoluteFilePath() throws IOException {
-
-		String absoluteFilePath = "";
-
-		String workingDir = System.getProperty("user.dir");
-
-		String OS = System.getProperty("os.name").toLowerCase();
-
-		if (OS.contains("win")) {
-			absoluteFilePath = workingDir + "\\" + PATH + "\\" + FILE_NAME;
-		} else {
-			absoluteFilePath = workingDir + "/" + PATH + "/" + FILE_NAME;
-		}
-
-		File file = new File(absoluteFilePath);
-
-		if (file.exists()) {
-			System.out.println("File found!");
-			System.out.println(absoluteFilePath);
-		} else {
-			System.err.println("File not found...");
-		}
-
-		return absoluteFilePath;
-
-	}
         
         public String[] getColumnNames(){
             return columnNames;

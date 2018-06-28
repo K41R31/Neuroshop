@@ -15,6 +15,7 @@ import java.util.Observer;
 public class InitANN implements Observer {
 
     private ANNModel annModel;
+    private DataSet dataset;
 
     public InitANN() {
 
@@ -27,9 +28,9 @@ public class InitANN implements Observer {
     }
 
     private void loadDataSet() {
+
         String datasetPath = annModel.getDatasetFile().getAbsolutePath();
-        datasetPath = datasetPath.substring(0, datasetPath.lastIndexOf("\\")-1);
-        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
+        dataset = new DataSet(datasetPath); // Spalten müssen mit "," getrennt werden
     }
 
     @Override

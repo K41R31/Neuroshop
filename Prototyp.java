@@ -37,14 +37,14 @@ public class Prototyp {
         LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
         DataNormalization dataNormType = new DataNormalization(0, 1.0);
 
-        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\SavedData", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
-
-        annModel.setDataset(dataSet.getData());
-        ANNLearn aL = new ANNLearn();
-        //Init Model----------------------------------------------------------------------------------------------------
-        aL.initModel(annModel);
-
-        aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
+//        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\SavedData", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
+//
+//        annModel.setDataset(dataSet.getData());
+//        ANNLearn aL = new ANNLearn();
+//        //Init Model----------------------------------------------------------------------------------------------------
+//        aL.initModel(annModel);
+//
+//        aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
 
     }
 }

@@ -10,6 +10,7 @@ import Neuroshop.ANN.Math.ArrayOperations;
 import org.jfree.chart.ChartFrame;
 
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -28,8 +29,8 @@ public class TimeSeries extends DataSet {
         super(_data,_columns);
     }
     
-    public TimeSeries(String path, String filename){
-        super(path,filename);
+    public TimeSeries(File file){
+        super(file);
     }
     
     public TimeSeries(String filename){

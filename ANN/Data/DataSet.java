@@ -10,6 +10,7 @@ import Neuroshop.ANN.Math.ArrayOperations;
 import org.jfree.chart.ChartFrame;
 
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -69,8 +70,8 @@ public class DataSet {
         }        
     }
     
-    public DataSet(String path, String filename){
-        double[][] _data=new LoadCsv(path,filename).getData(path,filename);
+    public DataSet(File file){
+        double[][] _data=new LoadCsv(file).getData(file);
         numberOfRecords=_data.length;
         numberOfColumns=_data[0].length;
         columns = new ArrayList<>();
@@ -219,8 +220,8 @@ public class DataSet {
         LoadCsv.dataMatrix2csv(getData(), getColumns(), filename, separator);
     }
     
-    public void save(String path,String filename,String separator){
-        LoadCsv.dataMatrix2csv(getData(), getColumns(), path, filename, separator);
+    public void save(File file, String filename, String separator){
+        LoadCsv.dataMatrix2csv(getData(), getColumns(), file, filename, separator);
     }
     
     public void dropNaN(double substvalue){
