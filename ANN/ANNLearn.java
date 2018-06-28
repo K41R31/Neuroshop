@@ -35,7 +35,7 @@ public class ANNLearn {
 
     public void train(DataSet dataSet, int[] inputColumns, int[] outputColumns, double dataPercentage, int maxEpochs, int[] numberOfHiddenNeurons,
                       double minOverallError, double learningRate, double momentumRate, IActivationFunction[] actFnc, IActivationFunction outputActFnc, LearningAlgorithm.LearningMode lMode, DataNormalization dataNormType) {
-//        RandomNumberGenerator.r = null;
+
         RandomNumberGenerator.setSeed(5);
 
         this.inputColumns = (inputColumns);

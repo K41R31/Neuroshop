@@ -1,7 +1,5 @@
 package Neuroshop.Widgets.DiagramWidget;
 
-import Neuroshop.ANN.ANNLearn;
-import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
