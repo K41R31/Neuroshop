@@ -88,11 +88,12 @@ public class ANNLearn {
         backprop.printTraining = true;
         backprop.showPlotError = true;
 
+
+
         try {
             backprop.forward();
 
             backprop.train();
-
 
             neuralDataSetToTest.printInput();
             neuralDataSetToTrain.printInput();

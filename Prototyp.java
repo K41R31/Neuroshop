@@ -16,6 +16,7 @@ public class Prototyp {
     public static void main (String[] args)  {
 
         int[] numberOfHiddenNeurons = {6}; //JA
+
         double learningRate = (0.9);
         int maxEpochs = (5000);
         double momentumRate = (0.7);
@@ -37,6 +38,8 @@ public class Prototyp {
 
         double[][] dSet = dataSet.getData();
         System.out.println(dataSet.numberOfColumns);
+
+
 
 //        for (int r = 0; r < dataSet.numberOfRecords; r++) {
 //            for (int c = 0; c < dataSet.numberOfColumns; c++) {
