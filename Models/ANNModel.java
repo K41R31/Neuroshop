@@ -11,6 +11,7 @@ import java.util.Observable;
 
 public class ANNModel extends Observable {
 
+<<<<<<< HEAD
     private File dataSetFile;
 
     private int[] inputColumns;
@@ -22,6 +23,11 @@ public class ANNModel extends Observable {
     private int[] numberOfHiddenNeurons;
     private int numberNeuronsHdnLayer;
     private double[][] dataSet;
+=======
+    private File datasetFile;
+    private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
+    private double[][] dataset;
+>>>>>>> 5c002fae2468e22fe2ed963754a87cb3c1c3e0cf
 
     private IActivationFunction[] actFnc;
     private IActivationFunction outputActFnc;
@@ -173,19 +179,19 @@ public class ANNModel extends Observable {
         return newWeights;
     }
 
-    public void setRawDataSetFile(File dataSetFile) {
-        this.dataSetFile = dataSetFile;
+    public void setDatasetFile(File dataSetFile) {
+        this.datasetFile = dataSetFile;
     }
 
-    public File getRawDataSetFile() {
-        return dataSetFile;
+    public File getDatasetFile() {
+        return datasetFile;
     }
 
-    public void setDataSet(double[][] dataSet) {
-        this.dataSet = dataSet;
+    public void setDataset(double[][] dataSet) {
+        this.dataset = dataSet;
     }
 
     public double[][] getDataSet() {
-        return dataSet;
+        return dataset;
     }
 }
