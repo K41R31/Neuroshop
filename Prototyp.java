@@ -19,7 +19,7 @@ public class Prototyp {
 
         int[] numberOfHiddenNeurons = {6};
 
-        double learningRate = (0.9);
+        double learningRate = (1);
         int maxEpochs = (5000);
         double momentumRate = (0.7);
         double minOverallError = (0.007);
