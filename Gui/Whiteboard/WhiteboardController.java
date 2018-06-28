@@ -20,16 +20,18 @@ public class WhiteboardController implements Observer {
     private WidgetContainerModel widgetContainerModel;
 
     private void addWidgetToWhiteboard(StackPane widget, boolean firstWidget) {
-        double offsetX = widget.getWidth();
-        double offsetY = widget.getHeight();
-        if (firstWidget) {
-            offsetX = ScreenSize.width / 2;
-            offsetY = ScreenSize.height / 2;
-        }
         whiteboardPane.getChildren().add(widget);
-        widget.setLayoutX(MouseInfo.getPointerInfo().getLocation().x - 150); //TODO irgendwie Breite der Pane bekommen und Hälfte abzeiehen
-        widget.setLayoutY(MouseInfo.getPointerInfo().getLocation().y - 150);
-        widget.toBack();
+        double offsetX = widget.getPrefWidth() / 2;
+        double offsetY = widget.getPrefHeight() / 2;
+        System.out.println(offsetX+" "+offsetY);
+        if (firstWidget) {
+            widget.setLayoutX((ScreenSize.width / 2) - offsetX);
+            widget.setLayoutY((ScreenSize.height / 2) - offsetY);
+        } else {
+            widget.setLayoutX(MouseInfo.getPointerInfo().getLocation().x - offsetX);
+            widget.setLayoutY(MouseInfo.getPointerInfo().getLocation().y - offsetY);
+            widget.toBack();
+        }
     }
 
     private void setDraggPane(StackPane draggPreview) {

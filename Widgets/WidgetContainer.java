@@ -21,7 +21,7 @@ public class WidgetContainer {
 
         dataManagerLoader = new FXMLLoader(getClass().getResource("DataManagerWidget/DataManagerWidgetView.fxml"));
         dataManagerWidgetRoot = dataManagerLoader.load();
-        dataManagerWidgetRoot.setId("SavedData Manager");
+        dataManagerWidgetRoot.setId("Data Manager");
 
         diagramWidgetLoader = new FXMLLoader(getClass().getResource("DiagramWidget/DiagramWidgetView.fxml"));
         diagramWidgetRoot = diagramWidgetLoader.load();
@@ -32,7 +32,7 @@ public class WidgetContainer {
         neuralNetWidgetRoot = neuralNetWidgetLoader.load();
         neuralNetWidgetRoot.setId("Neural Net");
 
-        dataManagerPrevRoot = new PreviewWidget("SavedData Manager", new Image("Neuroshop/Ressources/Assets/thumbKommtNoch.png"), widgetContainerModel);
+        dataManagerPrevRoot = new PreviewWidget("Data Manager", new Image("Neuroshop/Ressources/Assets/thumbKommtNoch.png"), widgetContainerModel);
         diagramPrevRoot = new PreviewWidget("Diagram", new Image("Neuroshop/Ressources/Assets/resultDiagramThumb.png"), widgetContainerModel);
         neuralNetPrevRoot = new PreviewWidget("Neural Net", new Image("Neuroshop/Ressources/Assets/netThumb.png"), widgetContainerModel);
 
@@ -58,8 +58,8 @@ public class WidgetContainer {
         widgetContainerModel.addObserver(neuralNetController);
 
         //Show DataManager----------------------------------------------------------------------------------------------
-        widgetContainerModel.addWidgetToWhiteboard("SavedData Manager");
+        widgetContainerModel.addWidgetToWhiteboard("Data Manager", true);
         widgetContainerModel.clearBufferedWidget();
-        widgetContainerModel.changeWidgetStateById("SavedData Manager", 1);
+        widgetContainerModel.changeWidgetStateById("Data Manager", 1);
     }
 }

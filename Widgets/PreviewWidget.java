@@ -99,7 +99,7 @@ public class PreviewWidget extends StackPane {
                 event -> {
                     if (MouseInfo.getPointerInfo().getLocation().x > 300) {
                         widgetContainerModel.changeWidgetStateById(node.getId(), 1);
-                        widgetContainerModel.addWidgetToWhiteboard(node.getId());
+                        widgetContainerModel.addWidgetToWhiteboard(node.getId(), false);
                     } else if (widgetContainerModel.getWidgetMenuIsOpen() & MouseInfo.getPointerInfo().getLocation().x < 300) {
                         widgetContainerModel.changeWidgetStateById(node.getId(), 0);
                         widgetContainerModel.adddWidgetToMenu();
