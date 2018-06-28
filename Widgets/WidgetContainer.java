@@ -1,5 +1,6 @@
 package Neuroshop.Widgets;
 
+import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
 import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
@@ -19,7 +20,7 @@ public class WidgetContainer {
     private StackPane dataManagerWidgetRoot, diagramWidgetRoot, neuralNetWidgetRoot;
     private StackPane dataManagerPrevRoot, diagramPrevRoot, neuralNetPrevRoot;
 
-    public WidgetContainer(WidgetContainerModel widgetContainerModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) throws IOException {
+    public WidgetContainer(WidgetContainerModel widgetContainerModel, ANNModel annModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) throws IOException {
 
         dataManagerLoader = new FXMLLoader(getClass().getResource("DataManagerWidget/DataManagerWidgetView.fxml"));
         dataManagerWidgetRoot = dataManagerLoader.load();
@@ -50,9 +51,9 @@ public class WidgetContainer {
         DiagramWidgetController diagramWidgetController = diagramWidgetLoader.getController();
         NeuralNetController neuralNetController = neuralNetWidgetLoader.getController();
 
-        dataManagerWidgetController.initModel(dataManagerWidgetModel, widgetContainerModel);
-        diagramWidgetController.initModel(diagramWidgetModel, widgetContainerModel);
-        neuralNetController.initModel(neuralNetWidgetModel, widgetContainerModel);
+        dataManagerWidgetController.initModel(dataManagerWidgetModel, annModel, widgetContainerModel);
+        diagramWidgetController.initModel(diagramWidgetModel, annModel, widgetContainerModel);
+        neuralNetController.initModel(neuralNetWidgetModel, annModel, widgetContainerModel);
 
         widgetContainerModel.addObserver(neuralNetController); //TODO
     }

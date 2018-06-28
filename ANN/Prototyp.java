@@ -1,4 +1,4 @@
-package Neuroshop;
+package Neuroshop.ANN;
 
 import Neuroshop.ANN.ANNLearn;
 import Neuroshop.ANN.Data.DataNormalization;
@@ -31,13 +31,21 @@ public class Prototyp {
         LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
         DataNormalization dataNormType = new DataNormalization(-1.0, 1.0);
 
-        DataSet dataSet = new DataSet("Neuroshop/Ressources/Data", "new_data.csv");
-        ANNLearn aL = new ANNLearn();
-        aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
+        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.csv"); // "/" in "\\" geändert
+        double[][] dSet = dataSet.getData();
+
+        System.out.println(dataSet.numberOfColumns);
+
+        for (int r = 0; r < dataSet.numberOfRecords; r++) {
+            for (int c = 0; c < dataSet.numberOfColumns; c++) {
+                System.out.println(dSet[r][c]);
+            }
+        }
+
+//        ANNLearn aL = new ANNLearn();
+//        aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
 
     }
-
-
 }
 
 

@@ -4,6 +4,7 @@ import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.Options.OptionsController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
+import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.OptionsModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
@@ -57,6 +58,7 @@ public class Main extends Application {
         //Init Ann------------------------------------------------------------------------------------------------------
 
         //Init Model----------------------------------------------------------------------------------------------------
+        ANNModel annModel = new ANNModel();
         DataManagerWidgetModel dataManagerWidgetModel = new DataManagerWidgetModel();
         DiagramWidgetModel diagramWidgetModel = new DiagramWidgetModel();
         NeuralNetWidgetModel neuralNetWidgetModel = new NeuralNetWidgetModel();
@@ -78,7 +80,7 @@ public class Main extends Application {
         optionsModel.addObserver(optionsMenuController);
 
         //Init WidgetContainer------------------------------------------------------------------------------------------
-        new WidgetContainer(widgetContainerModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel);
+        new WidgetContainer(widgetContainerModel, annModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel); //TODO WidgetModels vieleicht raus
 
         //Init Scene----------------------------------------------------------------------------------------------------
         Scene scene = new Scene(root, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);

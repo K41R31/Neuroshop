@@ -83,7 +83,7 @@ public class DataSet {
             for(int j=0;j<numberOfColumns;j++){
                 data.get(i).add(_data[i][j]);
             }
-        } 
+        }
     }
     
     public DataSet(String filename){
