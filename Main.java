@@ -6,7 +6,6 @@ import Neuroshop.Gui.Options.OptionsController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
 import Neuroshop.Models.ANNModel;
-import Neuroshop.Models.DataModel;
 import Neuroshop.Models.OptionsModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
