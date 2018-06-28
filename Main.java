@@ -80,7 +80,7 @@ public class Main extends Application {
         optionsModel.addObserver(optionsMenuController);
 
         //Init WidgetContainer------------------------------------------------------------------------------------------
-        new WidgetContainer(widgetContainerModel, annModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel); //TODO WidgetModels vieleicht raus
+        new WidgetContainer(widgetContainerModel, annModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel); //TODO WidgetModels vielleicht raus
 
         //Init Scene----------------------------------------------------------------------------------------------------
         Scene scene = new Scene(root, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);
