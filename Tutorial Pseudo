@@ -7,4 +7,5 @@ WhiteBoard mit Pfeil auf linke Hidbar, need to draw NeuralNet Widget -- sobald a
 Enable EditNeuralNetWidget; füge neue HiddenLayer hinzu -- check; enable delete HiddenLayer -- check; setze gewichtung -- check; enable save
 Whiteboard mit Pfeil auf linke HidBar, need to draw Diagram Widget -- check
 Whiteboard mit Pfeil auf untere Hidbar, verschiebe NumberOfHiddenNeurons -- check; verschiebe learningRate -- check; verschiebe maxEpochs -- check; verschiebe momentumRate
+enable Start button -- check; warte Time bis zu Ende
 
