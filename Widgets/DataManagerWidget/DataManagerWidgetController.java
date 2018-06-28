@@ -44,16 +44,13 @@ public class DataManagerWidgetController implements Observer {
                 new FileChooser.ExtensionFilter("CSV", "*.csv"),
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
-        File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
-<<<<<<< HEAD
-        if (dataSetFile != null) annModel.setDatasetFile(dataSetFile);
-=======
-        if (dataSetFile != null) {
-            annModel.setDatasetFile(dataSetFile);
+        File datasetFile = fileChooser.showOpenDialog(Main.primaryStage);
+
+        if (datasetFile != null) {
+            annModel.setDatasetFile(datasetFile);
             importPane.setOpacity(0);
             importPane.setDisable(true);
         }
->>>>>>> 885b9ae94d907368a19c083568a4fb809cc0399c
     }
 /*
     private void initializeDataQueue() {

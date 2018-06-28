@@ -36,27 +36,6 @@ public class ANNModel extends Observable {
 
     private LearningAlgorithm.LearningMode lMode;
 
-    private File datasetFile;
-    private double[][] dataset;
-
-    public void setDatasetFile(File dataSetFile) {
-        this.datasetFile = dataSetFile;
-        setChanged();
-        notifyObservers("loadDataSet");
-    }
-
-    public File getDatasetFile() {
-        return datasetFile;
-    }
-
-    public void setDataset(double[][] dataSet) {
-        this.dataset = dataSet;
-    }
-
-    public double[][] getDataSet() {
-        return dataset;
-    }
-
     public int[] getInputColumns() {
         return this.inputColumns;
     }
