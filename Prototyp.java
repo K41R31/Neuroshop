@@ -12,12 +12,12 @@ public class Prototyp {
 
     public static void main (String[] args)  {
 
-        int[] numberOfHiddenNeurons = {6}; //JA
+        int[] numberOfHiddenNeurons = {9}; //JA
 
-        double learningRate = (0.9);
+        double learningRate = (1);
         int maxEpochs = (5000);
         double momentumRate = (0.7);
-        double minOverallError = (0.007);
+        double minOverallError = (0.0001);
         int[] inputColumns = {0, 1, 2, 3, 4, 5, 6, 7};
         int[] outputColumns = {8, 9};
         double dataPercentage = (0.8);
