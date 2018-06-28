@@ -9,8 +9,6 @@ import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
-
-import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class ANNLearn {

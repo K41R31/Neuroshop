@@ -4,7 +4,6 @@ import Neuroshop.ANN.ANNLearn;
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
-import Neuroshop.ANN.Math.HyperTan;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 import Neuroshop.ANN.Math.Sigmoid;
@@ -25,14 +24,17 @@ public class Prototyp {
         Sigmoid h10Fnc = new Sigmoid(1.0);
 //        HyperTan h20Fnc = new HyperTan(2.0);
 
-
         IActivationFunction outputActFnc = new Linear (1.0);
         IActivationFunction[] actFnc = {h10Fnc};
 
         LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
         DataNormalization dataNormType = new DataNormalization(-1.0, 1.0);
 
+<<<<<<< HEAD
+        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
+=======
         DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.csv"); // "/" in "\\" geändert
+>>>>>>> c8c2f2a7cb8638290bfb2dd7625d28c2d9757f16
         double[][] dSet = dataSet.getData();
         System.out.println(dataSet.numberOfColumns);
 
