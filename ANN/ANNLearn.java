@@ -29,7 +29,6 @@ public class ANNLearn implements Observer {
     double learningRate;
     double momentumRate;
 
-    Backpropagation backprop;
     IActivationFunction[] actFnc;
     IActivationFunction outputActFnc;
     LearningAlgorithm.LearningMode lMode;
@@ -41,8 +40,8 @@ public class ANNLearn implements Observer {
 
         RandomNumberGenerator.setSeed(5);
 
-        this.inputColumns = (inputColumns);
-        this.outputColumns = (outputColumns);
+        this.inputColumns = inputColumns;
+        this.outputColumns = outputColumns;
 
         this.numberOfHiddenNeurons = (numberOfHiddenNeurons);
 
