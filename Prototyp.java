@@ -13,7 +13,7 @@ public class Prototyp {
 
     public static void main (String[] args)  {
 
-        int[] numberOfHiddenNeurons = {6};
+        int[] numberOfHiddenNeurons = {6}; //JA
         double learningRate = (0.9);
         int maxEpochs = (5000);
         double momentumRate = (0.7);
@@ -47,7 +47,3 @@ public class Prototyp {
 
     }
 }
-
-
-
-

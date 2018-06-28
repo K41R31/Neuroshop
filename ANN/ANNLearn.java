@@ -86,7 +86,6 @@ public class ANNLearn {
 
         try {
             backprop.forward();
-//            System.out.println(backprop.applyNewWeights(lastDeltaWeights));
 
             backprop.train();
 
