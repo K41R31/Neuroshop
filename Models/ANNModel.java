@@ -1,4 +1,4 @@
-package Neuroshop.ANN;
+package Neuroshop.Models;
 
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
@@ -36,6 +36,30 @@ public class ANNModel extends Observable {
 
     private LearningAlgorithm.LearningMode lMode;
 
+<<<<<<< HEAD
+    private File datasetFile;
+    private double[][] dataset;
+
+    public void setDatasetFile(File datasetFile) {
+        this.datasetFile = datasetFile;
+        setChanged();
+        notifyObservers("loadDataSet");
+    }
+
+    public File getDatasetFile() {
+        return datasetFile;
+    }
+
+    public void setDataset(double[][] dataSet) {
+        this.dataset = dataSet;
+    }
+
+    public double[][] getDataSet() {
+        return dataset;
+    }
+
+=======
+>>>>>>> c6dd77e0c6f911f62ff1d8be40c6258041fde019
     public int[] getInputColumns() {
         return this.inputColumns;
     }

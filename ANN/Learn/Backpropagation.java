@@ -1,12 +1,12 @@
 
 package Neuroshop.ANN.Learn;
 
-import Neuroshop.ANN.ANNModel;
 import Neuroshop.ANN.Charts.Chart;
 import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Data.TimeSeries;
 import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Neural.*;
+import Neuroshop.Models.ANNModel;
 import org.jfree.chart.ChartFrame;
 
 import java.awt.*;

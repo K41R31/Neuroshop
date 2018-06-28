@@ -1,8 +1,7 @@
 package Neuroshop.Widgets.DataManagerWidget;
 
-import Neuroshop.ANN.ANNModel;
 import Neuroshop.Main;
-
+import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.fxml.FXML;
@@ -45,6 +44,18 @@ public class DataManagerWidgetController implements Observer {
                 new FileChooser.ExtensionFilter("CSV", "*.csv"),
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
+<<<<<<< HEAD
+        File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
+
+        if (dataSetFile != null) annModel.setDatasetFile(dataSetFile);
+
+        if (dataSetFile != null) {
+            annModel.setDatasetFile(datasetFile);
+            importPane.setStyle("-fx-background-color: TRANSPARENT");
+            importPane.setDisable(true);
+        }
+
+=======
         File datasetFile = fileChooser.showOpenDialog(Main.primaryStage);
 
         if (datasetFile != null) {
@@ -52,6 +63,7 @@ public class DataManagerWidgetController implements Observer {
             importPane.setOpacity(0);
             importPane.setDisable(true);
         }
+>>>>>>> c6dd77e0c6f911f62ff1d8be40c6258041fde019
     }
 /*
     private void initializeDataQueue() {

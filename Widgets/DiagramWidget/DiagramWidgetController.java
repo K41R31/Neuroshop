@@ -1,6 +1,6 @@
 package Neuroshop.Widgets.DiagramWidget;
 
-import Neuroshop.ANN.ANNModel;
+import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
 
 import java.util.Observable;

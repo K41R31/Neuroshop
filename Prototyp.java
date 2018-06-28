@@ -1,11 +1,13 @@
 package Neuroshop;
 
-import Neuroshop.ANN.ANNModel;
+import Neuroshop.ANN.ANNLearn;
 import Neuroshop.ANN.Data.DataNormalization;
+import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 import Neuroshop.ANN.Math.Sigmoid;
+import Neuroshop.Models.ANNModel;
 
 public class Prototyp {
 
