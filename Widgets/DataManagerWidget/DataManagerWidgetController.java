@@ -4,7 +4,6 @@ import Neuroshop.Main;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
-import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -18,7 +17,6 @@ import java.util.Observer;
 
 public class DataManagerWidgetController implements Observer {
 
-    private DataManagerWidgetModel dataManagerWidgetModel;
     private ANNModel annModel;
     private LastOpenedFiles lastOpened;
     private WidgetContainerModel widgetContainerModel;
@@ -47,15 +45,15 @@ public class DataManagerWidgetController implements Observer {
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
         File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
-<<<<<<< HEAD
+
         if (dataSetFile != null) annModel.setDatasetFile(dataSetFile);
-=======
+
         if (dataSetFile != null) {
-            annModel.setDatasetFile(dataSetFile);
+            annModel.setDatasetFile(datasetFile);
             importPane.setStyle("-fx-background-color: TRANSPARENT");
             importPane.setDisable(true);
         }
->>>>>>> 885b9ae94d907368a19c083568a4fb809cc0399c
+
     }
 /*
     private void initializeDataQueue() {
