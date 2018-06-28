@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -146,6 +147,45 @@
             <Insets />
          </StackPane.margin>
       </SplitPane>
+      <AnchorPane style="-fx-background-color: #222222;">
+         <children>
+            <Text fill="#d3d3d3" layoutX="265.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMPORT A DATASET">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="50.0" />
+               </font>
+            </Text>
+            <StackPane fx:id="button1Pane" layoutX="67.0" layoutY="275.0" onMouseEntered="#button1Entered" onMouseExited="#button1Exited" styleClass="importButton">
+               <children>
+                  <Text fx:id="button1Text" disable="true" fill="#4490ff" strokeType="OUTSIDE" strokeWidth="0.0" text="LAST OPENED" textAlignment="CENTER" wrappingWidth="240.0">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="40.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </StackPane>
+            <StackPane fx:id="button2Pane" layoutX="568.0" layoutY="275.0" onMouseEntered="#button2Entered" onMouseExited="#button2Exited" styleClass="importButton">
+               <children>
+                  <Text fx:id="button2Text" disable="true" fill="#4490ff" strokeType="OUTSIDE" strokeWidth="0.0" text="LOAD NEW" textAlignment="CENTER" wrappingWidth="240.0">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="40.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </StackPane>
+         </children>
+      </AnchorPane>
    </children>
    <opaqueInsets>
       <Insets />

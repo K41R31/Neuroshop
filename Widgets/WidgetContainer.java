@@ -46,6 +46,7 @@ public class WidgetContainer {
         };
 
         widgetContainerModel.initWidgets(widgets);
+
         //Init Model----------------------------------------------------------------------------------------------------
         DataManagerWidgetController dataManagerWidgetController = dataManagerLoader.getController();
         DiagramWidgetController diagramWidgetController = diagramWidgetLoader.getController();
@@ -55,6 +56,11 @@ public class WidgetContainer {
         diagramWidgetController.initModel(diagramWidgetModel, annModel, widgetContainerModel);
         neuralNetController.initModel(neuralNetWidgetModel, annModel, widgetContainerModel);
 
-        widgetContainerModel.addObserver(neuralNetController); //TODO
+        widgetContainerModel.addObserver(dataManagerWidgetController);
+        widgetContainerModel.addObserver(diagramWidgetController);
+        widgetContainerModel.addObserver(neuralNetController);
+
+        //Show DataManager----------------------------------------------------------------------------------------------
+        widgetContainerModel.addWidgetToWhiteboard("Data Manager");
     }
 }
