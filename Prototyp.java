@@ -30,11 +30,8 @@ public class Prototyp {
         LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
         DataNormalization dataNormType = new DataNormalization(-1.0, 1.0);
 
-<<<<<<< HEAD
         DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
-=======
-        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.csv"); // "/" in "\\" geändert
->>>>>>> c8c2f2a7cb8638290bfb2dd7625d28c2d9757f16
+
         double[][] dSet = dataSet.getData();
         System.out.println(dataSet.numberOfColumns);
 
