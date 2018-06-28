@@ -13,20 +13,21 @@ public class Prototyp {
 
     public static void main (String[] args)  {
 
-        int[] numberOfHiddenNeurons = {3,2};
-        double learningRate = (0.01);
-        int maxEpochs = (15000);
+        int[] numberOfHiddenNeurons = {6};
+        double learningRate = (0.9);
+        int maxEpochs = (5000);
         double momentumRate = (0.7);
-        double minOverallError = (0.01);
+        double minOverallError = (0.007);
         int[] inputColumns = {0, 1, 2, 3};
         int[] outputColumns = {4};
         double dataPercentage = (0.8);
 
         Sigmoid h10Fnc = new Sigmoid(1.0);
-        HyperTan h20Fnc = new HyperTan();
+//        HyperTan h20Fnc = new HyperTan(2.0);
+
 
         IActivationFunction outputActFnc = new Linear (1.0);
-        IActivationFunction[] actFnc = {h10Fnc ,h20Fnc};
+        IActivationFunction[] actFnc = {h10Fnc};
 
         LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
         DataNormalization dataNormType = new DataNormalization(-1.0, 1.0);

@@ -154,8 +154,12 @@ public class Backpropagation extends DeltaRule {
         
         return deltaWeight;
     }
-    
-    
+
+
+
+
+
+
     @Override
     public void train() throws NeuralException {
         neuralNet.setNeuralNetMode(NeuralNet.NeuralNetMode.TRAINING);
@@ -364,7 +368,11 @@ public class Backpropagation extends DeltaRule {
                 ,testingDataSet.getArrayNeuralOutputData(normalization));
             //simpleError=simpleErrorEach.get(trainingDataSet.numberOfRecords-1);
     }
-    
+
+    public double getNewWeight() {
+        return newWeights;
+    }
+
     @Override
     public void applyNewWeights() {
 
@@ -411,14 +419,6 @@ public class Backpropagation extends DeltaRule {
             }
 
 
-    }
-    public void saveLastDeltaWeight(ArrayList<ArrayList<ArrayList<Double>>> lastDeltaWeights) {
-        this.lastDeltaWeights = lastDeltaWeights;
-
-    }
-
-    public ArrayList<ArrayList<ArrayList<Double>>> getLastDeltaWeights() {
-        return this.lastDeltaWeights;
     }
 
     public void setMomentumRate(double _momentumRate){
