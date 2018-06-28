@@ -9,9 +9,13 @@ import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
+import Neuroshop.Models.ANNModel;
+
 import java.util.Arrays;
 
 public class ANNLearn {
+
+    private ANNModel annModel;
 
     double dataPercentage;
     int[] inputColumns;
@@ -23,6 +27,7 @@ public class ANNLearn {
     double learningRate;
     double momentumRate;
 
+    Backpropagation backprop;
     IActivationFunction[] actFnc;
     IActivationFunction outputActFnc;
     LearningAlgorithm.LearningMode lMode;
@@ -72,6 +77,7 @@ public class ANNLearn {
         this.lMode = lMode;
 
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, lMode);
+        backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
         backprop.setMaxEpochs(maxEpochs);
         backprop.setGeneralErrorMeasurement(Backpropagation.ErrorMeasurement.SimpleError);
@@ -116,5 +122,9 @@ public class ANNLearn {
         } catch (NeuralException ne) {
             ne.printStackTrace();
         }
+    }
+
+    public void initModel(ANNModel annModel) {
+        this.annModel = annModel;
     }
 }
