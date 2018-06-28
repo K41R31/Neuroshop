@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -31,7 +32,7 @@ public class DataManagerWidgetController implements Observer {
 
 
     @FXML
-    private void loadDataSet() {
+    private void loadDataSet() throws IOException {
         final FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select a dataset");
 
@@ -42,7 +43,12 @@ public class DataManagerWidgetController implements Observer {
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
         File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
-        if (dataSetFile != null) annModel.setDatasetFile(dataSetFile);
+
+        if (dataSetFile != null) {
+            annModel.setDatasetFile(dataSetFile);
+            annModel.saveDataFile();
+        }
+
     }
 
     @Override

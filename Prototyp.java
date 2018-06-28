@@ -16,11 +16,10 @@ public class Prototyp {
     public static void main (String[] args)  {
 
         annModel = new ANNModel();
-
         int[] numberOfHiddenNeurons = {6};
 
         double learningRate = (1);
-        int maxEpochs = (5000);
+        int maxEpochs = (100);
         double momentumRate = (0.7);
         double minOverallError = (0.007);
         int[] inputColumns = {0, 1, 2, 3};

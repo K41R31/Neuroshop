@@ -6,13 +6,17 @@ import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Observable;
 
 public class ANNModel extends Observable {
 
-<<<<<<< HEAD
+
     private File dataSetFile;
+    private String filename;
 
     private int[] inputColumns;
     private int[] outputColumns;
@@ -23,11 +27,11 @@ public class ANNModel extends Observable {
     private int[] numberOfHiddenNeurons;
     private int numberNeuronsHdnLayer;
     private double[][] dataSet;
-=======
+
     private File datasetFile;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
     private double[][] dataset;
->>>>>>> 5c002fae2468e22fe2ed963754a87cb3c1c3e0cf
+
 
     private IActivationFunction[] actFnc;
     private IActivationFunction outputActFnc;
@@ -39,8 +43,6 @@ public class ANNModel extends Observable {
 
     private LearningAlgorithm.LearningMode lMode;
 
-
-    private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
 
 
     public int[] getInputColumns() {
@@ -179,8 +181,9 @@ public class ANNModel extends Observable {
         return newWeights;
     }
 
-    public void setDatasetFile(File dataSetFile) {
+    public void setDatasetFile(File dataSetFile) throws IOException {
         this.datasetFile = dataSetFile;
+        this.saveDataFile();
     }
 
     public File getDatasetFile() {
@@ -193,5 +196,16 @@ public class ANNModel extends Observable {
 
     public double[][] getDataSet() {
         return dataset;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public void saveDataFile() throws IOException {
+        File file = new File("Neuroshop\\Ressources\\SavedData\\Temp" + File.separator + this.filename);
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(this);
+        }
     }
 }
