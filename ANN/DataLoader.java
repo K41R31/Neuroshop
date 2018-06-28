@@ -8,7 +8,7 @@ public class DataLoader {
     private DataSet _inputData;
 
         public DataSet getDataSet() {
-        _inputData = new DataSet("Neuroshop/Ressources/Data", "new_data.txt");
+        _inputData = new DataSet("Neuroshop/Ressources/SavedData", "new_data.txt");
        return this._inputData;
       }
 

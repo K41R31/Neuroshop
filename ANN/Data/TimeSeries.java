@@ -106,12 +106,12 @@ public class TimeSeries extends DataSet {
             chart.addSeries(seriesdata[i], sns[i], 0, colorv[i], Chart.SeriesType.LINES);
         }
         if(ref==null){
-            ChartFrame frame = new ChartFrame(title, chart.scatterPlot(columns.get(indexTimeColumn), "Data"));
+            ChartFrame frame = new ChartFrame(title, chart.scatterPlot(columns.get(indexTimeColumn), "SavedData"));
             frame.pack();
             return frame;
         }
         else{
-            ref.getChartPanel().setChart(chart.scatterPlot(columns.get(indexTimeColumn), "Data"));
+            ref.getChartPanel().setChart(chart.scatterPlot(columns.get(indexTimeColumn), "SavedData"));
             return ref;
         }
     }

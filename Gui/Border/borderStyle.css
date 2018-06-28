@@ -1,24 +1,24 @@
 .optionsButton {
-    -fx-image: url("../../Ressources/optionsButton.png");
+    -fx-image: url("../../Ressources/Assets/optionsButton.png");
 }
 .optionsButton:hover {
-    -fx-image: url("../../Ressources/optionsButtonHover.png");
+    -fx-image: url("../../Ressources/Assets/optionsButtonHover.png");
 }
 .closeButton {
-    -fx-image: url("../../Ressources/closeButton.png");
+    -fx-image: url("../../Ressources/Assets/closeButton.png");
 }
 .closeButton:hover {
-    -fx-image: url("../../Ressources/closeButtonHover.png");
+    -fx-image: url("../../Ressources/Assets/closeButtonHover.png");
 }
 .minmaxButton {
-    -fx-image: url("../../Ressources/minmaxButton.png");
+    -fx-image: url("../../Ressources/Assets/minmaxButton.png");
 }
 .minmaxButton:hover {
-    -fx-image: url("../../Ressources/minmaxButtonHover.png");
+    -fx-image: url("../../Ressources/Assets/minmaxButtonHover.png");
 }
 .minimizeButton {
-    -fx-image: url("../../Ressources/minimizeButton.png");
+    -fx-image: url("../../Ressources/Assets/minimizeButton.png");
 }
 .minimizeButton:hover {
-    -fx-image: url("../../Ressources/minimizeButtonHover.png");
+    -fx-image: url("../../Ressources/Assets/minimizeButtonHover.png");
 }

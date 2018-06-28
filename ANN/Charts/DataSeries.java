@@ -14,7 +14,7 @@ import java.awt.*;
 
 /**
  * 
- * DataSeries This class creates Data series to be used by Chart class.
+ * DataSeries This class creates SavedData series to be used by Chart class.
  * 
  * @author Alan de Souza, Fábio Soares
  * @version 0.1

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * 
  * Chart This class allows create and manipulate charts. 
- * It is based in JFreeChart library (www.jfree.org/jfreechart/)
+ * It is based in JFreeChart Library (www.jfree.org/jfreechart/)
  * 
  * @author Alan de Souza, Fábio Soares
  * @version 0.1
@@ -114,7 +114,7 @@ public class Chart {
 				chartTitle, // Charts title
 				xAxisLabel, // x axis label
 				yAxisLabel, // y axis label
-				dataset, // Data
+				dataset, // SavedData
 				PlotOrientation.VERTICAL, 
 				true, // include legend
 				true, // tooltips
@@ -142,7 +142,7 @@ public class Chart {
 				chartTitle, // Charts title
 				xLabel, // x axis label
 				yLabel, // y axis label
-				dataset.get(0), // Data
+				dataset.get(0), // SavedData
 				PlotOrientation.VERTICAL, 
 				true, // include legend
 				true, // tooltips
@@ -259,7 +259,7 @@ public class Chart {
                 chartTitle,		// Charts title
                 xAxisLabel,     // x axis label
                 yAxisLabel,     // y axis label
-                dataset,        // Data
+                dataset,        // SavedData
                 PlotOrientation.VERTICAL,
                 true,           // include legend
                 true,           // tooltips

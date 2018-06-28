@@ -18,7 +18,7 @@ public class InitANN implements Observer {
 
     public InitANN() {
 
-        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\Data", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
+        DataSet dataSet = new DataSet("Neuroshop\\Ressources\\SavedData", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
 
         annModel.setDataset(dataSet.getData());
         ANNLearn aL = new ANNLearn();
