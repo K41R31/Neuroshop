@@ -1,4 +1,4 @@
-package Neuroshop.ANN;
+package Neuroshop;
 
 import Neuroshop.ANN.ANNLearn;
 import Neuroshop.ANN.Data.DataNormalization;
@@ -26,7 +26,7 @@ public class Prototyp {
         HyperTan h20Fnc = new HyperTan();
 
         IActivationFunction outputActFnc = new Linear (1.0);
-        IActivationFunction[] actFnc = {h10Fnc ,h20Fnc};
+        IActivationFunction[] actFnc = {h10Fnc, h20Fnc};
 
         LearningAlgorithm.LearningMode lMode = LearningAlgorithm.LearningMode.BATCH;
         DataNormalization dataNormType = new DataNormalization(-1.0, 1.0);
