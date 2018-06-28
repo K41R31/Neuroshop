@@ -10,8 +10,7 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 
-import javax.xml.crypto.Data;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class ANNLearn {
@@ -91,6 +90,7 @@ public class ANNLearn {
 
             backprop.train();
 
+
             neuralDataSetToTest.printInput();
             neuralDataSetToTrain.printInput();
 
@@ -109,6 +109,8 @@ public class ANNLearn {
             neuralDataSetToTrain.printTargetOutput();
             neuralDataSetToTest.printTargetOutput();
             backprop.forward();
+
+
 
 //            backprop.backward();
             neuralDataSetToTrain.printNeuralOutput();
