@@ -7,6 +7,7 @@ import Neuroshop.Models.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -26,6 +27,8 @@ public class DataManagerWidgetController implements Observer {
     private LastOpenedFiles lastOpened;
     private WidgetContainerModel widgetContainerModel;
 
+    @FXML
+    private AnchorPane importPane;
     @FXML
     private StackPane button1Pane;
     @FXML
@@ -48,10 +51,14 @@ public class DataManagerWidgetController implements Observer {
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
         File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
-        if (dataSetFile != null) dataModel.setDatasetFile(dataSetFile);
+        if (dataSetFile != null) {
+            dataModel.setDatasetFile(dataSetFile);
+            importPane.setStyle("-fx-background-color: TRANSPARENT");
+            importPane.setDisable(true);
+        }
     }
-
-    private void initializeDataQueue() {  //TODO Möglichkeit einzelne Images raus zu löschen
+/*
+    private void initializeDataQueue() {
         ArrayList<String> files = lastOpened.getOpenedFiles();
         if (files.size() == 0) {
             Text text = new Text("No recently opened files");
@@ -89,7 +96,7 @@ public class DataManagerWidgetController implements Observer {
         }
         updateDataQueue();
     }
-
+*/
     @Override
     public void update(Observable o, Object arg) {
     }

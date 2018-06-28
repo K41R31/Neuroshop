@@ -147,7 +147,7 @@
             <Insets />
          </StackPane.margin>
       </SplitPane>
-      <AnchorPane style="-fx-background-color: #222222;">
+      <AnchorPane fx:id="importPane" style="-fx-background-color: #222222;">
          <children>
             <Text fill="#d3d3d3" layoutX="265.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMPORT A DATASET">
                <font>

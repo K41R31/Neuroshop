@@ -3,7 +3,6 @@ package Neuroshop.Models;
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
-import Neuroshop.ANN.Math.Linear;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,7 +10,8 @@ import java.util.Observable;
 
 public class ANNModel extends Observable {
 
-
+    private File datasetFile;
+    private double[][] dataset;
 
     private int[] inputColumns;
     private int[] outputColumns;
@@ -152,6 +152,24 @@ public class ANNModel extends Observable {
         this.momentumRate = momentumRate;
         this.setChanged();
         this.notifyObservers(momentumRate);
+    }
+
+    public void setDatasetFile(File dataSetFile) {
+        this.datasetFile = dataSetFile;
+        setChanged();
+        notifyObservers("loadDataSet");
+    }
+
+    public File getDatasetFile() {
+        return datasetFile;
+    }
+
+    public void setDataset(double[][] dataSet) {
+        this.dataset = dataSet;
+    }
+
+    public double[][] getDataSet() {
+        return dataset;
     }
 
     public int getMaxEpochs() {
