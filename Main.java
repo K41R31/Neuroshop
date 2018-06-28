@@ -8,9 +8,6 @@ import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.OptionsModel;
 import Neuroshop.Models.WidgetContainerModel;
-import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
-import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
-import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
 import Neuroshop.Widgets.WidgetContainer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -60,10 +57,6 @@ public class Main extends Application {
 
         //Init Model----------------------------------------------------------------------------------------------------
         ANNModel annModel = new ANNModel();
-//        DataModel dataModel = new DataModel();
-        DataManagerWidgetModel dataManagerWidgetModel = new DataManagerWidgetModel();
-        DiagramWidgetModel diagramWidgetModel = new DiagramWidgetModel();
-        NeuralNetWidgetModel neuralNetWidgetModel = new NeuralNetWidgetModel();
         WidgetContainerModel widgetContainerModel = new WidgetContainerModel();
         OptionsModel optionsModel = new OptionsModel();
 
@@ -84,7 +77,7 @@ public class Main extends Application {
         optionsModel.addObserver(optionsMenuController);
 
         //Init WidgetContainer------------------------------------------------------------------------------------------
-        new WidgetContainer(widgetContainerModel, annModel, dataManagerWidgetModel, diagramWidgetModel, neuralNetWidgetModel); //TODO WidgetModels vielleicht raus
+        new WidgetContainer(widgetContainerModel, annModel);
 
         //Init Scene----------------------------------------------------------------------------------------------------
         Scene scene = new Scene(root, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);

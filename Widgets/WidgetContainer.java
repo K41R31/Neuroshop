@@ -2,9 +2,6 @@ package Neuroshop.Widgets;
 
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
-import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
-import Neuroshop.Models.WidgetModels.DiagramWidgetModel;
-import Neuroshop.Models.WidgetModels.NeuralNetWidgetModel;
 import Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController;
 import Neuroshop.Widgets.DiagramWidget.DiagramWidgetController;
 import Neuroshop.Widgets.NeuralNetWidget.NeuralNetController;
@@ -20,7 +17,7 @@ public class WidgetContainer {
     private StackPane dataManagerWidgetRoot, diagramWidgetRoot, neuralNetWidgetRoot;
     private StackPane dataManagerPrevRoot, diagramPrevRoot, neuralNetPrevRoot;
 
-    public WidgetContainer(WidgetContainerModel widgetContainerModel, ANNModel annModel, DataManagerWidgetModel dataManagerWidgetModel, DiagramWidgetModel diagramWidgetModel, NeuralNetWidgetModel neuralNetWidgetModel) throws IOException {
+    public WidgetContainer(WidgetContainerModel widgetContainerModel, ANNModel annModel) throws IOException {
 
         dataManagerLoader = new FXMLLoader(getClass().getResource("DataManagerWidget/DataManagerWidgetView.fxml"));
         dataManagerWidgetRoot = dataManagerLoader.load();
@@ -52,9 +49,9 @@ public class WidgetContainer {
         DiagramWidgetController diagramWidgetController = diagramWidgetLoader.getController();
         NeuralNetController neuralNetController = neuralNetWidgetLoader.getController();
 
-        dataManagerWidgetController.initModel(dataManagerWidgetModel, annModel, widgetContainerModel);
-        diagramWidgetController.initModel(diagramWidgetModel, annModel, widgetContainerModel);
-        neuralNetController.initModel(neuralNetWidgetModel, annModel, widgetContainerModel);
+        dataManagerWidgetController.initModel(annModel, widgetContainerModel);
+        diagramWidgetController.initModel(annModel, widgetContainerModel);
+        neuralNetController.initModel(annModel, widgetContainerModel);
 
         widgetContainerModel.addObserver(dataManagerWidgetController);
         widgetContainerModel.addObserver(diagramWidgetController);
