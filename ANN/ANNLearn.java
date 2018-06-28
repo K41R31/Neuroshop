@@ -10,12 +10,14 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.DataModel;
 
 import java.util.Arrays;
 
 public class ANNLearn {
 
     private ANNModel annModel;
+    private DataModel dataModel;
 
     double dataPercentage;
     int[] inputColumns;
@@ -27,7 +29,6 @@ public class ANNLearn {
     double learningRate;
     double momentumRate;
 
-    Backpropagation backprop;
     IActivationFunction[] actFnc;
     IActivationFunction outputActFnc;
     LearningAlgorithm.LearningMode lMode;
@@ -88,8 +89,6 @@ public class ANNLearn {
         backprop.printTraining = true;
         backprop.showPlotError = true;
 
-
-
         try {
             backprop.forward();
 
@@ -114,9 +113,6 @@ public class ANNLearn {
             neuralDataSetToTest.printTargetOutput();
             backprop.forward();
 
-
-
-//            backprop.backward();
             neuralDataSetToTrain.printNeuralOutput();
 
 
@@ -125,7 +121,8 @@ public class ANNLearn {
         }
     }
 
-    public void initModel(ANNModel annModel) {
+    public void initModel(ANNModel annModel, DataModel dataModel) {
         this.annModel = annModel;
+        this.dataModel = dataModel;
     }
 }

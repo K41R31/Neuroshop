@@ -1,12 +1,9 @@
 package Neuroshop.ANN;
 
-import Neuroshop.ANN.Data.DataNormalization;
+
 import Neuroshop.ANN.Data.DataSet;
-import Neuroshop.ANN.Learn.LearningAlgorithm;
-import Neuroshop.ANN.Math.IActivationFunction;
-import Neuroshop.ANN.Math.Linear;
-import Neuroshop.ANN.Math.Sigmoid;
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.DataModel;
 
 import java.io.File;
 import java.util.Observable;
@@ -15,27 +12,28 @@ import java.util.Observer;
 public class InitANN implements Observer{
 
     private ANNModel annModel;
-    private File datasetFile;
+    private DataModel dataModel;
+    private File dataSetFile;
 
     public InitANN() {
 
         DataSet dataSet = new DataSet("Neuroshop\\Ressources\\SavedData", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
-
-        annModel.setDataset(dataSet.getData());
+        dataModel.setDataSet(dataSet.getData());
         ANNLearn aL = new ANNLearn();
 
-        aL.initModel(annModel);
+        aL.initModel(annModel, dataModel);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         switch ((String)arg) {
             case "rawDataSet":
-                this.datasetFile = annModel.getDatasetFile();
+                this.dataSetFile = dataModel.getDataSetFile();
         }
     }
 
-    public void initModel(ANNModel annModel) {
+    public void initModel(ANNModel annModel, DataModel dataModel) {
         this.annModel = annModel;
+        this.dataModel = dataModel;
     }
 }

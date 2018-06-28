@@ -2,6 +2,7 @@ package Neuroshop.Widgets.DataManagerWidget;
 
 import Neuroshop.Main;
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.DataModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Models.WidgetModels.DataManagerWidgetModel;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ public class DataManagerWidgetController implements Observer {
 
     private DataManagerWidgetModel dataManagerWidgetModel;
     private ANNModel annModel;
+    private DataModel dataModel;
     private WidgetContainerModel widgetContainerModel;
 
     @FXML
@@ -45,8 +47,8 @@ public class DataManagerWidgetController implements Observer {
         File dataSetFile = fileChooser.showOpenDialog(Main.primaryStage);
 
         if (dataSetFile != null) {
-            annModel.setDatasetFile(dataSetFile);
-            annModel.saveDataFile();
+            dataModel.setDataSetFile(dataSetFile);
+            dataModel.saveDataFile();
         }
 
     }

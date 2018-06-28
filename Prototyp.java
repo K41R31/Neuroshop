@@ -8,14 +8,17 @@ import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Linear;
 import Neuroshop.ANN.Math.Sigmoid;
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.DataModel;
 
 public class Prototyp {
 
     private static ANNModel annModel;
+    private static DataModel dataModel;
 
     public static void main (String[] args)  {
 
         annModel = new ANNModel();
+        dataModel = new DataModel();
         int[] numberOfHiddenNeurons = {6};
 
         double learningRate = (1);
@@ -38,10 +41,10 @@ public class Prototyp {
 
         DataSet dataSet = new DataSet("Neuroshop\\Ressources\\SavedData", "new_data.txt" ); // Spalten müssen mit "," getrennt werden
 
-        annModel.setDataset(dataSet.getData());
+        dataModel.setDataSet(dataSet.getData());
         ANNLearn aL = new ANNLearn();
         //Init Model----------------------------------------------------------------------------------------------------
-        aL.initModel(annModel);
+        aL.initModel(annModel, dataModel);
 
         aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
 
