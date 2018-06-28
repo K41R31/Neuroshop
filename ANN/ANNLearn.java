@@ -12,8 +12,10 @@ import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
 
 import java.util.Arrays;
+import java.util.Observable;
+import java.util.Observer;
 
-public class ANNLearn {
+public class ANNLearn implements Observer {
 
     private ANNModel annModel;
 
@@ -32,6 +34,7 @@ public class ANNLearn {
     IActivationFunction outputActFnc;
     LearningAlgorithm.LearningMode lMode;
     DataNormalization dataNormType;
+
 
     public void train(DataSet dataSet, int[] inputColumns, int[] outputColumns, double dataPercentage, int maxEpochs, int[] numberOfHiddenNeurons,
                       double minOverallError, double learningRate, double momentumRate, IActivationFunction[] actFnc, IActivationFunction outputActFnc, LearningAlgorithm.LearningMode lMode, DataNormalization dataNormType) {
@@ -122,6 +125,20 @@ public class ANNLearn {
 
         } catch (NeuralException ne) {
             ne.printStackTrace();
+        }
+    }
+
+    private void loadDataSet() {
+        String datasetPath = annModel.getDatasetFile().getAbsolutePath();
+        DataSet dataset = new DataSet(datasetPath); // Spalten müssen mit "," getrennt werden
+        annModel.setDataset(dataset.getData());
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        switch ((String)arg) {
+            case "loadDataSet":
+                loadDataSet();
         }
     }
 
