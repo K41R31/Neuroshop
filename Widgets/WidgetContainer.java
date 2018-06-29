@@ -57,6 +57,10 @@ public class WidgetContainer {
         widgetContainerModel.addObserver(diagramWidgetController);
         widgetContainerModel.addObserver(neuralNetController);
 
+        annModel.addObserver(dataManagerWidgetController);
+        annModel.addObserver(diagramWidgetController);
+        annModel.addObserver(neuralNetController);
+
         //Show DataManager----------------------------------------------------------------------------------------------
         widgetContainerModel.addWidgetToWhiteboard("Data Manager", true);
         widgetContainerModel.clearBufferedWidget();
