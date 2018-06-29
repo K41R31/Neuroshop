@@ -1,6 +1,7 @@
 package Neuroshop;
 
 import Neuroshop.ANN.ANNLearn;
+import Neuroshop.Gui.WidgetSettings.WidgetSettingsController;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.Options.OptionsController;
@@ -60,6 +61,7 @@ public class Main extends Application {
         WidgetContainerModel widgetContainerModel = new WidgetContainerModel();
         OptionsModel optionsModel = new OptionsModel();
 
+        WidgetSettingsController widgetSettingsController = widgetSettingsLoader.getController();
         WidgetMenuController widgetMenuController = widgetMenuLoader.getController();
         OptionsController optionsMenuController = optionsMenuLoader.getController();
         BorderController borderController = borderLoader.getController();
@@ -70,6 +72,7 @@ public class Main extends Application {
         widgetMenuController.initModel(widgetContainerModel);
         borderController.initModel(optionsModel);
         optionsMenuController.initModel(optionsModel);
+        widgetSettingsController.initModel(annModel);
 
         annModel.addObserver(annLearn);
         widgetContainerModel.addObserver(whiteboardController);

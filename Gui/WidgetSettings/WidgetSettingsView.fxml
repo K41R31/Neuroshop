@@ -24,16 +24,39 @@
             </ImageView>
          </children>
       </StackPane>
-      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: #303030; -fx-border-color: #181818; -fx-border-insets: 0 -1 -1 -1;">
+      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="300.0" style="-fx-background-color: #303030; -fx-border-color: #181818; -fx-border-insets: 0 -1 -1 -1;">
          <children>
-            <HBox fx:id="contentPane" alignment="CENTER" opacity="0.0" spacing="70.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox fx:id="contentPane" alignment="CENTER" spacing="70.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox alignment="CENTER" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Slider majorTickUnit="10.0" prefWidth="400.0" />
-                        <Slider layoutX="10.0" layoutY="206.0" majorTickUnit="10.0" prefWidth="400.0" />
-                        <Slider layoutX="10.0" layoutY="213.0" majorTickUnit="10.0" prefWidth="400.0" />
-                        <Slider layoutX="10.0" layoutY="220.0" majorTickUnit="10.0" prefWidth="400.0" />
+                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Epochs">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="-20.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Slider fx:id="maxEpochsSlider" majorTickUnit="10.0" onMouseDragged="#maxEpochsSliderDragged" prefWidth="400.0" />
+                        <Text fill="#c6c6c6" layoutX="146.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Overall Error">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="-20.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Slider fx:id="minOverallErrorSlider" layoutX="10.0" layoutY="206.0" majorTickUnit="10.0" onMouseDragged="#minOverallErrorSliderDragged" prefWidth="400.0" />
+                        <Text fill="#c6c6c6" layoutX="125.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Learning Rate">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="-20.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Slider fx:id="learningRateSlider" layoutX="10.0" layoutY="213.0" majorTickUnit="10.0" onMouseDragged="#learningRateDragged" prefWidth="400.0" />
                      </children>
                   </VBox>
                   <Group>
@@ -45,17 +68,17 @@
                         <Insets />
                      </HBox.margin>
                   </Group>
-                  <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Text fill="#838383" strokeType="OUTSIDE" strokeWidth="0.0" text="IMPORT RECORD">
-                           <font>
-                              <Font name="Code-Light" size="40.0" />
-                           </font>
-                        </Text>
-                     </children>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets top="50.0" />
+                        <Insets />
                      </HBox.margin>
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Ressources/Assets/startButton.png" />
+                           </image>
+                        </ImageView>
+                     </children>
                   </VBox>
                   <Group>
                      <children>
@@ -66,9 +89,17 @@
                         <Insets />
                      </HBox.margin>
                   </Group>
-                  <VBox alignment="CENTER" layoutX="349.0" layoutY="10.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER" layoutX="349.0" layoutY="10.0" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Slider majorTickUnit="10.0" prefWidth="400.0" />
+                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Momentum Rate">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="-20.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Slider fx:id="momentumRateSlider" majorTickUnit="10.0" onMouseDragged="#momentumRateDragged" prefWidth="400.0" />
                      </children>
                   </VBox>
                </children>
