@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -14,28 +15,120 @@
             <Image url="@../Ressources/Assets/BACKGROUND.jpg" />
          </image>
       </ImageView>
+      <AnchorPane fx:id="startNetwork" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2b2b2b;">
+         <children>
+            <Text fill="#00d4ff" layoutX="600.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finally use the start button to start your Neural Network">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+            <Line endX="100.0" layoutX="950.0" layoutY="600.0" rotate="90.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="changeValues" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2b2b2b;">
+         <children>
+            <Line endX="100.0" layoutX="1000.0" layoutY="700.0" rotate="90.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
+            <Text fill="#00d4ff" layoutX="600.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Open the bottom bar and try sliding these four bars">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+            <Text fill="#00d4ff" layoutX="50.0" layoutY="870.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. 2. 3. 4." wrappingWidth="50.50000190734863">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="dragDiagram" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2b2b2b;">
+         <children>
+            <Line endX="100.0" layoutX="450.0" layoutY="200.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
+            <Text fill="#00d4ff" layoutX="350.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Now try dragging a diagram somewhere">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="neuralSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2b2b2b;">
+         <children>
+            <Text fill="#00d4ff" layoutX="450.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First, add a new Hidden Layer with the symbol representing a small circle with a plus. After this try deleting this newly added layer. This is how it works. Then try to change the weightings of this layer. After this proceed to the next step by saving your choices." wrappingWidth="1056.7265625">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="dragNeural" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2b2b2b;">
+         <children>
+            <Line endX="100.0" layoutX="450.0" layoutY="540.0" startX="-100.0" stroke="#00ff2b" strokeWidth="3.0" />
+            <Text fill="#00ff2a" layoutX="550.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use this bar to get a Neural Net and place it anywhere you want" wrappingWidth="613.724609375">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+            <Line endX="100.0" layoutX="420.0" layoutY="400.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
+            <Text fill="#00d4ff" layoutX="350.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drag &amp; Drop">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="dataSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2b2b2b;">
+         <children>
+            <Line endX="100.0" layoutX="300.0" layoutY="150.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
+            <Line endX="100.0" layoutX="500.0" layoutY="150.0" rotate="80.0" scaleX="0.7" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
+            <Line endX="100.0" layoutX="500.0" layoutY="500.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
+            <Text fill="#00d4ff" layoutX="70.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set this column as input">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+            <Text fill="#00d4ff" layoutX="425.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set this column as output">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="step3" fill="#00d4ff" layoutX="300.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apply these settings">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="importData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2b2b2b;">
+         <children>
+            <Line endX="100.0" fill="WHITE" layoutX="550.0" layoutY="400.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
+            <Text fx:id="step2" fill="#00d4ff" layoutX="300.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import &quot;Art einer Lilie&quot;">
+               <font>
+                  <Font name="Champagne &amp; Limousines" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="importPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <AnchorPane layoutX="510.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
+            <AnchorPane fx:id="dataPrep" layoutX="510.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
                <children>
                   <Text fill="WHITE" layoutX="250.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Preparation">
                      <font>
                         <Font name="Champagne &amp; Limousines" size="64.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="75.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Important: For this program to work you need to format your data. It should be a .csv oder .txt type of data. Furthermore they need to be in a String (one cell per String in Excel) and Werte should be seperated with commas. Your class needs to be defined as +/-1 or 0. For this tutorial the data is already chosen and prepared." wrappingWidth="764.130859375">
+                  <Text fill="WHITE" layoutX="75.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Important: For this program to work you need to format your data. It should be a .csv oder .txt type of data. Furthermore they need to be in a String (one cell per String in Excel) and values should be seperated by commas. Your class needs to be defined as +/-1 or 0. For this tutorial the data is already chosen and prepared." wrappingWidth="764.130859375">
                      <font>
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="350.0" layoutY="500.0" mnemonicParsing="false" text="I Understand">
+                  <Button layoutX="350.0" layoutY="500.0" mnemonicParsing="false" onAction="#step1" text="I Understand">
                      <font>
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="510.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
+            <AnchorPane fx:id="tutorialStart" layoutX="510.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
                <children>
                   <Text fill="WHITE" layoutX="350.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial" wrappingWidth="225.265625">
                      <font>
@@ -47,12 +140,12 @@
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="395.0" layoutY="498.0" mnemonicParsing="false" text="Start" textAlignment="CENTER">
+                  <Button layoutX="395.0" layoutY="498.0" mnemonicParsing="false" onAction="#startTutorial" text="Start" textAlignment="CENTER">
                      <font>
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
                   </Button>
-                  <Button layoutX="702.0" layoutY="498.0" mnemonicParsing="false" text="Skip">
+                  <Button layoutX="702.0" layoutY="498.0" mnemonicParsing="false" onAction="#skipTutorial" text="Skip">
                      <font>
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>

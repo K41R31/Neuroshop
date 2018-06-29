@@ -215,8 +215,12 @@ public class ANNModel extends Observable {
         this.notifyObservers("setNewWeights");
     }
 
+<<<<<<< HEAD
 
 
+=======
+    //public void saveTempWeights(epochs)
+>>>>>>> ef2841dd3a079060d7da8b608ef9ecffa40d08d5
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
         return newWeights;
     }

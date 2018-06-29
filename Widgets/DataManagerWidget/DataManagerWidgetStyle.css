@@ -7,3 +7,35 @@
     -fx-border-color: #4490ff;
     -fx-border-width: 2;
 }
+.scroll-pane {
+    -fx-background-color: TRANSPARENT;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: TRANSPARENT;
+}
+.scroll-pane > .corner {
+    -fx-background-color: TRANSPARENT;
+}
+.scroll-bar:vertical{
+    -fx-background-color:TRANSPARENT;
+}
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: TRANSPARENT;
+    -fx-border-color: TRANSPARENT;
+}
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding:0;
+}
+.scroll-bar:vertical .track{
+    -fx-background-color: TRANSPARENT;
+    -fx-border-color: TRANSPARENT;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #1b1b1b;
+    -fx-background-insets: 0 -2 0 -2;
+}
