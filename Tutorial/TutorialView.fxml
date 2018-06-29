@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Tutorial.Tutorial">
    <children>
@@ -12,6 +14,51 @@
             <Image url="@../Ressources/Assets/BACKGROUND.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="importPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" />
+      <AnchorPane fx:id="importPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
+         <children>
+            <AnchorPane layoutX="510.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
+               <children>
+                  <Text fill="WHITE" layoutX="250.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Preparation">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="64.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="75.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Important: For this program to work you need to format your data. It should be a .csv oder .txt type of data. Furthermore they need to be in a String (one cell per String in Excel) and Werte should be seperated with commas. Your class needs to be defined as +/-1 or 0. For this tutorial the data is already chosen and prepared." wrappingWidth="764.130859375">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="36.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="350.0" layoutY="500.0" mnemonicParsing="false" text="I Understand">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="36.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="510.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
+               <children>
+                  <Text fill="WHITE" layoutX="350.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial" wrappingWidth="225.265625">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="64.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="147.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If this is your first time using this program please take the tutorial. Otherwise you may skip this on the right corner." wrappingWidth="605.138671875">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="36.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="395.0" layoutY="498.0" mnemonicParsing="false" text="Start" textAlignment="CENTER">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="36.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="702.0" layoutY="498.0" mnemonicParsing="false" text="Skip">
+                     <font>
+                        <Font name="Champagne &amp; Limousines" size="36.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
    </children>
 </AnchorPane>
