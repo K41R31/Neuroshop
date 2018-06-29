@@ -6,13 +6,10 @@ import Neuroshop.Main;
 import Neuroshop.Models.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -34,6 +31,10 @@ public class DataManagerWidgetController implements Observer {
     private StackPane button1Pane;
     @FXML
     private StackPane button2Pane;
+    @FXML
+    private Text columnsText;
+    @FXML
+    private Text rowsText;
     @FXML
     private Text button1Text;
     @FXML
@@ -105,7 +106,14 @@ public class DataManagerWidgetController implements Observer {
 */
 
     private void initDataManager() {
+        columnsText.setText(columnsText.getText()+Integer.toString(annModel.getDataColumns()));
+        rowsText.setText(rowsText.getText()+Integer.toString(annModel.getNumberOfRecords()));
         for(int c = 0; c < annModel.getDataColumns(); c++) {
+            CheckBox checkBox = new CheckBox("");
+            checkBox.setPrefWidth(30);
+            checkBox.setPrefHeight(10);
+            StackPane stackPane = new StackPane(checkBox);
+            HBox.setHgrow(stackPane, Priority.ALWAYS);
             VColumn vColumn = new VColumn();
             columnPane.getChildren().add(vColumn);
             for (int r = 0; r < annModel.getNumberOfRecords(); r++) {
@@ -113,7 +121,7 @@ public class DataManagerWidgetController implements Observer {
                 vColumn.addText(Double.toString(dataset[r][c]));
                 if (c == 0) {
                     Text text = new Text(Integer.toString(r));
-                    text.setFill(Color.web("#666666"));
+                    text.setFill(Color.web("#777777"));
                     text.setFont(new Font("Champagne & Limousines", 18));
                     counterPane.getChildren().add(text);
                 }
@@ -123,28 +131,11 @@ public class DataManagerWidgetController implements Observer {
 
     private class VColumn extends VBox {
         VColumn() {
-            setPadding(new Insets(10, 0, 0, 0));
-            setSpacing(10);
+            setSpacing(5);
             setMinWidth(100);
             setPrefWidth(USE_COMPUTED_SIZE);
             setPrefHeight(USE_COMPUTED_SIZE);
             setAlignment(Pos.TOP_CENTER);
-
-            CheckBox checkBox = new CheckBox();
-            checkBox.minWidth(USE_PREF_SIZE);
-            checkBox.minHeight(USE_PREF_SIZE);
-            checkBox.prefWidth(20);
-            checkBox.prefWidth(20);
-            checkBox.maxHeight(USE_PREF_SIZE);
-            getChildren().add(checkBox);
-
-            VBox vBox = new VBox();
-            vBox.setSpacing(2);
-            vBox.setPrefWidth(USE_COMPUTED_SIZE);
-            vBox.setPrefHeight(USE_COMPUTED_SIZE);
-            vBox.setAlignment(Pos.TOP_CENTER);
-
-            getChildren().add(vBox);
         }
 
         void addText(String inputText) {
@@ -162,11 +153,6 @@ public class DataManagerWidgetController implements Observer {
                 initDataManager();
 
         }
-    }
-
-    @FXML
-    private void slideOnPane() {
-
     }
 
     @FXML
