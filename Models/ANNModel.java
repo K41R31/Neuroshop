@@ -10,8 +10,8 @@ import java.util.Observable;
 
 public class ANNModel extends Observable {
 
-    private File datasetFile;
-    private double[][] dataset;
+    private File dataSetFile;
+    private double[][] dataSet;
 
     private int dataColumns;
     private int[] inputColumns;
@@ -167,24 +167,24 @@ public class ANNModel extends Observable {
     }
 
     public void setDatasetFile(File dataSetFile) {
-        this.datasetFile = dataSetFile;
+        this.dataSetFile = dataSetFile;
         setChanged();
         notifyObservers("setDatasetFile");
     }
 
     public File getDatasetFile() {
-        return datasetFile;
+        return dataSetFile;
     }
 
     public void setDataset(double[][] dataSet) {
-        this.dataset = dataSet;
+        this.dataSet = dataSet;
         setChanged();
         notifyObservers("initDataManager");
         System.out.println("BEVOR");
     }
 
     public double[][] getDataSet() {
-        return dataset;
+        return dataSet;
     }
 
     public int getMaxEpochs() {

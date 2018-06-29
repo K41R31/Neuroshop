@@ -1,5 +1,6 @@
 package Neuroshop.Widgets;
 
+import Neuroshop.ANN.ANNLearn;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController;

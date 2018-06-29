@@ -138,9 +138,11 @@ public class DataManagerWidgetController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        System.out.println(arg);
         switch ((String)arg) {
             case "initDataManager":
                 initDataManager();
+
         }
     }
 
