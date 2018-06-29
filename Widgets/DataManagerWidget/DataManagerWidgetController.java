@@ -111,7 +111,7 @@ public class DataManagerWidgetController implements Observer {
     }
 
     private class VColumn extends VBox {
-        public VColumn() {
+        VColumn() {
             setPadding(new Insets(10, 0, 0, 0));
             setSpacing(10);
             setMinWidth(100);
@@ -142,7 +142,6 @@ public class DataManagerWidgetController implements Observer {
         System.out.println(arg);
         switch ((String)arg) {
             case "initDataManager":
-                System.out.println("NACH");
                 initDataManager();
 
         }
