@@ -3,6 +3,8 @@ package Neuroshop.Models;
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
+import Neuroshop.ANN.Math.Sigmoid;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ public class ANNModel extends Observable {
 
     private DataNormalization dataNormType;
 
-    private int dataPercentage;
+    private double dataPercentage;
     private int[] numberOfHiddenNeurons;
     private int numberNeuronsHdnLayer;
     
@@ -36,6 +38,8 @@ public class ANNModel extends Observable {
     private double learningRate;
     private double momentumRate;
     private int maxEpochs;
+
+    IActivationFunction[] hiddenAcFnc;
 
     private LearningAlgorithm.LearningMode lMode;
 
@@ -87,11 +91,11 @@ public class ANNModel extends Observable {
         this.notifyObservers("setLearnMode");
     }
 
-    public int getDataPercentage() {
+    public double getDataPercentage() {
         return this.dataPercentage;
     }
 
-    public void setDataPercentage(int dataPercentage) {
+    public void setDataPercentage(double dataPercentage) {
         this.dataPercentage = dataPercentage;
         this.setChanged();
         this.notifyObservers("setDataPercentage");

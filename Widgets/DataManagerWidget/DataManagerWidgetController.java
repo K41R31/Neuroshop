@@ -5,17 +5,23 @@ import Neuroshop.Main;
 
 import Neuroshop.Models.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
+import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
+import java.awt.*;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -24,13 +30,20 @@ public class DataManagerWidgetController implements Observer {
     private ANNModel annModel;
     private LastOpenedFiles lastOpened;
     private WidgetContainerModel widgetContainerModel;
+    private ArrayList<ChoiceBox> choosedColumns;
 
+    @FXML
+    private StackPane rootPane;
     @FXML
     private AnchorPane importPane;
     @FXML
     private StackPane button1Pane;
     @FXML
     private StackPane button2Pane;
+    @FXML
+    private Text testdataValue;
+    @FXML
+    private Text learndataValue;
     @FXML
     private Text columnsText;
     @FXML
@@ -43,7 +56,20 @@ public class DataManagerWidgetController implements Observer {
     private VBox counterPane;
     @FXML
     private HBox columnPane;
+    @FXML
+    private HBox chooserPane;
+    @FXML
+    private Slider testLearnSlider;
 
+    //Für Mouse Events
+    private double sceneCursorPosX, sceneCursorPosY;
+    private double nodeTranslatedX, nodeTranslatedY;
+    private double sceneWidth, sceneHeight;
+
+    @FXML
+    private void initialize() {
+        makeDraggable(rootPane);
+    }
 
     @FXML
     private void loadDataSet() {
@@ -69,7 +95,7 @@ public class DataManagerWidgetController implements Observer {
         ArrayList<String> files = lastOpened.getOpenedFiles();
         if (files.size() == 0) {
             Text text = new Text("No recently opened files");
-            text.setFont(new Font("Walkway Bold",16)); //TODO An GUI anpassen, Schriftgröße etc.
+            text.setFont(new Font("Walkway Bold",16));
 
         } else {
             for (String fileString : files) {
@@ -106,14 +132,22 @@ public class DataManagerWidgetController implements Observer {
 */
 
     private void initDataManager() {
+        testLearnSlider.setMin(0);
+        testLearnSlider.setMax(annModel.getNumberOfRecords());
+        choosedColumns = new ArrayList<>();
         columnsText.setText(columnsText.getText()+Integer.toString(annModel.getDataColumns()));
         rowsText.setText(rowsText.getText()+Integer.toString(annModel.getNumberOfRecords()));
         for(int c = 0; c < annModel.getDataColumns(); c++) {
-            CheckBox checkBox = new CheckBox("");
-            checkBox.setPrefWidth(30);
-            checkBox.setPrefHeight(10);
-            StackPane stackPane = new StackPane(checkBox);
+            ChoiceBox<String> cb = new ChoiceBox<>(FXCollections.observableArrayList("Input", "Output"));
+            cb.setPrefWidth(50);
+            cb.setPrefHeight(30);
+            StackPane stackPane = new StackPane(cb);
+            choosedColumns.add(cb);
+            cb.setOnAction(event -> {
+                checkIfReady();
+            });
             HBox.setHgrow(stackPane, Priority.ALWAYS);
+            chooserPane.getChildren().add(stackPane);
             VColumn vColumn = new VColumn();
             columnPane.getChildren().add(vColumn);
             for (int r = 0; r < annModel.getNumberOfRecords(); r++) {
@@ -129,6 +163,30 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
+    private void checkIfReady() {
+        int[] finalInput;
+        int[] finalOutput;
+        ArrayList<Integer> input = new ArrayList<>();
+        ArrayList<Integer> output = new ArrayList<>();
+        for (int i = 0; i < choosedColumns.size(); i++) {
+            if (choosedColumns.get(i).getValue() != null) {
+                if (choosedColumns.get(i).getValue().equals("Input")) input.add(i);
+                else output.add(i);
+            } else return;
+        }
+        finalInput = new int[input.size()];
+        finalOutput = new int[output.size()];
+        for (int i = 0; i < input.size(); i++) {
+            finalInput[i] = input.get(i);
+        }
+        for (int i = 0; i < output.size(); i++) {
+            finalOutput[i] = output.get(i);
+        }
+        if (finalInput.length < 1 || finalOutput.length < 1) return;
+        annModel.setInputColumns(finalInput);
+        annModel.setOutputColumns(finalOutput);
+    }
+
     private class VColumn extends VBox {
         VColumn() {
             setSpacing(5);
@@ -136,6 +194,7 @@ public class DataManagerWidgetController implements Observer {
             setPrefWidth(USE_COMPUTED_SIZE);
             setPrefHeight(USE_COMPUTED_SIZE);
             setAlignment(Pos.TOP_CENTER);
+            HBox.setHgrow(this, Priority.ALWAYS);
         }
 
         void addText(String inputText) {
@@ -151,8 +210,15 @@ public class DataManagerWidgetController implements Observer {
         switch ((String)arg) {
             case "initDataManager":
                 initDataManager();
-
         }
+    }
+
+    @FXML
+    private void testLearnSliderSlided() {
+        int value = (int)testLearnSlider.getValue();
+        learndataValue.setText(String.valueOf(value));
+        testdataValue.setText(String.valueOf(testLearnSlider.getMax()-value));
+        annModel.setDataPercentage((double)value/100);
     }
 
     @FXML
@@ -177,6 +243,51 @@ public class DataManagerWidgetController implements Observer {
     private void button2Exited() {
         button2Pane.setStyle("-fx-background-color: TRANSPARENT; -fx-border-color: #4490ff; -fx-border-width: 2");
         button2Text.setFill(Color.web("#4490ff"));
+    }
+
+    private void makeDraggable(Node node) {
+
+        EventHandler<MouseEvent> onMousePressed =
+                event -> {
+                    sceneCursorPosX = event.getSceneX();
+                    sceneCursorPosY = event.getSceneY();
+                    nodeTranslatedX = node.getTranslateX();
+                    nodeTranslatedY = node.getTranslateY();
+                    sceneWidth = node.getScene().getWidth();
+                    sceneHeight = node.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
+                };
+
+        EventHandler<MouseEvent> onMouseDragged =
+                event -> {
+                    double offsetX = event.getSceneX() - sceneCursorPosX;
+                    double offsetY = event.getSceneY() - sceneCursorPosY;
+                    double newTranslateX = nodeTranslatedX + offsetX;
+                    double newTranslateY = nodeTranslatedY + offsetY;
+
+                    //Collider, der das Objekt stoppt falls es an eine Wand stößt
+                    if ((node.getBoundsInParent().getMinX() > 0 || newTranslateX > node.getTranslateX()) & (node.getBoundsInParent().getMaxX() < sceneWidth || newTranslateX < node.getTranslateX())) node.setTranslateX(newTranslateX);
+                    if ((node.getBoundsInParent().getMinY() > 0 || newTranslateY > node.getTranslateY()) & (node.getBoundsInParent().getMaxY() < sceneHeight || newTranslateY < node.getTranslateY())) node.setTranslateY(newTranslateY);
+                    //Behebt einen Glitch, bei dem das Objekt durch schnelles bewegen durch die Wand gezogen werden kann, indem es genau so weit zurück transliert wird, wie es durch geglitcht ist.
+                    if (node.getBoundsInParent().getMinX() < 0) node.setTranslateX(newTranslateX-node.getBoundsInParent().getMinX());
+                    else if (node.getBoundsInParent().getMaxX() > sceneWidth) node.setTranslateX(newTranslateX-(node.getBoundsInParent().getMaxX()-sceneWidth));
+                    if (node.getBoundsInParent().getMinY() < 0) node.setTranslateY(newTranslateY-node.getBoundsInParent().getMinY());
+                    else if (node.getBoundsInParent().getMaxY() > sceneHeight) node.setTranslateY(newTranslateY-(node.getBoundsInParent().getMaxY()-sceneHeight));
+                };
+
+        EventHandler<MouseEvent> onMouseReleased =
+                event -> {
+                    if (widgetContainerModel.getWidgetMenuIsOpen() & MouseInfo.getPointerInfo().getLocation().x < 300) {
+                        widgetContainerModel.changeWidgetStateById(node.getId(), 0);
+                        widgetContainerModel.adddWidgetToMenu();
+                        widgetContainerModel.clearBufferedWidget();
+                        node.setTranslateX(0);
+                        node.setTranslateY(0);
+                    }
+                };
+
+        node.setOnMousePressed(onMousePressed);
+        node.setOnMouseDragged(onMouseDragged);
+        node.setOnMouseReleased(onMouseReleased);
     }
 
     public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel) {

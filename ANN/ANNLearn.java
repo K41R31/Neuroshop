@@ -19,33 +19,32 @@ public class ANNLearn implements Observer {
 
     private ANNModel annModel;
 
-    double dataPercentage;
-    int[] inputColumns;
-    int[] outputColumns;
-    int[] numberOfHiddenNeurons;
-    int maxEpochs;
+    private double dataPercentage;
+    private int[] inputColumns;
+    private int[] outputColumns;
+    private int[] numberOfHiddenNeurons;
+    private int maxEpochs;
 
-    double minOverallError;
-    double learningRate;
-    double momentumRate;
-    double lastWeight;
-    IActivationFunction[] actFnc;
-    IActivationFunction outputActFnc;
-    LearningAlgorithm.LearningMode lMode;
-    DataNormalization dataNormType;
+    private double minOverallError;
+    private double learningRate;
+    private double momentumRate;
+    private double lastWeight;
+    private IActivationFunction[] actFnc;
+    //private IActivationFunction outputActFnc;
+    private LearningAlgorithm.LearningMode lMode;
+    private DataNormalization dataNormType; //Immer 1 – -1
 
 
-    public void train(int[] inputColumns, int[] outputColumns, double dataPercentage, int maxEpochs, int[] numberOfHiddenNeurons,
-                      double minOverallError, double learningRate, double momentumRate, IActivationFunction[] actFnc, IActivationFunction outputActFnc, LearningAlgorithm.LearningMode lMode, DataNormalization dataNormType) {
+    public void train() {
 
         RandomNumberGenerator.setSeed(5);
-        this.inputColumns = inputColumns;
-        this.outputColumns = outputColumns;
+
+        dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
 
         this.numberOfHiddenNeurons = (numberOfHiddenNeurons);
 
         this.actFnc = actFnc;
-        this.outputActFnc = outputActFnc;
+        IActivationFunction outputActFnc = new Linear(1.0);
 
         NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, numberOfHiddenNeurons, actFnc, outputActFnc, new UniformInitialization(0, 1.0));
         nnWidget.print();
@@ -75,9 +74,8 @@ public class ANNLearn implements Observer {
         this.momentumRate = momentumRate;
         this.learningRate = learningRate;
         this.minOverallError = minOverallError;
-        this.lMode = lMode;
 
-        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, lMode);
+        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
         backprop.setMaxEpochs(maxEpochs);
@@ -135,6 +133,21 @@ public class ANNLearn implements Observer {
         switch ((String)arg) {
             case "setDatasetFile":
                 loadDataSet();
+                break;
+            case "setInputColumns":
+                this.inputColumns = annModel.getInputColumns();
+                break;
+            case "setOutputColumns":
+                this.outputColumns = annModel.getOutputColums();
+                break;
+            case "setDataPercentage":
+                this.dataPercentage = annModel.getDataPercentage();
+                break;
+            case "setNumberOfHiddenNeurons":
+                this.numberOfHiddenNeurons = annModel.getNumberOfHiddenNeurons();
+                break;
+            case "setActFnc":
+                this.actFnc = annModel.getActFnc();
         }
     }
 
