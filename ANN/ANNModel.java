@@ -29,6 +29,7 @@ public class ANNModel extends Observable {
     private IActivationFunction[] actFnc;
     private IActivationFunction outputActFnc;
 
+    private double lastWeight;
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
@@ -43,7 +44,7 @@ public class ANNModel extends Observable {
     public void setInputColumns(int[] inputColumns) {
         this.inputColumns = inputColumns;
         this.setChanged();
-        this.notifyObservers(inputColumns);
+        this.notifyObservers("setInputColumns");
     }
 
     public int[] getOutputColums() {
@@ -53,7 +54,7 @@ public class ANNModel extends Observable {
     public void setOutputColumns(int[] outputColumns) {
         this.outputColumns = outputColumns;
         this.setChanged();
-        this.notifyObservers(outputColumns);
+        this.notifyObservers("setOutputColumns");
     }
 
     public DataNormalization getDataNormType() {
@@ -63,7 +64,7 @@ public class ANNModel extends Observable {
     public void setDataNormType(DataNormalization dataNormType) {
         this.dataNormType = dataNormType;
         this.setChanged();
-        this.notifyObservers(dataNormType);
+        this.notifyObservers("setDataNormType");
     }
 
     public LearningAlgorithm.LearningMode getLearnmode() {
@@ -73,7 +74,7 @@ public class ANNModel extends Observable {
     public void setLearnMode(LearningAlgorithm.LearningMode lMode) {
         this.lMode = lMode;
         this.setChanged();
-        this.notifyObservers(lMode);
+        this.notifyObservers("setLearnMode");
     }
 
     public int getDataPercentage() {
@@ -83,7 +84,7 @@ public class ANNModel extends Observable {
     public void setDataPercentage(int dataPercentage) {
         this.dataPercentage = dataPercentage;
         this.setChanged();
-        this.notifyObservers(dataPercentage);
+        this.notifyObservers("setDataPercentage");
     }
 
     public int[] getNumberOfHiddenNeurons() {
@@ -92,6 +93,8 @@ public class ANNModel extends Observable {
 
     public void setNumberOfHiddenNeurons(int[] numberOfHiddenNeurons) {
         this.numberOfHiddenNeurons = numberOfHiddenNeurons;
+        this.setChanged();
+        this.notifyObservers("setNumberOfHiddenNeurons");
     }
 
     public int getNumberNeuronsHdnLayer() {
@@ -111,7 +114,7 @@ public class ANNModel extends Observable {
     public void setActFnc(IActivationFunction[] actFnc) {
         this.actFnc = actFnc;
         this.setChanged();
-        this.notifyObservers(actFnc);
+        this.notifyObservers("setActFnc");
     }
 
     public IActivationFunction getOutputActFnc() {
@@ -121,7 +124,7 @@ public class ANNModel extends Observable {
     public void setOutputActFnc(IActivationFunction outputActFnc) {
         this.outputActFnc = outputActFnc;
         this.setChanged();
-        this.notifyObservers(outputActFnc);
+        this.notifyObservers("setOutputActFnc");
     }
 
     public double getMinOverallError() {
@@ -131,7 +134,7 @@ public class ANNModel extends Observable {
     public void setMinOverallError(double minOverallError) {
         this.minOverallError = minOverallError;
         this.setChanged();
-        this.notifyObservers(minOverallError);
+        this.notifyObservers("setMinOverallError");
     }
 
     public double getLearningRate() {
@@ -141,7 +144,7 @@ public class ANNModel extends Observable {
     public void setLearningRate(double learningRate) {
         this.learningRate = learningRate;
         this.setChanged();
-        this.notifyObservers(learningRate);
+        this.notifyObservers("setLearningRate");
     }
 
     public double getMomentumRate() {
@@ -157,7 +160,7 @@ public class ANNModel extends Observable {
     public void setDatasetFile(File dataSetFile) {
         this.datasetFile = dataSetFile;
         setChanged();
-        notifyObservers("loadDataSet");
+        notifyObservers("setDatasetFile");
     }
 
     public File getDatasetFile() {
@@ -176,14 +179,16 @@ public class ANNModel extends Observable {
         return this.maxEpochs;
     }
 
-    public void setMaxEpochs(int iterations) {
-        this.maxEpochs = iterations;
+    public void setMaxEpochs(int maxEpochs) {
+        this.maxEpochs = maxEpochs;
         this.setChanged();
-        this.notifyObservers(iterations);
+        this.notifyObservers("setMaxEpochs");
     }
 
     public void setNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
         this.newWeights = newWeights;
+        this.setChanged();
+        this.notifyObservers("setNewWeights");
     }
 
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {

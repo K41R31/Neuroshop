@@ -27,7 +27,7 @@ public class ANNLearn implements Observer {
     double minOverallError;
     double learningRate;
     double momentumRate;
-
+    double lastWeight;
     IActivationFunction[] actFnc;
     IActivationFunction outputActFnc;
     LearningAlgorithm.LearningMode lMode;
@@ -89,8 +89,6 @@ public class ANNLearn implements Observer {
         backprop.printTraining = true;
         backprop.showPlotError = true;
 
-
-
         try {
             backprop.forward();
 
@@ -113,6 +111,7 @@ public class ANNLearn implements Observer {
 
             neuralDataSetToTrain.printTargetOutput();
             neuralDataSetToTest.printTargetOutput();
+
             backprop.forward();
 
 

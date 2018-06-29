@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
@@ -15,7 +23,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.NeuralNetWidget.NeuralNetController">
+<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.NeuralNetWidget.NeuralNetController">
    <children>
       <VBox alignment="CENTER">
          <children>
@@ -75,20 +83,33 @@
                   <AnchorPane fx:id="splinesPane" />
                   <HBox fx:id="vBoxContainer" alignment="CENTER">
                      <children>
-                        <VBox alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="130.0" spacing="30.0">
+                        <VBox fx:id="inputColumns" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="130.0" spacing="30.0">
                            <children>
                               <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                               <Circle layoutX="75.0" layoutY="145.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="WHITE" layoutX="75.0" layoutY="40.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                            </children>
                            <padding>
                               <Insets bottom="30.0" top="30.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="130.0" spacing="30.0">
+                        <VBox fx:id="hiddenLayer" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="130.0" spacing="30.0">
                            <children>
                               <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                               <Circle layoutX="75.0" layoutY="110.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle layoutX="75.0" layoutY="75.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle layoutX="75.0" layoutY="110.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle layoutX="75.0" layoutY="215.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle layoutX="75.0" layoutY="250.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="30.0" top="30.0" />
+                           </padding>
+                        </VBox>
+                        <VBox fx:id="outputLayer" alignment="CENTER" layoutX="140.0" layoutY="10.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="130.0" spacing="30.0">
+                           <children>
+                              <Circle radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                            </children>
                            <padding>
                               <Insets bottom="30.0" top="30.0" />

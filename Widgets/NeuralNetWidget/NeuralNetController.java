@@ -2,6 +2,9 @@ package Neuroshop.Widgets.NeuralNetWidget;
 
 import Neuroshop.ANN.ANNModel;
 import Neuroshop.ANN.Learn.Backpropagation;
+import Neuroshop.ANN.Neural.HiddenLayer;
+import Neuroshop.ANN.Neural.Neuron;
+import Neuroshop.ANN.Neural.OutputLayer;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
@@ -14,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -22,6 +26,7 @@ public class NeuralNetController extends StackPane implements Observer {
     private ANNModel annModel;
     private Backpropagation bP;
     private WidgetContainerModel widgetContainerModel;
+    private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
 
     @FXML
     private AnchorPane splinesPane;
@@ -58,6 +63,7 @@ public class NeuralNetController extends StackPane implements Observer {
 
     @FXML
     public void drawSplines() {
+        annModel.setNewWeights(newWeights);
         splinesPane.getChildren().clear();
         VBox endPane, startPane;
         Circle endCircle, startCircle;
@@ -70,7 +76,6 @@ public class NeuralNetController extends StackPane implements Observer {
                 endCircle = (Circle)endPane.getChildren().get(x);
                 for (int r = 0; r < startPane.getChildren().size(); r++) { //1. Spalte 1. Neuron
                     startCircle = (Circle)startPane.getChildren().get(r);
-
                     startPaneBounds = startPane.getBoundsInParent();
                     endPaneBounds = endPane.getBoundsInParent();
                     startCircleBounds = startCircle.getBoundsInParent();
@@ -81,12 +86,12 @@ public class NeuralNetController extends StackPane implements Observer {
                     endY = endCircleBounds.getMinY() + 20;
                     controlX1 = startX + splineTangent;
                     controlX2 = endX - splineTangent;
-
+                    double lastDeltaWeight = newWeights.get(c).get(x).get(r);
                     CubicCurve spline = new CubicCurve(startX, startY, controlX1, startY, controlX2, endY, endX, endY);
                     spline.setLayoutX(0);
                     spline.setLayoutY(0);
                     spline.setFill(Color.TRANSPARENT);
-                    spline.setStrokeWidth(splineWidth);
+                    spline.setStrokeWidth(lastDeltaWeight);
                     spline.setStroke(Color.BLACK);
                     splinesPane.getChildren().add(spline);
                 }

@@ -200,6 +200,7 @@ public class Backpropagation extends DeltaRule {
             currentRecord=++k;
             if(k>=trainingDataSet.numberOfRecords){
                 annModel.setNewWeights(lastDeltaWeights); //Weights in Model schreiben
+
                 k=0;
                 currentRecord=0;
                 listOfErrorsByEpoch.add(overallGeneralError);

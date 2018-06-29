@@ -95,6 +95,9 @@ public class DataManagerWidgetController implements Observer {
 */
     @Override
     public void update(Observable o, Object arg) {
+        switch ((String) arg) {
+
+        }
     }
 
     @FXML
