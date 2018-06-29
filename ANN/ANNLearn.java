@@ -126,6 +126,7 @@ public class ANNLearn implements Observer {
         String datasetPath = annModel.getDatasetFile().getAbsolutePath();
         DataSet dataset = new DataSet(datasetPath); // Spalten müssen mit "," getrennt werden
         annModel.setDataColumns(dataset.numberOfColumns);
+        annModel.setNumberOfRecords(dataset.numberOfRecords);
         annModel.setDataset(dataset.getData());
     }
 

@@ -28,28 +28,6 @@
                      <padding>
                         <Insets top="40.0" />
                      </padding>
-                     <children>
-                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
-                           <font>
-                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#c6c6c6" layoutX="26.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
-                           <font>
-                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#c6c6c6" layoutX="26.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
-                           <font>
-                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#c6c6c6" layoutX="26.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
-                           <font>
-                              <Font name="Champagne &amp; Limousines Bold" size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </VBox>
                   <HBox fx:id="columnPane" prefHeight="100.0" prefWidth="200.0" />
                   <VBox maxWidth="-Infinity" minWidth="200.0" prefWidth="250.0" />

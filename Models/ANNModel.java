@@ -13,6 +13,7 @@ public class ANNModel extends Observable {
     private File dataSetFile;
     private double[][] dataSet;
 
+    private  int numberOfRecords;
     private int dataColumns;
     private int[] inputColumns;
     private int[] outputColumns;
@@ -166,6 +167,14 @@ public class ANNModel extends Observable {
         this.notifyObservers(momentumRate);
     }
 
+    public void setNumberOfRecords(int numberOfRecords) {
+        this.numberOfRecords = numberOfRecords;
+    }
+
+    public int getNumberOfRecords() {
+        return numberOfRecords;
+    }
+
     public void setDatasetFile(File dataSetFile) {
         this.dataSetFile = dataSetFile;
         setChanged();
@@ -180,7 +189,6 @@ public class ANNModel extends Observable {
         this.dataSet = dataSet;
         setChanged();
         notifyObservers("initDataManager");
-        System.out.println("BEVOR");
     }
 
     public double[][] getDataSet() {

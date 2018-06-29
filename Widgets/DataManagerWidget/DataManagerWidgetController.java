@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
@@ -104,8 +105,19 @@ public class DataManagerWidgetController implements Observer {
 */
 
     private void initDataManager() {
-        for(int i = 0; i < annModel.getDataColumns(); i++) {
-            columnPane.getChildren().add(new VColumn());
+        for(int c = 0; c < annModel.getDataColumns(); c++) {
+            VColumn vColumn = new VColumn();
+            columnPane.getChildren().add(vColumn);
+            for (int r = 0; r < annModel.getNumberOfRecords(); r++) {
+                double[][] dataset = annModel.getDataSet();
+                vColumn.addText(Double.toString(dataset[r][c]));
+                if (c == 0) {
+                    Text text = new Text(Integer.toString(r));
+                    text.setFill(Color.web("#666666"));
+                    text.setFont(new Font("Champagne & Limousines", 18));
+                    counterPane.getChildren().add(text);
+                }
+            }
         }
     }
 
@@ -134,11 +146,17 @@ public class DataManagerWidgetController implements Observer {
 
             getChildren().add(vBox);
         }
+
+        void addText(String inputText) {
+            Text text = new Text(inputText);
+            text.setFill(Color.web("#888888"));
+            text.setFont(new Font("Champagne & Limousines", 18));
+            getChildren().add(text);
+        }
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println(arg);
         switch ((String)arg) {
             case "initDataManager":
                 initDataManager();
