@@ -10,7 +10,10 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
+
+import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -27,11 +30,11 @@ public class ANNLearn implements Observer {
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
-    private double lastWeight;
+//private IActivationFunction outputActFnc;
     private IActivationFunction[] actFnc;
-    //private IActivationFunction outputActFnc;
-    private LearningAlgorithm.LearningMode lMode;
+//    private LearningAlgorithm.LearningMode lMode;
     private DataNormalization dataNormType; //Immer 1 – -1
+    private List<Sigmoid> sgmList;
 
 
     public void train() {
@@ -41,9 +44,13 @@ public class ANNLearn implements Observer {
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
 
         this.numberOfHiddenNeurons = (numberOfHiddenNeurons);
-        this.actFnc = actFnc;
-        IActivationFunction outputActFnc = new Linear(1.0);
 
+        IActivationFunction outputActFnc = new Linear(1.0);
+        if(actFnc.length == 0) {
+        for(int i =0; i < numberOfHiddenNeurons.length; i++) {
+            this.actFnc = new IActivationFunction[]{sgmList.get(i)};
+            }
+        }
         NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, numberOfHiddenNeurons, actFnc, outputActFnc, new UniformInitialization(0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
@@ -73,12 +80,8 @@ public class ANNLearn implements Observer {
         this.learningRate = learningRate;
         this.minOverallError = minOverallError;
 
-<<<<<<< HEAD
-        IActivationFunction test = new Linear(1.0);
-        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, lMode);
-=======
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
->>>>>>> f17caa1bce34f17aa53811ba195fa382a672d7b8
+
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
         backprop.setMaxEpochs(maxEpochs);
@@ -149,8 +152,8 @@ public class ANNLearn implements Observer {
             case "setNumberOfHiddenNeurons":
                 this.numberOfHiddenNeurons = annModel.getNumberOfHiddenNeurons();
                 break;
-            case "setActFnc":
-                this.actFnc = annModel.getActFnc();
+            case "setSigmList":
+                this.sgmList = annModel.getSgmList();
         }
     }
 
