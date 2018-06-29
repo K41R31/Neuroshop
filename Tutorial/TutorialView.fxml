@@ -128,7 +128,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tutorialStart" layoutX="510.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
+            <AnchorPane fx:id="tutorialStart" layoutX="510.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
                <children>
                   <Text fill="WHITE" layoutX="350.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutorial" wrappingWidth="225.265625">
                      <font>
@@ -140,12 +140,12 @@
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="395.0" layoutY="498.0" mnemonicParsing="false" text="Start" textAlignment="CENTER">
+                  <Button layoutX="395.0" layoutY="498.0" mnemonicParsing="false" onAction="#startTutorial" text="Start" textAlignment="CENTER">
                      <font>
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
                   </Button>
-                  <Button layoutX="702.0" layoutY="498.0" mnemonicParsing="false" text="Skip">
+                  <Button layoutX="702.0" layoutY="498.0" mnemonicParsing="false" onAction="#skipTutorial" text="Skip">
                      <font>
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
