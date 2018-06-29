@@ -10,7 +10,6 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
-
 import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
@@ -28,7 +27,8 @@ public class ANNLearn implements Observer {
     double minOverallError;
     double learningRate;
     double momentumRate;
-    double lastWeight;
+    String filename;
+
     IActivationFunction[] actFnc;
     IActivationFunction outputActFnc;
     LearningAlgorithm.LearningMode lMode;
@@ -43,7 +43,6 @@ public class ANNLearn implements Observer {
         this.outputColumns = outputColumns;
 
         this.numberOfHiddenNeurons = (numberOfHiddenNeurons);
-
         this.actFnc = actFnc;
         this.outputActFnc = outputActFnc;
 
@@ -130,11 +129,19 @@ public class ANNLearn implements Observer {
         annModel.setDataset(dataset.getData());
     }
 
+    private void setFilename(String filename) {
+        String fN = ("Testlauf" + annModel.getDataSet()); //TODO: Hier kommt noch mehr rein (Nummer des Experiments + Datensatzname)
+        this.filename = fN;
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         switch ((String)arg) {
             case "setDatasetFile":
                 loadDataSet();
+                break;
+            case "setFilename":
+                setFilename(filename);
         }
     }
 

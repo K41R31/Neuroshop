@@ -10,6 +10,7 @@ import Neuroshop.ANN.Neural.*;
 import org.jfree.chart.ChartFrame;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -199,6 +200,7 @@ public class Backpropagation extends DeltaRule {
             }
             currentRecord=++k;
             if(k>=trainingDataSet.numberOfRecords){
+
                 annModel.setNewWeights(lastDeltaWeights); //Weights in Model schreiben
 
                 k=0;
@@ -389,6 +391,7 @@ public class Backpropagation extends DeltaRule {
                             double deltaWeight = (newWeight - n.getWeight(i));
                             lastDeltaWeights.get(l).get(j).set(i,deltaWeight);
                             hl.getNeuron(j).updateWeight(i, newWeight);
+
 
                         }
                   }
