@@ -1,7 +1,7 @@
 package Neuroshop;
 
 import Neuroshop.ANN.ANNLearn;
-import Neuroshop.ANN.ANNModel;
+import Neuroshop.Models.ANNModel;
 import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.Options.OptionsController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;

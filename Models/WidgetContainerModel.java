@@ -15,14 +15,15 @@ public class WidgetContainerModel extends Observable {
     private StackPane[][] widgets = new StackPane[totalWidgetsCounter][2]; //Für jedes Preview eine Zeile
     private int[] widgetState = new int[totalWidgetsCounter]; //0 == preview, 1 == not preview
 
-    public void addWidgetToWhiteboard(String id) {
+    public void addWidgetToWhiteboard(String id, boolean firstWidget) {
         for (int i = 0; i < totalWidgetsCounter; i++) {
             if (widgets[i][0].getId().equals(id)) {
                 bufferedWidget = widgets[i][1];
             }
         }
         setChanged();
-        notifyObservers("addWidgetToWhiteboard");
+        if (firstWidget) notifyObservers("addFirstDataManager");
+        else notifyObservers("addWidgetToWhiteboard");
     }
 
     public boolean getMenuIsBusy() {

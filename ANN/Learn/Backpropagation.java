@@ -1,7 +1,7 @@
 
 package Neuroshop.ANN.Learn;
 
-import Neuroshop.ANN.ANNModel;
+import Neuroshop.Models.ANNModel;
 import Neuroshop.ANN.Charts.Chart;
 import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Data.TimeSeries;

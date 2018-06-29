@@ -1,6 +1,6 @@
 package Neuroshop.Widgets.NeuralNetWidget;
 
-import Neuroshop.ANN.ANNModel;
+import Neuroshop.Models.ANNModel;
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.ANN.Neural.HiddenLayer;
 import Neuroshop.ANN.Neural.Neuron;

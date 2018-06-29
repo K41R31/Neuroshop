@@ -9,6 +9,7 @@ import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
+import Neuroshop.Models.ANNModel;
 
 import java.util.Arrays;
 import java.util.Observable;

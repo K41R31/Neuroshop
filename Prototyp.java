@@ -1,7 +1,11 @@
 package Neuroshop;
 
+<<<<<<< HEAD
 import Neuroshop.ANN.ANNLearn;
 import Neuroshop.ANN.ANNModel;
+=======
+import Neuroshop.Models.ANNModel;
+>>>>>>> 4bbcc7d441c875cd762d5501db88edae922259b7
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Learn.LearningAlgorithm;

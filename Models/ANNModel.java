@@ -1,4 +1,4 @@
-package Neuroshop.ANN;
+package Neuroshop.Models;
 
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;

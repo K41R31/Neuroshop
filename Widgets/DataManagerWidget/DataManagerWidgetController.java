@@ -1,6 +1,6 @@
 package Neuroshop.Widgets.DataManagerWidget;
 
-import Neuroshop.ANN.ANNModel;
+import Neuroshop.Models.ANNModel;
 import Neuroshop.Main;
 
 import Neuroshop.Models.LastOpenedFiles;
