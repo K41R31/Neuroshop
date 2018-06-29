@@ -105,7 +105,6 @@ public class DataManagerWidgetController implements Observer {
 
     private void initDataManager() {
         for(int i = 0; i < annModel.getDataColumns(); i++) {
-            System.out.println(i);
             columnPane.getChildren().add(new VColumn());
         }
     }
