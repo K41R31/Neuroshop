@@ -23,7 +23,7 @@ public class ANNModel extends Observable {
     private int dataPercentage;
     private int[] numberOfHiddenNeurons;
     private int numberNeuronsHdnLayer;
-
+    
 
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
 
@@ -211,6 +211,7 @@ public class ANNModel extends Observable {
         this.notifyObservers("setNewWeights");
     }
 
+    public void saveTempWeights(epochs)
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
         return newWeights;
     }
