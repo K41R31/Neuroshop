@@ -6,8 +6,13 @@ import Neuroshop.Main;
 import Neuroshop.Models.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -32,6 +37,10 @@ public class DataManagerWidgetController implements Observer {
     private Text button1Text;
     @FXML
     private Text button2Text;
+    @FXML
+    private VBox counterPane;
+    @FXML
+    private HBox columnPane;
 
 
     @FXML
@@ -93,8 +102,48 @@ public class DataManagerWidgetController implements Observer {
         updateDataQueue();
     }
 */
+
+    private void initDataManager() {
+        for(int i = 0; i < annModel.getDataColumns(); i++) {
+            System.out.println(i);
+            columnPane.getChildren().add(new VColumn());
+        }
+    }
+
+    private class VColumn extends VBox {
+        public VColumn() {
+            setPadding(new Insets(10, 0, 0, 0));
+            setSpacing(10);
+            setMinWidth(100);
+            setPrefWidth(USE_COMPUTED_SIZE);
+            setPrefHeight(USE_COMPUTED_SIZE);
+            setAlignment(Pos.TOP_CENTER);
+
+            CheckBox checkBox = new CheckBox();
+            checkBox.minWidth(USE_PREF_SIZE);
+            checkBox.minHeight(USE_PREF_SIZE);
+            checkBox.prefWidth(20);
+            checkBox.prefWidth(20);
+            checkBox.maxHeight(USE_PREF_SIZE);
+            getChildren().add(checkBox);
+
+            VBox vBox = new VBox();
+            vBox.setSpacing(2);
+            vBox.setPrefWidth(USE_COMPUTED_SIZE);
+            vBox.setPrefHeight(USE_COMPUTED_SIZE);
+            vBox.setAlignment(Pos.TOP_CENTER);
+
+            getChildren().add(vBox);
+        }
+    }
+
     @Override
     public void update(Observable o, Object arg) {
+        switch ((String)arg) {
+            case "initDataManager":
+                System.out.println("NACH");
+                initDataManager();
+        }
     }
 
     @FXML

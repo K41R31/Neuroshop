@@ -13,6 +13,7 @@ public class ANNModel extends Observable {
     private File datasetFile;
     private double[][] dataset;
 
+    private int dataColumns;
     private int[] inputColumns;
     private int[] outputColumns;
 
@@ -35,6 +36,14 @@ public class ANNModel extends Observable {
     private int maxEpochs;
 
     private LearningAlgorithm.LearningMode lMode;
+
+    public int getDataColumns() {
+        return dataColumns;
+    }
+
+    public void setDataColumns(int dataColumns) {
+        this.dataColumns = dataColumns;
+    }
 
     public int[] getInputColumns() {
         return this.inputColumns;
@@ -166,6 +175,9 @@ public class ANNModel extends Observable {
 
     public void setDataset(double[][] dataSet) {
         this.dataset = dataSet;
+        setChanged();
+        notifyObservers("initDataManager");
+        System.out.println("BEVOR");
     }
 
     public double[][] getDataSet() {
@@ -189,6 +201,4 @@ public class ANNModel extends Observable {
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
         return newWeights;
     }
-
-
 }

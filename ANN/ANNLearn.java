@@ -35,11 +35,10 @@ public class ANNLearn implements Observer {
     DataNormalization dataNormType;
 
 
-    public void train(DataSet dataSet, int[] inputColumns, int[] outputColumns, double dataPercentage, int maxEpochs, int[] numberOfHiddenNeurons,
+    public void train(int[] inputColumns, int[] outputColumns, double dataPercentage, int maxEpochs, int[] numberOfHiddenNeurons,
                       double minOverallError, double learningRate, double momentumRate, IActivationFunction[] actFnc, IActivationFunction outputActFnc, LearningAlgorithm.LearningMode lMode, DataNormalization dataNormType) {
 
         RandomNumberGenerator.setSeed(5);
-
         this.inputColumns = inputColumns;
         this.outputColumns = outputColumns;
 
@@ -54,7 +53,7 @@ public class ANNLearn implements Observer {
 
         this.dataPercentage = dataPercentage;
 
-        double[][] dSet = dataSet.getData();
+        double[][] dSet = annModel.getDataSet();
         this.dataNormType = dataNormType;
         System.out.print("Geladener Datensatz, unverändert: " + Arrays.deepToString(dSet));
 
@@ -116,9 +115,6 @@ public class ANNLearn implements Observer {
             neuralDataSetToTest.printTargetOutput();
             backprop.forward();
 
-
-
-//            backprop.backward();
             neuralDataSetToTrain.printNeuralOutput();
 
 
@@ -130,6 +126,7 @@ public class ANNLearn implements Observer {
     private void loadDataSet() {
         String datasetPath = annModel.getDatasetFile().getAbsolutePath();
         DataSet dataset = new DataSet(datasetPath); // Spalten müssen mit "," getrennt werden
+        annModel.setDataColumns(dataset.numberOfColumns);
         annModel.setDataset(dataset.getData());
     }
 
