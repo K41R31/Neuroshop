@@ -5,9 +5,15 @@ import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+import Neuroshop.ANN.Learn.DeltaRule;
+import Neuroshop.ANN.Neural.HiddenLayer;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 public class ANNModel extends Observable {
@@ -15,7 +21,8 @@ public class ANNModel extends Observable {
     private File dataSetFile;
     private double[][] dataSet;
 
-    private  int numberOfRecords;
+    private int epoch;
+    private int numberOfRecords;
     private int dataColumns;
     private int[] inputColumns;
     private int[] outputColumns;
@@ -25,15 +32,12 @@ public class ANNModel extends Observable {
     private double dataPercentage;
     private int[] numberOfHiddenNeurons;
     private int numberNeuronsHdnLayer;
-    
 
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
-
 
     private IActivationFunction[] actFnc;
     private IActivationFunction outputActFnc;
 
-    private double lastWeight;
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
@@ -214,8 +218,6 @@ public class ANNModel extends Observable {
         this.setChanged();
         this.notifyObservers("setNewWeights");
     }
-
-    //public void saveTempWeights(epochs)
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
         return newWeights;
     }

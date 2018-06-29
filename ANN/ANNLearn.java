@@ -10,7 +10,6 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
-
 import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
@@ -42,7 +41,6 @@ public class ANNLearn implements Observer {
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
 
         this.numberOfHiddenNeurons = (numberOfHiddenNeurons);
-
         this.actFnc = actFnc;
         IActivationFunction outputActFnc = new Linear(1.0);
 

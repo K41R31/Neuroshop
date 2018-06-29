@@ -90,7 +90,7 @@
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
             </Text>
-            <Text fill="#00d4ff" layoutX="300.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apply these settings">
+            <Text fx:id="step3" fill="#00d4ff" layoutX="300.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apply these settings">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
@@ -100,7 +100,7 @@
       <AnchorPane fx:id="importData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2b2b2b;">
          <children>
             <Line endX="100.0" fill="WHITE" layoutX="550.0" layoutY="400.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
-            <Text fill="#00d4ff" layoutX="300.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import &quot;Art einer Lilie&quot;">
+            <Text fx:id="step2" fill="#00d4ff" layoutX="300.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import &quot;Art einer Lilie&quot;">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
@@ -121,7 +121,7 @@
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="350.0" layoutY="500.0" mnemonicParsing="false" text="I Understand">
+                  <Button layoutX="350.0" layoutY="500.0" mnemonicParsing="false" onAction="#step1" text="I Understand">
                      <font>
                         <Font name="Champagne &amp; Limousines" size="36.0" />
                      </font>
