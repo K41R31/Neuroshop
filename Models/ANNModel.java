@@ -172,7 +172,7 @@ public class ANNModel extends Observable {
     public void setMomentumRate(double momentumRate) {
         this.momentumRate = momentumRate;
         this.setChanged();
-        this.notifyObservers(momentumRate);
+        this.notifyObservers("momentumRate");
     }
 
     public void setNumberOfRecords(int numberOfRecords) {

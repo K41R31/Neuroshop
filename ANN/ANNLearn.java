@@ -146,6 +146,9 @@ public class ANNLearn implements Observer {
                 break;
             case "setActFnc":
                 this.actFnc = annModel.getActFnc();
+                break;
+            case "momentumRate":
+                this.momentumRate = momentumRate;
         }
     }
 

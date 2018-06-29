@@ -17,7 +17,7 @@ public class TutorialModel extends Observable {
         this.neuralNet = neuralNet;
         this.setChanged();
         this.notifyObservers("setNeuralDrag");
-        TutorialController.step4();
+//        TutorialController.step4();
     }
 
     public boolean getCustomLayers() {return customLayers;}
@@ -26,7 +26,7 @@ public class TutorialModel extends Observable {
         this.customLayers = customLayers;
         this.setChanged();
         this.notifyObservers("setCustomLayers");
-        TutorialController.step5();
+//        TutorialController.step5();
     }
 
     public boolean getDiagramDrag() {return diagramDrag;}
@@ -35,7 +35,7 @@ public class TutorialModel extends Observable {
         this.diagram = diagram;
         this.setChanged();
         this.notifyObservers("setDiagramDrag");
-        TutorialController.step6();
+//        TutorialController.step6();
     }
 
     public double getValueOne() {return valueOne;}
@@ -53,7 +53,7 @@ public class TutorialModel extends Observable {
         this.valueFour = valueFour;
         this.setChanged();
         this.notifyObservers("setDiagramDrag");
-        TutorialController.step7();
+//        TutorialController.step7();
     }
 
     public boolean getStart() {return start;}
@@ -62,6 +62,6 @@ public class TutorialModel extends Observable {
         this.start = start;
         this.setChanged();
         this.notifyObservers("setDiagramDrag");
-        TutorialController.stepFinal();
-
+//        TutorialController.stepFinal();
+    }
 }
