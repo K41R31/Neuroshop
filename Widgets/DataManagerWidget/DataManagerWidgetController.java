@@ -165,6 +165,11 @@ public class DataManagerWidgetController implements Observer {
     }
 
     @FXML
+    private void slideOnPane() {
+
+    }
+
+    @FXML
     private void button1Entered() {
         button1Pane.setStyle("-fx-background-color: #4490ff");
         button1Text.setFill(Color.web("#222222"));

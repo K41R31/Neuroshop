@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,7 +15,7 @@
    <children>
       <SplitPane dividerPositions="0.2902684563758389" orientation="VERTICAL" style="-fx-background-color: TRANSPARENT;">
          <items>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0">
                <children>
                   <Text fill="#c3c3c3" strokeType="OUTSIDE" strokeWidth="0.0" text="DataManager">
                      <font>
@@ -22,15 +24,113 @@
                   </Text>
                </children>
             </HBox>
-            <SplitPane dividerPositions="0.6930803571428571, 0.5" style="-fx-background-color: TRANSPARENT;">
+            <SplitPane dividerPositions="0.6930803571428571, 0.5, 0.5" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="460.0" style="-fx-background-color: TRANSPARENT;">
                <items>
-                  <VBox fx:id="counterPane" alignment="TOP_CENTER" maxWidth="40.0" minWidth="20.0" prefHeight="200.0" prefWidth="30.0" spacing="2.0">
+                  <VBox fx:id="counterPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="50.0" spacing="10.0">
                      <padding>
-                        <Insets top="40.0" />
+                        <Insets top="48.0" />
                      </padding>
                   </VBox>
-                  <HBox fx:id="columnPane" prefHeight="100.0" prefWidth="200.0" />
-                  <VBox maxWidth="-Infinity" minWidth="200.0" prefWidth="250.0" />
+                  <HBox fx:id="columnPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="600.0" />
+                  <Slider onMouseDragged="#slideOnPane" orientation="VERTICAL" rotate="180.0" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="200.0" prefHeight="460.0" prefWidth="250.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="100.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="107.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="107.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="107.0" layoutY="682.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
                </items>
             </SplitPane>
          </items>
