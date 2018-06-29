@@ -76,6 +76,7 @@ public class ANNLearn implements Observer {
         this.minOverallError = minOverallError;
         this.lMode = lMode;
 
+        IActivationFunction test = new Linear(1.0);
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, lMode);
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);

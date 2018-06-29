@@ -3,13 +3,9 @@ package Neuroshop.Models;
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
-import Neuroshop.ANN.Learn.DeltaRule;
-import Neuroshop.ANN.Neural.HiddenLayer;
+import Neuroshop.ANN.Math.Sigmoid;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -19,7 +15,6 @@ public class ANNModel extends Observable {
     private File dataSetFile;
     private double[][] dataSet;
 
-    private int epoch;
     private int numberOfRecords;
     private int dataColumns;
     private int[] inputColumns;
@@ -40,12 +35,28 @@ public class ANNModel extends Observable {
     private double learningRate;
     private double momentumRate;
     private int maxEpochs;
-
     private LearningAlgorithm.LearningMode lMode;
+    private List<Sigmoid> sgmList;
+
+    public void setSigmList(List<Sigmoid> sgmList) {
+        SigmoidList sigList = new SigmoidList();
+        SigmoidObj sgO = new SigmoidObj();
+        for(int i = 0; i < numberOfHiddenNeurons.length; i++) {
+            sigList.addSigmoids(sgO);
+            this.sgmList = sgmList;
+            setChanged();
+            notifyObservers("setSigmList");
+        }
+    }
+
+    public List<Sigmoid> getSgmList() {
+        return this.sgmList;
+    }
 
     public int getDataColumns() {
         return dataColumns;
     }
+
 
     public void setDataColumns(int dataColumns) {
         this.dataColumns = dataColumns;
@@ -119,16 +130,6 @@ public class ANNModel extends Observable {
         this.numberNeuronsHdnLayer = numberNeuronsHdnLayer;
         this.setChanged();
         this.notifyObservers(numberNeuronsHdnLayer);
-    }
-
-    public IActivationFunction[] getActFnc() {
-        return this.actFnc;
-    }
-
-    public void setActFnc(IActivationFunction[] actFnc) {
-        this.actFnc = actFnc;
-        this.setChanged();
-        this.notifyObservers("setActFnc");
     }
 
     public IActivationFunction getOutputActFnc() {
@@ -215,12 +216,6 @@ public class ANNModel extends Observable {
         this.notifyObservers("setNewWeights");
     }
 
-<<<<<<< HEAD
-
-
-=======
-    //public void saveTempWeights(epochs)
->>>>>>> ef2841dd3a079060d7da8b608ef9ecffa40d08d5
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
         return newWeights;
     }
