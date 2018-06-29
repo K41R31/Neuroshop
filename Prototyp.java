@@ -1,11 +1,7 @@
 package Neuroshop;
 
-<<<<<<< HEAD
 import Neuroshop.ANN.ANNLearn;
-import Neuroshop.ANN.ANNModel;
-=======
 import Neuroshop.Models.ANNModel;
->>>>>>> 4bbcc7d441c875cd762d5501db88edae922259b7
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
@@ -48,7 +44,7 @@ public class Prototyp {
         //Init Model----------------------------------------------------------------------------------------------------
         aL.initModel(annModel);
 
-        aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
+//        aL.train(dataSet, inputColumns, outputColumns, dataPercentage, maxEpochs, numberOfHiddenNeurons, minOverallError, learningRate, momentumRate, actFnc, outputActFnc, lMode, dataNormType);
 
 
     }
