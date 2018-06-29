@@ -139,15 +139,10 @@ public class DataManagerWidgetController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-<<<<<<< HEAD
-        switch ((String) arg) {
-
-=======
-        switch ((String)arg) {
+            switch ((String)arg) {
             case "initDataManager":
                 System.out.println("NACH");
                 initDataManager();
->>>>>>> ffcaf9de3cb4db9cafa5f2d0e8ef3004f47634b9
         }
     }
 
