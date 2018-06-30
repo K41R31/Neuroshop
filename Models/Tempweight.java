@@ -18,8 +18,6 @@ public class Tempweight extends Observable {
 
     public void setWeight(ArrayList<ArrayList<ArrayList<Double>>> weight) {
         this.weight = weight;
-
-
     }
 
     public ArrayList<ArrayList<ArrayList<Double>>> getWeight() {
