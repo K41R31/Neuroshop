@@ -4,6 +4,9 @@ import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
+import Neuroshop.Models.Presets.SigmoidList;
+import Neuroshop.Models.Presets.SigmoidObj;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
