@@ -12,13 +12,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -55,11 +55,15 @@ public class DataManagerWidgetController implements Observer {
     @FXML
     private VBox counterPane;
     @FXML
+    private VBox filesPane;
+    @FXML
+    private VBox deleterPane;
+    @FXML
     private HBox columnPane;
     @FXML
     private HBox chooserPane;
     @FXML
-    private HBox lastOpenedPane;
+    private AnchorPane lastOpenedPane;
     @FXML
     private Slider testLearnSlider;
 
@@ -88,6 +92,7 @@ public class DataManagerWidgetController implements Observer {
 
         if (datasetFile != null) {
             annModel.setDatasetFile(datasetFile);
+            lastOpenedFiles.setLastOpened(datasetFile);
             importPane.setOpacity(0);
             importPane.setDisable(true);
         }
@@ -132,6 +137,32 @@ public class DataManagerWidgetController implements Observer {
         updateDataQueue();
     }
 */
+
+    private class lastOpenedItem extends Text {
+        lastOpenedItem(String fileName, File file) {
+            setText(fileName);
+            getStyleClass().add("lastOpenedText");
+            setWrappingWidth(500);
+            setOnMouseClicked(event -> {
+                annModel.setDatasetFile(file);
+                importPane.setOpacity(0);
+                importPane.setDisable(true);
+            });
+        }
+    }
+
+    private class lastOpenedItemDeleter extends ImageView {
+         lastOpenedItemDeleter(File file) {
+             getStyleClass().add("lastOpenedDeleter");
+             setFitWidth(48);
+             setFitHeight(30);
+             setOnMouseClicked(event -> {
+                 lastOpenedFiles.deleteLastOpened(file);
+                 filesPane.getChildren().remove(deleterPane.getChildren().indexOf(this)+1);
+                 deleterPane.getChildren().remove(this);
+             });
+         }
+    }
 
     private void initDataManager() {
         testLearnSlider.setMin(0);
@@ -248,9 +279,14 @@ public class DataManagerWidgetController implements Observer {
     }
 
     @FXML
-    private void startLastOpened() {
+    private void showLastOpened() {
         lastOpenedPane.setOpacity(1);
         lastOpenedPane.setDisable(false);
+        for (int i = 0; i < lastOpenedFiles.getLastOpened().size(); i++) {
+            File actualFile = lastOpenedFiles.getLastOpened().get(i);
+            filesPane.getChildren().add(new lastOpenedItem(actualFile.getName(), actualFile));
+            deleterPane.getChildren().add(new lastOpenedItemDeleter(actualFile));
+        }
     }
 
     private void makeDraggable(Node node) {

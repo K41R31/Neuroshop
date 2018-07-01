@@ -15,8 +15,16 @@ public class LastOpenedFiles {
     }
 
     private void readLastOpenedFiles() {
+        ArrayList<File> allFiles = new ArrayList<>();
         File[] files = fileLocation.listFiles();
-        if (files != null) lastOpened.addAll(Arrays.asList(files));
+        String fileExtension;
+        if (files != null) allFiles.addAll(Arrays.asList(files));
+        else return;
+        for (File file : allFiles) { //Sucht sich nur "nicht txt oder csv" Dateien raus
+            fileExtension = file.getName();
+            fileExtension = fileExtension.substring(fileExtension.lastIndexOf(".")+1, fileExtension.length()).toLowerCase();
+            if (fileExtension.equals("txt") | fileExtension.equals("csv")) lastOpened.add(file);
+        }
     }
 
     /**
@@ -31,6 +39,7 @@ public class LastOpenedFiles {
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(fileName), "utf-8"))) {
             writer.write(readFile(file));
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

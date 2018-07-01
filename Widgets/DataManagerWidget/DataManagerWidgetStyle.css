@@ -39,3 +39,23 @@
     -fx-background-color: #1b1b1b;
     -fx-background-insets: 0 -2 0 -2;
 }
+.lastOpenedText {
+    -fx-fill: LIGHTGRAY;
+    -fx-font-family: "Champagne & Limousines";
+    -fx-font-size: 30;
+}
+.lastOpenedText:hover {
+    -fx-fill: GRAY;
+}
+.lastOpenedDeleter {
+     -fx-image: url("../../Ressources/Assets/lastOpenedDeleter.png");
+ }
+.lastOpenedDeleter:hover {
+    -fx-image: url("../../Ressources/Assets/lastOpenedDeleterHover.png");
+}
+.backButton {
+    -fx-image: url("../../Ressources/Assets/backArrow.png");
+}
+.backButton:hover {
+    -fx-image: url("../../Ressources/Assets/backArrowHover.png");
+}

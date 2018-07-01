@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -91,7 +92,7 @@
                   <Font name="Champagne &amp; Limousines" size="50.0" />
                </font>
             </Text>
-            <StackPane fx:id="button1Pane" layoutX="119.0" layoutY="274.0" onMouseClicked="#startLastOpened" onMouseEntered="#button1Entered" onMouseExited="#button1Exited" styleClass="importButton">
+            <StackPane fx:id="button1Pane" layoutX="119.0" layoutY="274.0" onMouseClicked="#showLastOpened" onMouseEntered="#button1Entered" onMouseExited="#button1Exited" styleClass="importButton">
                <children>
                   <Text fx:id="button1Text" disable="true" fill="#4490ff" strokeType="OUTSIDE" strokeWidth="0.0" text="LAST OPENED" textAlignment="CENTER" wrappingWidth="240.0">
                      <font>
@@ -121,62 +122,31 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </StackPane>
-            <HBox fx:id="lastOpenedPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="lastOpenedPane" disable="true" opacity="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #222222;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="600.0" spacing="20.0">
+                  <VBox fx:id="filesPane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="600.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets left="100.0" top="50.0" />
+                     </padding>
                      <children>
                         <Text fill="LIGHTGRAY" strokeType="OUTSIDE" strokeWidth="0.0" text="LAST OPENED">
                            <font>
                               <Font name="Champagne &amp; Limousines" size="50.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="50.0" />
+                              <Insets bottom="50.0" left="50.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fill="LIGHTGRAY" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="30.0" />
-                           </font>
-                        </Text>
-                        <Text fill="LIGHTGRAY" layoutX="110.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="30.0" />
-                           </font>
-                        </Text>
-                        <Text fill="LIGHTGRAY" layoutX="110.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="30.0" />
-                           </font>
-                        </Text>
                      </children>
-                     <padding>
-                        <Insets left="100.0" top="50.0" />
-                     </padding>
                   </VBox>
-                  <VBox layoutX="10.0" layoutY="10.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="deleterPane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets left="60.0" top="170.0" />
                      </padding>
-                     <children>
-                        <Text fill="LIGHTGRAY" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="30.0" />
-                           </font>
-                        </Text>
-                        <Text fill="LIGHTGRAY" layoutX="70.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="30.0" />
-                           </font>
-                        </Text>
-                        <Text fill="LIGHTGRAY" layoutX="70.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="30.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </VBox>
+                  <ImageView fitHeight="30.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" styleClass="backButton" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
                </children>
-            </HBox>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
