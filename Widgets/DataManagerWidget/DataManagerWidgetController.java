@@ -28,7 +28,7 @@ import java.util.Observer;
 public class DataManagerWidgetController implements Observer {
 
     private ANNModel annModel;
-    private LastOpenedFiles lastOpened;
+    private LastOpenedFiles lastOpenedFiles;
     private WidgetContainerModel widgetContainerModel;
     private ArrayList<ChoiceBox> choosedColumns;
 
@@ -58,6 +58,8 @@ public class DataManagerWidgetController implements Observer {
     private HBox columnPane;
     @FXML
     private HBox chooserPane;
+    @FXML
+    private HBox lastOpenedPane;
     @FXML
     private Slider testLearnSlider;
 
@@ -245,6 +247,12 @@ public class DataManagerWidgetController implements Observer {
         button2Text.setFill(Color.web("#4490ff"));
     }
 
+    @FXML
+    private void startLastOpened() {
+        lastOpenedPane.setOpacity(1);
+        lastOpenedPane.setDisable(false);
+    }
+
     private void makeDraggable(Node node) {
 
         EventHandler<MouseEvent> onMousePressed =
@@ -290,8 +298,9 @@ public class DataManagerWidgetController implements Observer {
         node.setOnMouseReleased(onMouseReleased);
     }
 
-    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel) {
+    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel, LastOpenedFiles lastOpenedFiles) {
         this.annModel = annModel;
         this.widgetContainerModel = widgetContainerModel;
+        this.lastOpenedFiles = lastOpenedFiles;
     }
 }

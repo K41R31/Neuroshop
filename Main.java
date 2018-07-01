@@ -7,7 +7,7 @@ import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.Options.OptionsController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
-import Neuroshop.Models.LastOpenedFiles;
+import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.OptionsModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Widgets.WidgetContainer;
@@ -61,7 +61,6 @@ public class Main extends Application {
         ANNModel annModel = new ANNModel();
         WidgetContainerModel widgetContainerModel = new WidgetContainerModel();
         OptionsModel optionsModel = new OptionsModel();
-        LastOpenedFiles lastOpenedFiles = new LastOpenedFiles();
 
         WidgetSettingsController widgetSettingsController = widgetSettingsLoader.getController();
         WidgetMenuController widgetMenuController = widgetMenuLoader.getController();

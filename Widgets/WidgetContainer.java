@@ -2,6 +2,7 @@ package Neuroshop.Widgets;
 
 import Neuroshop.ANN.ANNLearn;
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController;
 import Neuroshop.Widgets.DiagramWidget.DiagramWidgetController;
@@ -46,11 +47,13 @@ public class WidgetContainer {
         widgetContainerModel.initWidgets(widgets);
 
         //Init Model----------------------------------------------------------------------------------------------------
+        LastOpenedFiles lastOpenedFiles = new LastOpenedFiles();
+
         DataManagerWidgetController dataManagerWidgetController = dataManagerLoader.getController();
         DiagramWidgetController diagramWidgetController = diagramWidgetLoader.getController();
         NeuralNetController neuralNetController = neuralNetWidgetLoader.getController();
 
-        dataManagerWidgetController.initModel(annModel, widgetContainerModel);
+        dataManagerWidgetController.initModel(annModel, widgetContainerModel, lastOpenedFiles);
         diagramWidgetController.initModel(annModel, widgetContainerModel);
         neuralNetController.initModel(annModel, widgetContainerModel);
 
