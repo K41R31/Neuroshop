@@ -36,8 +36,8 @@ public class LastOpenedFiles {
         for (File savedFiles : lastOpened) {
             if (fileName.equals(savedFiles.getName())) return;
         }
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(fileName), "utf-8"))) {
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter (
+                new FileOutputStream(fileLocation+"\\"+fileName), "utf-8"))) {
             writer.write(readFile(file));
             writer.close();
         } catch (IOException e) {
@@ -58,11 +58,12 @@ public class LastOpenedFiles {
     private String readFile(File file) {
         String line;
         StringBuilder result = new StringBuilder();
-        BufferedReader reader = null;
+        BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
                 result.append(line);
+                result.append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,5 +81,10 @@ public class LastOpenedFiles {
 
     public void setLastOpened(File file) {
         saveFile(file);
+    }
+
+    public void updateLastFiles() {
+        lastOpened.clear();
+        readLastOpenedFiles();
     }
 }

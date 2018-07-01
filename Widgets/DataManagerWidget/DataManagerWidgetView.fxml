@@ -144,7 +144,7 @@
                         <Insets left="60.0" top="170.0" />
                      </padding>
                   </VBox>
-                  <ImageView fitHeight="30.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" styleClass="backButton" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                  <ImageView fitHeight="30.0" fitWidth="10.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true" styleClass="backButton" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
                </children>
             </AnchorPane>
          </children>
