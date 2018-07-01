@@ -30,7 +30,7 @@ public class ANNLearn implements Observer {
     private double momentumRate;
 //  private IActivationFunction outputActFnc; TODO: Festgelegt auf LINEAR(1.0)
     private IActivationFunction[] actFnc;
-//  private LearningAlgorithm.LearningMode lMode; TODO:Festgelegt auf .BATCH, später evtl. noch .ONLINE als mögliche Option hinzufügen
+  private LearningAlgorithm.LearningMode learnMode;
     private DataNormalization dataNormType; //TODO:Festgelegt auf  (-1.0, 1.0) entspricht .MIN_MAX + Später evtl. Z_SCORE noch als mögliche Option hinzufügen
     private List<Sigmoid> sgmList;
 
@@ -40,8 +40,6 @@ public class ANNLearn implements Observer {
         RandomNumberGenerator.setSeed(5);
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
-
-        this.neuronsInHiddenLayer = (neuronsInHiddenLayer);
 
         IActivationFunction outputActFnc = new Linear(1.0);
         if(actFnc.length == 0) {
@@ -71,7 +69,7 @@ public class ANNLearn implements Observer {
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
 
-        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
+        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, learnMode);
 
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
@@ -160,6 +158,9 @@ public class ANNLearn implements Observer {
                 break;
             case "setSigmList":
                 this.sgmList = annModel.getSgmList();
+                break;
+            case "setLearnMode":
+                this.learnMode = annModel.getLearnmode();
         }
     }
 
