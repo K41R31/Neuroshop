@@ -1,87 +1,75 @@
 package Neuroshop.Models;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LastOpenedFiles {
 
-        private ArrayList<String> lastOpened = new ArrayList<>();
-        private ArrayList<String> newLastOpened;
-        private final String fileLocation = "Polygen/Data/lastOpened.txt";
+    private final File fileLocation = new File("Neuroshop/Ressources/SavedData");
+    private ArrayList<File> lastOpened = new ArrayList<>();
 
-        public LastOpenedFiles() {
-            try {
-                lastOpened = readFile();
-                newLastOpened = new ArrayList<>(lastOpened);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+    public LastOpenedFiles() {
+        readLastOpenedFiles();
+    }
+
+    private void readLastOpenedFiles() {
+        File[] files = fileLocation.listFiles();
+        if (files != null) lastOpened.addAll(Arrays.asList(files));
+    }
+
+    /**
+     * Writes the given File into "SavedData"
+     * only if the File doesn't exists already.
+     */
+    private void saveFile(File file) {
+        String fileName = file.getName();
+        for (File savedFiles : lastOpened) {
+            if (fileName.equals(savedFiles.getName())) return;
         }
-
-
-        public void setOpenedFiles(String newFile) {
-            try {
-                writeFileWith(newFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        public ArrayList<String> getOpenedFiles() {
-            return lastOpened;
-        }
-
-
-        /**
-         * Writes the given String into "Data/lastOpened.txt"
-         * only if the String isn't written already.
-         */
-        private void writeFileWith(String newFile) throws IOException { //Writes the String into "Data/lastOpened.txt"
-            for (String search : lastOpened) {
-                if (search.equals(newFile)) return; //Returns, if the String is written already
-            }
-            lastOpened.add(newFile);
-            Charset utf8 = StandardCharsets.UTF_8;
-            Files.write(Paths.get(fileLocation), lastOpened, utf8);
-        }
-
-        /**
-         * Deletes the given String in the File
-         * "Data/lastOpened.txt".
-         */
-        public void deleteStringInFile(String deleteString) throws IOException {
-            File file = new File(fileLocation);
-            for (String files : lastOpened) {
-                int index = files.indexOf(deleteString);
-                if (index > -1) {
-                    file.createNewFile();
-                    newLastOpened.remove(deleteString);
-                    Charset utf8 = StandardCharsets.UTF_8;
-                    Files.write(Paths.get(fileLocation), newLastOpened, utf8);
-                    break;
-                }
-            }
-        }
-
-        /**
-         * Simply reads and returns the content of the File
-         * "Data/lastOpened.txt".
-         */
-        private ArrayList<String> readFile() throws IOException {
-            String line;
-            ArrayList<String> result = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader("Polygen/Data/lastOpened.txt"));
-            while ((line = reader.readLine()) != null) {
-                result.add(line);
-            }
-            return result;
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(fileName), "utf-8"))) {
+            writer.write(readFile(file));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    /**
+     * Deletes the given File
+     */
+    private void deleteFile(File file) {
+        if (file.exists()) file.delete();
+    }
+
+    /**
+     * Reads and returns the content of the given File
+     */
+    private String readFile(File file) {
+        String line;
+        StringBuilder result = new StringBuilder();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result.toString();
+    }
+
+    public void deleteLastOpened(File file) {
+        deleteFile(file);
+    }
+
+    public ArrayList<File> getLastOpened() {
+        return lastOpened;
+    }
+
+    public void setLastOpened(File file) {
+        saveFile(file);
+    }
+}
