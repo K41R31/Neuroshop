@@ -169,11 +169,6 @@ public class ANNLearn implements Observer {
                 break;
             case "train":
                 train();
-<<<<<<< HEAD
-=======
-            case "setLearnMode":
-                this.learnMode = annModel.getLearnmode();
->>>>>>> b1a59c8a0f9ac87ce0b90b705c0f88ee1c0cec10
         }
     }
 
