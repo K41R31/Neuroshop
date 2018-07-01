@@ -39,3 +39,9 @@
     -fx-background-color: #1b1b1b;
     -fx-background-insets: 0 -2 0 -2;
 }
+.delastOpenedDeleter {
+     -fx-image: url("../../Ressources/Assets/lastOpenedDeleter.png");
+ }
+.delastOpenedDeleter:hover {
+    -fx-image: url("../../Ressources/Assets/lastOpenedDeleterHover.png");
+}

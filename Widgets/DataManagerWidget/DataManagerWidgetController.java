@@ -248,7 +248,7 @@ public class DataManagerWidgetController implements Observer {
     }
 
     @FXML
-    private void startLastOpened() {
+    private void showLastOpened() {
         lastOpenedPane.setOpacity(1);
         lastOpenedPane.setDisable(false);
     }
