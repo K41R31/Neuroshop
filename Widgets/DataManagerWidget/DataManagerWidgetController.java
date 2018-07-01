@@ -160,6 +160,7 @@ public class DataManagerWidgetController implements Observer {
                  lastOpenedFiles.deleteLastOpened(file);
                  filesPane.getChildren().remove(deleterPane.getChildren().indexOf(this)+1);
                  deleterPane.getChildren().remove(this);
+                 lastOpenedFiles.updateLastFiles();
              });
          }
     }
@@ -276,6 +277,14 @@ public class DataManagerWidgetController implements Observer {
     private void button2Exited() {
         button2Pane.setStyle("-fx-background-color: TRANSPARENT; -fx-border-color: #4490ff; -fx-border-width: 2");
         button2Text.setFill(Color.web("#4490ff"));
+    }
+
+    @FXML
+    private void back() {
+        lastOpenedPane.setOpacity(0);
+        lastOpenedPane.setDisable(true);
+        filesPane.getChildren().remove(1, filesPane.getChildren().size());
+        deleterPane.getChildren().clear();
     }
 
     @FXML
