@@ -1,0 +1,21 @@
+
+
+//TODO: EXTREM WICHTIG! MUSS ERLEDIGT WERDEN!!!!
+
+#### Was muss bis zur Präsentation definitv vorhanden sein:
+
+    - Button zum Bestätigen des Datensatzes
+            > Gibt Datensatz an NeuralNet weiter, damit dieses damit rechnen kann
+
+    - Erstellen von Hiddenlayer und seinen Neuronen
+            > Fügt im Array HiddenLayer Einträge hinzu, welche Aussagen wieviele Neuronen im Netz vorhanden sind.
+            > Entsprechend der Länge "x.length" sind "x" HiddenLayer vorhanden
+
+    - Aktivierungsfunktion für HiddenLayer abrufen
+            > 1. Schritt: Fest vorgeben, dass immer nur eine Sigmoide ActFnc verwendet wird
+              2. Schritt: Wenn alles andere erledigt ist, die Option hinzufügen, dass der User selbst entscheidet ob:
+                          >> Sigmoid, HyperTanh oder Step gewählt wird
+
+    - Tutorial nochmal überarbeiten und hinterfragen ob alles sinngemäß ist
+
+    - Weiteres folgt...
