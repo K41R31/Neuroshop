@@ -22,3 +22,5 @@
 
     - Funktion um "Eigene Weights" dem Netz zu applyen und damit zu rechnen ohne "Training, sprich Anpassung der Gewichte"
             > Eine Art Dropdown wo alle Epochen aufgezeigt werden oder so, dann klickt man z.B. Epoche 257 an und das Netz appliziert dann die entsprechenden Gewichte.
+
+    - Slider für NN Einstellungen noch fertigstellen
