@@ -32,13 +32,12 @@ public class ANNModel extends Observable {
 
     private IActivationFunction[] actFnc;
     private IActivationFunction outputActFnc;
-
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
     private int maxEpochs;
 
-    private LearningAlgorithm.LearningMode lMode;
+    private LearningAlgorithm.LearningMode learnMode;
     private List<Sigmoid> sgmList;
 
     public void setSigmList(List<Sigmoid> sgmList) {
@@ -96,11 +95,11 @@ public class ANNModel extends Observable {
     }
 
     public LearningAlgorithm.LearningMode getLearnmode() {
-        return this.lMode;
+        return this.learnMode;
     }
 
-    public void setLearnMode(LearningAlgorithm.LearningMode lMode) { //TODO: Vorerst auf .BATCH festgelegt
-        this.lMode = lMode;
+    public void setLearnMode(LearningAlgorithm.LearningMode learnMode) {
+        this.learnMode = LearningAlgorithm.LearningMode.BATCH;
         this.setChanged();
         this.notifyObservers("setLearnMode");
     }
@@ -130,7 +129,7 @@ public class ANNModel extends Observable {
     } //TODO: NeuronsNumberOfNeurons auslesen!!!!!!!
 
     public void setNumberOfHiddenLayer(int numberOfHiddenLayer) {
-        this.numberOfHiddenLayer = numberOfHiddenLayer;
+        this.numberOfHiddenLayer = neuronsInHiddenLayer.length;
         this.setChanged();
         this.notifyObservers(numberOfHiddenLayer);
     }
