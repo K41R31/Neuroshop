@@ -30,8 +30,8 @@ public class ANNLearn implements Observer {
     private double momentumRate;
 //  private IActivationFunction outputActFnc; TODO: Festgelegt auf LINEAR(1.0)
     private IActivationFunction[] actFnc;
-//  private LearningAlgorithm.LearningMode lMode; TODO:Festgelegt auf .BATCH
-    private DataNormalization dataNormType; //TODO:Festgelegt auf  (-1.0, 1.0) entspricht .MIN_MAX
+//  private LearningAlgorithm.LearningMode lMode; TODO:Festgelegt auf .BATCH, später evtl. noch .ONLINE als mögliche Option hinzufügen
+    private DataNormalization dataNormType; //TODO:Festgelegt auf  (-1.0, 1.0) entspricht .MIN_MAX + Später evtl. Z_SCORE noch als mögliche Option hinzufügen
     private List<Sigmoid> sgmList;
 
 

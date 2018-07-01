@@ -6,7 +6,7 @@ import java.util.Observable;
 
 public class TempweightList extends Observable {
 
-    String name;
+    private String name;
 
     private List<Tempweight> tempweights;
 
@@ -23,7 +23,7 @@ public class TempweightList extends Observable {
     }
 
     public void addTempweights (Tempweight tempweight) {
-    this.tempweights.add(tempweight);
+    tempweights.add(tempweight);
     setChanged();
     notifyObservers("addTempweights");
     }
@@ -37,5 +37,4 @@ public class TempweightList extends Observable {
         }
         return tmp;
     }
-
 }
