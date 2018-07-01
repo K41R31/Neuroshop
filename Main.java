@@ -7,7 +7,6 @@ import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.Options.OptionsController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
-import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.OptionsModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Widgets.WidgetContainer;

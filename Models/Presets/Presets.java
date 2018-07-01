@@ -1,5 +1,7 @@
 package Neuroshop.Models.Presets;
 
+import Neuroshop.Models.ANNModel;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,6 +11,8 @@ import java.util.List;
 import java.util.Observable;
 
 public class Presets extends Observable {
+
+    private ANNModel annModel;
 
     private String filename;
     private List<TempweightList> tempWeightLists;
@@ -40,10 +44,23 @@ public class Presets extends Observable {
     }
 
     public void save() throws IOException {
+
+        switch((String)arg) {
+            case "TempWeights":
+                File file = new File ("Neuroshop\\Ressources\\SavedData\\Temp" + File.separator + this.filename);
+                break;
+            case "Presets":
+                File file = new File ("Neuroshop\\Ressources\\SavedData\\Presets" + File.separator + this.filename);
+        }
         File file = new File ("Neuroshop\\Ressources\\SavedData\\Temp" + File.separator + this.filename);
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(this);
         }
 
+    }
+
+    public void initModel(ANNModel annModel) {
+        this.annModel = annModel;
+    }
     }
 }
