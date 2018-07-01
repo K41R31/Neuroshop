@@ -33,10 +33,11 @@ public class LastOpenedFiles {
      */
     private void saveFile(File file) {
         String fileName = file.getName();
+        System.out.println(readFile(file));
         for (File savedFiles : lastOpened) {
             if (fileName.equals(savedFiles.getName())) return;
         }
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter (
                 new FileOutputStream(fileName), "utf-8"))) {
             writer.write(readFile(file));
             writer.close();
@@ -63,6 +64,7 @@ public class LastOpenedFiles {
             reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
                 result.append(line);
+                result.append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
