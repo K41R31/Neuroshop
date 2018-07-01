@@ -10,8 +10,6 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
-
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Observable;
@@ -30,10 +28,10 @@ public class ANNLearn implements Observer {
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
-//private IActivationFunction outputActFnc;
+//  private IActivationFunction outputActFnc; TODO: Festgelegt auf LINEAR(1.0)
     private IActivationFunction[] actFnc;
-//    private LearningAlgorithm.LearningMode lMode;
-    private DataNormalization dataNormType; //Immer 1 – -1
+//  private LearningAlgorithm.LearningMode lMode; TODO:Festgelegt auf .BATCH
+    private DataNormalization dataNormType; //TODO:Festgelegt auf  (-1.0, 1.0) entspricht .MIN_MAX
     private List<Sigmoid> sgmList;
 
 
@@ -75,10 +73,10 @@ public class ANNLearn implements Observer {
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
 
-        this.maxEpochs = maxEpochs;
-        this.momentumRate = momentumRate;
-        this.learningRate = learningRate;
-        this.minOverallError = minOverallError;
+//        this.maxEpochs = maxEpochs;
+//        this.momentumRate = momentumRate;
+//        this.learningRate = learningRate;
+//        this.minOverallError = minOverallError;
 
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
 
@@ -155,8 +153,17 @@ public class ANNLearn implements Observer {
             case "setActFnc":
 //                this.actFnc = annModel.getActFnc();
                 break;
-            case "momentumRate":
+            case "setMomentumRate":
                 this.momentumRate = annModel.getMomentumRate();
+                break;
+            case "setMaxEpochs":
+                this.maxEpochs = annModel.getMaxEpochs();
+                break;
+            case "setMinOverallError":
+                this.minOverallError = annModel.getMinOverallError();
+                break;
+            case "setLearningRate":
+                this.learningRate = annModel.getLearningRate();
                 break;
             case "setSigmList":
                 this.sgmList = annModel.getSgmList();

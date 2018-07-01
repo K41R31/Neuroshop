@@ -1,4 +1,4 @@
-package Neuroshop.Models;
+package Neuroshop.Models.Presets;
 
 import java.io.File;
 import java.io.FileOutputStream;

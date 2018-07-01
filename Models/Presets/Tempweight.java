@@ -1,6 +1,9 @@
-package Neuroshop.Models;
+package Neuroshop.Models.Presets;
+import Neuroshop.Models.ANNModel;
+
 import java.util.ArrayList;
 import java.util.Observable;
+
 
 public class Tempweight extends Observable {
 

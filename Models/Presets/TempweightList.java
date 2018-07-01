@@ -1,4 +1,4 @@
-package Neuroshop.Models;
+package Neuroshop.Models.Presets;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,6 @@ public class TempweightList extends Observable {
     String name;
 
     private List<Tempweight> tempweights;
-
 
     public TempweightList() {
         this.tempweights = new ArrayList<>();

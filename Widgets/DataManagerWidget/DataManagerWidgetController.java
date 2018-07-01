@@ -3,7 +3,7 @@ package Neuroshop.Widgets.DataManagerWidget;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Main;
 
-import Neuroshop.Models.LastOpenedFiles;
+import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
