@@ -17,6 +17,8 @@ public class OptionsController implements Observer {
 
     @FXML
     private VBox optionsMenuPane;
+    private VBox widgetSettings;
+    private VBox presets;
     private boolean optionsIsOpen;
     private OptionsModel optionsModel;
 
