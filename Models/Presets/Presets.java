@@ -33,7 +33,7 @@ public class Presets extends Observable {
 
     public void addTempweightList(TempweightList tmpList) throws IOException {
         this.tempWeightLists.add(tmpList);
-        this.save();
+        save("TempWeights"); //In addPresetsList dann: save("Presets")
         setChanged();
         notifyObservers("addTempweightList");
     }
@@ -43,9 +43,9 @@ public class Presets extends Observable {
 
     }
 
-    public void save() throws IOException {
+    public void save(String fileLocation) throws IOException {
 
-        switch((String)arg) {
+        switch(fileLocation) {
             case "TempWeights":
                 File file = new File ("Neuroshop\\Ressources\\SavedData\\Temp" + File.separator + this.filename);
                 break;
