@@ -40,7 +40,6 @@ public class OptionsController implements Observer {
             openOptionsAnimation.setOnFinished(event -> {
                 optionsMenuPane.getChildren().get(0).setOpacity(1);
                 optionsMenuPane.getChildren().get(1).setOpacity(1);
-                optionsMenuPane.getChildren().get(2).setOpacity(1);
             });
             optionsMenuPane.setVisible(true);
             optionsIsOpen = true;
@@ -55,7 +54,6 @@ public class OptionsController implements Observer {
             );
             optionsMenuPane.getChildren().get(0).setOpacity(0);
             optionsMenuPane.getChildren().get(1).setOpacity(0);
-            optionsMenuPane.getChildren().get(2).setOpacity(0);
             optionsIsOpen = false;
         }
     }
