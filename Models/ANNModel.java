@@ -35,7 +35,7 @@ public class ANNModel extends Observable {
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
-    private int maxEpochs;
+    private int maxEpoch;
 
     private LearningAlgorithm.LearningMode learnMode;
     private List<Sigmoid> sgmList;
@@ -53,6 +53,16 @@ public class ANNModel extends Observable {
 
     public List<Sigmoid> getSgmList() {
         return this.sgmList;
+    }
+
+    public IActivationFunction[] getActFnc() {
+        return this.actFnc;
+    }
+
+    public void setActFnc(IActivationFunction[] actFnc) {
+        this.actFnc = new IActivationFunction[] {};
+        setChanged();
+        this.notifyObservers("setActFnc");
     }
 
     public int getDataColumns() {
@@ -95,7 +105,7 @@ public class ANNModel extends Observable {
     }
 
     public LearningAlgorithm.LearningMode getLearnmode() {
-        return this.learnMode;
+        return learnMode;
     }
 
     public void setLearnMode(LearningAlgorithm.LearningMode learnMode) {
@@ -202,14 +212,14 @@ public class ANNModel extends Observable {
         return dataSet;
     }
 
-    public int getMaxEpochs() {
-        return this.maxEpochs;
+    public int getMaxEpoch() {
+        return this.maxEpoch;
     }
 
-    public void setMaxEpochs(int maxEpochs) {
-        this.maxEpochs = maxEpochs;
+    public void setMaxEpoch(int maxEpoch) {
+        this.maxEpoch = maxEpoch;
         this.setChanged();
-        this.notifyObservers("setMaxEpochs");
+        this.notifyObservers("setMaxEpoch");
     }
 
     public void setNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {

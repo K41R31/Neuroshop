@@ -13,8 +13,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -58,6 +56,7 @@ public class WidgetSettingsController implements Observer {
         minOverallErrorValue.setText(String.valueOf(minOverallErrorSlider.getValue()));
         learningRateValue.setText(String.valueOf(learningRateSlider.getValue()));
         momentumRateValue.setText(String.valueOf(momentumRateSlider.getValue()));
+        System.out.println(learningRateSlider.getValue() + (momentumRateSlider.getValue()) + (maxEpochsSlider.getValue()));
     }
 
     @FXML
@@ -101,7 +100,7 @@ public class WidgetSettingsController implements Observer {
     @FXML
     private void maxEpochsSliderDragged() {
         System.out.println(roundDouble(156.15462));
-//        annModel.setMaxEpochs(value);
+//        annModel.setMaxEpoch(value);
 //        maxEpochsValue.setText(String.valueOf(value));
     }
 

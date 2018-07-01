@@ -58,7 +58,7 @@ public class Presets extends Observable {
     }
 
     public void setMaxEpochsFromANN(int maxEpochs) {
-        this.maxEpochs = annModel.getMaxEpochs();
+        this.maxEpochs = annModel.getMaxEpoch();
     }
 
     public int getMaxEpochsForPreset(){
