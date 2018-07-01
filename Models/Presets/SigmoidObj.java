@@ -1,6 +1,7 @@
-package Neuroshop.Models;
+package Neuroshop.Models.Presets;
 
 import Neuroshop.ANN.Math.Sigmoid;
+import Neuroshop.Models.ANNModel;
 
 import java.util.Observable;
 

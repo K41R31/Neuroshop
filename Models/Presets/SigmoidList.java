@@ -1,6 +1,4 @@
-package Neuroshop.Models;
-
-import Neuroshop.ANN.Math.Sigmoid;
+package Neuroshop.Models.Presets;
 
 import java.util.ArrayList;
 import java.util.List;
