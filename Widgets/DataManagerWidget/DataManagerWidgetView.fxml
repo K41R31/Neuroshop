@@ -41,45 +41,24 @@
                   </Text>
                </children>
             </AnchorPane>
-            <SplitPane dividerPositions="0.6930803571428571" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="460.0" style="-fx-background-color: TRANSPARENT;">
-               <items>
-                  <VBox alignment="CENTER_RIGHT" spacing="10.0">
-                     <children>
-                        <HBox fx:id="chooserPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="600.0">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
+            <VBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <HBox fx:id="chooserPane" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                     <content>
+                        <HBox fx:id="columnPane" alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0">
+                           <children>
+                              <VBox fx:id="counterPane" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="50.0" spacing="5.0" />
+                           </children>
                         </HBox>
-                        <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="650.0">
-                           <content>
-                              <HBox fx:id="columnPane" alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="650.0">
-                                 <children>
-                                    <VBox fx:id="counterPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="50.0" spacing="5.0" />
-                                 </children>
-                              </HBox>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="200.0" prefHeight="460.0" prefWidth="250.0" spacing="50.0">
-                     <children>
-                        <Text fx:id="columnsText" fill="#b8b8b8" strokeType="OUTSIDE" strokeWidth="0.0" text="Columns: ">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="31.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="rowsText" fill="#b8b8b8" layoutX="50.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rows: ">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="31.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding>
-                  </VBox>
-               </items>
-            </SplitPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
          </items>
          <StackPane.margin>
             <Insets />
