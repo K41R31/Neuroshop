@@ -70,7 +70,7 @@ public class LoadCsv {
             return dataMatrix;
         }
         
-        public static double[][] getData(String fullPath,boolean _columnsInFirstRow,String _separator){
+        public static double[][] getData(String fullPath, boolean _columnsInFirstRow,String _separator){
             LoadCsv lcsv = new LoadCsv(fullPath,_columnsInFirstRow,_separator);
             lcsv.columnsInFirstRow=_columnsInFirstRow;
             lcsv.separator=_separator;
@@ -84,7 +84,7 @@ public class LoadCsv {
             return lcsv.dataMatrix;
         }
         
-        public double[][] getDataMatrix(String fullPath,boolean _columnsInFirstRow,String _separator){
+        public double[][] getDataMatrix(String fullPath, boolean _columnsInFirstRow,String _separator){
             this.columnsInFirstRow=_columnsInFirstRow;
             this.separator=_separator;
             try{
