@@ -126,6 +126,11 @@ public class WidgetSettingsController implements Observer {
         momentumRateValue.setText(String.valueOf(value));
     }
 
+    @FXML
+    private void train() {
+        annModel.train();
+    }
+
     public void initModel(ANNModel annModel) {
         this.annModel = annModel;
     }

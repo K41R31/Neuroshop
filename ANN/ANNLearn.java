@@ -160,6 +160,9 @@ public class ANNLearn implements Observer {
                 break;
             case "setSigmList":
                 this.sgmList = annModel.getSgmList();
+                break;
+            case "train":
+                train();
         }
     }
 

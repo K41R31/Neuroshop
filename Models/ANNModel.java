@@ -219,6 +219,11 @@ public class ANNModel extends Observable {
         this.notifyObservers("setNewWeights");
     }
 
+    public void train() {
+        setChanged();
+        notifyObservers("train");
+    }
+
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
         return newWeights;
     }
