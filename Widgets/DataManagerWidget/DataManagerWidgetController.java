@@ -169,8 +169,6 @@ public class DataManagerWidgetController implements Observer {
         testLearnSlider.setMin(0);
         testLearnSlider.setMax(annModel.getNumberOfRecords());
         choosedColumns = new ArrayList<>();
-        columnsText.setText(columnsText.getText()+Integer.toString(annModel.getDataColumns()));
-        rowsText.setText(rowsText.getText()+Integer.toString(annModel.getNumberOfRecords()));
         for(int c = 0; c < annModel.getDataColumns(); c++) {
             ChoiceBox<String> cb = new ChoiceBox<>(FXCollections.observableArrayList("Input", "Output"));
             cb.setPrefWidth(50);
