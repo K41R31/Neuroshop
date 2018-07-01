@@ -247,6 +247,8 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
+
+
     @FXML
     private void testLearnSliderSlided() {
         int value = (int)testLearnSlider.getValue();

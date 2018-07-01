@@ -6,6 +6,7 @@
 
     - Button zum Bestätigen des Datensatzes
             > Gibt Datensatz an NeuralNet weiter, damit dieses damit rechnen kann
+            >> Evtl. Checkbox für "Show Normalized" - Dann wird der Datensatz normalisiert angezeigt
 
     - Erstellen von Hiddenlayer und seinen Neuronen
             > Fügt im Array HiddenLayer Einträge hinzu, welche Aussagen wieviele Neuronen im Netz vorhanden sind.

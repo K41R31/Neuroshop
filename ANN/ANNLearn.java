@@ -20,34 +20,39 @@ public class ANNLearn implements Observer {
     private ANNModel annModel;
 
     private double dataPercentage;
-    private int[] inputColumns;
-    private int[] outputColumns;
-    private int[] neuronsInHiddenLayer;
+//    private int[] inputColumns;
+//    private int[] outputColumns;
+//    private int[] neuronsInHiddenLayer;
     private int maxEpochs;
 
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
 //  private IActivationFunction outputActFnc; TODO: Festgelegt auf LINEAR(1.0)
-    private IActivationFunction[] actFnc;
-  private LearningAlgorithm.LearningMode learnMode;
+//    private IActivationFunction[] actFnc;
+    private LearningAlgorithm.LearningMode learnMode;
     private DataNormalization dataNormType; //TODO:Festgelegt auf  (-1.0, 1.0) entspricht .MIN_MAX + Später evtl. Z_SCORE noch als mögliche Option hinzufügen
     private List<Sigmoid> sgmList;
 
 
     public void train() {
-
         RandomNumberGenerator.setSeed(5);
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
 
         IActivationFunction outputActFnc = new Linear(1.0);
-        if(actFnc.length == 0) {
-        for(int i = 0; i < neuronsInHiddenLayer.length; i++) {
-            this.actFnc = new IActivationFunction[]{sgmList.get(i)};
-            }
-        }
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, actFnc, outputActFnc, new UniformInitialization(0, 1.0));
+
+//        if(actFnc.length <= 0) {
+//        for(int i = 0; i <= neuronsInHiddenLayer.length; i++) {
+//            this.actFnc = new IActivationFunction[]{sgmList.get(i)};
+//            }
+//        }
+
+        int[] neuronsInHiddenLayer = new int[]{5};
+        int[] inputColumns = new int[] {0,1,2,3};
+        int[] outputColumns = new int[] {4};
+
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, new IActivationFunction[] {new Sigmoid (1.0)}, outputActFnc, new UniformInitialization(0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
@@ -61,8 +66,8 @@ public class ANNLearn implements Observer {
         System.out.println("Datensatz normalisiert: " + Arrays.deepToString(dataNormalized));
         System.out.println("Anzahl der Einträge im Datensatz: " + dataNormalized.length);
 
-        double[][] dataNormToTrain = Arrays.copyOfRange(dataNormalized, 0, (int) Math.ceil(dataNormalized.length * (dataPercentage)));
-        double[][] dataNormToTest = Arrays.copyOfRange(dataNormalized, (int) Math.ceil(dataNormalized.length * (dataPercentage)) + 1, dataNormalized.length);
+        double[][] dataNormToTrain = Arrays.copyOfRange(dataNormalized, 0, (int) Math.ceil(dataNormalized.length * (0.8)));
+        double[][] dataNormToTest = Arrays.copyOfRange(dataNormalized, (int) Math.ceil(dataNormalized.length * (0.8)) + 1, dataNormalized.length);
         System.out.println("Datensatz zum Trainieren: " + Arrays.deepToString(dataNormToTrain));
         System.out.println("Datensatz zum Testen: " + Arrays.deepToString(dataNormToTest));
 
@@ -129,26 +134,26 @@ public class ANNLearn implements Observer {
             case "setDatasetFile":
                 loadDataSet();
                 break;
-            case "setInputColumns":
-                this.inputColumns = annModel.getInputColumns();
-                break;
-            case "setOutputColumns":
-                this.outputColumns = annModel.getOutputColums();
-                break;
+//            case "setInputColumns":
+//                this.inputColumns = annModel.getInputColumns();
+//                break;
+//            case "setOutputColumns":
+//                this.outputColumns = annModel.getOutputColums();
+//                break;
             case "setDataPercentage":
                 this.dataPercentage = annModel.getDataPercentage();
                 break;
-            case "setNeuronsInHiddenLayer":
-                this.neuronsInHiddenLayer = annModel.getNeuronsInHiddenLayer();
-                break;
-            case "setActFnc":
+//            case "setNeuronsInHiddenLayer":
+//                this.neuronsInHiddenLayer = annModel.getNeuronsInHiddenLayer();
+//                break;
+//            case "setActFnc":
 //                this.actFnc = annModel.getActFnc();
-                break;
+//                break;
             case "setMomentumRate":
                 this.momentumRate = annModel.getMomentumRate();
                 break;
-            case "setMaxEpochs":
-                this.maxEpochs = annModel.getMaxEpochs();
+            case "setMaxEpoch":
+                this.maxEpochs = annModel.getMaxEpoch();
                 break;
             case "setMinOverallError":
                 this.minOverallError = annModel.getMinOverallError();
@@ -159,14 +164,16 @@ public class ANNLearn implements Observer {
             case "setSigmList":
                 this.sgmList = annModel.getSgmList();
                 break;
+            case "setLearnMode":
+                this.learnMode = annModel.getLearnmode();
+                break;
             case "train":
                 train();
-            case "setLearnMode":
-                this.learnMode = annModel.getLearnmode();#
         }
     }
 
     public void initModel(ANNModel annModel) {
         this.annModel = annModel;
     }
+
 }
