@@ -13,12 +13,14 @@ import java.util.Observable;
 public class Presets extends Observable {
 
     private ANNModel annModel;
-
+    private File file;
     private String filename;
     private List<TempweightList> tempWeightLists;
+    private List<PresetsList> presetsLists;
 
     public Presets() {
         this.tempWeightLists = new ArrayList<>();
+        this.presetsLists = new ArrayList<>();
     }
 
     public String getFilename() {
@@ -32,35 +34,38 @@ public class Presets extends Observable {
     }
 
     public void addTempweightList(TempweightList tmpList) throws IOException {
-        this.tempWeightLists.add(tmpList);
-        save("TempWeights"); //In addPresetsList dann: save("Presets")
+        tempWeightLists.add(tmpList);
+        save("TempWeights");
         setChanged();
         notifyObservers("addTempweightList");
     }
 
+    public void addPresetsList(PresetsList preList) throws IOException {
+        presetsLists.add(preList);
+        save("Presets");
+        setChanged();
+        notifyObservers("addPresetsList");
+    }
+
     public List<TempweightList> getTempWeightList() {
         return this.tempWeightLists;
-
     }
 
     public void save(String fileLocation) throws IOException {
-
         switch(fileLocation) {
             case "TempWeights":
-                File file = new File ("Neuroshop\\Ressources\\SavedData\\Temp" + File.separator + this.filename);
+                file = new File ("Neuroshop\\Ressources\\SavedData\\Temp" + File.separator + this.filename);
                 break;
             case "Presets":
-                File file = new File ("Neuroshop\\Ressources\\SavedData\\Presets" + File.separator + this.filename);
+                file = new File ("Neuroshop\\Ressources\\SavedData\\Presets" + File.separator + this.filename);
         }
-        File file = new File ("Neuroshop\\Ressources\\SavedData\\Temp" + File.separator + this.filename);
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(this);
         }
-
     }
 
     public void initModel(ANNModel annModel) {
         this.annModel = annModel;
     }
-    }
 }
+
