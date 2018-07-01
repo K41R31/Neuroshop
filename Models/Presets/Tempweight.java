@@ -1,4 +1,6 @@
 package Neuroshop.Models.Presets;
+import Neuroshop.ANN.Learn.Backpropagation;
+import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
 
 import java.util.ArrayList;
@@ -9,29 +11,22 @@ public class Tempweight extends Observable {
 
     private int epoch;
     private ANNModel annModel;
+    private Backpropagation bP;
     private ArrayList<ArrayList<ArrayList<Double>>> weight;
 
     public int getEpoch() {
+        epoch = bP.getEpoch();
         return this.epoch;
     }
 
-    public void setEpoch(int epoch) {
-        this.epoch = epoch;
-    }
-
-    public void setWeight(ArrayList<ArrayList<ArrayList<Double>>> weight) {
-        this.weight = weight;
-    }
-
     public ArrayList<ArrayList<ArrayList<Double>>> getWeight() {
-        annModel.getNewWeights();
-        return this.weight;
+        this.weight = annModel.getNewWeights();
+        return weight;
     }
 
-    public void initModel(ANNModel annModel) {
+    public void initModel(ANNModel annModel, Backpropagation bP) {
+        this.bP = bP;
         this.annModel = annModel;
     }
-
-
 
 }

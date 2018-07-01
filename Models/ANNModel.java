@@ -25,8 +25,8 @@ public class ANNModel extends Observable {
     private DataNormalization dataNormType;
 
     private double dataPercentage;
-    private int[] numberOfHiddenNeurons;
-    private int numberNeuronsHdnLayer;
+    private int[] neuronsInHiddenLayer;
+    private int numberOfHiddenLayer;
 
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
 
@@ -44,7 +44,7 @@ public class ANNModel extends Observable {
     public void setSigmList(List<Sigmoid> sgmList) {
         SigmoidList sigList = new SigmoidList();
         SigmoidObj sgO = new SigmoidObj();
-        for(int i = 0; i < numberOfHiddenNeurons.length; i++) {
+        for(int i = 0; i < neuronsInHiddenLayer.length; i++) {
             sigList.addSigmoids(sgO);
             this.sgmList = sgmList;
             setChanged();
@@ -115,24 +115,24 @@ public class ANNModel extends Observable {
         this.notifyObservers("setDataPercentage");
     }
 
-    public int[] getNumberOfHiddenNeurons() {
-        return this.numberOfHiddenNeurons;
+    public int[] getNeuronsInHiddenLayer() {
+        return this.neuronsInHiddenLayer;
     }
 
-    public void setNumberOfHiddenNeurons(int[] numberOfHiddenNeurons) {
-        this.numberOfHiddenNeurons = numberOfHiddenNeurons;
+    public void setNeuronsInHiddenLayer(int[] neuronsInHiddenLayer) {
+        this.neuronsInHiddenLayer = neuronsInHiddenLayer;
         this.setChanged();
-        this.notifyObservers("setNumberOfHiddenNeurons");
+        this.notifyObservers("setNeuronsInHiddenLayer");
     }
 
-    public int getNumberNeuronsHdnLayer() {
-        return this.numberNeuronsHdnLayer;
-    }
+    public int getNumberOfHiddenLayer() {
+        return this.numberOfHiddenLayer;
+    } //TODO: NeuronsNumberOfNeurons auslesen!!!!!!!
 
-    public void setNumberNeuronsHdnLayer(int numberNeuronsHdnLayer) {
-        this.numberNeuronsHdnLayer = numberNeuronsHdnLayer;
+    public void setNumberOfHiddenLayer(int numberOfHiddenLayer) {
+        this.numberOfHiddenLayer = numberOfHiddenLayer;
         this.setChanged();
-        this.notifyObservers(numberNeuronsHdnLayer);
+        this.notifyObservers(numberOfHiddenLayer);
     }
 
     public IActivationFunction getOutputActFnc() {

@@ -22,7 +22,7 @@ public class ANNLearn implements Observer {
     private double dataPercentage;
     private int[] inputColumns;
     private int[] outputColumns;
-    private int[] numberOfHiddenNeurons;
+    private int[] neuronsInHiddenLayer;
     private int maxEpochs;
 
     private double minOverallError;
@@ -41,15 +41,15 @@ public class ANNLearn implements Observer {
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
 
-        this.numberOfHiddenNeurons = (numberOfHiddenNeurons);
+        this.neuronsInHiddenLayer = (neuronsInHiddenLayer);
 
         IActivationFunction outputActFnc = new Linear(1.0);
         if(actFnc.length == 0) {
-        for(int i =0; i < numberOfHiddenNeurons.length; i++) {
+        for(int i = 0; i < neuronsInHiddenLayer.length; i++) {
             this.actFnc = new IActivationFunction[]{sgmList.get(i)};
             }
         }
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, numberOfHiddenNeurons, actFnc, outputActFnc, new UniformInitialization(0, 1.0));
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, actFnc, outputActFnc, new UniformInitialization(0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
@@ -140,8 +140,8 @@ public class ANNLearn implements Observer {
             case "setDataPercentage":
                 this.dataPercentage = annModel.getDataPercentage();
                 break;
-            case "setNumberOfHiddenNeurons":
-                this.numberOfHiddenNeurons = annModel.getNumberOfHiddenNeurons();
+            case "setNeuronsInHiddenLayer":
+                this.neuronsInHiddenLayer = annModel.getNeuronsInHiddenLayer();
                 break;
             case "setActFnc":
 //                this.actFnc = annModel.getActFnc();

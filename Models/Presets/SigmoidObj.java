@@ -17,7 +17,7 @@ public class SigmoidObj extends Observable {
     }
 
     public void setNumberOfHiddenLayers(int numberOfHiddenLayers) {
-        this.numberOfHiddenLayers = annModel.getNumberOfHiddenNeurons().length;
+        this.numberOfHiddenLayers = annModel.getNeuronsInHiddenLayer().length;
         setChanged();
         notifyObservers("setNumberOfHiddenLayers");
     }
