@@ -53,10 +53,8 @@ public class ANNLearn implements Observer {
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
-        this.dataPercentage = dataPercentage;
-
         double[][] dSet = annModel.getDataSet();
-        this.dataNormType = dataNormType;
+
         System.out.print("Geladener Datensatz, unverändert: " + Arrays.deepToString(dSet));
 
         double[][] dataNormalized = new double[dSet.length][dSet[0].length];
@@ -72,11 +70,6 @@ public class ANNLearn implements Observer {
 
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
-
-//        this.maxEpochs = maxEpochs;
-//        this.momentumRate = momentumRate;
-//        this.learningRate = learningRate;
-//        this.minOverallError = minOverallError;
 
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
 
