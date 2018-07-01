@@ -89,7 +89,7 @@ public class ANNModel extends Observable {
         return this.dataNormType;
     }
 
-    public void setDataNormType(DataNormalization dataNormType) {
+    public void setDataNormType(DataNormalization dataNormType) { //TODO: Vorerst auf .MIN_MAX(-1.0, 1.0) festgelegt
         this.dataNormType = dataNormType;
         this.setChanged();
         this.notifyObservers("setDataNormType");
@@ -99,7 +99,7 @@ public class ANNModel extends Observable {
         return this.lMode;
     }
 
-    public void setLearnMode(LearningAlgorithm.LearningMode lMode) {
+    public void setLearnMode(LearningAlgorithm.LearningMode lMode) { //TODO: Vorerst auf .BATCH festgelegt
         this.lMode = lMode;
         this.setChanged();
         this.notifyObservers("setLearnMode");
@@ -139,7 +139,7 @@ public class ANNModel extends Observable {
         return this.outputActFnc;
     }
 
-    public void setOutputActFnc(IActivationFunction outputActFnc) {
+    public void setOutputActFnc(IActivationFunction outputActFnc) { //TODO: Vorerst auf LINEAR(1.0) festgelegt
         this.outputActFnc = outputActFnc;
         this.setChanged();
         this.notifyObservers("setOutputActFnc");
@@ -172,7 +172,7 @@ public class ANNModel extends Observable {
     public void setMomentumRate(double momentumRate) {
         this.momentumRate = momentumRate;
         this.setChanged();
-        this.notifyObservers("momentumRate");
+        this.notifyObservers("setMomentumRate");
     }
 
     public void setNumberOfRecords(int numberOfRecords) {

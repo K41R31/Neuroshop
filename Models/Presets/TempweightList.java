@@ -10,7 +10,6 @@ public class TempweightList extends Observable {
 
     private List<Tempweight> tempweights;
 
-
     public TempweightList() {
         this.tempweights = new ArrayList<>();
     }
