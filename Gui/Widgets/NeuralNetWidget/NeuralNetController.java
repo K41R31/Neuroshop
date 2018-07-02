@@ -38,25 +38,7 @@ public class NeuralNetController extends StackPane implements Observer {
     private double splineWidth = 1;
 
     @FXML
-    private Slider sliderTangent;
-    @FXML
-    private Slider sliderWidth;
-
-    @FXML
     private void initialize() {
-    }
-
-    @FXML
-    private void changeTangent() {
-        splineTangent = sliderTangent.getValue();
-        drawSplines();
-    }
-
-    @FXML
-    private void changeWidth() {
-
-        splineWidth = sliderWidth.getValue();
-        drawSplines();
     }
 
     @FXML
@@ -84,12 +66,12 @@ public class NeuralNetController extends StackPane implements Observer {
                     endY = endCircleBounds.getMinY() + 20;
                     controlX1 = startX + splineTangent;
                     controlX2 = endX - splineTangent;
-                    double lastDeltaWeight = newWeights.get(c).get(x).get(r);
+//                    double lastDeltaWeight = newWeights.get(c).get(x).get(r);
                     CubicCurve spline = new CubicCurve(startX, startY, controlX1, startY, controlX2, endY, endX, endY);
                     spline.setLayoutX(0);
                     spline.setLayoutY(0);
                     spline.setFill(Color.TRANSPARENT);
-                    spline.setStrokeWidth(lastDeltaWeight);
+//                    spline.setStrokeWidth(lastDeltaWeight);
                     spline.setStroke(Color.BLACK);
                     splinesPane.getChildren().add(spline);
                 }
