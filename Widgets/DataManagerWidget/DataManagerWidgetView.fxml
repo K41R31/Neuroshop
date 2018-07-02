@@ -18,6 +18,7 @@
 <?import javafx.scene.text.Text?>
 
 <StackPane fx:id="DataManager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-border-color: #151515; -fx-background-color: #2b2b2b; -fx-border-width: 1;" stylesheets="@DataManagerWidgetStyle.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController">
+
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
