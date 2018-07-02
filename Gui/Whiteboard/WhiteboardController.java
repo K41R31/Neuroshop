@@ -6,10 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Stack;
 
 public class WhiteboardController implements Observer {
 
@@ -30,6 +32,12 @@ public class WhiteboardController implements Observer {
             widget.setLayoutX(MouseInfo.getPointerInfo().getLocation().x - offsetX);
             widget.setLayoutY(MouseInfo.getPointerInfo().getLocation().y - offsetY);
             widget.toBack();
+        }
+    }
+
+    private void removeWidgetFromWhiteboard(StackPane widget) {
+        for (int i = 0; i < whiteboardPane.getChildren().size(); i++) {
+            if (whiteboardPane.getChildren().get(i).getId().equals(widget.getId())) whiteboardPane.getChildren().remove(i);
         }
     }
 
@@ -56,6 +64,9 @@ public class WhiteboardController implements Observer {
                 removeDraggPane();
                 draggPane.toBack();
                 addWidgetToWhiteboard(widgetContainerModel.getBufferedWidget(), false);
+                break;
+            case "removeWidgetFromWhiteboard":
+                removeWidgetFromWhiteboard(widgetContainerModel.getBufferedWidget());
                 break;
             case "addFirstDataManager":
                 removeDraggPane();

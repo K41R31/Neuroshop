@@ -102,7 +102,7 @@ public class PreviewWidget extends StackPane {
                         widgetContainerModel.addWidgetToWhiteboard(node.getId(), false);
                     } else if (widgetContainerModel.getWidgetMenuIsOpen() & MouseInfo.getPointerInfo().getLocation().x < 300) {
                         widgetContainerModel.changeWidgetStateById(node.getId(), 0);
-                        widgetContainerModel.adddWidgetToMenu();
+                        widgetContainerModel.addWidgetToMenu();
                         widgetContainerModel.clearBufferedWidget();
                         node.setTranslateX(0);
                         node.setTranslateY(0);

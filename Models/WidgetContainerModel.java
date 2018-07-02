@@ -26,6 +26,12 @@ public class WidgetContainerModel extends Observable {
         else notifyObservers("addWidgetToWhiteboard");
     }
 
+    public void removeWidgetFromWhiteboard(StackPane widget) {
+        bufferedWidget = widget;
+        setChanged();
+        notifyObservers("removeWidgetFromWhiteboard");
+    }
+
     public boolean getMenuIsBusy() {
         return menuIsBusy;
     }
@@ -40,6 +46,15 @@ public class WidgetContainerModel extends Observable {
                 widgetState[i] = state;
     }
 
+    public StackPane getWidgetPreviewById(String id) {
+        for (int i = 0; i < totalWidgetsCounter; i++) {
+            if (widgets[i][0].getId().equals(id)) {
+                return widgets[i][0];
+            }
+        }
+        return null;
+    }
+
     public void setWidgetMenuIsOpen(boolean widgetMenuIsOpen) {
         this.widgetMenuIsOpen = widgetMenuIsOpen;
     }
@@ -48,9 +63,9 @@ public class WidgetContainerModel extends Observable {
         return widgetMenuIsOpen;
     }
 
-    public void adddWidgetToMenu() {
+    public void addWidgetToMenu() {
         setChanged();
-        notifyObservers("adddWidgetToMenu");
+        notifyObservers("addWidgetToMenu");
     }
 
     public void setBufferedWidget(StackPane bufferedWidget) {
@@ -84,5 +99,9 @@ public class WidgetContainerModel extends Observable {
 
     public void initWidgets(StackPane[][] widgets) {
         this.widgets = widgets;
+    }
+
+    public int[] getWidgetsState() {
+        return widgetState;
     }
 }

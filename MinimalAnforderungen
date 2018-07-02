@@ -6,6 +6,8 @@
 
     - Nach Apply Button, DataManager minimieren.
 
+    - Widget dragg & Drop
+
     - NeuralWidget fertig machen:
         > HiddenLayer + <NeuronenImLayer>..
         > Aktivierungsfunktion für HidenLayer..

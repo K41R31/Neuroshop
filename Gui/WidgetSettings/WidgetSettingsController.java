@@ -43,15 +43,15 @@ public class WidgetSettingsController implements Observer {
     @FXML
     private HBox contentPane;
     @FXML
-    private VBox rootPane;
+    private VBox widgetSettings;
     private boolean menuIsOpen;
 
     @FXML
     private void initialize() {
         menuIsOpen = false;
-        AnchorPane.setLeftAnchor(rootPane, (double)0);
-        AnchorPane.setBottomAnchor(rootPane, (double)0);
-        AnchorPane.setRightAnchor(rootPane, (double)0);
+        AnchorPane.setLeftAnchor(widgetSettings, (double)0);
+        AnchorPane.setBottomAnchor(widgetSettings, (double)0);
+        AnchorPane.setRightAnchor(widgetSettings, (double)0);
         maxEpochsValue.setText(String.valueOf(maxEpochsSlider.getValue()));
         minOverallErrorValue.setText(String.valueOf(minOverallErrorSlider.getValue()));
         learningRateValue.setText(String.valueOf(learningRateSlider.getValue()));
