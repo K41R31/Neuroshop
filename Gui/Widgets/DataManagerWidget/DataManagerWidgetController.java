@@ -280,6 +280,11 @@ public class DataManagerWidgetController implements Observer {
         annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
         annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
         widgetContainerModel.activateMenus();
+
+        widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
+        widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
+        DataManager.setTranslateX(0);
+        DataManager.setTranslateY(0);
     }
 
     @FXML
