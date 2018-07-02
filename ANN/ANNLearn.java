@@ -20,9 +20,9 @@ public class ANNLearn implements Observer {
     private ANNModel annModel;
 
     private double dataPercentage;
-//    private int[] inputColumns;
-//    private int[] outputColumns;
-//    private int[] neuronsInHiddenLayer;
+    private int[] inputColumns;
+    private int[] outputColumns;
+    private int[] neuronsInHiddenLayer;
     private int maxEpochs;
 
     private double minOverallError;
@@ -47,10 +47,6 @@ public class ANNLearn implements Observer {
 //            this.actFnc = new IActivationFunction[]{sgmList.get(i)};
 //            }
 //        }
-
-        int[] neuronsInHiddenLayer = new int[]{5};
-        int[] inputColumns = new int[] {0,1,2,3};
-        int[] outputColumns = new int[] {4};
 
         NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, new IActivationFunction[] {new Sigmoid (1.0)}, outputActFnc, new UniformInitialization(0, 1.0));
         nnWidget.print();
