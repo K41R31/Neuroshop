@@ -14,7 +14,7 @@
             <Insets top="30.0" />
          </padding>
       </VBox>
-      <StackPane maxWidth="-Infinity" minWidth="-Infinity" onMouseEntered="#toggleMenu" prefWidth="20.0">
+      <StackPane fx:id="toggleButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" onMouseEntered="#toggleMenu" prefWidth="20.0">
          <children>
             <ImageView fx:id="openerIcon" disable="true" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

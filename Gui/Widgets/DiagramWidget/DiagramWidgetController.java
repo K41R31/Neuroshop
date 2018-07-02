@@ -1,4 +1,4 @@
-package Neuroshop.Widgets.DiagramWidget;
+package Neuroshop.Gui.Widgets.DiagramWidget;
 
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;

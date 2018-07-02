@@ -1,4 +1,4 @@
-package Neuroshop.Widgets;
+package Neuroshop.Gui.Widgets;
 
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.event.EventHandler;

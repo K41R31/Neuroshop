@@ -1,4 +1,4 @@
-package Neuroshop.Widgets.DataManagerWidget;
+package Neuroshop.Gui.Widgets.DataManagerWidget;
 
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Main;
@@ -19,7 +19,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -205,14 +204,6 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        switch ((String)arg) {
-            case "initDataManager":
-                initDataManager();
-        }
-    }
-
     private double roundDouble(double start) {
         double processing;
         String toString = String.valueOf(start);
@@ -291,7 +282,8 @@ public class DataManagerWidgetController implements Observer {
         }
         errorInfo.setVisible(false);
         annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
-        annModel.setInputColumns(outputList.stream().mapToInt(i -> i).toArray());
+        annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
+        widgetContainerModel.activateMenus();
     }
 
     @FXML
@@ -365,6 +357,14 @@ public class DataManagerWidgetController implements Observer {
         node.setOnMousePressed(onMousePressed);
         node.setOnMouseDragged(onMouseDragged);
         node.setOnMouseReleased(onMouseReleased);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        switch ((String)arg) {
+            case "initDataManager":
+                initDataManager();
+        }
     }
 
     public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel, LastOpenedFiles lastOpenedFiles) {

@@ -4,8 +4,6 @@
 
 #### Was muss bis zur Präsentation definitv vorhanden sein:
 
-    - Nach Apply Button, DataManager minimieren.
-
     - Widget dragg & Drop
 
     - NeuralWidget fertig machen:
@@ -24,6 +22,8 @@
     - Slider für NN Optionen fertigstellen
         > Korrekte Werte übergeben
 
+    - Diagram Widget
+
     ##### Design "optimieren":
                - Buttons etwas besser sichtbar machen, z.b. mit einem Quadrat umfassen
                - Schriften einheitlich weiß und bei hover-effect dann blau
@@ -31,13 +31,7 @@
                     > Etwas hinzufügen | weiß dann grün
                - Im Datamanager bei Lastloaded Scrollbar, sobald zu viele lastloadets vorhanden sind
 
-<<<<<<< HEAD
-
     ### Nice to have:
         - Max Epoch deaktivieren
         - Normdata in Filemanager anzeigen lassen
         - ONLINE zusätzlich BATCH Methode hinzufügen
-
-
-=======
->>>>>>> da021a06f12f1de1eeab2f1986f95a4d6dc3e134

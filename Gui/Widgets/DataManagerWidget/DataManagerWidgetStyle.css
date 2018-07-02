@@ -1,5 +1,5 @@
 .slider .thumb {
-    -fx-background-image :url("../../Ressources/Assets/sliderMoveable.png");
+    -fx-background-image :url("../../../Ressources/Assets/sliderMoveable.png");
     -fx-padding: 22;
     -fx-pref-height: 42;
     -fx-pref-width: 44;
@@ -61,32 +61,32 @@
     -fx-fill: GRAY;
 }
 .lastOpenedDeleter {
-     -fx-image: url("../../Ressources/Assets/lastOpenedDeleter.png");
+     -fx-image: url("../../../Ressources/Assets/lastOpenedDeleter.png");
  }
 .lastOpenedDeleter:hover {
-    -fx-image: url("../../Ressources/Assets/lastOpenedDeleterHover.png");
+    -fx-image: url("../../../Ressources/Assets/lastOpenedDeleterHover.png");
 }
 .backButton {
-    -fx-image: url("../../Ressources/Assets/backArrow.png");
+    -fx-image: url("../../../Ressources/Assets/backArrow.png");
 }
 .backButton:hover {
-    -fx-image: url("../../Ressources/Assets/backArrowHover.png");
+    -fx-image: url("../../../Ressources/Assets/backArrowHover.png");
 }
 .ioChooserNothing {
-    -fx-image: url("../../Ressources/Assets/ioNothing.png");
+    -fx-image: url("../../../Ressources/Assets/ioNothing.png");
 }
 .ioChooserNothing:hover {
-    -fx-image: url("../../Ressources/Assets/ioNothingHover.png");
+    -fx-image: url("../../../Ressources/Assets/ioNothingHover.png");
 }
 .ioChooserInput {
-    -fx-image: url("../../Ressources/Assets/ioInput.png");
+    -fx-image: url("../../../Ressources/Assets/ioInput.png");
 }
 .ioChooserInput:hover {
-    -fx-image: url("../../Ressources/Assets/ioInputHover.png");
+    -fx-image: url("../../../Ressources/Assets/ioInputHover.png");
 }
 .ioChooserOutput {
-    -fx-image: url("../../Ressources/Assets/ioOutput.png");
+    -fx-image: url("../../../Ressources/Assets/ioOutput.png");
 }
 .ioChooserOutput:hover {
-    -fx-image: url("../../Ressources/Assets/ioOutputHover.png");
+    -fx-image: url("../../../Ressources/Assets/ioOutputHover.png");
 }

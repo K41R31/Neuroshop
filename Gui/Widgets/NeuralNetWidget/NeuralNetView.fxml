@@ -23,7 +23,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.NeuralNetWidget.NeuralNetController">
+<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.Widgets.NeuralNetWidget.NeuralNetController">
    <children>
       <VBox alignment="CENTER">
          <children>

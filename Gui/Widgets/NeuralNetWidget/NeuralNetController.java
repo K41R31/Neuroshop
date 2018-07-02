@@ -1,10 +1,7 @@
-package Neuroshop.Widgets.NeuralNetWidget;
+package Neuroshop.Gui.Widgets.NeuralNetWidget;
 
 import Neuroshop.Models.ANNModel;
 import Neuroshop.ANN.Learn.Backpropagation;
-import Neuroshop.ANN.Neural.HiddenLayer;
-import Neuroshop.ANN.Neural.Neuron;
-import Neuroshop.ANN.Neural.OutputLayer;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
