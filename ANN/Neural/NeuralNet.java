@@ -86,6 +86,7 @@ public class NeuralNet {
      * @param outputAcFnc Activation Function of the Output Layer
      * @param _weightInitialization 
      */
+    //TODO: Fixe Weightinitialisierung einfügen, für Gewichte aus den vergangenen Epochen
     public NeuralNet(int numberofinputs,int numberofoutputs,
             int [] numberofhiddenneurons,IActivationFunction[] hiddenAcFnc,
             IActivationFunction outputAcFnc,
@@ -396,7 +397,7 @@ public class NeuralNet {
             return hiddenLayer.get(layer).getWeight(input, neuron);
         }
     }
-    
+
     public int getTotalNumberOfWeights(){
         int result=0;
         for(HiddenLayer hl:this.hiddenLayer){

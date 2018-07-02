@@ -202,7 +202,6 @@ public class Backpropagation extends DeltaRule {
             if(k>=trainingDataSet.numberOfRecords){
                 /** Gewichte in Model schreiben */
                 annModel.setNewWeights(lastDeltaWeights);
-
                 k=0;
                 currentRecord=0;
                 listOfErrorsByEpoch.add(overallGeneralError);
@@ -232,6 +231,7 @@ public class Backpropagation extends DeltaRule {
             
         }
         //setListOfErrorsByEpoch( listOfErrorsByEpoch );
+        //TODO: While Schleife einfügen zum unterbrechen
         neuralNet.setNeuralNetMode(NeuralNet.NeuralNetMode.RUN);
     }
     
@@ -370,6 +370,8 @@ public class Backpropagation extends DeltaRule {
                 ,testingDataSet.getArrayNeuralOutputData(normalization));
             //simpleError=simpleErrorEach.get(trainingDataSet.numberOfRecords-1);
     }
+
+
 
     @Override
     public void applyNewWeights() {

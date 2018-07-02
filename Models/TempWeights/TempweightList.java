@@ -40,7 +40,7 @@ public class TempweightList extends Observable {
     setChanged();
     notifyObservers("addTempweights");
     }
-n 
+
     public List<Tempweight> getTempweights(int i) {
         List<Tempweight> tmp = new ArrayList<>();
         for(Tempweight k : this.tempweights) {
