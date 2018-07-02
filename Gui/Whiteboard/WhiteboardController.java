@@ -26,11 +26,11 @@ public class WhiteboardController implements Observer {
         double offsetX = widget.getPrefWidth() / 2;
         double offsetY = widget.getPrefHeight() / 2;
         if (firstWidget) {
-            widget.setTranslateX(0);
-            widget.setTranslateY(0);
             widget.setLayoutX((ScreenSize.width / 2) - offsetX);
             widget.setLayoutY((ScreenSize.height / 2) - offsetY);
         } else {
+            widget.setTranslateX(0);
+            widget.setTranslateY(0);
             widget.setLayoutX(MouseInfo.getPointerInfo().getLocation().x - offsetX);
             widget.setLayoutY(MouseInfo.getPointerInfo().getLocation().y - offsetY);
             widget.toBack();
@@ -39,7 +39,10 @@ public class WhiteboardController implements Observer {
 
     private void removeWidgetFromWhiteboard(StackPane widget) {
         for (int i = 0; i < whiteboardPane.getChildren().size(); i++) {
-            if (whiteboardPane.getChildren().get(i).getId().equals(widget.getId())) whiteboardPane.getChildren().remove(i);
+            if (whiteboardPane.getChildren().get(i).getId().equals(widget.getId())) {
+                whiteboardPane.getChildren().remove(i);
+                widgetContainerModel.clearBufferedWidget();
+            }
         }
     }
 

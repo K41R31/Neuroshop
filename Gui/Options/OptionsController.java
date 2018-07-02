@@ -58,7 +58,7 @@ public class OptionsController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg.equals("toggleOptions")) toggleOptionsMenu();
+        if ((arg).equals("toggleOptions")) toggleOptionsMenu();
     }
 
     public void initModel(OptionsModel optionsModel) {

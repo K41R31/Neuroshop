@@ -100,6 +100,8 @@ public class PreviewWidget extends StackPane {
                     if (MouseInfo.getPointerInfo().getLocation().x > 300) {
                         widgetContainerModel.changeWidgetStateById(node.getId(), 1);
                         widgetContainerModel.addWidgetToWhiteboard(node.getId(), false);
+                        node.setTranslateX(0);
+                        node.setTranslateY(0);
                     } else if (widgetContainerModel.getWidgetMenuIsOpen() & MouseInfo.getPointerInfo().getLocation().x < 300) {
                         widgetContainerModel.changeWidgetStateById(node.getId(), 0);
                         widgetContainerModel.addWidgetToMenu();
