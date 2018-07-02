@@ -133,7 +133,7 @@ public class DataManagerWidgetController implements Observer {
         testLearnSlider.setValue(testLearnSlider.getMax() / 2);
         trainValue.setText(String.valueOf((int)testLearnSlider.getValue()));
         testValue.setText(String.valueOf((int)(testLearnSlider.getMax() - testLearnSlider.getValue() + 0.5)));
-        annModel.setDataPercentage(testLearnSlider.getValue() * 100 / testLearnSlider.getMax());
+        annModel.setDataPercentage(testLearnSlider.getValue() / testLearnSlider.getMax());
 
         choosedColumns = new ArrayList<>();
         for(int c = 0; c < annModel.getDataColumns(); c++) {
@@ -223,7 +223,7 @@ public class DataManagerWidgetController implements Observer {
         int value = (int)testLearnSlider.getValue();
         trainValue.setText(String.valueOf(value));
         testValue.setText(String.valueOf((int)(testLearnSlider.getMax() - value)));
-        annModel.setDataPercentage((double)value * 100 / testLearnSlider.getMax()); //TODO Noch nicht gerade sehr kurz (39.310344827586206)
+        annModel.setDataPercentage((double)value / testLearnSlider.getMax()); //TODO Vielleicht noch etwas viele Nachkommastellen
     }
 
     @FXML
@@ -288,6 +288,7 @@ public class DataManagerWidgetController implements Observer {
             return;
         }
         errorInfo.setVisible(false);
+        System.out.println(annModel.getDataPercentage() );
         annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
         annModel.setInputColumns(outputList.stream().mapToInt(i -> i).toArray());
     }
