@@ -26,17 +26,21 @@ public class TempweightList extends Observable {
         this.name = name;
     }
 
+    public String getFilename() {
+        return this.filename;
+    }
+
     public void setFilename(String filename) {
         this.filename = filename;
     }
 
-    public void addTempweights (Tempweight tempweight) {
-    tempweights.add(tempweight);
+    public void addTempweights (Tempweight tempweight) throws IOException {
+    this.tempweights.add(tempweight);
+    this.save();
     setChanged();
-
     notifyObservers("addTempweights");
     }
-
+n 
     public List<Tempweight> getTempweights(int i) {
         List<Tempweight> tmp = new ArrayList<>();
         for(Tempweight k : this.tempweights) {

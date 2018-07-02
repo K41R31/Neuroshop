@@ -4,13 +4,21 @@ import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
+import Neuroshop.Models.TempWeights.Tempweight;
+import Neuroshop.Models.TempWeights.TempweightList;
+
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
 public class ANNModel extends Observable {
 
+    private String filename;
+    private File file;
     private File dataSetFile;
     private double[][] dataSet;
 
@@ -32,19 +40,18 @@ public class ANNModel extends Observable {
 
     private LearningAlgorithm.LearningMode learnMode;
     private List<Sigmoid> sgmList;
-//    private List<Presets> presetList;
+    private List<TempweightList> tempList;
 
     public void setSigmList(List<Sigmoid> sgmList) {
         SigmoidList sigList = new SigmoidList();
         SigmoidObj sgO = new SigmoidObj();
-        for(int i = 0; i < neuronsInHiddenLayer.length; i++) {
+        for (int i = 0; i < neuronsInHiddenLayer.length; i++) {
             sigList.addSigmoids(sgO);
             this.sgmList = sgmList;
             setChanged();
             notifyObservers("setSigmList");
         }
     }
-
     public List<Sigmoid> getSgmList() {
         return this.sgmList;
     }
@@ -54,7 +61,7 @@ public class ANNModel extends Observable {
     }
 
     public void setActFnc(IActivationFunction[] actFnc) {
-        this.actFnc = new IActivationFunction[] {};
+        this.actFnc = new IActivationFunction[]{};
         setChanged();
         this.notifyObservers("setActFnc");
     }
@@ -222,12 +229,16 @@ public class ANNModel extends Observable {
         this.notifyObservers("setNewWeights");
     }
 
+    public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
+        return newWeights;
+    }
+
+
+
     public void train() {
         setChanged();
         notifyObservers("train");
     }
-
-    public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
-        return newWeights;
-    }
 }
+
+

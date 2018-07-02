@@ -26,9 +26,8 @@ public class Tempweight extends Observable {
     public void setTempWeight (ArrayList<ArrayList<ArrayList<Double>>> weight) {
         this.weight = annModel.getNewWeights();
         setChanged();
+        notifyObservers("setTempweight");
     }
-
-
 
     public void initModel(ANNModel annModel, Backpropagation bP) {
         this.bP = bP;

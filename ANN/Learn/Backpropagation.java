@@ -188,7 +188,7 @@ public class Backpropagation extends DeltaRule {
         int countRiseError=0;
         
         while(epoch<MaxEpochs && overallGeneralError>MinOverallError
-                && (testingDataSet==null || testErrorVariation<0.0 || countRiseError<20000) ){
+                && (testingDataSet==null || testErrorVariation<0.0 || countRiseError<10) ){
             backward();
             switch(learningMode){
                 case BATCH:
@@ -200,8 +200,8 @@ public class Backpropagation extends DeltaRule {
             }
             currentRecord=++k;
             if(k>=trainingDataSet.numberOfRecords){
-
-                annModel.setNewWeights(lastDeltaWeights); //Weights in Model schreiben
+                /** Gewichte in Model schreiben */
+                annModel.setNewWeights(lastDeltaWeights);
 
                 k=0;
                 currentRecord=0;

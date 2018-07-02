@@ -4,7 +4,13 @@
 
 #### Was muss bis zur Präsentation definitv vorhanden sein:
 
+<<<<<<< HEAD
+    - Nach Apply Button, DataManager minimieren.
+
+    - Widget Drag & Drop
+=======
     - Widget dragg & Drop
+>>>>>>> e476e40ffa12f058c9529c17a042c1e8fcd61d3f
 
     - NeuralWidget fertig machen:
         > HiddenLayer + <NeuronenImLayer>..
