@@ -56,7 +56,7 @@ public class WidgetSettingsController implements Observer {
         minOverallErrorValue.setText(String.valueOf(minOverallErrorSlider.getValue()));
         learningRateValue.setText(String.valueOf(learningRateSlider.getValue()));
         momentumRateValue.setText(String.valueOf(momentumRateSlider.getValue()));
-        System.out.println(learningRateSlider.getValue() + (momentumRateSlider.getValue()) + (maxEpochsSlider.getValue()));
+        System.out.println("Lernrate: " + learningRateSlider.getValue() + "Momenturm Rate: " + (momentumRateSlider.getValue()) +"Max Epoch: " + (maxEpochsSlider.getValue()));
     }
 
     @FXML
@@ -93,36 +93,44 @@ public class WidgetSettingsController implements Observer {
     private double roundDouble(double start) {
         double processing;
         String toString = String.valueOf(start);
-        processing = Double.valueOf(toString.substring(0, toString.indexOf(".")+2));
+        processing = Double.valueOf(toString.substring(0, toString.indexOf(".")+4));
         return processing;
     }
 
     @FXML
     private void maxEpochsSliderDragged() {
-        System.out.println(roundDouble(156.15462));
-//        annModel.setMaxEpoch(value);
-//        maxEpochsValue.setText(String.valueOf(value));
+        int value = (int)maxEpochsSlider.getValue();
+        maxEpochsSlider.setMax(50000);
+        annModel.setMaxEpoch(value);
+        maxEpochsValue.setText(String.valueOf(value));
     }
 
     @FXML
     private void minOverallErrorSliderDragged() {
-        int value = (int)minOverallErrorSlider.getValue();
-        annModel.setMinOverallError(value);
-        minOverallErrorValue.setText(String.valueOf(value));
+        double value = minOverallErrorSlider.getValue();
+        minOverallErrorSlider.setMin(0.001);
+        minOverallErrorSlider.setMax(0.999);
+        annModel.setMinOverallError(roundDouble(value));
+        minOverallErrorValue.setText(String.valueOf(roundDouble(value)));
     }
 
     @FXML
     private void learningRateDragged() {
-        int value = (int)learningRateSlider.getValue();
-        annModel.setLearningRate(value);
-        learningRateValue.setText(String.valueOf(value));
+        double value = learningRateSlider.getValue();
+        learningRateSlider.setMin(0.001);
+        learningRateSlider.setMax(1.0);
+        annModel.setLearningRate(roundDouble(value));
+        learningRateValue.setText(String.valueOf(roundDouble(value)));
+
     }
 
     @FXML
     private void momentumRateDragged() {
-        int value = (int)momentumRateSlider.getValue();
-        annModel.setMomentumRate(value);
-        momentumRateValue.setText(String.valueOf(value));
+        double value = momentumRateSlider.getValue();
+        momentumRateSlider.setMin(0.001);
+        momentumRateSlider.setMax(1.0);
+        annModel.setMomentumRate(roundDouble(value));
+        momentumRateValue.setText(String.valueOf(roundDouble(value)));
     }
 
     @FXML

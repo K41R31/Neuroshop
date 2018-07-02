@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
@@ -11,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-border-color: #151515; -fx-background-color: #2b2b2b; -fx-border-width: 1;" stylesheets="@DataManagerWidgetStyle.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-border-color: #151515; -fx-background-color: #2b2b2b; -fx-border-width: 1;" stylesheets="@DataManagerWidgetStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -37,7 +43,7 @@
                <children>
                   <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Text fill="#dddddd" strokeType="OUTSIDE" strokeWidth="0.0" text="TRAIN">
+                        <Text fill="#dddddd" strokeType="OUTSIDE" strokeWidth="0.0" text="\% Trainingsdaten">
                            <font>
                               <Font name="Code-Light" size="20.0" />
                            </font>
@@ -59,7 +65,7 @@
                   </Slider>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Text fill="#dddddd" strokeType="OUTSIDE" strokeWidth="0.0" text="TEST">
+                        <Text fill="#dddddd" strokeType="OUTSIDE" strokeWidth="0.0" text="\% Testdaten">
                            <font>
                               <Font name="Code-Light" size="20.0" />
                            </font>

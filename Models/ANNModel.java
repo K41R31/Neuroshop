@@ -4,8 +4,6 @@ import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
-import Neuroshop.Models.Presets.Presets;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +18,11 @@ public class ANNModel extends Observable {
     private int dataColumns;
     private int[] inputColumns;
     private int[] outputColumns;
-
     private DataNormalization dataNormType;
-
     private double dataPercentage;
     private int[] neuronsInHiddenLayer;
     private int numberOfHiddenLayer;
-
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
-
     private IActivationFunction[] actFnc;
     private IActivationFunction outputActFnc;
     private double minOverallError;
@@ -38,7 +32,7 @@ public class ANNModel extends Observable {
 
     private LearningAlgorithm.LearningMode learnMode;
     private List<Sigmoid> sgmList;
-    private List<Presets> presetList;
+//    private List<Presets> presetList;
 
     public void setSigmList(List<Sigmoid> sgmList) {
         SigmoidList sigList = new SigmoidList();
@@ -121,6 +115,7 @@ public class ANNModel extends Observable {
         this.dataPercentage = dataPercentage;
         this.setChanged();
         this.notifyObservers("setDataPercentage");
+        System.out.println("Console from Model: " + dataPercentage);
     }
 
     public int[] getNeuronsInHiddenLayer() {

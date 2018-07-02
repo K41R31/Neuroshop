@@ -19,10 +19,16 @@ public class Tempweight extends Observable {
         return this.epoch;
     }
 
-    public ArrayList<ArrayList<ArrayList<Double>>> getWeight() {
-        this.weight = annModel.getNewWeights();
-        return weight;
+    public ArrayList<ArrayList<ArrayList<Double>>> getTempWeight() {
+        return this.weight;
     }
+
+    public void setTempWeight (ArrayList<ArrayList<ArrayList<Double>>> weight) {
+        this.weight = annModel.getNewWeights();
+        setChanged();
+    }
+
+
 
     public void initModel(ANNModel annModel, Backpropagation bP) {
         this.bP = bP;

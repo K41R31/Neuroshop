@@ -218,12 +218,19 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
+    private double roundDouble(double start) {
+        double processing;
+        String toString = String.valueOf(start);
+        processing = Double.valueOf(toString.substring(0, toString.indexOf(".")+2));
+        return processing;
+    }
+
     @FXML
     private void testLearnSliderSlided() {
         int value = (int)testLearnSlider.getValue();
         trainValue.setText(String.valueOf(value));
         testValue.setText(String.valueOf((int)(testLearnSlider.getMax() - value)));
-        annModel.setDataPercentage((double)value / testLearnSlider.getMax()); //TODO Vielleicht noch etwas viele Nachkommastellen
+        annModel.setDataPercentage((roundDouble(value)) / testLearnSlider.getMax()); //TODO Vielleicht noch etwas viele Nachkommastellen
     }
 
     @FXML

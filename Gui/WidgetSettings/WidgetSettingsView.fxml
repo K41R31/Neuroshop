@@ -37,7 +37,7 @@
                                     <Font name="Champagne &amp; Limousines" size="28.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="maxEpochsValue" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="70.0">
+                              <Text fx:id="maxEpochsValue" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="100.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="28.0" />
                                  </font>

@@ -74,7 +74,7 @@ public class ANNLearn implements Observer {
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
 
-        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, learnMode);
+        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
 
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);

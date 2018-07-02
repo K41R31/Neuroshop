@@ -11,7 +11,7 @@
         > Aktivierungsfunktion für HidenLayer..
         ..hinzufügen
 
-    - Presets fertig machen
+    - Presets fertig machen TODO: Aufgeschoben bis alles andere fertig ist!
         > Alle Parameter abspeichern, laden und applizieren können
 
     - Temporäre Gewichte abspeichern, Epochenspezifisch laden und applizieren können
@@ -29,5 +29,10 @@
                     > Etwas hinzufügen | weiß dann grün
                - Im Datamanager bei Lastloaded Scrollbar, sobald zu viele lastloadets vorhanden sind
 
+
+    ### Nice to have:
+        - Max Epoch deaktivieren
+        - Normdata in Filemanager anzeigen lassen
+        - ONLINE zusätzlich BATCH Methode hinzufügen
 
 

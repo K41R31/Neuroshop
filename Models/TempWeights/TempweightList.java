@@ -1,5 +1,9 @@
 package Neuroshop.Models.TempWeights;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -7,7 +11,7 @@ import java.util.Observable;
 public class TempweightList extends Observable {
 
     private String name;
-
+    private String filename;
     private List<Tempweight> tempweights;
 
     public TempweightList() {
@@ -22,9 +26,14 @@ public class TempweightList extends Observable {
         this.name = name;
     }
 
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
     public void addTempweights (Tempweight tempweight) {
     tempweights.add(tempweight);
     setChanged();
+
     notifyObservers("addTempweights");
     }
 
@@ -36,5 +45,12 @@ public class TempweightList extends Observable {
             }
         }
         return tmp;
+    }
+
+    public void save() throws IOException {
+        File file = new File("Neuroshop\\Ressources\\SavedData\\Temp" + File.separator + this.filename);
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(this);
+        }
     }
 }
