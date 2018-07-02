@@ -88,10 +88,6 @@ public class WidgetContainerModel extends Observable {
         this.widgets = widgets;
     }
 
-    public int[] getWidgetsState() {
-        return widgetState;
-    }
-
     private StackPane getWidgetById(String id, int state) {
         for (int i = 0; i < totalWidgetsCounter; i++) {
             if (widgets[i][state].getId().equals(id)) {
@@ -99,5 +95,10 @@ public class WidgetContainerModel extends Observable {
             }
         }
         return null;
+    }
+
+    public void activateMenus() {
+        setChanged();
+        notifyObservers("activateMenus");
     }
 }

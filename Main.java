@@ -9,7 +9,7 @@ import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
 import Neuroshop.Models.OptionsModel;
 import Neuroshop.Models.WidgetContainerModel;
-import Neuroshop.Widgets.WidgetContainer;
+import Neuroshop.Gui.Widgets.WidgetContainer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -77,6 +77,7 @@ public class Main extends Application {
         annModel.addObserver(annLearn);
         widgetContainerModel.addObserver(whiteboardController);
         widgetContainerModel.addObserver(widgetMenuController);
+        widgetContainerModel.addObserver(widgetSettingsController);
         optionsModel.addObserver(optionsMenuController);
 
         //Init WidgetContainer------------------------------------------------------------------------------------------

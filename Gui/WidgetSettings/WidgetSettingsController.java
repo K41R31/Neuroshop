@@ -1,6 +1,7 @@
 package Neuroshop.Gui.WidgetSettings;
 
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.WidgetContainerModel;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -10,6 +11,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -44,6 +46,8 @@ public class WidgetSettingsController implements Observer {
     private HBox contentPane;
     @FXML
     private VBox widgetSettings;
+    @FXML
+    private StackPane toggleButton;
     private boolean menuIsOpen;
 
     @FXML
@@ -86,13 +90,16 @@ public class WidgetSettingsController implements Observer {
         }
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-    }
+    /**
+     * Rundet einen Double auf 3 Nachkommastellen
+     * Falls der Double weniger als 3 Nachkommastellen hat,
+     * wird er unverändert returnt
+     */
 
     private double roundDouble(double start) {
         double processing;
         String toString = String.valueOf(start);
+        if (toString.length() < 5) return start;
         processing = Double.valueOf(toString.substring(0, toString.indexOf(".")+4));
         return processing;
     }
@@ -136,6 +143,14 @@ public class WidgetSettingsController implements Observer {
     @FXML
     private void train() {
         annModel.train();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        switch ((String)arg) {
+            case "activateMenus":
+                toggleButton.setDisable(false);
+        }
     }
 
     public void initModel(ANNModel annModel) {

@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -22,19 +23,14 @@ public class WidgetMenuController implements Observer {
     @FXML
     private VBox widgetMenuPane;
     @FXML
+    private StackPane toggleButton;
+    @FXML
     private ImageView openerIcon;
-    private boolean menuIsOpen;
 
     private WidgetContainerModel widgetContainerModel;
 
-    //Für Mouse Events
-    private double sceneCursorPosX, sceneCursorPosY;
-    private double nodeTranslatedX, nodeTranslatedY;
-    private double sceneWidth, sceneHeight;
-
     @FXML
     private void initialize() {
-        menuIsOpen = false;
         AnchorPane.setTopAnchor(widgetMenuRootPane, (double)0);
         AnchorPane.setLeftAnchor(widgetMenuRootPane, (double)0);
         AnchorPane.setBottomAnchor(widgetMenuRootPane, (double)0);
@@ -82,6 +78,9 @@ public class WidgetMenuController implements Observer {
                 break;
             case "addWidgetToMenu":
                 widgetMenuPane.getChildren().add(widgetContainerModel.getBufferedWidget());
+                break;
+            case "activateMenus":
+                toggleButton.setDisable(false);
         }
 
     }

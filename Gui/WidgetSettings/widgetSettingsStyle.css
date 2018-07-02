@@ -1,11 +1,11 @@
 .slider .thumb {
-    -fx-background-image :url("../../Ressources/Assets/sliderMoveable.png");
-    -fx-padding: 22;
-    -fx-pref-height: 42;
-    -fx-pref-width: 44;
+     -fx-background-image :url("../../Ressources/Assets/sliderMoveable.png");
+     -fx-padding: 22;
+     -fx-pref-height: 42;
+     -fx-pref-width: 44;
 
-    -fx-background-color:transparent;
-}
+     -fx-background-color:transparent;
+ }
 .slider .track {
     -fx-background-color: #3f4045;
     -fx-background-radius: 1;

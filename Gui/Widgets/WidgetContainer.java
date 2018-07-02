@@ -1,12 +1,11 @@
-package Neuroshop.Widgets;
+package Neuroshop.Gui.Widgets;
 
-import Neuroshop.ANN.ANNLearn;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
-import Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController;
-import Neuroshop.Widgets.DiagramWidget.DiagramWidgetController;
-import Neuroshop.Widgets.NeuralNetWidget.NeuralNetController;
+import Neuroshop.Gui.Widgets.DataManagerWidget.DataManagerWidgetController;
+import Neuroshop.Gui.Widgets.DiagramWidget.DiagramWidgetController;
+import Neuroshop.Gui.Widgets.NeuralNetWidget.NeuralNetController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
@@ -23,7 +22,7 @@ public class WidgetContainer {
 
         dataManagerLoader = new FXMLLoader(getClass().getResource("DataManagerWidget/DataManagerWidgetView.fxml"));
         dataManagerWidgetRoot = dataManagerLoader.load();
-        dataManagerWidgetRoot.getStylesheets().add("Neuroshop/Widgets/DataManagerWidget/DataManagerWidgetStyle.css");
+        dataManagerWidgetRoot.getStylesheets().add("Neuroshop/Gui/Widgets/DataManagerWidget/DataManagerWidgetStyle.css");
         dataManagerWidgetRoot.setId("Data Manager");
 
         diagramWidgetLoader = new FXMLLoader(getClass().getResource("DiagramWidget/DiagramWidgetView.fxml"));
