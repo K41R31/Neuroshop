@@ -1,7 +1,7 @@
 package Neuroshop;
 
 import Neuroshop.ANN.ANNLearn;
-import Neuroshop.Gui.WidgetSettings.WidgetSettingsController;
+import Neuroshop.Gui.NeuralNetSettings.WidgetSettingsController;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.Options.OptionsController;
@@ -48,9 +48,9 @@ public class Main extends Application {
         FXMLLoader widgetMenuLoader = new FXMLLoader(getClass().getResource("Gui/WidgetMenu/WidgetMenuView.fxml"));
         whiteboard.getChildren().add(widgetMenuLoader.load());
 
-        FXMLLoader widgetSettingsLoader = new FXMLLoader(getClass().getResource("Gui/WidgetSettings/WidgetSettingsView.fxml"));
+        FXMLLoader widgetSettingsLoader = new FXMLLoader(getClass().getResource("Gui/NeuralNetSettings/WidgetSettingsView.fxml"));
         VBox widgetSettings = widgetSettingsLoader.load();
-        widgetSettings.getStylesheets().add("Neuroshop/Gui/WidgetSettings/widgetSettingsStyle.css");
+        widgetSettings.getStylesheets().add("Neuroshop/Gui/NeuralNetSettings/widgetSettingsStyle.css");
         whiteboard.getChildren().add(widgetSettings);
 
         //Init Ann------------------------------------------------------------------------------------------------------

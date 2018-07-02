@@ -81,8 +81,10 @@ public class WidgetMenuController implements Observer {
                 break;
             case "activateMenus":
                 toggleButton.setDisable(false);
+                break;
+            case "menusToFront":
+                widgetMenuRootPane.toFront();
         }
-
     }
 
     public void initModel(WidgetContainerModel widgetContainerModel) {

@@ -101,4 +101,9 @@ public class WidgetContainerModel extends Observable {
         setChanged();
         notifyObservers("activateMenus");
     }
+
+    public void menusToFront() {
+        setChanged();
+        notifyObservers("menusToFront");
+    }
 }

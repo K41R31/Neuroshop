@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.WidgetSettings.WidgetSettingsController">
+<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.WidgetSettingsController">
    <children>
-      <StackPane fx:id="toggleButton" disable="true" maxHeight="-Infinity" minHeight="-Infinity" onMouseEntered="#toggleMenu" prefHeight="20.0" VBox.vgrow="ALWAYS">
+      <StackPane fx:id="toggleButton" disable="true" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#toggleMenu" prefHeight="20.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fx:id="openerIcon" disable="true" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                <image>

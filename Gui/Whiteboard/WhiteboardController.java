@@ -33,8 +33,8 @@ public class WhiteboardController implements Observer {
             widget.setTranslateY(0);
             widget.setLayoutX(MouseInfo.getPointerInfo().getLocation().x - offsetX);
             widget.setLayoutY(MouseInfo.getPointerInfo().getLocation().y - offsetY);
-            widget.toBack();
         }
+        widgetContainerModel.menusToFront();
     }
 
     private void removeWidgetFromWhiteboard(StackPane widget) {

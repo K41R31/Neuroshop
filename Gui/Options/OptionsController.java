@@ -58,7 +58,13 @@ public class OptionsController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if ((arg).equals("toggleOptions")) toggleOptionsMenu();
+        switch ((String)arg) {
+            case "toggleOptions":
+                toggleOptionsMenu();
+                break;
+            case "menusToFront":
+                optionsMenuPane.toFront();
+        }
     }
 
     public void initModel(OptionsModel optionsModel) {
