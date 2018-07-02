@@ -1,5 +1,6 @@
 package Neuroshop.Gui.Widgets.NeuralNetWidget;
 
+import Neuroshop.Gui.Widgets.MakeDraggable;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.Models.WidgetContainerModel;
@@ -103,6 +104,7 @@ public class NeuralNetController extends StackPane implements Observer {
     public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel) {
         this.annModel = annModel;
         this.widgetContainerModel = widgetContainerModel;
+        new MakeDraggable(widgetContainerModel, rootPane);
     }
 }
 

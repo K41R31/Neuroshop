@@ -95,11 +95,11 @@ public class WidgetSettingsController implements Observer {
      * wird er unverändert returnt
      */
 
-    private double roundDouble(double start) {
+    private double roundDouble(double start, int decimal) {
         double processing;
         String toString = String.valueOf(start);
         if (toString.length() < 5) return start;
-        processing = Double.valueOf(toString.substring(0, toString.indexOf(".")+4));
+        processing = Double.valueOf(toString.substring(0, toString.indexOf(".")+1+decimal));
         return processing;
     }
 
@@ -116,8 +116,8 @@ public class WidgetSettingsController implements Observer {
         double value = minOverallErrorSlider.getValue();
         minOverallErrorSlider.setMin(0.001);
         minOverallErrorSlider.setMax(0.999);
-        annModel.setMinOverallError(roundDouble(value));
-        minOverallErrorValue.setText(String.valueOf(roundDouble(value)));
+        annModel.setMinOverallError(roundDouble(value, 3));
+        minOverallErrorValue.setText(String.valueOf(roundDouble(value, 3)));
     }
 
     @FXML
@@ -125,8 +125,8 @@ public class WidgetSettingsController implements Observer {
         double value = learningRateSlider.getValue();
         learningRateSlider.setMin(0.001);
         learningRateSlider.setMax(1.0);
-        annModel.setLearningRate(roundDouble(value));
-        learningRateValue.setText(String.valueOf(roundDouble(value)));
+        annModel.setLearningRate(roundDouble(value, 3));
+        learningRateValue.setText(String.valueOf(roundDouble(value, 3)));
 
     }
 
@@ -135,8 +135,8 @@ public class WidgetSettingsController implements Observer {
         double value = momentumRateSlider.getValue();
         momentumRateSlider.setMin(0.001);
         momentumRateSlider.setMax(1.0);
-        annModel.setMomentumRate(roundDouble(value));
-        momentumRateValue.setText(String.valueOf(roundDouble(value)));
+        annModel.setMomentumRate(roundDouble(value, 1));
+        momentumRateValue.setText(String.valueOf(roundDouble(value, 1)));
     }
 
     @FXML

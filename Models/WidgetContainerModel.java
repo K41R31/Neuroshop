@@ -9,6 +9,7 @@ public class WidgetContainerModel extends Observable {
 
     private final int totalWidgetsCounter = 3;
 
+    private boolean menusAreActive = false;
     private boolean menuIsBusy = false;
     private boolean widgetMenuIsOpen = false;
     private StackPane bufferedWidget;
@@ -100,10 +101,15 @@ public class WidgetContainerModel extends Observable {
     public void activateMenus() {
         setChanged();
         notifyObservers("activateMenus");
+        this.menusAreActive = true;
     }
 
     public void menusToFront() {
         setChanged();
         notifyObservers("menusToFront");
+    }
+
+    public boolean menusAreActive() {
+        return menusAreActive;
     }
 }
