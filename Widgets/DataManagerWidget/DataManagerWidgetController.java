@@ -288,7 +288,6 @@ public class DataManagerWidgetController implements Observer {
             return;
         }
         errorInfo.setVisible(false);
-        System.out.println(annModel.getDataPercentage() );
         annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
         annModel.setInputColumns(outputList.stream().mapToInt(i -> i).toArray());
     }
