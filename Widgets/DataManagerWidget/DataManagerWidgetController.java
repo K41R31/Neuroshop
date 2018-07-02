@@ -5,7 +5,6 @@ import Neuroshop.Main;
 
 import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.WidgetContainerModel;
-import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -16,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -33,39 +33,41 @@ public class DataManagerWidgetController implements Observer {
     private ArrayList<ChoiceBox> choosedColumns;
 
     @FXML
+    private Slider testLearnSlider;
+    @FXML
     private StackPane rootPane;
     @FXML
     private AnchorPane importPane;
+    @FXML
+    private StackPane applyButtonPane;
     @FXML
     private StackPane button1Pane;
     @FXML
     private StackPane button2Pane;
     @FXML
-    private Text testdataValue;
+    private Text trainValue;
     @FXML
-    private Text learndataValue;
+    private Text testValue;
     @FXML
-    private Text columnsText;
-    @FXML
-    private Text rowsText;
+    private Text applyButtonText;
     @FXML
     private Text button1Text;
     @FXML
     private Text button2Text;
     @FXML
-    private VBox counterPane;
+    private Text errorInfo;
     @FXML
     private VBox filesPane;
     @FXML
     private VBox deleterPane;
     @FXML
-    private HBox columnPane;
-    @FXML
     private HBox chooserPane;
     @FXML
-    private AnchorPane lastOpenedPane;
+    private HBox seperatorPane;
     @FXML
-    private Slider testLearnSlider;
+    private HBox columnPane;
+    @FXML
+    private AnchorPane lastOpenedPane;
 
     //Für Mouse Events
     private double sceneCursorPosX, sceneCursorPosY;
@@ -97,46 +99,6 @@ public class DataManagerWidgetController implements Observer {
             importPane.setDisable(true);
         }
     }
-/*
-    private void initializeDataQueue() {
-        ArrayList<String> files = lastOpened.getOpenedFiles();
-        if (files.size() == 0) {
-            Text text = new Text("No recently opened files");
-            text.setFont(new Font("Walkway Bold",16));
-
-        } else {
-            for (String fileString : files) {
-                if (new File(fileString).exists()) {
-
-
-
-                    Image image = new Image(new File(fileString).toURI().toString());
-                    ImageView imageView = new ImageView(image);
-                    imageView.setOnMousePressed(e -> {
-                        quickLoadFile = new File(fileString);
-                        loadImage();
-                    });
-                    imageView.setFitWidth(windowWidth*0.0781 * 1.5);
-                    imageView.setFitHeight(windowWidth*0.0781);
-                    imageView.setViewport(new Rectangle2D((image.getWidth() - image.getHeight() * 1.5) / 2, 0, image.getHeight() * 1.5, image.getHeight()));
-                    imageView.setEffect(new DropShadow(windowWidth*0.0156, Color.BLACK));
-                    imageView.setOnMouseEntered(e -> imageView.setEffect(new Glow()));
-                    imageView.setOnMouseExited(e -> imageView.setEffect(new DropShadow(windowWidth*0.0156, Color.BLACK)));
-                    imageView.getStyleClass().add("images-Queue");
-                    list_queueImages.add(imageView);
-                }
-                else {
-                    try {
-                        lastOpenedFiles.deleteStringInFile(fileString);
-                    } catch (IOException e) {
-                        System.out.println("ERROR");
-                    }
-                }
-            }
-        }
-        updateDataQueue();
-    }
-*/
 
     private class lastOpenedItem extends Text {
         lastOpenedItem(String fileName, File file) {
@@ -168,65 +130,76 @@ public class DataManagerWidgetController implements Observer {
     private void initDataManager() {
         testLearnSlider.setMin(0);
         testLearnSlider.setMax(annModel.getNumberOfRecords());
+        testLearnSlider.setValue(testLearnSlider.getMax() / 2);
+        trainValue.setText(String.valueOf((int)testLearnSlider.getValue()));
+        testValue.setText(String.valueOf((int)(testLearnSlider.getMax() - testLearnSlider.getValue() + 0.5)));
+        annModel.setDataPercentage(testLearnSlider.getValue() / testLearnSlider.getMax());
+
         choosedColumns = new ArrayList<>();
         for(int c = 0; c < annModel.getDataColumns(); c++) {
-            ChoiceBox<String> cb = new ChoiceBox<>(FXCollections.observableArrayList("Input", "Output"));
-            cb.setPrefWidth(50);
-            cb.setPrefHeight(30);
-            StackPane stackPane = new StackPane(cb);
-            choosedColumns.add(cb);
-            cb.setOnAction(event -> {
-                checkIfReady();
-            });
-            HBox.setHgrow(stackPane, Priority.ALWAYS);
-            chooserPane.getChildren().add(stackPane);
+            chooserPane.getChildren().add(new IOChooser(c));
+            seperatorPane.getChildren().add(new Separator());
             VColumn vColumn = new VColumn();
             columnPane.getChildren().add(vColumn);
             for (int r = 0; r < annModel.getNumberOfRecords(); r++) {
                 double[][] dataset = annModel.getDataSet();
                 vColumn.addText(Double.toString(dataset[r][c]));
-                if (c == 0) {
-                    Text text = new Text(Integer.toString(r));
-                    text.setFill(Color.web("#777777"));
-                    text.setFont(new Font("Champagne & Limousines", 18));
-                    counterPane.getChildren().add(text);
-                }
+//                if (c == 0) {
+//                    Text text = new Text(Integer.toString(r));
+//                    text.setFill(Color.web("#777777"));
+//                    text.setFont(new Font("Champagne & Limousines", 18));
+//                    counterPane.getChildren().add(text);
+//                }
             }
         }
     }
 
-    private void checkIfReady() {
-        int[] finalInput;
-        int[] finalOutput;
-        ArrayList<Integer> input = new ArrayList<>();
-        ArrayList<Integer> output = new ArrayList<>();
-        for (int i = 0; i < choosedColumns.size(); i++) {
-            if (choosedColumns.get(i).getValue() != null) {
-                if (choosedColumns.get(i).getValue().equals("Input")) input.add(i);
-                else output.add(i);
-            } else return;
+    private class IOChooser extends StackPane {
+        IOChooser(int index) {
+            HBox.setHgrow(this, Priority.ALWAYS);
+            ImageView imageView = new ImageView();
+            imageView.setPickOnBounds(true);
+            imageView.setFitWidth(45);
+            imageView.setFitHeight(35);
+            imageView.getStyleClass().add("ioChooserNothing");
+            imageView.setId(index+"nothing");
+            imageView.setOnMouseClicked(event -> {
+                if (imageView.getId().contains("nothing") | imageView.getId().contains("output")) {
+                    imageView.getStyleClass().clear();
+                    imageView.getStyleClass().add("ioChooserInput");
+                    imageView.setId(index+"input");
+                } else if (imageView.getId().contains("input")) {
+                    imageView.getStyleClass().clear();
+                    imageView.getStyleClass().add("ioChooserOutput");
+                    imageView.setId(index+"output");
+                }
+            });
+            getChildren().add(imageView);
         }
-        finalInput = new int[input.size()];
-        finalOutput = new int[output.size()];
-        for (int i = 0; i < input.size(); i++) {
-            finalInput[i] = input.get(i);
+    }
+
+    private class Separator extends StackPane {
+        Separator() {
+            HBox.setHgrow(this, Priority.ALWAYS);
+            this.setAlignment(Pos.CENTER_RIGHT);
+            Line line = new Line();
+            line.setStartX(0);
+            line.setEndX(0);
+            line.setStartY(0);
+            line.setEndY(200);
+            line.setStroke(Color.web("#656565"));
+            if (seperatorPane.getChildren().size() < annModel.getDataColumns() - 1) getChildren().add(line);
         }
-        for (int i = 0; i < output.size(); i++) {
-            finalOutput[i] = output.get(i);
-        }
-        if (finalInput.length < 1 || finalOutput.length < 1) return;
-        annModel.setInputColumns(finalInput);
-        annModel.setOutputColumns(finalOutput);
     }
 
     private class VColumn extends VBox {
         VColumn() {
-            setSpacing(5);
+            HBox.setHgrow(this, Priority.ALWAYS);
+            setAlignment(Pos.TOP_CENTER);
+            setSpacing(3);
             setMinWidth(100);
             setPrefWidth(USE_COMPUTED_SIZE);
             setPrefHeight(USE_COMPUTED_SIZE);
-            setAlignment(Pos.TOP_CENTER);
-            HBox.setHgrow(this, Priority.ALWAYS);
         }
 
         void addText(String inputText) {
@@ -245,16 +218,25 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
-
-
     @FXML
     private void testLearnSliderSlided() {
         int value = (int)testLearnSlider.getValue();
-        learndataValue.setText(String.valueOf(value));
-        testdataValue.setText(String.valueOf(testLearnSlider.getMax()-value));
-        annModel.setDataPercentage((double)value/100);
+        trainValue.setText(String.valueOf(value));
+        testValue.setText(String.valueOf((int)(testLearnSlider.getMax() - value)));
+        annModel.setDataPercentage((double)value / testLearnSlider.getMax()); //TODO Vielleicht noch etwas viele Nachkommastellen
     }
 
+    @FXML
+    private void applyButtonEntered() {
+        applyButtonPane.setStyle("-fx-background-color: #4490ff");
+        applyButtonText.setFill(Color.web("#222222"));
+    }
+
+    @FXML
+    private void applyButtonExited() {
+        applyButtonPane.setStyle("-fx-background-color: TRANSPARENT; -fx-border-color: #4490ff; -fx-border-width: 2");
+        applyButtonText.setFill(Color.web("#4490ff"));
+    }
     @FXML
     private void button1Entered() {
         button1Pane.setStyle("-fx-background-color: #4490ff");
@@ -277,6 +259,37 @@ public class DataManagerWidgetController implements Observer {
     private void button2Exited() {
         button2Pane.setStyle("-fx-background-color: TRANSPARENT; -fx-border-color: #4490ff; -fx-border-width: 2");
         button2Text.setFill(Color.web("#4490ff"));
+    }
+
+    @FXML
+    private void apply() {
+        ArrayList<Integer> inputList = new ArrayList<>();
+        ArrayList<Integer> outputList = new ArrayList<>();
+        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
+            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
+                errorInfo.setText("Set each column to input or output");
+                errorInfo.setVisible(true);
+                return;
+            } else {
+                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
+                    inputList.add(i);
+                } else {
+                    outputList.add(i);
+                }
+            }
+        }
+        if (inputList.size() == 0) {
+            errorInfo.setText("You have to set at least one column as output");
+            errorInfo.setVisible(true);
+            return;
+        } else if (outputList.size() == 0) {
+            errorInfo.setText("You have to set at least one column as input");
+            errorInfo.setVisible(true);
+            return;
+        }
+        errorInfo.setVisible(false);
+        annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
+        annModel.setInputColumns(outputList.stream().mapToInt(i -> i).toArray());
     }
 
     @FXML
