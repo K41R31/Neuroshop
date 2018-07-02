@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class LastOpenedFiles {
 
-    private final File fileLocation = new File("Neuroshop/Ressources/SavedData");
+    private final File fileLocation = new File("Neuroshop/Ressources/SavedData/LastOpened");
     private ArrayList<File> lastOpened = new ArrayList<>();
 
 

@@ -1,4 +1,4 @@
-package Neuroshop.Models.Presets;
+package Neuroshop.Models;
 
 import Neuroshop.ANN.Math.Sigmoid;
 import Neuroshop.Models.ANNModel;

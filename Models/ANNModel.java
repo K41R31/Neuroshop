@@ -4,8 +4,7 @@ import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
-import Neuroshop.Models.Presets.SigmoidList;
-import Neuroshop.Models.Presets.SigmoidObj;
+import Neuroshop.Models.Presets.Presets;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,6 +38,7 @@ public class ANNModel extends Observable {
 
     private LearningAlgorithm.LearningMode learnMode;
     private List<Sigmoid> sgmList;
+    private List<Presets> presetList;
 
     public void setSigmList(List<Sigmoid> sgmList) {
         SigmoidList sigList = new SigmoidList();
@@ -68,7 +68,6 @@ public class ANNModel extends Observable {
     public int getDataColumns() {
         return dataColumns;
     }
-
 
     public void setDataColumns(int dataColumns) {
         this.dataColumns = dataColumns;

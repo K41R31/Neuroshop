@@ -1,4 +1,4 @@
-package Neuroshop.Models.Presets;
+package Neuroshop.Models;
 
 import java.util.ArrayList;
 import java.util.List;

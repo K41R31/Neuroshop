@@ -25,3 +25,10 @@
             > Eine Art Dropdown wo alle Epochen aufgezeigt werden oder so, dann klickt man z.B. Epoche 257 an und das Netz appliziert dann die entsprechenden Gewichte.
 
     - Slider für NN Einstellungen noch fertigstellen
+
+    ##### Design "optimieren":
+           - Buttons etwas besser sichtbar machen, z.b. mit einem Quadrat umfassen
+           - Schriften einheitlich weiß und bei hover-effect dann blau
+                > Etwas löschen | weiß dann rot
+                > Etwas hinzufügen | weiß dann grün
+           - Im Datamanager bei Lastloaded Scrollbar, sobald zu viele lastloadets vorhanden sind

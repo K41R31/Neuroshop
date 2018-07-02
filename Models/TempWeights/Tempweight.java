@@ -1,4 +1,4 @@
-package Neuroshop.Models.Presets;
+package Neuroshop.Models.TempWeights;
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
