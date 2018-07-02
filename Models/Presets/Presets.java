@@ -14,10 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
+
 public class Presets extends Observable {
 
-    private ArrayList presets = new ArrayList();
+//    private ArrayList presets = new ArrayList();
 
+    private List<Object> presets = new ArrayList<Object>();
     private ANNModel annModel;
 
     private File file;
@@ -47,30 +50,57 @@ public class Presets extends Observable {
         setChanged();
     }
 
-    public ArrayList getParamsForPreset() {
-        presets.add(annModel.getInputColumns());
-        presets.add(annModel.getOutputColums());
-        presets.add(annModel.getNeuronsInHiddenLayer());
-        presets.add(annModel.getNumberOfHiddenLayer());
-        presets.add(annModel.getMaxEpoch());
-        presets.add(annModel.getLearnmode());
-        presets.add(annModel.getLearningRate());
-        presets.add(annModel.getMinOverallError());
-        presets.add(annModel.getMomentumRate());
-        presets.add(annModel.getDataPercentage());
-        presets.add(annModel.getDataNormType());
-        presets.add(annModel.getActFnc());
-        presets.add(annModel.getSgmList());
+    public void addParamsForPreset (List<Object> presets) throws IOException {
+        presets.add(0, annModel.getInputColumns());
+        presets.add(1, annModel.getOutputColums());
+        presets.add(2, annModel.getNeuronsInHiddenLayer());
+        presets.add(3, annModel.getNumberOfHiddenLayer());
+        presets.add(4, annModel.getMaxEpoch());
+        presets.add(5, annModel.getLearnmode());
+        presets.add(6, annModel.getLearningRate());
+        presets.add(7, annModel.getMinOverallError());
+        presets.add(8, annModel.getMomentumRate());
+        presets.add(9, annModel.getDataPercentage());
+        presets.add(10, annModel.getDataNormType());
+        presets.add(11, annModel.getActFnc());
+        presets.add(12, annModel.getSgmList());
+        this.save();
+        setChanged();
+        notifyObservers("addNewPresets");
+     }
 
-        return this.presets;
-    }
+    public void setParamsFromPreset() { //es fehlt noch .get() um auf die Einträge zu zugreifen
+          for(Object o : presets) {
+            if(o instanceof int[]) {
+                int[] inputColumns = (int[]) o;
+            }
+            if(o instanceof  int[]) {
+                int[] outputColumns = (int[]) o;
+                this.outputColumns = outputColumns;
+            }
+            if(o instanceof int[]) {
+                int[] neuronsInHiddenLayer = (int[]) o;
+                this.neuronsInHiddenLayer = neuronsInHiddenLayer;
+            }
+            if(o instanceof Number) {
+                int numberOfHiddenLayer = (int) o;
+                this.numberOfHiddenLayer = numberOfHiddenLayer;
+            }
+            if(o instanceof Number) {
+                int maxEpoch = (int) o;
+                this.maxEpoch = maxEpoch;
+            }
+            if(o instanceof LearningAlgorithm.LearningMode) {
+                LearningAlgorithm.LearningMode learnMode = (LearningAlgorithm.LearningMode) o;
+                this.learnMode = learnMode;
+            }
+            this.inputColumns = inputColumns;
+            this.outputColumns = outputColumns;
+            this.neuronsInHiddenLayer = neuronsInHiddenLayer;
+            this.numberOfHiddenLayer = numberOfHiddenLayer;
+            this.maxEpoch = maxEpoch;
+        }
 
-    public void setParamsFromPreset(ArrayList presets) { //es fehlt noch .get() um auf die Einträge zu zugreifen
-        this.inputColumns = inputColumns;
-        this.outputColumns = outputColumns;
-        this.neuronsInHiddenLayer = neuronsInHiddenLayer;
-        this.numberOfHiddenLayer = numberOfHiddenLayer;
-        this.maxEpoch = maxEpoch;
 
 
     }
