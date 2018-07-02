@@ -4,28 +4,30 @@
 
 #### Was muss bis zur Präsentation definitv vorhanden sein:
 
-    - Button zum Bestätigen des Datensatzes
-            >> Evtl. Checkbox für "Show Normalized" - Dann wird der Datensatz normalisiert angezeigt
+    - Nach Apply Button, DataManager minimieren.
 
-    - Erstellen von Hiddenlayer und seinen Neuronen
-            > Fügt im Array HiddenLayer Einträge hinzu, welche Aussagen wieviele Neuronen im Netz vorhanden sind.
-            > Entsprechend der Länge "x.length" sind "x" HiddenLayer vorhanden
+    - NeuralWidget fertig machen:
+        > HiddenLayer + <NeuronenImLayer>..
+        > Aktivierungsfunktion für HidenLayer..
+        ..hinzufügen
 
-    - Aktivierungsfunktion für HiddenLayer abrufen
-            > 1. Schritt: Fest vorgeben, dass immer nur eine Sigmoide ActFnc verwendet wird
-              2. Schritt: Wenn alles andere erledigt ist, die Option hinzufügen, dass der User selbst entscheidet ob:
-                          >> Sigmoid, HyperTanh oder Step gewählt wird
+    - Presets fertig machen
+        > Alle Parameter abspeichern, laden und applizieren können
 
-    - Tutorial nochmal überarbeiten und hinterfragen ob alles sinngemäß ist
+    - Temporäre Gewichte abspeichern, Epochenspezifisch laden und applizieren können
+        > Evtl. Epochen aus einem Dropdown oder so auswählen können, wenn diese laut Chart die "besten" waren
 
-    - Funktion um "Eigene Weights" dem Netz zu applyen und damit zu rechnen ohne "Training, sprich Anpassung der Gewichte"
-            > Eine Art Dropdown wo alle Epochen aufgezeigt werden oder so, dann klickt man z.B. Epoche 257 an und das Netz appliziert dann die entsprechenden Gewichte.
+    - Das Netz ohne Training laufen lassen um schauen zu können ob das Training erfolgreich war, bzw. Testdaten Satz validieren
 
-    - Slider für NN Einstellungen noch fertigstellen
+    - Slider für NN Optionen fertigstellen
+        > Korrekte Werte übergeben
 
     ##### Design "optimieren":
-           - Buttons etwas besser sichtbar machen, z.b. mit einem Quadrat umfassen
-           - Schriften einheitlich weiß und bei hover-effect dann blau
-                > Etwas löschen | weiß dann rot
-                > Etwas hinzufügen | weiß dann grün
-           - Im Datamanager bei Lastloaded Scrollbar, sobald zu viele lastloadets vorhanden sind
+               - Buttons etwas besser sichtbar machen, z.b. mit einem Quadrat umfassen
+               - Schriften einheitlich weiß und bei hover-effect dann blau
+                    > Etwas löschen | weiß dann rot
+                    > Etwas hinzufügen | weiß dann grün
+               - Im Datamanager bei Lastloaded Scrollbar, sobald zu viele lastloadets vorhanden sind
+
+
+
