@@ -1,3 +1,16 @@
+.slider .thumb {
+    -fx-background-image :url("../../Ressources/Assets/sliderMoveable.png");
+    -fx-padding: 22;
+    -fx-pref-height: 42;
+    -fx-pref-width: 44;
+
+    -fx-background-color:transparent;
+}
+.slider .track {
+    -fx-background-color: #3f4045;
+    -fx-background-radius: 1;
+    -fx-background-insets: 1 0 1 0;
+}
 .split-pane-divider {
     -fx-background-color: #191919;
     -fx-padding: 0;
@@ -58,4 +71,22 @@
 }
 .backButton:hover {
     -fx-image: url("../../Ressources/Assets/backArrowHover.png");
+}
+.ioChooserNothing {
+    -fx-image: url("../../Ressources/Assets/ioNothing.png");
+}
+.ioChooserNothing:hover {
+    -fx-image: url("../../Ressources/Assets/ioNothingHover.png");
+}
+.ioChooserInput {
+    -fx-image: url("../../Ressources/Assets/ioInput.png");
+}
+.ioChooserInput:hover {
+    -fx-image: url("../../Ressources/Assets/ioInputHover.png");
+}
+.ioChooserOutput {
+    -fx-image: url("../../Ressources/Assets/ioOutput.png");
+}
+.ioChooserOutput:hover {
+    -fx-image: url("../../Ressources/Assets/ioOutputHover.png");
 }

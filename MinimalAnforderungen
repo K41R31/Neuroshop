@@ -5,7 +5,6 @@
 #### Was muss bis zur Präsentation definitv vorhanden sein:
 
     - Button zum Bestätigen des Datensatzes
-            > Gibt Datensatz an NeuralNet weiter, damit dieses damit rechnen kann
             >> Evtl. Checkbox für "Show Normalized" - Dann wird der Datensatz normalisiert angezeigt
 
     - Erstellen von Hiddenlayer und seinen Neuronen
@@ -18,8 +17,6 @@
                           >> Sigmoid, HyperTanh oder Step gewählt wird
 
     - Tutorial nochmal überarbeiten und hinterfragen ob alles sinngemäß ist
-
-    - Last Opened Zeug
 
     - Funktion um "Eigene Weights" dem Netz zu applyen und damit zu rechnen ohne "Training, sprich Anpassung der Gewichte"
             > Eine Art Dropdown wo alle Epochen aufgezeigt werden oder so, dann klickt man z.B. Epoche 257 an und das Netz appliziert dann die entsprechenden Gewichte.

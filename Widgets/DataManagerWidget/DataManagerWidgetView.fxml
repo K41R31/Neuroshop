@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,56 +13,102 @@
 
 <StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-border-color: #151515; -fx-background-color: #2b2b2b; -fx-border-width: 1;" stylesheets="@DataManagerWidgetStyle.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Widgets.DataManagerWidget.DataManagerWidgetController">
    <children>
-      <SplitPane dividerPositions="0.2902684563758389" orientation="VERTICAL" style="-fx-background-color: TRANSPARENT;">
-         <items>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <HBox fx:id="chooserPane" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="seperatorPane" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
+            </HBox>
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+               <content>
+                  <HBox fx:id="columnPane" alignment="TOP_CENTER" />
+               </content>
+               <padding>
+                  <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+               </padding>
+            </ScrollPane>
+            <HBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="400.0">
                <children>
-                  <Slider fx:id="testLearnSlider" blockIncrement="1.0" majorTickUnit="1.0" maxWidth="-Infinity" minWidth="-Infinity" minorTickCount="1" onMouseDragged="#testLearnSliderSlided" prefWidth="300.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />
-                  <Text fill="#d7d7d7" strokeType="OUTSIDE" strokeWidth="0.0" text="Testdata" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="75.0">
+                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text fill="#dddddd" strokeType="OUTSIDE" strokeWidth="0.0" text="TRAIN">
+                           <font>
+                              <Font name="Code-Light" size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="trainValue" fill="#a1a1a1" layoutX="39.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                           <font>
+                              <Font name="Code-Light" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                  </VBox>
+                  <Slider fx:id="testLearnSlider" maxWidth="-Infinity" minWidth="-Infinity" onMouseDragged="#testLearnSliderSlided" prefWidth="400.0">
+                     <padding>
+                        <Insets top="-15.0" />
+                     </padding>
+                  </Slider>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text fill="#dddddd" strokeType="OUTSIDE" strokeWidth="0.0" text="TEST">
+                           <font>
+                              <Font name="Code-Light" size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="testValue" fill="#a1a1a1" layoutX="39.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                           <font>
+                              <Font name="Code-Light" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="500.0">
+               <children>
+                  <StackPane fx:id="applyButtonPane" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#apply" onMouseEntered="#applyButtonEntered" onMouseExited="#applyButtonExited" prefHeight="50.0" styleClass="importButton">
+                     <children>
+                        <Text fx:id="applyButtonText" disable="true" fill="#4490ff" strokeType="OUTSIDE" strokeWidth="0.0" text="APPLY" textAlignment="CENTER" wrappingWidth="100.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="25.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </StackPane>
+               </children>
+            </HBox>
+            <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Text fx:id="errorInfo" fill="#ff2d2d" strokeType="OUTSIDE" strokeWidth="0.0" visible="false">
                      <font>
-                        <Font name="Champagne &amp; Limousines" size="25.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="testdataValue" fill="#d7d7d7" layoutX="310.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="150.0" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="75.0">
-                     <font>
-                        <Font name="Champagne &amp; Limousines" size="25.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#d7d7d7" layoutX="310.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Learndata" textAlignment="RIGHT" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="75.0">
-                     <font>
-                        <Font name="Champagne &amp; Limousines" size="25.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="learndataValue" fill="#d7d7d7" layoutX="250.0" layoutY="106.0" onMouseDragged="#testLearnSliderSlided" strokeType="OUTSIDE" strokeWidth="0.0" text="20" wrappingWidth="150.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="75.0">
-                     <font>
-                        <Font name="Champagne &amp; Limousines" size="25.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
                </children>
-            </AnchorPane>
-            <VBox alignment="CENTER_RIGHT" spacing="10.0">
-               <children>
-                  <HBox fx:id="chooserPane" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                     <content>
-                        <HBox fx:id="columnPane" alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0">
-                           <children>
-                              <VBox fx:id="counterPane" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="50.0" spacing="5.0" />
-                           </children>
-                        </HBox>
-                     </content>
-                  </ScrollPane>
-               </children>
-            </VBox>
-         </items>
-         <StackPane.margin>
-            <Insets />
-         </StackPane.margin>
-      </SplitPane>
+            </StackPane>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="importPane" style="-fx-background-color: #222222;">
          <children>
             <Text fill="#d3d3d3" layoutX="265.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMPORT A DATASET">
