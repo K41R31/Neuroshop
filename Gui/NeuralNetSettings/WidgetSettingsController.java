@@ -1,7 +1,6 @@
-package Neuroshop.Gui.WidgetSettings;
+package Neuroshop.Gui.NeuralNetSettings;
 
 import Neuroshop.Models.ANNModel;
-import Neuroshop.Models.WidgetContainerModel;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -150,6 +149,9 @@ public class WidgetSettingsController implements Observer {
         switch ((String)arg) {
             case "activateMenus":
                 toggleButton.setDisable(false);
+                break;
+            case "menusToFront":
+                widgetSettings.toFront();
         }
     }
 
