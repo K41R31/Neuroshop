@@ -16,14 +16,16 @@ public class WidgetContainerModel extends Observable {
     private int[] widgetState = new int[totalWidgetsCounter]; //0 == preview, 1 == not preview
 
     public void addWidgetToWhiteboard(String id, boolean firstWidget) {
-        for (int i = 0; i < totalWidgetsCounter; i++) {
-            if (widgets[i][0].getId().equals(id)) {
-                bufferedWidget = widgets[i][1];
-            }
-        }
+        bufferedWidget = getWidgetById(id, 1);
         setChanged();
         if (firstWidget) notifyObservers("addFirstDataManager");
         else notifyObservers("addWidgetToWhiteboard");
+    }
+
+    public void removeWidgetFromWhiteboard(String id) {
+        bufferedWidget = getWidgetById(id, 1);
+        setChanged();
+        notifyObservers("removeWidgetFromWhiteboard");
     }
 
     public boolean getMenuIsBusy() {
@@ -48,9 +50,9 @@ public class WidgetContainerModel extends Observable {
         return widgetMenuIsOpen;
     }
 
-    public void adddWidgetToMenu() {
+    public void addWidgetToMenu() {
         setChanged();
-        notifyObservers("adddWidgetToMenu");
+        notifyObservers("addWidgetToMenu");
     }
 
     public void setBufferedWidget(StackPane bufferedWidget) {
@@ -84,5 +86,18 @@ public class WidgetContainerModel extends Observable {
 
     public void initWidgets(StackPane[][] widgets) {
         this.widgets = widgets;
+    }
+
+    public int[] getWidgetsState() {
+        return widgetState;
+    }
+
+    private StackPane getWidgetById(String id, int state) {
+        for (int i = 0; i < totalWidgetsCounter; i++) {
+            if (widgets[i][state].getId().equals(id)) {
+                return widgets[i][state];
+            }
+        }
+        return null;
     }
 }

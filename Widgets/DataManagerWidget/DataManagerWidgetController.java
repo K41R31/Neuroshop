@@ -8,7 +8,6 @@ import Neuroshop.Models.WidgetContainerModel;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
@@ -19,6 +18,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class DataManagerWidgetController implements Observer {
     @FXML
     private Slider testLearnSlider;
     @FXML
-    private StackPane rootPane;
+    private StackPane DataManager;
     @FXML
     private AnchorPane importPane;
     @FXML
@@ -76,7 +76,7 @@ public class DataManagerWidgetController implements Observer {
 
     @FXML
     private void initialize() {
-        makeDraggable(rootPane);
+        makeDraggable(DataManager);
     }
 
     @FXML
@@ -118,6 +118,7 @@ public class DataManagerWidgetController implements Observer {
              getStyleClass().add("lastOpenedDeleter");
              setFitWidth(48);
              setFitHeight(30);
+             setPickOnBounds(true);
              setOnMouseClicked(event -> {
                  lastOpenedFiles.deleteLastOpened(file);
                  filesPane.getChildren().remove(deleterPane.getChildren().indexOf(this)+1);
@@ -144,12 +145,6 @@ public class DataManagerWidgetController implements Observer {
             for (int r = 0; r < annModel.getNumberOfRecords(); r++) {
                 double[][] dataset = annModel.getDataSet();
                 vColumn.addText(Double.toString(dataset[r][c]));
-//                if (c == 0) {
-//                    Text text = new Text(Integer.toString(r));
-//                    text.setFill(Color.web("#777777"));
-//                    text.setFont(new Font("Champagne & Limousines", 18));
-//                    counterPane.getChildren().add(text);
-//                }
             }
         }
     }
@@ -318,7 +313,7 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
-    private void makeDraggable(Node node) {
+    private void makeDraggable(StackPane node) {
 
         EventHandler<MouseEvent> onMousePressed =
                 event -> {
@@ -328,6 +323,15 @@ public class DataManagerWidgetController implements Observer {
                     nodeTranslatedY = node.getTranslateY();
                     sceneWidth = node.getScene().getWidth();
                     sceneHeight = node.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
+
+                    node.setOpacity(0.5);
+//                    node.setScaleX(0.5);
+//                    node.setScaleY(0.5);
+//                    nodeTranslatedX = nodeTranslatedX + (event.getSceneX() - node.getLayoutX() - (node.getWidth() / 2));
+//                    nodeTranslatedY = nodeTranslatedY + (event.getSceneY()-30 - node.getLayoutY() - (node.getHeight() / 2));
+//
+//                    node.setTranslateX(nodeTranslatedX);
+//                    node.setTranslateY(nodeTranslatedY);
                 };
 
         EventHandler<MouseEvent> onMouseDragged =
@@ -345,16 +349,24 @@ public class DataManagerWidgetController implements Observer {
                     else if (node.getBoundsInParent().getMaxX() > sceneWidth) node.setTranslateX(newTranslateX-(node.getBoundsInParent().getMaxX()-sceneWidth));
                     if (node.getBoundsInParent().getMinY() < 0) node.setTranslateY(newTranslateY-node.getBoundsInParent().getMinY());
                     else if (node.getBoundsInParent().getMaxY() > sceneHeight) node.setTranslateY(newTranslateY-(node.getBoundsInParent().getMaxY()-sceneHeight));
+
+                    if (!widgetContainerModel.getWidgetMenuIsOpen() & node.getBoundsInParent().getMinX() < 20) {
+                        widgetContainerModel.toggleWidgetMenu();
+                    }
                 };
 
         EventHandler<MouseEvent> onMouseReleased =
                 event -> {
-                    if (widgetContainerModel.getWidgetMenuIsOpen() & MouseInfo.getPointerInfo().getLocation().x < 300) {
+                    if (widgetContainerModel.getWidgetMenuIsOpen() & node.getBoundsInParent().getMinX() < 300) {
+                        widgetContainerModel.toggleWidgetMenu();
                         widgetContainerModel.changeWidgetStateById(node.getId(), 0);
-                        widgetContainerModel.adddWidgetToMenu();
-                        widgetContainerModel.clearBufferedWidget();
+                        widgetContainerModel.removeWidgetFromWhiteboard(node.getId());
                         node.setTranslateX(0);
                         node.setTranslateY(0);
+                    } else {
+                        node.setOpacity(1);
+//                        node.setScaleX(1);
+//                        node.setScaleY(1);
                     }
                 };
 

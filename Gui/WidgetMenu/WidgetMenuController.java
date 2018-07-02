@@ -80,7 +80,7 @@ public class WidgetMenuController implements Observer {
             case "toggleWidgetMenu":
                 toggleMenu();
                 break;
-            case "adddWidgetToMenu":
+            case "addWidgetToMenu":
                 widgetMenuPane.getChildren().add(widgetContainerModel.getBufferedWidget());
         }
 

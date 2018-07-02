@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="optionsMenuPane" alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="100.0" style="-fx-background-color: #222222; -fx-border-color: #181818;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.Options.OptionsController">
+<VBox fx:id="optionsMenuPane" alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="0.0" spacing="100.0" style="-fx-background-color: #222222; -fx-border-color: #181818;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.Options.OptionsController">
    <children>
-      <SplitPane fx:id="presets" dividerPositions="0.494949494949495, 0.5303030303030303" focusTraversable="false" orientation="VERTICAL" style="-fx-background-color: #222222;">
+      <SplitPane fx:id="presets" dividerPositions="0.494949494949495, 0.5303030303030303" focusTraversable="false" orientation="VERTICAL" style="-fx-background-color: #222222;" visible="false">
         <items>
             <AnchorPane style="-fx-background-color: #222222;">
                <children>
@@ -36,7 +35,7 @@
             </ScrollPane>
         </items>
       </SplitPane>
-      <VBox fx:id="widgetSettings" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #222222;">
+      <VBox fx:id="widgetSettings" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #222222;" visible="false">
          <children>
             <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
               <items>
