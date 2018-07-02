@@ -26,6 +26,8 @@ public class WhiteboardController implements Observer {
         double offsetX = widget.getPrefWidth() / 2;
         double offsetY = widget.getPrefHeight() / 2;
         if (firstWidget) {
+            widget.setTranslateX(0);
+            widget.setTranslateY(0);
             widget.setLayoutX((ScreenSize.width / 2) - offsetX);
             widget.setLayoutY((ScreenSize.height / 2) - offsetY);
         } else {

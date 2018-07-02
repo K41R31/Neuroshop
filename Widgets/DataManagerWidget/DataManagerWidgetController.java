@@ -365,7 +365,6 @@ public class DataManagerWidgetController implements Observer {
                         widgetContainerModel.addWidgetToWhiteboard(node.getId(), false);
                         widgetContainerModel.clearBufferedWidget();
                     }
-
                 };
 
         node.setOnMousePressed(onMousePressed);
