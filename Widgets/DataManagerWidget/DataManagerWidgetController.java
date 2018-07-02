@@ -318,13 +318,6 @@ public class DataManagerWidgetController implements Observer {
                     sceneHeight = node.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
 
                     node.setOpacity(0.5);
-//                    node.setScaleX(0.5);
-//                    node.setScaleY(0.5);
-//                    nodeTranslatedX = nodeTranslatedX + (event.getSceneX() - node.getLayoutX() - (node.getWidth() / 2));
-//                    nodeTranslatedY = nodeTranslatedY + (event.getSceneY()-30 - node.getLayoutY() - (node.getHeight() / 2));
-//
-//                    node.setTranslateX(nodeTranslatedX);
-//                    node.setTranslateY(nodeTranslatedY);
                 };
 
         EventHandler<MouseEvent> onMouseDragged =
@@ -345,6 +338,8 @@ public class DataManagerWidgetController implements Observer {
 
                     if (!widgetContainerModel.getWidgetMenuIsOpen() & node.getBoundsInParent().getMinX() < 20) {
                         widgetContainerModel.toggleWidgetMenu();
+                    } else if (widgetContainerModel.getWidgetMenuIsOpen() & node.getBoundsInParent().getMinX() > 150) {
+                        widgetContainerModel.toggleWidgetMenu();
                     }
                 };
 
@@ -356,11 +351,8 @@ public class DataManagerWidgetController implements Observer {
                         widgetContainerModel.removeWidgetFromWhiteboard(node.getId());
                         node.setTranslateX(0);
                         node.setTranslateY(0);
-                    } else {
-                        node.setOpacity(1);
-//                        node.setScaleX(1);
-//                        node.setScaleY(1);
                     }
+                    node.setOpacity(1);
                 };
 
         node.setOnMousePressed(onMousePressed);
