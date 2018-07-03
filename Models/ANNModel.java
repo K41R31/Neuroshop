@@ -75,8 +75,8 @@ public class ANNModel extends Observable {
 
     public void setInputColumns(int[] inputColumns) {
         this.inputColumns = inputColumns;
-        this.setChanged();
-        this.notifyObservers("setInputColumns");
+        setChanged();
+        notifyObservers("setInputColumns");
     }
 
     public int[] getOutputColums() {
@@ -85,8 +85,8 @@ public class ANNModel extends Observable {
 
     public void setOutputColumns(int[] outputColumns) {
         this.outputColumns = outputColumns;
-        this.setChanged();
-        this.notifyObservers("setOutputColumns");
+        setChanged();
+        notifyObservers("setOutputColumns");
     }
 
     public DataNormalization getDataNormType() {
@@ -95,18 +95,24 @@ public class ANNModel extends Observable {
 
     public void setDataNormType(DataNormalization dataNormType) { //TODO: Vorerst auf .MIN_MAX(-1.0, 1.0) festgelegt
         this.dataNormType = dataNormType;
-        this.setChanged();
-        this.notifyObservers("setDataNormType");
+        setChanged();
+        notifyObservers("setDataNormType");
     }
 
     public LearningAlgorithm.LearningMode getLearnmode() {
         return learnMode;
     }
 
-    public void setLearnMode(LearningAlgorithm.LearningMode learnMode) {
-        this.learnMode = LearningAlgorithm.LearningMode.BATCH;
-        this.setChanged();
-        this.notifyObservers("setLearnMode");
+    public void setlearnmode(String mode) {
+        switch(mode) {
+            case "BATCH":
+                this.learnMode = LearningAlgorithm.LearningMode.BATCH;
+                break;
+            case "ONLINE":
+                this.learnMode = LearningAlgorithm.LearningMode.ONLINE;
+        }
+        setChanged();
+        notifyObservers("setlearnmode");
     }
 
     public double getDataPercentage() {
@@ -115,9 +121,8 @@ public class ANNModel extends Observable {
 
     public void setDataPercentage(double dataPercentage) {
         this.dataPercentage = dataPercentage;
-        this.setChanged();
-        this.notifyObservers("setDataPercentage");
-        System.out.println("Console from Model: " + dataPercentage);
+        setChanged();
+        notifyObservers("setDataPercentage");
     }
 
     public int[] getNeuronsInHiddenLayer() {
@@ -126,7 +131,7 @@ public class ANNModel extends Observable {
 
     public void setNeuronsInHiddenLayer(ArrayList<Integer> neuronsInHiddenLayer) {
         this.neuronsInHiddenLayer = neuronsInHiddenLayer;
-        this.setChanged();
+        setChanged();
         notifyObservers("setNeuronsInHiddenLayer");
     }
 
@@ -136,8 +141,8 @@ public class ANNModel extends Observable {
 
     public void setOutputActFnc(IActivationFunction outputActFnc) { //TODO: Vorerst auf LINEAR(1.0) festgelegt
         this.outputActFnc = outputActFnc;
-        this.setChanged();
-        this.notifyObservers("setOutputActFnc");
+        setChanged();
+        notifyObservers("setOutputActFnc");
     }
 
     public double getMinOverallError() {
@@ -146,8 +151,8 @@ public class ANNModel extends Observable {
 
     public void setMinOverallError(double minOverallError) {
         this.minOverallError = minOverallError;
-        this.setChanged();
-        this.notifyObservers("setMinOverallError");
+        setChanged();
+        notifyObservers("setMinOverallError");
     }
 
     public double getLearningRate() {
@@ -156,8 +161,8 @@ public class ANNModel extends Observable {
 
     public void setLearningRate(double learningRate) {
         this.learningRate = learningRate;
-        this.setChanged();
-        this.notifyObservers("setLearningRate");
+        setChanged();
+        notifyObservers("setLearningRate");
     }
 
     public double getMomentumRate() {
@@ -166,8 +171,8 @@ public class ANNModel extends Observable {
 
     public void setMomentumRate(double momentumRate) {
         this.momentumRate = momentumRate;
-        this.setChanged();
-        this.notifyObservers("setMomentumRate");
+        setChanged();
+        notifyObservers("setMomentumRate");
     }
 
     public void setNumberOfRecords(int numberOfRecords) {
@@ -204,14 +209,14 @@ public class ANNModel extends Observable {
 
     public void setMaxEpoch(int maxEpoch) {
         this.maxEpoch = maxEpoch;
-        this.setChanged();
-        this.notifyObservers("setMaxEpoch");
+        setChanged();
+        notifyObservers("setMaxEpoch");
     }
 
     public void setNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
         this.newWeights = newWeights;
-        this.setChanged();
-        this.notifyObservers("setNewWeights");
+       setChanged();
+       notifyObservers("setNewWeights");
     }
 
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
