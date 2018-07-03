@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import static Neuroshop.ANN.Data.DataNormalization.NormalizationTypes.MIN_MAX;
+
 public class ANNLearn implements Observer {
 
     private ANNModel annModel;
@@ -39,7 +41,6 @@ public class ANNLearn implements Observer {
         RandomNumberGenerator.setSeed(5);
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
-
         IActivationFunction outputActFnc = new Linear(1.0);
 
 //        if(actFnc.length <= 0) {
@@ -48,7 +49,7 @@ public class ANNLearn implements Observer {
 //            }
 //        }
 
-        int[] neuronsInHiddenLayer = new int[] {5};
+        int[] neuronsInHiddenLayer = new int[] {6};
 
         NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, new IActivationFunction[] {new Sigmoid (1.0)}, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();

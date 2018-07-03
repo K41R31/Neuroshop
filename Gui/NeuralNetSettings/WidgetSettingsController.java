@@ -67,7 +67,7 @@ public class WidgetSettingsController implements Observer {
         if (!menuIsOpen) {
             Timeline openSettingsAnimation = new Timeline();
             openSettingsAnimation.getKeyFrames().addAll(
-                    new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 350, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 244, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), -1, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(200), new KeyValue(contentPane.opacityProperty(), 1, Interpolator.EASE_BOTH))
             );
