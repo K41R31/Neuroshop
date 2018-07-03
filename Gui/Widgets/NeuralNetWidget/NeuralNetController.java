@@ -61,19 +61,22 @@ public class NeuralNetController extends StackPane implements Observer {
             outputLayer.getChildren().add(new Neuron());
         }
         hiddenLayer.getChildren().add(new HiddenLayer());
+        drawSplines();
     }
 
     @FXML
-    public void drawSplines() {
+    private void drawSplines() {
         annModel.setNewWeights(newWeights);
         splinesPane.getChildren().clear();
         VBox endPane, startPane;
         Circle endCircle, startCircle;
         double startX, startY, endX, endY, controlX1, controlX2;
         Bounds startPaneBounds, endPaneBounds, startCircleBounds, endCircleBounds;
-        for (int c = 1; c < vBoxContainer.getChildren().size(); c++) { //2. Spalte
-            endPane = (VBox)vBoxContainer.getChildren().get(c);
-            startPane = (VBox)vBoxContainer.getChildren().get(c-1);
+        for (int c = 0; c < hiddenLayer.getChildren().size(); c++) {
+            if (c == 0) startPane = inputLayer;
+            else startPane = (VBox)hiddenLayer.getChildren().get(c-1);
+            if (c < hiddenLayer.getChildren().size()-1) endPane = (VBox)hiddenLayer.getChildren().get(c);
+            else endPane = outputLayer;
             for (int x = 0; x < endPane.getChildren().size(); x++) { //2. Spalte 1. Neuron
                 endCircle = (Circle)endPane.getChildren().get(x);
                 for (int r = 0; r < startPane.getChildren().size(); r++) { //1. Spalte 1. Neuron
@@ -82,12 +85,20 @@ public class NeuralNetController extends StackPane implements Observer {
                     endPaneBounds = endPane.getBoundsInParent();
                     startCircleBounds = startCircle.getBoundsInParent();
                     endCircleBounds = endCircle.getBoundsInParent();
-                    startX = startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
+                    if (c == 0) {
+                        System.out.println(startPaneBounds.getMinX());
+                        startX = startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
+                        endX = endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
+                    }
+                    else {
+                        startX = startCircle.getParent().getParent().getBoundsInParent().getMinX() + startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
+                        endX = endCircle.getParent().getParent().getBoundsInParent().getMinX() + endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
+                    }
                     startY = startCircleBounds.getMinY() + 20;
-                    endX = endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
                     endY = endCircleBounds.getMinY() + 20;
                     controlX1 = startX + splineTangent;
                     controlX2 = endX - splineTangent;
+                    System.out.println("startX: "+startX+", startY: "+startY+", controlX1: "+controlX1+", startY: "+startY+", controlX2: "+controlX2+", endY: "+endY+", endX: "+endX+", endY: "+endY);
 //                    double lastDeltaWeight = newWeights.get(c).get(x).get(r);
                     CubicCurve spline = new CubicCurve(startX, startY, controlX1, startY, controlX2, endY, endX, endY);
                     spline.setLayoutX(0);
@@ -121,9 +132,11 @@ public class NeuralNetController extends StackPane implements Observer {
             removeNeuronButton.setPickOnBounds(true);
             addNeuronButton.setOnMouseClicked(event -> {
                 ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this)-1)).addNeuron();
+                drawSplines();
             });
             removeNeuronButton.setOnMouseClicked(event -> {
                 ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this)-1)).removeNeuron();
+                drawSplines();
             });
             getChildren().add(addNeuronButton);
             getChildren().add(removeNeuronButton);
@@ -171,7 +184,7 @@ public class NeuralNetController extends StackPane implements Observer {
                 this.getChildren().clear();
                 hiddenLayer.getChildren().add(new HiddenLayer());
                 menuPane.getChildren().add(new OptionsPane());
-
+                drawSplines();
             });
             getChildren().add(addLayerButton);
         }

@@ -49,9 +49,8 @@ public class ANNLearn implements Observer {
 //            }
 //        }
 
-        int[] neuronsInHiddenLayer = new int[] {6,5};
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), new IActivationFunction[] {new Sigmoid (1.0)}, outputActFnc, new UniformInitialization(-1.0, 1.0));
 
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, new IActivationFunction[] {new Sigmoid (1.0)}, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
@@ -143,9 +142,6 @@ public class ANNLearn implements Observer {
             case "setDataPercentage":
                 this.dataPercentage = annModel.getDataPercentage();
                 break;
-//            case "setNeuronsInHiddenLayer":
-//                this.neuronsInHiddenLayer = annModel.getNeuronsInHiddenLayer();
-//                break;
 //            case "setActFnc":
 //                this.actFnc = annModel.getActFnc();
 //                break;
