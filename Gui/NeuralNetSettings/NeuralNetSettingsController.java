@@ -60,12 +60,14 @@ public class NeuralNetSettingsController implements Observer {
     private StackPane toggleButton;
     private boolean menuIsOpen;
     private boolean epochPaneIsOpen;
+    private String learnmethod;
     private Glow glow;
 
     @FXML
     private void initialize() {
         epochPaneIsOpen = false;
         menuIsOpen = false;
+        learnmethod = "batchMode";
         glow = new Glow(1);
         AnchorPane.setLeftAnchor(widgetSettings, (double)0);
         AnchorPane.setBottomAnchor(widgetSettings, (double)0);
@@ -175,15 +177,17 @@ public class NeuralNetSettingsController implements Observer {
     private void switchLearnmethod(String mode) {
         switch (mode) {
             case "batchMode":
-                if (onlineMode.getFill().toString().contains("35baff")) {
+                if (learnmethod.equals("onlineMode")) {
                     batchMode.setFill(Color.web("#35baff"));
                     onlineMode.setFill(Color.web("#c6c6c6"));
+                    learnmethod = "batchMode";
                 }
                 break;
             case "onlineMode":
-                if (onlineMode.getFill().toString().contains("35baff")) {
+                if (learnmethod.equals("batchMode")) {
                     onlineMode.setFill(Color.web("#35baff"));
                     batchMode.setFill(Color.web("#c6c6c6"));
+                    learnmethod = "onlineMode";
                 }
         }
     }
