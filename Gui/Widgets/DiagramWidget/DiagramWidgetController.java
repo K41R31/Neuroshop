@@ -4,6 +4,7 @@ import Neuroshop.Gui.Widgets.MakeDraggable;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import java.util.Observable;
@@ -15,6 +16,8 @@ public class DiagramWidgetController implements Observer {
     private WidgetContainerModel widgetContainerModel;
     @FXML
     private StackPane rootPane;
+    @FXML
+    private AnchorPane chart;
 
     @FXML
     private void initialize() {

@@ -34,11 +34,14 @@ public class ANNLearn implements Observer {
 
     public void train() {
         RandomNumberGenerator.setSeed(5);
+
         annModel.addActFnc();
+        this.actFnc = annModel.getActFnc();
+
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
-        System.out.println("Sigmoid: "+String.valueOf(actFnc));
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, annModel.getActFnc(), outputActFnc, new UniformInitialization(-1.0, 1.0));
+        System.out.println("Sigmoid: "+String.valueOf(actFnc)+"Anzahl Sigmoide: "+actFnc.length);
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
@@ -59,8 +62,7 @@ public class ANNLearn implements Observer {
 
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
-
-        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
+        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, learnMode);
 
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
@@ -133,6 +135,9 @@ public class ANNLearn implements Observer {
             case "setDataPercentage":
                 this.dataPercentage = annModel.getDataPercentage();
                 break;
+            case "setLearnmode":
+                this.learnMode = annModel.getLearnmode();
+                break;
             case "setMomentumRate":
                 this.momentumRate = annModel.getMomentumRate();
                 break;
@@ -144,9 +149,6 @@ public class ANNLearn implements Observer {
                 break;
             case "setLearningRate":
                 this.learningRate = annModel.getLearningRate();
-                break;
-            case "setLearnmode":
-                this.learnMode = annModel.getLearnmode();
                 break;
             case "train":
                 Thread thread = new Thread(this::train);
