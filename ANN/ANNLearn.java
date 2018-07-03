@@ -139,6 +139,9 @@ public class ANNLearn implements Observer {
             case "setOutputColumns":
                 this.outputColumns = annModel.getOutputColums();
                 break;
+            case "setNeuronsInHiddenLayer":
+                this.neuronsInHiddenLayer = annModel.getNeuronsInHiddenLayer();
+                break;
             case "setDataPercentage":
                 this.dataPercentage = annModel.getDataPercentage();
                 break;

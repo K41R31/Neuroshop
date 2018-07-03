@@ -132,6 +132,8 @@ public class ANNModel extends Observable {
 
     public void setNeuronsInHiddenLayer(ArrayList<Integer> neuronsInHiddenLayer) {
         this.neuronsInHiddenLayer = neuronsInHiddenLayer;
+        this.setChanged();
+        notifyObservers("setNeuronsInHiddenLayer");
     }
 
     public int getNumberOfHiddenLayer() {
