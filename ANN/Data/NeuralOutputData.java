@@ -1,7 +1,7 @@
 package Neuroshop.ANN.Data;
 
-import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.ANN.Math.ArrayOperations;
+import Neuroshop.ANN.Neural.NeuralNet;
 
 import java.util.ArrayList;
 

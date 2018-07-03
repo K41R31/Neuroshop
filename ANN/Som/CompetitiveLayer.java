@@ -27,7 +27,7 @@ public class CompetitiveLayer extends OutputLayer {
     
     public int[] winnerIndex;
     
-    public CompetitiveLayer(NeuralNet _neuralNet,int numberOfNeurons,int numberOfInputs,int dimension){
+    public CompetitiveLayer(NeuralNet _neuralNet, int numberOfNeurons, int numberOfInputs, int dimension){
         super(_neuralNet,numberOfNeurons,new Linear(1.0),numberOfInputs);
         switch(dimension){
             case 1:

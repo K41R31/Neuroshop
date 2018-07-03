@@ -18,7 +18,7 @@ public class CompetitiveLayer2D extends CompetitiveLayer {
     
     protected int[] winner2DIndex;
     
-    public CompetitiveLayer2D(NeuralNet _neuralNet,int numberOfNeuronsX,int numberOfNeuronsY,int numberOfInputs){
+    public CompetitiveLayer2D(NeuralNet _neuralNet, int numberOfNeuronsX, int numberOfNeuronsY, int numberOfInputs){
         super(_neuralNet,numberOfNeuronsX*numberOfNeuronsY,numberOfInputs);
         this.dimension=Kohonen.MapDimension.TWO_DIMENSION;
         this.winnerIndex=new int[1];
