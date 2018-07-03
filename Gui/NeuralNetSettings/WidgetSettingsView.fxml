@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Slider?>
@@ -21,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.WidgetSettingsController">
+<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.WidgetSettingsController">
    <children>
       <StackPane fx:id="toggleButton" disable="true" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#toggleMenu" prefHeight="20.0" VBox.vgrow="ALWAYS">
          <children>
@@ -32,14 +24,9 @@
             </ImageView>
          </children>
       </StackPane>
-      <AnchorPane fx:id="menuPane" maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" opacity="0.0" prefHeight="0.0" style="-fx-background-color: TRANSPARENT;">
+      <AnchorPane fx:id="menuPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: #303030; -fx-border-color: #181818; -fx-border-insets: 0 -1 -1 -1;">
          <children>
-            <ImageView fitHeight="244.0" fitWidth="1920.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../Ressources/Assets/neuralSettingsBackground.png" />
-               </image>
-            </ImageView>
-            <HBox fx:id="contentPane" alignment="CENTER" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox fx:id="contentPane" alignment="CENTER" opacity="0.0" spacing="60.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>

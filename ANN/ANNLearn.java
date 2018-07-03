@@ -65,8 +65,8 @@ public class ANNLearn implements Observer {
         System.out.println("Datensatz normalisiert: " + Arrays.deepToString(dataNormalized));
         System.out.println("Anzahl der Einträge im Datensatz: " + dataNormalized.length);
 
-        double[][] dataNormToTrain = Arrays.copyOfRange(dataNormalized, 0, (int) Math.ceil(dataNormalized.length * (0.8)));
-        double[][] dataNormToTest = Arrays.copyOfRange(dataNormalized, (int) Math.ceil(dataNormalized.length * (0.8)) + 1, dataNormalized.length);
+        double[][] dataNormToTrain = Arrays.copyOfRange(dataNormalized, 0, (int) Math.ceil(dataNormalized.length * (dataPercentage)));
+        double[][] dataNormToTest = Arrays.copyOfRange(dataNormalized, (int) Math.ceil(dataNormalized.length * (dataPercentage)) + 1, dataNormalized.length);
         System.out.println("Datensatz zum Trainieren: " + Arrays.deepToString(dataNormToTrain));
         System.out.println("Datensatz zum Testen: " + Arrays.deepToString(dataNormToTest));
 
@@ -110,6 +110,7 @@ public class ANNLearn implements Observer {
             neuralDataSetToTest.printTargetOutput();
 
             backprop.forward();
+            backprop.print();
 
             neuralDataSetToTrain.printNeuralOutput();
 
