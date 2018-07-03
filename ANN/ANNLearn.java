@@ -49,7 +49,7 @@ public class ANNLearn implements Observer {
 //            }
 //        }
 
-        int[] neuronsInHiddenLayer = new int[] {6};
+        int[] neuronsInHiddenLayer = new int[] {6,5};
 
         NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, new IActivationFunction[] {new Sigmoid (1.0)}, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
