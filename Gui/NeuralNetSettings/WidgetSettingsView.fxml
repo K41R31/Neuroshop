@@ -32,14 +32,14 @@
             </ImageView>
          </children>
       </StackPane>
-      <AnchorPane fx:id="menuPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: TRANSPARENT;">
+      <AnchorPane fx:id="menuPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="244.0" style="-fx-background-color: TRANSPARENT;">
          <children>
             <ImageView fitHeight="244.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Ressources/Assets/neuralSettingsBackground.png" />
                </image>
             </ImageView>
-            <HBox fx:id="contentPane" alignment="CENTER" opacity="0.0" spacing="60.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox fx:id="contentPane" alignment="CENTER" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
