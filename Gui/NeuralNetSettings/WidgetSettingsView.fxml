@@ -92,7 +92,7 @@
                         </Text>
                         <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" spacing="30.0">
                            <children>
-                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Momentum Rate" wrappingWidth="200.0">
+                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Momentum" wrappingWidth="200.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines Italic" size="24.0" />
                                  </font>
@@ -107,7 +107,7 @@
                         <Slider fx:id="momentumRateSlider" majorTickUnit="10.0" max="1.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseDragged="#momentumRateDragged" prefWidth="350.0" value="0.7" />
                         <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" spacing="30.0">
                            <children>
-                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Learning Rate" wrappingWidth="200.0">
+                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Lernrate" wrappingWidth="200.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines Italic" size="24.0" />
                                  </font>
@@ -167,12 +167,12 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <TextField alignment="CENTER" focusTraversable="false" prefHeight="25.0" prefWidth="110.0" text="-1.0, 1.0">
+                              <TextField fx:id="minMaxValue" alignment="CENTER" focusTraversable="false" prefHeight="25.0" prefWidth="110.0" text="-1.0, 1.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
                               </TextField>
-                              <TextField alignment="CENTER" focusTraversable="false" prefHeight="25.0" prefWidth="100.0" text="1.0" translateX="30.0">
+                              <TextField fx:id="zScoreValue" alignment="CENTER" focusTraversable="false" prefHeight="25.0" prefWidth="100.0" text="1.0" translateX="30.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
@@ -188,7 +188,7 @@
                               <Font name="Champagne &amp; Limousines" size="28.0" />
                            </font>
                         </Text>
-                        <TextField alignment="CENTER_RIGHT" focusTraversable="false" layoutX="139.0" layoutY="23.0" prefHeight="25.0" prefWidth="100.0" text="0">
+                        <TextField fx:id="epochCount" alignment="CENTER_RIGHT" focusTraversable="false" layoutX="139.0" layoutY="23.0" prefHeight="25.0" prefWidth="100.0" text="0">
                            <font>
                               <Font name="Champagne &amp; Limousines" size="24.0" />
                            </font>
@@ -197,7 +197,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="70.0" layoutY="128.0" onMouseClicked="#train" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="startButton" fitHeight="100.0" fitWidth="100.0" layoutX="70.0" layoutY="128.0" onMouseClicked="#train" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../Ressources/Assets/playButton.png" />
                            </image>
