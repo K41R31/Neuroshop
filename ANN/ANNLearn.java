@@ -10,12 +10,8 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
-import static Neuroshop.ANN.Data.DataNormalization.NormalizationTypes.MIN_MAX;
+import java.util.*;
 
 public class ANNLearn implements Observer {
 
@@ -31,7 +27,7 @@ public class ANNLearn implements Observer {
     private double learningRate;
     private double momentumRate;
 //  private IActivationFunction outputActFnc; TODO: Festgelegt auf LINEAR(1.0)
-//    private IActivationFunction[] actFnc;
+//  private IActivationFunction[] actFnc;
     private LearningAlgorithm.LearningMode learnMode;
     private DataNormalization dataNormType; //TODO:Festgelegt auf  (-1.0, 1.0) entspricht .MIN_MAX + Später evtl. Z_SCORE noch als mögliche Option hinzufügen
     private List<Sigmoid> sgmList;
@@ -43,14 +39,11 @@ public class ANNLearn implements Observer {
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
 
-//        if(actFnc.length <= 0) {
-//        for(int i = 0; i <= neuronsInHiddenLayer.length; i++) {
-//            this.actFnc = new IActivationFunction[]{sgmList.get(i)};
-//            }
-//        }
 
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, new IActivationFunction[] {new Sigmoid (1.0)}, outputActFnc, new UniformInitialization(-1.0, 1.0));
 
+        IActivationFunction[] actFnc = new IActivationFunction[]{};
+
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
@@ -159,9 +152,6 @@ public class ANNLearn implements Observer {
                 break;
             case "setLearningRate":
                 this.learningRate = annModel.getLearningRate();
-                break;
-            case "setSigmList":
-                this.sgmList = annModel.getSgmList();
                 break;
             case "setLearnMode":
                 this.learnMode = annModel.getLearnmode();

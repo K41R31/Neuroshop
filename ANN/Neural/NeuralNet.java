@@ -1,15 +1,16 @@
 package Neuroshop.ANN.Neural;
 
+
+
 import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Init.UniformInitialization;
 import Neuroshop.ANN.Init.WeightInitialization;
 import Neuroshop.ANN.Math.IActivationFunction;
-
 import java.util.ArrayList;
 
 /**
  *
- * ANNLearn
+ * NeuralNet
  * This class represents the Neural Network itself. It contains all the 
  * definitions that a Neural Network has, including method for calculation 
  * (forward).
@@ -73,7 +74,7 @@ public class NeuralNet {
     protected NeuralNetMode neuralNetMode = NeuralNetMode.BUILD;
     
     /**
-     * ANNLearn constructor
+     * NeuralNet constructor
      * This constructor initializes the neural network by initializing all of 
      * the underlying layers and their respective neurons.
      * 
@@ -86,11 +87,10 @@ public class NeuralNet {
      * @param outputAcFnc Activation Function of the Output Layer
      * @param _weightInitialization 
      */
-    //TODO: Fixe Weightinitialisierung einfügen, für Gewichte aus den vergangenen Epochen
-    public NeuralNet(int numberofinputs,int numberofoutputs,
-            int [] numberofhiddenneurons,IActivationFunction[] hiddenAcFnc,
-            IActivationFunction outputAcFnc,
-            WeightInitialization _weightInitialization){
+    public NeuralNet(int numberofinputs, int numberofoutputs,
+                     int [] numberofhiddenneurons, IActivationFunction[] hiddenAcFnc,
+                     IActivationFunction outputAcFnc,
+                     WeightInitialization _weightInitialization){
         weightInitialization=_weightInitialization;
         numberOfHiddenLayers=numberofhiddenneurons.length;
         neuronsInHiddenLayers = new int[numberOfHiddenLayers+1];
@@ -178,16 +178,16 @@ public class NeuralNet {
         setNeuralNetMode(NeuralNetMode.RUN);
     }
     
-    public NeuralNet(int numberofinputs,int numberofoutputs,
-            int [] numberofhiddenneurons,IActivationFunction[] hiddenAcFnc,
-            IActivationFunction outputAcFnc){
+    public NeuralNet(int numberofinputs, int numberofoutputs,
+                     int [] numberofhiddenneurons, IActivationFunction[] hiddenAcFnc,
+                     IActivationFunction outputAcFnc){
         this(numberofinputs,numberofoutputs,numberofhiddenneurons,hiddenAcFnc
                 ,outputAcFnc,new UniformInitialization(0.0,1.0));
     }
     
     
-    public NeuralNet(int numberofinputs,int numberofoutputs,
-            IActivationFunction outputAcFnc){
+    public NeuralNet(int numberofinputs, int numberofoutputs,
+                     IActivationFunction outputAcFnc){
         this(numberofinputs,numberofoutputs,new int[0],new IActivationFunction[0],outputAcFnc);
     }
     
@@ -397,7 +397,7 @@ public class NeuralNet {
             return hiddenLayer.get(layer).getWeight(input, neuron);
         }
     }
-
+    
     public int getTotalNumberOfWeights(){
         int result=0;
         for(HiddenLayer hl:this.hiddenLayer){

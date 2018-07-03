@@ -1,11 +1,11 @@
 package Neuroshop.ANN.Som;
 
 import Neuroshop.ANN.Neural.NeuralException;
-import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.ANN.Charts.Chart;
 import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.ArrayOperations;
+import Neuroshop.ANN.Neural.NeuralNet;
 import org.jfree.chart.ChartFrame;
 
 import java.awt.*;

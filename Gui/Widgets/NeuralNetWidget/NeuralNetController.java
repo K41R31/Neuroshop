@@ -262,7 +262,6 @@ public class NeuralNetController extends StackPane implements Observer {
             arrayList.add(((VBox)hiddenLayer.getChildren().get(i)).getChildren().size());
         }
         annModel.setNeuronsInHiddenLayer(arrayList);
-        System.out.println(arrayList);
     }
 
     @Override

@@ -2,10 +2,10 @@
 package Neuroshop.ANN.Learn;
 
 import Neuroshop.ANN.Neural.NeuralException;
-import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Data.NeuralDataSet;
+import Neuroshop.ANN.Neural.NeuralNet;
 import org.jfree.chart.ChartFrame;
 
 import java.util.ArrayList;

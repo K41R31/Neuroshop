@@ -4,14 +4,10 @@ import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
-import Neuroshop.Models.TempWeights.Tempweight;
 import Neuroshop.Models.TempWeights.TempweightList;
-
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Observable;
 
@@ -29,9 +25,8 @@ public class ANNModel extends Observable {
     private DataNormalization dataNormType;
     private double dataPercentage;
     private ArrayList<Integer> neuronsInHiddenLayer;
-    private int numberOfHiddenLayer;
+    private ArrayList<Sigmoid> actFnc;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
-    private IActivationFunction[] actFnc;
     private IActivationFunction outputActFnc;
     private double minOverallError;
     private double learningRate;
@@ -40,33 +35,31 @@ public class ANNModel extends Observable {
 
     private int actualEpoch;
     private LearningAlgorithm.LearningMode learnMode;
-    private List<Sigmoid> sgmList;
-    private List<TempweightList> tempList;
 
-    public void setSigmList(List<Sigmoid> sgmList) {
-        SigmoidList sigList = new SigmoidList();
-        SigmoidObj sgO = new SigmoidObj();
-        for (int i = 0; i < neuronsInHiddenLayer.size(); i++) {
-            sigList.addSigmoids(sgO);
-            this.sgmList = sgmList;
-            setChanged();
-            notifyObservers("setSigmList");
-        }
-    }
 
-    public List<Sigmoid> getSgmList() {
-        return this.sgmList;
-    }
 
-    public IActivationFunction[] getActFnc() {
-        return this.actFnc;
-    }
-
-    public void setActFnc(IActivationFunction[] actFnc) {
-        this.actFnc = new IActivationFunction[]{};
+    public void setSigmoidsToActFnc(ArrayList<Sigmoid> actFnc) {
+        this.actFnc = actFnc;
         setChanged();
-        this.notifyObservers("setActFnc");
+        notifyObservers("setSigmoids");
+        }
+
+    public void addSigmoidsToActFnc() {
+        ArrayList<Sigmoid> actFnc = new ArrayList<>();
+        for(int i = 0; i < neuronsInHiddenLayer.size(); i++) {
+            actFnc.add(new Sigmoid(1.0));
+        }
+       setSigmoidsToActFnc(actFnc);
     }
+
+//    public IActivationFunction[] getActFnc(int i) {
+//        List<Sigmoid> sig = new ArrayList<>();
+//        for(Sigmoid s : this.actFnc) {
+//            if(s.si)
+//           actFnc.get(i);
+//        }
+//        return this.actFnc;
+//    }
 
     public int getDataColumns() {
         return dataColumns;
@@ -135,16 +128,6 @@ public class ANNModel extends Observable {
         this.neuronsInHiddenLayer = neuronsInHiddenLayer;
         this.setChanged();
         notifyObservers("setNeuronsInHiddenLayer");
-    }
-
-    public int getNumberOfHiddenLayer() {
-        return this.numberOfHiddenLayer;
-    } //TODO: NeuronsNumberOfNeurons auslesen!!!!!!!
-
-    public void setNumberOfHiddenLayer(int numberOfHiddenLayer) {
-        this.numberOfHiddenLayer = neuronsInHiddenLayer.size();
-        this.setChanged();
-        this.notifyObservers(numberOfHiddenLayer);
     }
 
     public IActivationFunction getOutputActFnc() {
@@ -242,7 +225,6 @@ public class ANNModel extends Observable {
     public int getActualEpoch() {
         return actualEpoch;
     }
-
     public void train() {
         setChanged();
         notifyObservers("train");

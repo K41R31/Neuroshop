@@ -1,8 +1,8 @@
 package Neuroshop.ANN.Som;
 
 import Neuroshop.ANN.Neural.InputLayer;
-import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.ANN.Init.WeightInitialization;
+import Neuroshop.ANN.Neural.NeuralNet;
 
 import java.util.ArrayList;
 
