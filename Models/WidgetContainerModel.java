@@ -21,6 +21,10 @@ public class WidgetContainerModel extends Observable {
         setChanged();
         if (firstWidget) notifyObservers("addFirstDataManager");
         else notifyObservers("addWidgetToWhiteboard");
+        if (id.equals("Neural Net")) {
+            setChanged();
+            notifyObservers("initNeuralWidget");
+        }
     }
 
     public void removeWidgetFromWhiteboard(String id) {

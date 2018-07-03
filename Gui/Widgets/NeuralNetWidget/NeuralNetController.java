@@ -4,9 +4,16 @@ import Neuroshop.Gui.Widgets.MakeDraggable;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.Models.WidgetContainerModel;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
-import javafx.scene.control.Slider;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -14,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -32,13 +40,25 @@ public class NeuralNetController extends StackPane implements Observer {
     private StackPane rootPane;
     @FXML
     private HBox vBoxContainer;
-    private double sceneCursorPosX, sceneCursorPosY;
-    private double nodeTranslatedX, nodeTranslatedY;
-    private double splineTangent = 50; //TODO um kurvität von Splines zu ändern
+    @FXML
+    private VBox inputLayer;
+    @FXML
+    private HBox hiddenLayer;
+    @FXML
+    private VBox outputLayer;
+    private double splineTangent = 50; //TODO um Kurvität von Splines zu ändern
     private double splineWidth = 1;
 
-    @FXML
-    private void initialize() {
+
+
+    private void initNeuralWidget() {
+        for (int i = 0; i < annModel.getInputColumns().length; i++) {
+            inputLayer.getChildren().add(new Neuron());
+        }
+        for (int i = 0; i < annModel.getOutputColums().length; i++) {
+            outputLayer.getChildren().add(new Neuron());
+        }
+        hiddenLayer.getChildren().add(new HiddenLayer());
     }
 
     @FXML
@@ -79,8 +99,64 @@ public class NeuralNetController extends StackPane implements Observer {
         }
     }
 
+    private class Neuron extends Circle {
+        Neuron() {
+            setFill(Color.WHITE);
+            setRadius(20);
+        }
+    }
+
+    private class HiddenLayer extends VBox {
+        HiddenLayer() {
+            setMinWidth(USE_PREF_SIZE);
+            setPrefWidth(0);
+            setPrefHeight(USE_COMPUTED_SIZE);
+            setMaxWidth(USE_PREF_SIZE);
+            setPadding(new Insets(30, 0, 30, 0));
+            setSpacing(30);
+            setAlignment(Pos.CENTER);
+            ImageView addLayerButton = new ImageView(new Image("Neuroshop/Ressources/Assets/crossButton.png"));
+            addLayerButton.setFitWidth(20);
+            addLayerButton.setFitHeight(20);
+            addLayerButton.setPickOnBounds(true);
+            addLayerButton.setOpacity(0.2);
+            addLayerButton.setOnMouseEntered(event -> {
+                Timeline openMenuAnimation = new Timeline();
+                openMenuAnimation.getKeyFrames().addAll(
+                        new KeyFrame(new Duration(50), new KeyValue(addLayerButton.fitWidthProperty(), 30, Interpolator.EASE_BOTH),
+                                new KeyValue(addLayerButton.fitHeightProperty(), 30, Interpolator.EASE_BOTH),
+                                new KeyValue(addLayerButton.opacityProperty(), 1, Interpolator.EASE_BOTH))
+                );
+                openMenuAnimation.play();
+            });
+            addLayerButton.setOnMouseExited(event -> {
+                Timeline openMenuAnimation = new Timeline();
+                openMenuAnimation.getKeyFrames().addAll(
+                        new KeyFrame(new Duration(50), new KeyValue(addLayerButton.fitWidthProperty(), 20, Interpolator.EASE_BOTH),
+                                new KeyValue(addLayerButton.fitHeightProperty(), 20, Interpolator.EASE_BOTH),
+                                new KeyValue(addLayerButton.opacityProperty(), 0.2, Interpolator.EASE_BOTH))
+                );
+                openMenuAnimation.play();
+            });
+            addLayerButton.setOnMouseClicked(event -> {
+                Timeline openMenuAnimation = new Timeline();
+                openMenuAnimation.getKeyFrames().addAll(
+                        new KeyFrame(new Duration(100), new KeyValue(this.prefWidthProperty(), 130, Interpolator.EASE_BOTH))
+                );
+                openMenuAnimation.play();
+                this.getChildren().clear();
+                hiddenLayer.getChildren().add(new HiddenLayer());
+            });
+            getChildren().add(addLayerButton);
+        }
+    }
+
     @Override
     public void update(Observable o, Object arg) {
+        switch ((String)arg) {
+            case "initNeuralWidget":
+                initNeuralWidget();
+        }
     }
 
     public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel) {
