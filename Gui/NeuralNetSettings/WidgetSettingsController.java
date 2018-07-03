@@ -90,8 +90,8 @@ public class WidgetSettingsController implements Observer {
     }
 
     /**
-     * Rundet einen Double auf 3 Nachkommastellen
-     * Falls der Double weniger als 3 Nachkommastellen hat,
+     * Rundet einen Double auf >decimal< Nachkommastellen
+     * Falls der Double weniger als >decimal< Nachkommastellen hat,
      * wird er unverändert returnt
      */
 
