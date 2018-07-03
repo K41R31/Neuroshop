@@ -43,33 +43,38 @@
                <children>
                   <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
+                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Endbedigungen" wrappingWidth="200.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                        </Text>
                         <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" spacing="30.0">
                            <children>
-                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Epochs" wrappingWidth="200.0">
+                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Maximale Epochen" wrappingWidth="200.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines Italic" size="24.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="maxEpochsValue" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="100.0">
+                              <TextField fx:id="maxEpochsValue" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="100.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
-                              </Text>
+                              </TextField>
                            </children>
                         </HBox>
                         <Slider fx:id="maxEpochsSlider" majorTickUnit="10.0" max="1000.0" maxWidth="-Infinity" minWidth="-Infinity" minorTickCount="4" onMouseDragged="#maxEpochsSliderDragged" prefWidth="350.0" value="500.0" />
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="56.0" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" spacing="30.0">
                            <children>
-                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Overall Error" wrappingWidth="200.0">
+                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimaler Fehler" wrappingWidth="200.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines Italic" size="24.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="minOverallErrorValue" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="70.0">
+                              <TextField fx:id="minOverallErrorValue" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="80.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
-                              </Text>
+                              </TextField>
                            </children>
                         </HBox>
                         <Slider fx:id="minOverallErrorSlider" layoutX="10.0" layoutY="206.0" majorTickUnit="10.0" max="0.09" maxWidth="-Infinity" min="0.01" minWidth="-Infinity" onMouseDragged="#minOverallErrorSliderDragged" prefWidth="350.0" value="0.07" />
@@ -78,50 +83,25 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                   </VBox>
-                  <Group>
-                     <children>
-                        <Line endX="120.0" endY="130.0" startX="40.0" startY="340.0" stroke="#6589ff" />
-                        <Line endX="150.0" endY="75.0" startX="50.0" startY="333.0" stroke="#646464" />
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Group>
-                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <children>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" onMouseClicked="#train" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Ressources/Assets/startButton.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-                  <Group>
-                     <children>
-                        <Line endX="160.0" endY="333.0" startX="60.0" startY="75.0" stroke="#646464" />
-                        <Line endX="170.0" endY="340.0" startX="90.0" startY="130.0" stroke="#6589ff" />
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Group>
                   <VBox alignment="CENTER" layoutX="349.0" layoutY="10.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
+                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainings Parameter" wrappingWidth="250.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                        </Text>
                         <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" spacing="30.0">
                            <children>
                               <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Momentum Rate" wrappingWidth="200.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines Italic" size="24.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="momentumRateValue" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="70.0">
+                              <TextField fx:id="momentumRateValue" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="80.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
-                              </Text>
+                              </TextField>
                            </children>
                         </HBox>
                         <Slider fx:id="momentumRateSlider" majorTickUnit="10.0" max="1.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseDragged="#momentumRateDragged" prefWidth="350.0" value="0.7" />
@@ -129,14 +109,14 @@
                            <children>
                               <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Learning Rate" wrappingWidth="200.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines Italic" size="24.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="learningRateValue" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="70.0">
+                              <TextField fx:id="learningRateValue" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="80.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
-                              </Text>
+                              </TextField>
                            </children>
                         </HBox>
                         <Slider fx:id="learningRateSlider" majorTickUnit="10.0" max="1.0" maxWidth="-Infinity" min="0.1" minWidth="-Infinity" onMouseDragged="#learningRateDragged" prefWidth="350.0" value="0.9" />
@@ -145,6 +125,86 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                   </VBox>
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Lernmethode" wrappingWidth="200.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                        </Text>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" spacing="30.0">
+                           <children>
+                              <Text fx:id="batchMode" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="BATCH" wrappingWidth="100.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="onlineMode" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="ONLINE" wrappingWidth="100.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Daten Normalisierung" wrappingWidth="250.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                        </Text>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" spacing="30.0">
+                           <children>
+                              <Text fx:id="dNormMinMax" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="MinMax" wrappingWidth="100.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="dNormZScore" fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Z-Score" wrappingWidth="100.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <TextField alignment="CENTER" focusTraversable="false" prefHeight="25.0" prefWidth="110.0" text="-1.0, 1.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines" size="24.0" />
+                                 </font>
+                              </TextField>
+                              <TextField alignment="CENTER" focusTraversable="false" prefHeight="25.0" prefWidth="100.0" text="1.0" translateX="30.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines" size="24.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <AnchorPane prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="#c6c6c6" layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Epochen" wrappingWidth="100.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="28.0" />
+                           </font>
+                        </Text>
+                        <TextField alignment="CENTER_RIGHT" focusTraversable="false" layoutX="139.0" layoutY="23.0" prefHeight="25.0" prefWidth="100.0" text="0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="70.0" layoutY="128.0" onMouseClicked="#train" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Ressources/Assets/playButton.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
                </children>
             </HBox>
          </children>
