@@ -2,11 +2,13 @@ package Neuroshop.Gui.NeuralNetSettings;
 
 import Neuroshop.Models.ANNModel;
 import javafx.animation.*;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -14,8 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import sun.awt.SunToolkit;
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -74,6 +74,8 @@ public class NeuralNetSettingsController implements Observer {
         minOverallErrorValue.setText(String.valueOf(minOverallErrorSlider.getValue()));
         momentumRateValue.setText(String.valueOf(momentumRateSlider.getValue()));
         learningRateValue.setText(String.valueOf(learningRateSlider.getValue()));
+        glowEffect(batchMode);
+        glowEffect(onlineMode);
     }
 
     @FXML
@@ -135,6 +137,20 @@ public class NeuralNetSettingsController implements Observer {
             closeEpochPaneAnimation.play();
             epochPaneIsOpen = false;
         }
+    }
+
+    private void glowEffect(Text node) {
+
+        EventHandler<MouseEvent> onMouseEntered =
+                event ->
+                        node.setEffect(glow);
+
+        EventHandler<MouseEvent> onMouseExited =
+                event ->
+                        node.setEffect(null);
+
+    node.setOnMouseEntered(onMouseEntered);
+    node.setOnMouseExited(onMouseExited);
     }
 
     private void updateEpochPane() {
