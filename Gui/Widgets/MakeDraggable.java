@@ -21,8 +21,6 @@ public class MakeDraggable {
                     nodeTranslatedY = node.getTranslateY();
                     sceneWidth = node.getScene().getWidth();
                     sceneHeight = node.getScene().getHeight()-30; //-30 weil die obere Leiste 30 Pixel groß ist
-
-                    node.setOpacity(0.5);
                 };
 
         EventHandler<MouseEvent> onMouseDragged =
@@ -59,7 +57,6 @@ public class MakeDraggable {
                         node.setTranslateX(0);
                         node.setTranslateY(0);
                     }
-                    node.setOpacity(1);
                 };
 
         node.setOnMousePressed(onMousePressed);
