@@ -1,7 +1,7 @@
 package Neuroshop;
 
 import Neuroshop.ANN.ANNLearn;
-import Neuroshop.Gui.NeuralNetSettings.WidgetSettingsController;
+import Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Gui.Border.BorderController;
 import Neuroshop.Gui.Options.OptionsController;
@@ -48,10 +48,10 @@ public class Main extends Application {
         FXMLLoader widgetMenuLoader = new FXMLLoader(getClass().getResource("Gui/WidgetMenu/WidgetMenuView.fxml"));
         whiteboard.getChildren().add(widgetMenuLoader.load());
 
-        FXMLLoader widgetSettingsLoader = new FXMLLoader(getClass().getResource("Gui/NeuralNetSettings/WidgetSettingsView.fxml"));
-        VBox widgetSettings = widgetSettingsLoader.load();
-        widgetSettings.getStylesheets().add("Neuroshop/Gui/NeuralNetSettings/widgetSettingsStyle.css");
-        whiteboard.getChildren().add(widgetSettings);
+        FXMLLoader neuralNetSettingsLoader = new FXMLLoader(getClass().getResource("Gui/NeuralNetSettings/NeuralNetSettingsView.fxml"));
+        VBox neuralNetSettings = neuralNetSettingsLoader.load();
+        neuralNetSettings.getStylesheets().add("Neuroshop/Gui/NeuralNetSettings/NeuralNetSettingsStyle.css");
+        whiteboard.getChildren().add(neuralNetSettings);
 
         //Init Ann------------------------------------------------------------------------------------------------------
         ANNLearn annLearn = new ANNLearn();
@@ -61,7 +61,7 @@ public class Main extends Application {
         WidgetContainerModel widgetContainerModel = new WidgetContainerModel();
         OptionsModel optionsModel = new OptionsModel();
 
-        WidgetSettingsController widgetSettingsController = widgetSettingsLoader.getController();
+        NeuralNetSettingsController widgetSettingsController = neuralNetSettingsLoader.getController();
         WidgetMenuController widgetMenuController = widgetMenuLoader.getController();
         OptionsController optionsMenuController = optionsMenuLoader.getController();
         BorderController borderController = borderLoader.getController();

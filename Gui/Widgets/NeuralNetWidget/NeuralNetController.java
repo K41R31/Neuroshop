@@ -56,12 +56,13 @@ public class NeuralNetController extends StackPane implements Observer {
     private void initNeuralWidget() {
         for (int i = 0; i < annModel.getInputColumns().length; i++) {
             inputLayer.getChildren().add(new Neuron());
+            drawSplines();
         }
         for (int i = 0; i < annModel.getOutputColums().length; i++) {
             outputLayer.getChildren().add(new Neuron());
+            drawSplines();
         }
         hiddenLayer.getChildren().add(new HiddenLayer());
-        drawSplines();
         updateNeuronsInModel();
     }
 

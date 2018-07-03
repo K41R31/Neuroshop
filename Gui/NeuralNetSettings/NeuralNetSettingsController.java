@@ -7,6 +7,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -17,18 +18,18 @@ import javafx.util.Duration;
 import java.util.Observable;
 import java.util.Observer;
 
-public class WidgetSettingsController implements Observer {
+public class NeuralNetSettingsController implements Observer {
 
     private ANNModel annModel;
 
     @FXML
-    private Text maxEpochsValue;
+    private TextField maxEpochsValue;
     @FXML
-    private Text minOverallErrorValue;
+    private TextField minOverallErrorValue;
     @FXML
-    private Text learningRateValue;
+    private TextField learningRateValue;
     @FXML
-    private Text momentumRateValue;
+    private TextField momentumRateValue;
     @FXML
     private Slider maxEpochsSlider;
     @FXML
