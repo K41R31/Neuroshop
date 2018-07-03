@@ -45,6 +45,8 @@ public class NeuralNetController extends StackPane implements Observer {
     @FXML
     private HBox hiddenLayer;
     @FXML
+    private HBox menuPane;
+    @FXML
     private VBox outputLayer;
     private double splineTangent = 50; //TODO um Kurvität von Splines zu ändern
     private double splineWidth = 1;
@@ -106,6 +108,28 @@ public class NeuralNetController extends StackPane implements Observer {
         }
     }
 
+    private class OptionsPane extends VBox {
+        OptionsPane() {
+            setAlignment(Pos.CENTER);
+            setMinWidth(USE_PREF_SIZE);
+            setPrefWidth(130);
+            setPrefHeight(USE_COMPUTED_SIZE);
+            setMaxWidth(USE_PREF_SIZE);
+            ImageView addNeuronButton = new ImageView(new Image("Neuroshop/Ressources/Assets/addNeuronButton.png"));
+            ImageView removeNeuronButton = new ImageView(new Image("Neuroshop/Ressources/Assets/removeNeuronButton.png"));
+            addNeuronButton.setPickOnBounds(true);
+            removeNeuronButton.setPickOnBounds(true);
+            addNeuronButton.setOnMouseClicked(event -> {
+                ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this)-1)).addNeuron();
+            });
+            removeNeuronButton.setOnMouseClicked(event -> {
+                ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this)-1)).removeNeuron();
+            });
+            getChildren().add(addNeuronButton);
+            getChildren().add(removeNeuronButton);
+        }
+    }
+
     private class HiddenLayer extends VBox {
         HiddenLayer() {
             setMinWidth(USE_PREF_SIZE);
@@ -146,8 +170,16 @@ public class NeuralNetController extends StackPane implements Observer {
                 openMenuAnimation.play();
                 this.getChildren().clear();
                 hiddenLayer.getChildren().add(new HiddenLayer());
+                menuPane.getChildren().add(new OptionsPane());
+
             });
             getChildren().add(addLayerButton);
+        }
+        void addNeuron() {
+            getChildren().add(new Neuron());
+        }
+        void removeNeuron() {
+            if (getChildren().size() > 0) getChildren().remove(0);
         }
     }
 
