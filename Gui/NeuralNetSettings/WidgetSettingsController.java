@@ -115,7 +115,7 @@ public class WidgetSettingsController implements Observer {
     private void minOverallErrorSliderDragged() {
         double value = minOverallErrorSlider.getValue();
         minOverallErrorSlider.setMin(0.001);
-        minOverallErrorSlider.setMax(0.999);
+        minOverallErrorSlider.setMax(1.0);
         annModel.setMinOverallError(roundDouble(value, 3));
         minOverallErrorValue.setText(String.valueOf(roundDouble(value, 3)));
     }

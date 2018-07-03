@@ -154,11 +154,6 @@ public class Backpropagation extends DeltaRule {
         return deltaWeight;
     }
 
-
-
-
-
-
     @Override
     public void train() throws NeuralException {
         neuralNet.setNeuralNetMode(NeuralNet.NeuralNetMode.TRAINING);
