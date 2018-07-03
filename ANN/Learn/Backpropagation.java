@@ -183,7 +183,7 @@ public class Backpropagation extends DeltaRule {
         int countRiseError=0;
         
         while(epoch<MaxEpochs && overallGeneralError>MinOverallError
-                && (testingDataSet==null || testErrorVariation<0.0 || countRiseError<50) ){
+                && (testingDataSet==null || testErrorVariation<0.0 || countRiseError<100) ){
             backward();
             switch(learningMode){
                 case BATCH:

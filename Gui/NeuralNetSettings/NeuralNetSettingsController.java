@@ -72,6 +72,7 @@ public class NeuralNetSettingsController implements Observer {
 
     @FXML
     private void toggleMenu() {
+        System.out.println("JO");
         if (!menuIsOpen) {
             Timeline openSettingsAnimation = new Timeline();
             openSettingsAnimation.getKeyFrames().addAll(

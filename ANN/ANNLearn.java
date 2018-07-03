@@ -39,9 +39,10 @@ public class ANNLearn implements Observer {
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
 
-
-
-        IActivationFunction[] actFnc = new IActivationFunction[]{};
+        Sigmoid hd10Fnc = new Sigmoid(1.0);
+//        Sigmoid hd20Fnc = new Sigmoid(1.0);
+//        IActivationFunction[] actFnc = new IActivationFunction[]{hd10Fnc, hd20Fnc};
+        IActivationFunction[] actFnc = new IActivationFunction[]{hd10Fnc};
 
         NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();

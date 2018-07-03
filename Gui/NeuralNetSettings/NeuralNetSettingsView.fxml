@@ -32,7 +32,7 @@
             </ImageView>
          </children>
       </StackPane>
-      <AnchorPane fx:id="menuPane" maxHeight="-Infinity" minHeight="-Infinity" opacity="0.0" prefHeight="0.0" style="-fx-background-color: TRANSPARENT;">
+      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: TRANSPARENT;">
          <children>
             <AnchorPane fx:id="epochPane" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" style="-fx-background-color: #666666;" AnchorPane.rightAnchor="0.0">
                <children>
@@ -63,7 +63,7 @@
             <Line endX="350.0" endY="214.0" startX="350.0" startY="30.0" stroke="#4d4e55" />
             <Line endX="710.0" endY="214.0" startX="710.0" startY="30.0" stroke="#4d4e55" />
             <Line endX="1000.0" endY="214.0" startX="1000.0" startY="30.0" stroke="#4d4e55" />
-            <HBox fx:id="contentPane" alignment="CENTER_LEFT" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox fx:id="contentPane" alignment="CENTER_LEFT" opacity="0.0" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
