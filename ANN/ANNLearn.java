@@ -157,7 +157,8 @@ public class ANNLearn implements Observer {
                 this.learnMode = annModel.getLearnmode();
                 break;
             case "train":
-                train();
+                Thread thread = new Thread(this::train);
+                thread.start();
         }
     }
 

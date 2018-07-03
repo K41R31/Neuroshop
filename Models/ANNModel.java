@@ -33,6 +33,7 @@ public class ANNModel extends Observable {
     private double momentumRate;
     private int maxEpoch;
 
+    private int actualEpoch;
     private LearningAlgorithm.LearningMode learnMode;
 
 
@@ -217,10 +218,15 @@ public class ANNModel extends Observable {
         return newWeights;
     }
 
+    public void setActualEpoch(int actualEpoch) {
+        this.actualEpoch = actualEpoch;
+    }
+
+    public int getActualEpoch() {
+        return actualEpoch;
+    }
     public void train() {
         setChanged();
         notifyObservers("train");
     }
 }
-
-
