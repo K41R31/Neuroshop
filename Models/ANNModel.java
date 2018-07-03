@@ -105,6 +105,7 @@ public class ANNModel extends Observable {
         switch(mode) {
             case "BATCH":
                 this.learnMode = LearningAlgorithm.LearningMode.BATCH;
+                System.out.println("Learnmode aus Model: "+learnMode);
                 break;
             case "ONLINE":
                 this.learnMode = LearningAlgorithm.LearningMode.ONLINE;
