@@ -26,6 +26,7 @@ public class ANNModel extends Observable {
     private double dataPercentage;
     private ArrayList<Integer> neuronsInHiddenLayer;
     private ArrayList<Sigmoid> actFnc;
+    private ArrayList<IActivationFunction[]> actFncList;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
     private IActivationFunction outputActFnc;
     private double minOverallError;
@@ -36,31 +37,22 @@ public class ANNModel extends Observable {
     private int actualEpoch;
     private LearningAlgorithm.LearningMode learnMode;
 
-
-
-    public void setSigmoidsToActFnc(ArrayList<Sigmoid> actFnc) {
-        this.actFnc = actFnc;
-        setChanged();
-        notifyObservers("setSigmoids");
-        }
+    public ANNModel() {
+        actFncList = new ArrayList<IActivationFunction[]>();
+    }
 
     public void addSigmoidsToActFnc() {
         ArrayList<Sigmoid> actFnc = new ArrayList<>();
         for(int i = 0; i < neuronsInHiddenLayer.size(); i++) {
             actFnc.add(new Sigmoid(1.0));
         }
-       setSigmoidsToActFnc(actFnc);
+       this.actFnc = actFnc;
     }
 
-//    public IActivationFunction[] getActFnc(int i) {
-//        List<Sigmoid> sig = new ArrayList<>();
-//        for(Sigmoid s : this.actFnc) {
-//            if(s.si)
-//           actFnc.get(i);
-//        }
-//        return this.actFnc;
-//    }
+    public IActivationFunction[] getSigmoids() {
+        return this.actFncList;
 
+    }
     public int getDataColumns() {
         return dataColumns;
     }
@@ -109,7 +101,7 @@ public class ANNModel extends Observable {
     }
 
     public LearningAlgorithm.LearningMode getLearnmode() {
-        return learnMode;
+        return this.learnMode;
     }
 
     public void setLearnmode(String mode) {
