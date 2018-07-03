@@ -28,7 +28,7 @@ public class ANNModel extends Observable {
     private int[] outputColumns;
     private DataNormalization dataNormType;
     private double dataPercentage;
-    private int[] neuronsInHiddenLayer;
+    private ArrayList<Integer> neuronsInHiddenLayer;
     private int numberOfHiddenLayer;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
     private IActivationFunction[] actFnc;
@@ -45,13 +45,14 @@ public class ANNModel extends Observable {
     public void setSigmList(List<Sigmoid> sgmList) {
         SigmoidList sigList = new SigmoidList();
         SigmoidObj sgO = new SigmoidObj();
-        for (int i = 0; i < neuronsInHiddenLayer.length; i++) {
+        for (int i = 0; i < neuronsInHiddenLayer.size(); i++) {
             sigList.addSigmoids(sgO);
             this.sgmList = sgmList;
             setChanged();
             notifyObservers("setSigmList");
         }
     }
+
     public List<Sigmoid> getSgmList() {
         return this.sgmList;
     }
@@ -126,13 +127,11 @@ public class ANNModel extends Observable {
     }
 
     public int[] getNeuronsInHiddenLayer() {
-        return this.neuronsInHiddenLayer;
+        return neuronsInHiddenLayer.stream().mapToInt(i -> i).toArray();
     }
 
-    public void setNeuronsInHiddenLayer(int[] neuronsInHiddenLayer) {
+    public void setNeuronsInHiddenLayer(ArrayList<Integer> neuronsInHiddenLayer) {
         this.neuronsInHiddenLayer = neuronsInHiddenLayer;
-        this.setChanged();
-        this.notifyObservers("setNeuronsInHiddenLayer");
     }
 
     public int getNumberOfHiddenLayer() {
@@ -140,7 +139,7 @@ public class ANNModel extends Observable {
     } //TODO: NeuronsNumberOfNeurons auslesen!!!!!!!
 
     public void setNumberOfHiddenLayer(int numberOfHiddenLayer) {
-        this.numberOfHiddenLayer = neuronsInHiddenLayer.length;
+        this.numberOfHiddenLayer = neuronsInHiddenLayer.size();
         this.setChanged();
         this.notifyObservers(numberOfHiddenLayer);
     }
