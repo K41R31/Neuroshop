@@ -27,24 +27,18 @@ public class ANNLearn implements Observer {
     private double learningRate;
     private double momentumRate;
 //  private IActivationFunction outputActFnc; TODO: Festgelegt auf LINEAR(1.0)
-//  private IActivationFunction[] actFnc;
+    private IActivationFunction[] actFnc;
     private LearningAlgorithm.LearningMode learnMode;
-    private DataNormalization dataNormType; //TODO:Festgelegt auf  (-1.0, 1.0) entspricht .MIN_MAX + Später evtl. Z_SCORE noch als mögliche Option hinzufügen
+    private DataNormalization dataNormType;
     private List<Sigmoid> sgmList;
-
 
     public void train() {
         RandomNumberGenerator.setSeed(5);
-
+        annModel.addActFnc();
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
-
-        Sigmoid hd10Fnc = new Sigmoid(1.0);
-//        Sigmoid hd20Fnc = new Sigmoid(1.0);
-//        IActivationFunction[] actFnc = new IActivationFunction[]{hd10Fnc, hd20Fnc};
-        IActivationFunction[] actFnc = new IActivationFunction[]{hd10Fnc};
-
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
+        System.out.println("Sigmoid: "+String.valueOf(actFnc));
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, annModel.getActFnc(), outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
@@ -139,9 +133,6 @@ public class ANNLearn implements Observer {
             case "setDataPercentage":
                 this.dataPercentage = annModel.getDataPercentage();
                 break;
-//            case "setActFnc":
-//                this.actFnc = annModel.getActFnc();
-//                break;
             case "setMomentumRate":
                 this.momentumRate = annModel.getMomentumRate();
                 break;

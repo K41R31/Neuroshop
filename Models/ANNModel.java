@@ -25,34 +25,31 @@ public class ANNModel extends Observable {
     private DataNormalization dataNormType;
     private double dataPercentage;
     private ArrayList<Integer> neuronsInHiddenLayer;
-    private ArrayList<Sigmoid> actFnc;
-    private ArrayList<IActivationFunction[]> actFncList;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
+    private ArrayList<IActivationFunction> actFnc;
     private IActivationFunction outputActFnc;
+    private LearningAlgorithm.LearningMode learnMode;
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
     private int maxEpoch;
-
     private int actualEpoch;
-    private LearningAlgorithm.LearningMode learnMode;
 
-    public ANNModel() {
-        actFncList = new ArrayList<IActivationFunction[]>();
-    }
-
-    public void addSigmoidsToActFnc() {
-        ArrayList<Sigmoid> actFnc = new ArrayList<>();
+    public void addActFnc() {
+        actFnc = new ArrayList<>();
         for(int i = 0; i < neuronsInHiddenLayer.size(); i++) {
             actFnc.add(new Sigmoid(1.0));
         }
-       this.actFnc = actFnc;
     }
 
-    public IActivationFunction[] getSigmoids() {
-        return this.actFncList;
-
+    public IActivationFunction[] getActFnc() {
+        IActivationFunction[] ia = new IActivationFunction[actFnc.size()];
+        for(int i = 0; i < actFnc.size(); i++) {
+            ia[i] = actFnc.get(i);
+        }
+        return ia;
     }
+
     public int getDataColumns() {
         return dataColumns;
     }
