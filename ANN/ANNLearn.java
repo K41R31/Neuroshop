@@ -154,7 +154,7 @@ public class ANNLearn implements Observer {
             case "setLearningRate":
                 this.learningRate = annModel.getLearningRate();
                 break;
-            case "setlearnmode":
+            case "setLearnmode":
                 this.learnMode = annModel.getLearnmode();
                 break;
             case "train":

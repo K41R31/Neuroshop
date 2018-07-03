@@ -93,8 +93,17 @@ public class ANNModel extends Observable {
         return this.dataNormType;
     }
 
-    public void setDataNormType(DataNormalization dataNormType) { //TODO: Vorerst auf .MIN_MAX(-1.0, 1.0) festgelegt
-        this.dataNormType = dataNormType;
+    public void setDataNormType(String normtype) {
+        double _min = -1.0;
+        double _max = 1.0;
+        double _score = 1.0;
+        switch(normtype) {
+            case "minMax":
+                this.dataNormType = new DataNormalization(_min, _max);
+                break;
+            case "zScore":
+                this.dataNormType = new DataNormalization(_score);
+        }
         setChanged();
         notifyObservers("setDataNormType");
     }
@@ -103,7 +112,7 @@ public class ANNModel extends Observable {
         return learnMode;
     }
 
-    public void setlearnmode(String mode) {
+    public void setLearnmode(String mode) {
         switch(mode) {
             case "BATCH":
                 this.learnMode = LearningAlgorithm.LearningMode.BATCH;
@@ -112,7 +121,7 @@ public class ANNModel extends Observable {
                 this.learnMode = LearningAlgorithm.LearningMode.ONLINE;
         }
         setChanged();
-        notifyObservers("setlearnmode");
+        notifyObservers("setLearnmode");
     }
 
     public double getDataPercentage() {
