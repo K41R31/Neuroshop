@@ -49,7 +49,6 @@ public class NeuralNetController extends StackPane implements Observer {
     private double splineWidth = 1;
 
 
-
     private void initNeuralWidget() {
         if (hiddenLayer.getChildren().size() == 0) {
             for (int i = 0; i < annModel.getInputColumns().length; i++) {
@@ -62,11 +61,6 @@ public class NeuralNetController extends StackPane implements Observer {
             }
             hiddenLayer.getChildren().add(new HiddenLayer());
         }
-    }
-
-    @FXML
-    private void drawSplinesButtonEvent() {
-        drawSplines();
     }
 
     private void drawSplines() {
