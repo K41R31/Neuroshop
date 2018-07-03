@@ -8,6 +8,7 @@ import Neuroshop.ANN.Data.TimeSeries;
 import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Neural.*;
 import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
 
 import java.awt.*;
 import java.io.IOException;
@@ -417,14 +418,8 @@ public class Backpropagation extends DeltaRule {
     public void setMomentumRate(double _momentumRate){
         this.MomentumRate=_momentumRate;
     }
-    
-    /*@Override
-    public void showErrorEvolution(){
-        
-//        Chart Charts = new Chart("Training",rndDataSet,seriesNames,0,seriesColor);
-//            ChartFrame frame = new ChartFrame("Training", Charts.scatterPlot("X", "Y"));
-//            frame.pack();
-//            frame.setVisible(true);
+
+    public double[][] getErrorData() {
         double[] trainingErrors = ArrayOperations.arrayListToVector(getListOfErrorsByEpoch());
         double[] testingErrors = ArrayOperations.arrayListToVector(getListOfTestErrorsByEpoch());
         double[][] errors = new double[trainingErrors.length][3];
@@ -433,21 +428,8 @@ public class Backpropagation extends DeltaRule {
             errors[i][1]=trainingErrors[i];
             errors[i][2]=testingErrors[i];
         }
-        String[] seriesNames = {"Train Error","Test Error"};
-        Paint[] seriesColor = {Color.BLUE, Color.GREEN};
-        Chart c = new Chart("Error Evolution",errors,seriesNames,0,seriesColor,Chart.SeriesType.LINES);
-        if(plotErrorEvolution ==null){
-            plotErrorEvolution = new ChartFrame("Error Evolution",c.scatterPlot("Epoch","Error"));
-            plotErrorEvolution.pack();
-            plotErrorEvolution.setVisible(true);
-        }
-        else{
-            plotErrorEvolution.getChartPanel().setChart(c.scatterPlot("Epoch","Error"));
-        }
-        
-    }    */
-
-
+        return errors;
+    }
 
     @Override
     public void showErrorEvolution(){

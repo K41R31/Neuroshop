@@ -11,6 +11,7 @@ import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class ANNLearn implements Observer {
@@ -74,6 +75,8 @@ public class ANNLearn implements Observer {
         backprop.setTestingDataSet(neuralDataSetToTest);
         backprop.printTraining = true;
         backprop.showPlotError = true;
+        System.out.println(Arrays.toString(backprop.getErrorData()));
+
 
         try {
             backprop.forward();
