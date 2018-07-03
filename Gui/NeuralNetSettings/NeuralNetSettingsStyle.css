@@ -17,3 +17,9 @@
     -fx-background-radius: 0;
     -fx-padding: 2;
 }
+.playButton {
+    -fx-image: url("../../Ressources/Assets/playButton.png");
+}
+.playButton:hover {
+    -fx-image: url("../../Ressources/Assets/playButtonHover.png");
+}

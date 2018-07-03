@@ -34,7 +34,7 @@
             </ImageView>
             <Line endX="350.0" endY="214.0" startX="350.0" startY="30.0" stroke="#4d4e55" />
             <Line endX="710.0" endY="214.0" startX="710.0" startY="30.0" stroke="#4d4e55" />
-            <Line endX="1005.0" endY="214.0" startX="1005.0" startY="30.0" stroke="#4d4e55" />
+            <Line endX="1000.0" endY="214.0" startX="1000.0" startY="30.0" stroke="#4d4e55" />
             <HBox fx:id="contentPane" alignment="CENTER_LEFT" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="10.0" HBox.hgrow="ALWAYS">
@@ -52,7 +52,7 @@
                                  </font>
                               </Text>
                               <Region HBox.hgrow="ALWAYS" />
-                              <TextField fx:id="maxEpochsValue" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="60.0" text="15000">
+                              <TextField fx:id="maxEpochsValue" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="60.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
@@ -202,33 +202,75 @@
                         <Insets top="25.0" />
                      </padding>
                   </VBox>
-                  <HBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Epochen" wrappingWidth="100.0">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="28.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="epochCount" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
-                           <font>
-                              <Font name="Champagne &amp; Limousines" size="20.0" />
-                           </font>
-                        </TextField>
+                        <HBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Epochen:" wrappingWidth="107.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#c6c6c6" layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="107.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Random seed" wrappingWidth="160.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="epochCount1" alignment="CENTER" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines" size="20.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets top="40.0" />
-                     </padding>
-                  </HBox>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  </VBox>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="300.0">
                      <children>
-                        <ImageView fx:id="startButton" fitHeight="100.0" fitWidth="100.0" layoutX="70.0" layoutY="128.0" onMouseClicked="#train" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="playButton" fx:id="startButton" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#train" pickOnBounds="true" preserveRatio="true" styleClass="playButton">
                            <image>
                               <Image url="@../../Ressources/Assets/playButton.png" />
                            </image>
                         </ImageView>
+                        <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Modus" wrappingWidth="200.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="24.0" />
+                           </font>
+                        </Text>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Text fx:id="batchMode1" fill="#35baff" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainieren" wrappingWidth="100.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="22.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="onlineMode1" fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Validieren" wrappingWidth="100.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="22.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
                      </children>
+                     <HBox.margin>
+                        <Insets left="250.0" top="115.0" />
+                     </HBox.margin>
                   </AnchorPane>
-                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
                </children>
             </HBox>
          </children>
