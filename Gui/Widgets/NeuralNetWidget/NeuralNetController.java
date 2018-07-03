@@ -62,11 +62,12 @@ public class NeuralNetController extends StackPane implements Observer {
         }
         hiddenLayer.getChildren().add(new HiddenLayer());
         drawSplines();
+        updateNeuronsInModel();
     }
 
     @FXML
     private void drawSplines() {
-        annModel.setNewWeights(newWeights);
+//        annModel.setNewWeights(newWeights);
         splinesPane.getChildren().clear();
         VBox endPane, startPane;
         Circle endCircle, startCircle;
@@ -86,19 +87,19 @@ public class NeuralNetController extends StackPane implements Observer {
                     startCircleBounds = startCircle.getBoundsInParent();
                     endCircleBounds = endCircle.getBoundsInParent();
                     if (c == 0) {
-                        System.out.println(startPaneBounds.getMinX());
                         startX = startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
-                        endX = endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
-                    }
-                    else {
+                        endX = endCircle.getParent().getParent().getBoundsInParent().getMinX() + endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
+                    } else if (c < hiddenLayer.getChildren().size()-1) {
                         startX = startCircle.getParent().getParent().getBoundsInParent().getMinX() + startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
                         endX = endCircle.getParent().getParent().getBoundsInParent().getMinX() + endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
+                    } else {
+                        startX = startCircle.getParent().getParent().getBoundsInParent().getMinX() + startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
+                        endX = endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
                     }
                     startY = startCircleBounds.getMinY() + 20;
                     endY = endCircleBounds.getMinY() + 20;
                     controlX1 = startX + splineTangent;
                     controlX2 = endX - splineTangent;
-                    System.out.println("startX: "+startX+", startY: "+startY+", controlX1: "+controlX1+", startY: "+startY+", controlX2: "+controlX2+", endY: "+endY+", endX: "+endX+", endY: "+endY);
 //                    double lastDeltaWeight = newWeights.get(c).get(x).get(r);
                     CubicCurve spline = new CubicCurve(startX, startY, controlX1, startY, controlX2, endY, endX, endY);
                     spline.setLayoutX(0);
@@ -132,6 +133,7 @@ public class NeuralNetController extends StackPane implements Observer {
             removeNeuronButton.setPickOnBounds(true);
             addNeuronButton.setOnMouseClicked(event -> {
                 ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this)-1)).addNeuron();
+                updateNeuronsInModel();
                 drawSplines();
             });
             removeNeuronButton.setOnMouseClicked(event -> {
@@ -194,6 +196,16 @@ public class NeuralNetController extends StackPane implements Observer {
         void removeNeuron() {
             if (getChildren().size() > 0) getChildren().remove(0);
         }
+    }
+
+    private void updateNeuronsInModel() {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(inputLayer.getChildren().size());
+        for (int i = 0; i < hiddenLayer.getChildren().size()-1; i++) {
+            arrayList.add(((VBox)hiddenLayer.getChildren().get(i)).getChildren().size());
+        }
+        arrayList.add(outputLayer.getChildren().size());
+        annModel.setNeuronsInHiddenLayer(arrayList);
     }
 
     @Override
