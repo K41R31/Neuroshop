@@ -1,10 +1,7 @@
 package Neuroshop.Gui.NeuralNetSettings;
 
 import Neuroshop.Models.ANNModel;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -15,6 +12,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import sun.awt.SunToolkit;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -22,6 +21,8 @@ public class NeuralNetSettingsController implements Observer {
 
     private ANNModel annModel;
 
+    @FXML
+    private Text actualEpoch;
     @FXML
     private TextField maxEpochsValue;
     @FXML
@@ -43,15 +44,21 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private AnchorPane menuPane;
     @FXML
+    private AnchorPane epochPane;
+    @FXML
     private HBox contentPane;
+    @FXML
+    private HBox epochInnerPane;
     @FXML
     private VBox widgetSettings;
     @FXML
     private StackPane toggleButton;
     private boolean menuIsOpen;
+    private boolean epochPaneIsOpen;
 
     @FXML
     private void initialize() {
+        epochPaneIsOpen = false;
         menuIsOpen = false;
         AnchorPane.setLeftAnchor(widgetSettings, (double)0);
         AnchorPane.setBottomAnchor(widgetSettings, (double)0);
@@ -104,6 +111,35 @@ public class NeuralNetSettingsController implements Observer {
         return processing;
     }
 
+    private void toggleEpochPane() {
+        if (!epochPaneIsOpen) {
+            Timeline openEpochPaneAnimation = new Timeline();
+            openEpochPaneAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(200), new KeyValue(epochPane.layoutYProperty(), 30, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(400), new KeyValue(epochInnerPane.opacityProperty(), 1, Interpolator.EASE_BOTH))
+            );
+            openEpochPaneAnimation.play();
+            epochPaneIsOpen = true;
+        } else {
+            Timeline closeEpochPaneAnimation = new Timeline();
+            closeEpochPaneAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(200), new KeyValue(epochPane.layoutYProperty(), 120, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(400), new KeyValue(epochInnerPane.opacityProperty(), 0, Interpolator.EASE_BOTH))
+            );
+            closeEpochPaneAnimation.play();
+            epochPaneIsOpen = false;
+        }
+    }
+
+    private void updateEpochPane() {
+        Timeline updateEpochPane = new Timeline();
+        updateEpochPane.getKeyFrames().addAll(
+                new KeyFrame(new Duration(100), event -> actualEpoch.setText(String.valueOf(annModel.getActualEpoch())))
+        );
+        updateEpochPane.setCycleCount(Animation.INDEFINITE);
+        updateEpochPane.play();
+    }
+
     @FXML
     private void maxEpochsSliderDragged() {
         int value = (int)maxEpochsSlider.getValue();
@@ -143,6 +179,8 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private void train() {
         annModel.train();
+        toggleEpochPane();
+        updateEpochPane();
     }
 
     @Override

@@ -5,9 +5,7 @@
 #### Was muss bis zur Präsentation definitv vorhanden sein:
 
     - NeuralWidget fertig machen:
-        > HiddenLayer + <NeuronenImLayer>..
         > Aktivierungsfunktion für HidenLayer..
-        ..hinzufügen
 
     - Presets fertig machen TODO: Aufgeschoben bis alles andere fertig ist!
         > Alle Parameter abspeichern, laden und applizieren können

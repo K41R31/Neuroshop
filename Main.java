@@ -8,8 +8,10 @@ import Neuroshop.Gui.Options.OptionsController;
 import Neuroshop.Gui.Whiteboard.WhiteboardController;
 import Neuroshop.Gui.WidgetMenu.WidgetMenuController;
 import Neuroshop.Models.OptionsModel;
+import Neuroshop.Models.TutorialModel;
 import Neuroshop.Models.WidgetContainerModel;
 import Neuroshop.Gui.Widgets.WidgetContainer;
+import Neuroshop.Tutorial.TutorialController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -53,8 +55,15 @@ public class Main extends Application {
         neuralNetSettings.getStylesheets().add("Neuroshop/Gui/NeuralNetSettings/NeuralNetSettingsStyle.css");
         whiteboard.getChildren().add(neuralNetSettings);
 
+        FXMLLoader tutorialLoader = new FXMLLoader(getClass().getResource("Tutorial/TutorialView.fxml"));
+        AnchorPane tutorialRoot = tutorialLoader.load();
+        whiteboard.getChildren().add(tutorialRoot);
+
         //Init Ann------------------------------------------------------------------------------------------------------
         ANNLearn annLearn = new ANNLearn();
+
+        //Init Tutorial-------------------------------------------------------------------------------------------------
+        TutorialController tutorialController = new TutorialController();
 
         //Init Model----------------------------------------------------------------------------------------------------
         ANNModel annModel = new ANNModel();

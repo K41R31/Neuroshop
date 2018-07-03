@@ -8,6 +8,7 @@ public class TutorialController {
     @FXML
     private AnchorPane tutorialStart,dataPrep,importData,dataSettings,dragNeural,neuralSettings,dropDiagram,changeValues,startNetwork;
 
+    @FXML
     private void skipTutorial() {
         int i;
         for (i = 0; i < 8;i++){
@@ -16,11 +17,13 @@ public class TutorialController {
         startNetwork.setVisible(false);
     }
 
+    @FXML
     private void startTutorial(){
         dataPrep.setOpacity(1);
         dataPrep.setVisible(true);
     }
 
+    @FXML
     private void step1(){
         dataPrep.setOpacity(0);
         dataPrep.setVisible(false);
@@ -28,6 +31,7 @@ public class TutorialController {
         importData.setVisible(true);
     }
 
+    @FXML
     private void step2(){
         importData.setOpacity(0);
         importData.setVisible(false);
@@ -35,6 +39,7 @@ public class TutorialController {
         dataSettings.setVisible(true);
     }
 
+    @FXML
     private void step3(){
         dataSettings.setOpacity(0);
         dataSettings.setVisible(false);
@@ -42,6 +47,7 @@ public class TutorialController {
         dragNeural.setVisible(true);
     }
 
+    @FXML
     private void step4(){
         dragNeural.setOpacity(0);
         dragNeural.setVisible(false);
@@ -49,6 +55,7 @@ public class TutorialController {
         neuralSettings.setVisible(true);
     }
 
+    @FXML
     private void step5(){
         neuralSettings.setOpacity(0);
         neuralSettings.setVisible(false);
@@ -56,6 +63,7 @@ public class TutorialController {
         dropDiagram.setVisible(true);
     }
 
+    @FXML
     private void step6(){
         dropDiagram.setOpacity(0);
         dropDiagram.setVisible(false);
@@ -63,6 +71,7 @@ public class TutorialController {
         changeValues.setVisible(true);
     }
 
+    @FXML
     private void step7(){
         changeValues.setOpacity(0);
         changeValues.setVisible(false);
@@ -70,6 +79,7 @@ public class TutorialController {
         startNetwork.setVisible(true);
     }
 
+    @FXML
     private void stepFinal(){
         startNetwork.setOpacity(0);
         startNetwork.setVisible(false);
