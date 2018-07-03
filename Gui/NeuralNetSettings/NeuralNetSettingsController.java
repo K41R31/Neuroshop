@@ -5,11 +5,13 @@ import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import sun.awt.SunToolkit;
@@ -20,7 +22,10 @@ import java.util.Observer;
 public class NeuralNetSettingsController implements Observer {
 
     private ANNModel annModel;
-
+    @FXML
+    private Text batchMode;
+    @FXML
+    private Text onlineMode;
     @FXML
     private Text actualEpoch;
     @FXML
@@ -55,11 +60,13 @@ public class NeuralNetSettingsController implements Observer {
     private StackPane toggleButton;
     private boolean menuIsOpen;
     private boolean epochPaneIsOpen;
+    private Glow glow;
 
     @FXML
     private void initialize() {
         epochPaneIsOpen = false;
         menuIsOpen = false;
+        glow = new Glow(1);
         AnchorPane.setLeftAnchor(widgetSettings, (double)0);
         AnchorPane.setBottomAnchor(widgetSettings, (double)0);
         AnchorPane.setRightAnchor(widgetSettings, (double)0);
@@ -137,6 +144,32 @@ public class NeuralNetSettingsController implements Observer {
         );
         updateEpochPane.setCycleCount(Animation.INDEFINITE);
         updateEpochPane.play();
+    }
+
+    @FXML
+    private void batchModeClicked() {
+        switchLearnmethod("batchMode");
+    }
+
+    @FXML
+    private void onlineModeClicked() {
+        switchLearnmethod("onlineMode");
+    }
+
+    private void switchLearnmethod(String mode) {
+        switch (mode) {
+            case "batchMode":
+                if (onlineMode.getFill().toString().contains("35baff")) {
+                    batchMode.setFill(Color.web("#35baff"));
+                    onlineMode.setFill(Color.web("#c6c6c6"));
+                }
+                break;
+            case "onlineMode":
+                if (onlineMode.getFill().toString().contains("35baff")) {
+                    onlineMode.setFill(Color.web("#35baff"));
+                    batchMode.setFill(Color.web("#c6c6c6"));
+                }
+        }
     }
 
     @FXML
