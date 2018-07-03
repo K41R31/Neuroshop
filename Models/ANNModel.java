@@ -51,14 +51,14 @@ public class ANNModel extends Observable {
        setSigmoidsToActFnc(actFnc);
     }
 
-    public IActivationFunction[] getActFnc(int i) {
-        List<Sigmoid> sig = new ArrayList<>();
-        for(Sigmoid s : this.actFnc) {
-            if(s.si)
-           actFnc.get(i);
-        }
-        return this.actFnc;
-    }
+//    public IActivationFunction[] getActFnc(int i) {
+//        List<Sigmoid> sig = new ArrayList<>();
+//        for(Sigmoid s : this.actFnc) {
+//            if(s.si)
+//           actFnc.get(i);
+//        }
+//        return this.actFnc;
+//    }
 
     public int getDataColumns() {
         return dataColumns;
