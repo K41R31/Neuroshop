@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
@@ -21,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
+<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
    <children>
-      <StackPane fx:id="toggleButton" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#toggleMenu" prefHeight="20.0" VBox.vgrow="ALWAYS">
+      <StackPane fx:id="toggleButton" disable="true" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#toggleMenu" prefHeight="20.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fx:id="openerIcon" disable="true" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                <image>
@@ -32,7 +25,7 @@
             </ImageView>
          </children>
       </StackPane>
-      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: TRANSPARENT;">
+      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="244.0" style="-fx-background-color: TRANSPARENT;">
          <children>
             <AnchorPane fx:id="epochPane" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" style="-fx-background-color: #666666;" AnchorPane.rightAnchor="0.0">
                <children>
@@ -63,13 +56,13 @@
             <Line endX="350.0" endY="214.0" startX="350.0" startY="30.0" stroke="#4d4e55" />
             <Line endX="710.0" endY="214.0" startX="710.0" startY="30.0" stroke="#4d4e55" />
             <Line endX="1000.0" endY="214.0" startX="1000.0" startY="30.0" stroke="#4d4e55" />
-            <HBox fx:id="contentPane" alignment="CENTER_LEFT" opacity="0.0" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox fx:id="contentPane" alignment="CENTER_LEFT" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Text fill="LIGHTGRAY" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Endbedingungen" wrappingWidth="200.0">
+                        <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Endbedingungen" wrappingWidth="200.0">
                            <font>
-                              <Font name="Champagne &amp; Limousines" size="22.0" />
+                              <Font name="Champagne &amp; Limousines Bold" size="22.0" />
                            </font>
                         </Text>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0">
@@ -87,7 +80,7 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <Slider fx:id="maxEpochsSlider" majorTickUnit="10.0" max="1000.0" maxWidth="-Infinity" minWidth="-Infinity" minorTickCount="4" onMouseDragged="#maxEpochsSliderDragged" prefWidth="300.0" value="500.0" />
+                        <Slider fx:id="maxEpochsSlider" majorTickUnit="10.0" max="50000.0" maxWidth="-Infinity" minWidth="-Infinity" minorTickCount="4" onMouseDragged="#maxEpochsSliderDragged" prefWidth="300.0" value="25000.0" />
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="56.0" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0">
                            <children>
                               <Text fill="LIGHTGRAY" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimaler Fehler" wrappingWidth="200.0">
@@ -103,7 +96,7 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <Slider fx:id="minOverallErrorSlider" layoutX="10.0" layoutY="206.0" majorTickUnit="10.0" max="0.09" maxWidth="-Infinity" min="0.01" minWidth="-Infinity" onMouseDragged="#minOverallErrorSliderDragged" prefWidth="300.0" value="0.07" />
+                        <Slider fx:id="minOverallErrorSlider" layoutX="10.0" layoutY="206.0" majorTickUnit="10.0" max="0.09" maxWidth="-Infinity" min="0.01" minWidth="-Infinity" onMouseDragged="#minOverallErrorSliderDragged" prefWidth="300.0" value="0.02" />
                      </children>
                      <HBox.margin>
                         <Insets left="20.0" top="25.0" />
@@ -111,9 +104,9 @@
                   </VBox>
                   <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainings Parameter" wrappingWidth="250.0">
+                        <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainings Parameter" wrappingWidth="250.0">
                            <font>
-                              <Font name="Champagne &amp; Limousines" size="24.0" />
+                              <Font name="Champagne &amp; Limousines Bold" size="24.0" />
                            </font>
                         </Text>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0">
@@ -153,11 +146,11 @@
                         <Insets top="25.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="10.0">
+                  <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="5.0">
                      <children>
-                        <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Lernmethode" wrappingWidth="200.0">
+                        <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Lernmethode" wrappingWidth="200.0">
                            <font>
-                              <Font name="Champagne &amp; Limousines" size="24.0" />
+                              <Font name="Champagne &amp; Limousines Bold" size="24.0" />
                            </font>
                            <VBox.margin>
                               <Insets />
@@ -174,15 +167,18 @@
                                  <font>
                                     <Font name="Champagne &amp; Limousines Italic" size="22.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
                               </Text>
                            </children>
                            <VBox.margin>
-                              <Insets />
+                              <Insets bottom="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Daten Normalisierung" wrappingWidth="250.0">
+                        <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Daten Normalisierung" wrappingWidth="250.0">
                            <font>
-                              <Font name="Champagne &amp; Limousines" size="24.0" />
+                              <Font name="Champagne &amp; Limousines Bold" size="24.0" />
                            </font>
                            <VBox.margin>
                               <Insets />
@@ -215,7 +211,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </TextField>
-                              <TextField fx:id="zScoreValue" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="1.0">
+                              <TextField fx:id="zScoreValue" alignment="CENTER" disable="true" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="1.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
@@ -230,24 +226,21 @@
                         <Insets top="25.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0">
                            <children>
-                              <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Random seed" wrappingWidth="160.0">
+                              <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Random seed" wrappingWidth="160.0">
                                  <font>
-                                    <Font name="Champagne &amp; Limousines" size="28.0" />
+                                    <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="epochCount1" alignment="CENTER" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
+                              <TextField fx:id="epochCount1" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
                               </TextField>
                            </children>
-                           <padding>
-                              <Insets top="40.0" />
-                           </padding>
                         </HBox>
                      </children>
                   </VBox>

@@ -65,14 +65,12 @@ public class NeuralNetSettingsController implements Observer {
         AnchorPane.setRightAnchor(widgetSettings, (double)0);
         maxEpochsValue.setText(String.valueOf(maxEpochsSlider.getValue()));
         minOverallErrorValue.setText(String.valueOf(minOverallErrorSlider.getValue()));
-        learningRateValue.setText(String.valueOf(learningRateSlider.getValue()));
         momentumRateValue.setText(String.valueOf(momentumRateSlider.getValue()));
-        System.out.println("Lernrate: " + learningRateSlider.getValue() + "Momenturm Rate: " + (momentumRateSlider.getValue()) +"Max Epoch: " + (maxEpochsSlider.getValue()));
+        learningRateValue.setText(String.valueOf(learningRateSlider.getValue()));
     }
 
     @FXML
     private void toggleMenu() {
-        System.out.println("JO");
         if (!menuIsOpen) {
             Timeline openSettingsAnimation = new Timeline();
             openSettingsAnimation.getKeyFrames().addAll(
