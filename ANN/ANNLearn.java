@@ -10,6 +10,8 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
+import org.jfree.chart.fx.interaction.ChartMouseListenerFX;
+
 import java.util.*;
 
 public class ANNLearn implements Observer {
