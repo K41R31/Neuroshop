@@ -7,17 +7,8 @@ import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Data.TimeSeries;
 import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Neural.*;
-import javafx.application.Platform;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.fx.ChartViewer;
-import org.jfree.chart.fx.interaction.ChartMouseListenerFX;
-import org.jfree.chart.fx.overlay.CrosshairOverlayFX;
-import org.jfree.chart.plot.Crosshair;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
+
 
 import java.awt.*;
 import java.io.IOException;
@@ -205,6 +196,7 @@ public class Backpropagation extends DeltaRule {
                 /** Gewichte in Model schreiben */
                 annModel.setNewWeights(lastDeltaWeights);
                 annModel.setActualEpoch(epoch);
+                annModel.setActualOverallError(overallGeneralError);
                 k = 0;
                 currentRecord = 0;
                 listOfErrorsByEpoch.add(overallGeneralError);
