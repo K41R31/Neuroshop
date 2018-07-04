@@ -52,6 +52,8 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private ImageView openerIcon;
     @FXML
+    private ImageView toggleButton;
+    @FXML
     private ImageView startButton;
     @FXML
     private AnchorPane menuPane;
@@ -66,7 +68,6 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private VBox widgetSettings;
     @FXML
-    private StackPane toggleButton;
     private boolean menuIsOpen;
     private boolean epochPaneIsOpen;
     private Glow glow;
