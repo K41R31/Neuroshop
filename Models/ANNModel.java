@@ -20,6 +20,7 @@ public class ANNModel extends Observable {
 
     private File dataSetFile;
     private double[][] dataSet;
+    private double[] output;
     private int numberOfRecords;
     private int dataColumns;
     private int[] inputColumns;
@@ -236,6 +237,14 @@ public class ANNModel extends Observable {
     public double getOverallError() {
         System.out.println(overallError);
         return overallError;
+    }
+
+    public void setOutputFromTrain(double[] output) {
+        this.output = output;
+    }
+
+    public double[] getOutputForResults() {
+        return output;
     }
 
     public void train() {
