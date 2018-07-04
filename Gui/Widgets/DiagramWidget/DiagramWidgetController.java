@@ -44,7 +44,7 @@ public class DiagramWidgetController extends StackPane implements Observer {
         XYDataset dataset = this.dataset;
         JFreeChart chart = this.chart;
         this.chartViewer = new ChartViewer(chart);
-        this.chartViewer.addChartMouseListener();
+//        this.chartViewer.addChartMouseListener();
 
         CrosshairOverlayFX crosshairOverlay = new CrosshairOverlayFX();
         this.xCrosshair = new Crosshair(Double.NaN, Color.GRAY,

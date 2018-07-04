@@ -216,6 +216,7 @@ public class NeuralNetController extends StackPane implements Observer {
             removeNeuronButton.setOnMouseClicked(event -> {
                 if (((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this))).getChildren().size() > 1) {
                     ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this))).removeNeuron();
+                    updateNeuronsInModel();
                     drawSplines();
                 }
             });
@@ -244,7 +245,7 @@ public class NeuralNetController extends StackPane implements Observer {
 
     private void updateNeuronsInModel() {
         ArrayList<Integer> arrayList = new ArrayList<>();
-        for (int i = 0; i < hiddenLayer.getChildren().size()-1; i++) {
+        for (int i = 0; i < hiddenLayer.getChildren().size(); i++) {
             arrayList.add(((VBox)hiddenLayer.getChildren().get(i)).getChildren().size());
         }
         annModel.setNeuronsInHiddenLayer(arrayList);
@@ -283,6 +284,7 @@ public class NeuralNetController extends StackPane implements Observer {
             openMenuAnimation.setOnFinished(event1 -> {
                 hiddenLayerPane.getChildren().add(new Neuron("normal"));
                 menuPane.getChildren().add(new OptionsPane());
+                updateNeuronsInModel();
                 drawSplines();
             });
         }
@@ -303,6 +305,7 @@ public class NeuralNetController extends StackPane implements Observer {
         if (hiddenLayer.getChildren().size() > 0) {
             hiddenLayer.getChildren().remove(hiddenLayer.getChildren().size() - 1);
             menuPane.getChildren().remove(menuPane.getChildren().size() - 1);
+            updateNeuronsInModel();
             drawSplines();
         }
     }
