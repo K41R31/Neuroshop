@@ -29,7 +29,7 @@ public class ANNLearn implements Observer {
     private Thread trainThread;
 
     public void train() {
-        RandomNumberGenerator.setSeed(5);
+        RandomNumberGenerator.setSeed(System.currentTimeMillis());
 
         annModel.addActFnc();
         this.actFnc = annModel.getActFnc();
@@ -45,13 +45,14 @@ public class ANNLearn implements Observer {
         double[][] dataNormToTrain = Arrays.copyOfRange(dataNormalized, 0, (int) Math.ceil(dataNormalized.length * (dataPercentage)));
         double[][] dataNormToTest = Arrays.copyOfRange(dataNormalized, (int) Math.ceil(dataNormalized.length * (dataPercentage)) + 1, dataNormalized.length);
 
+        System.out.println("Gesamter Datensatz: " +Arrays.deepToString(dataNormalized));
         System.out.println("Datensatz zum Trainieren: " + Arrays.deepToString(dataNormToTrain));
         System.out.println("Datensatz zum Testen: " + Arrays.deepToString(dataNormToTest));
 
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, annModel.getLearnmode());
-
+        System.out.println(maxEpochs);
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
         backprop.setMaxEpochs(maxEpochs);
@@ -67,6 +68,7 @@ public class ANNLearn implements Observer {
         try {
             backprop.forward();
             backprop.train();
+
 
             neuralDataSetToTest.printInput();
             neuralDataSetToTrain.printInput();

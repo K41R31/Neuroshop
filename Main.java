@@ -32,7 +32,7 @@ public class Main extends Application {
         new ScreenSize();
         AnchorPane generalRoot = new AnchorPane();
         VBox contentRoot = new VBox();
-        contentRoot.setStyle("-fx-background-color: #2b2b2b");
+        contentRoot.setStyle("-fx-background-color: #2B2B2B");
 
         generalRoot.getChildren().add(contentRoot);
 

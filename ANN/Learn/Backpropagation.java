@@ -369,7 +369,8 @@ public class Backpropagation extends DeltaRule {
 
 
     @Override
-    public void applyNewWeights() {
+    public void applyNewWeights()
+    {
 
         int numberOfHiddenLayers = this.neuralNet.getNumberOfHiddenLayers();
         for (int l = 0; l <= numberOfHiddenLayers; l++) {
