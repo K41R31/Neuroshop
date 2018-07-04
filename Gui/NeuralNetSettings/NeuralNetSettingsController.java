@@ -30,6 +30,10 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private Text onlineMode;
     @FXML
+    private Text trainMode;
+    @FXML
+    private Text validateMode;
+    @FXML
     private Text actualEpoch;
     @FXML
     private Text actualOverallError;
