@@ -42,51 +42,6 @@ public class DiagramWidgetController implements Observer {
     private void initialize() {
     }
 
-    private void chart() {
-
-//        XYDataset dataset = this.dataset;
-//        JFreeChart chart = this.chart;
-//        this.chartViewer = new ChartViewer(chart);
-//        this.chartViewer.addChartMouseListener();
-//
-//        CrosshairOverlayFX crosshairOverlay = new CrosshairOverlayFX();
-//        this.xCrosshair = new Crosshair(Double.NaN, Color.GRAY,
-//                new BasicStroke(0f));
-//        this.xCrosshair.setStroke(new BasicStroke(1.5f,
-//                BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
-//                new float[]{2.0f, 2.0f}, 0));
-//        this.xCrosshair.setLabelVisible(true);
-//        this.yCrosshair = new Crosshair(Double.NaN, Color.GRAY,
-//                new BasicStroke(0f));
-//        this.yCrosshair.setStroke(new BasicStroke(1.5f,
-//                BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
-//                new float[] {2.0f, 2.0f}, 0));
-//        this.yCrosshair.setLabelVisible(true);
-//        crosshairOverlay.addDomainCrosshair(xCrosshair);
-//        crosshairOverlay.addRangeCrosshair(yCrosshair);
-//
-//        Platform.runLater(() -> {
-//            this.chartViewer.getCanvas().addOverlay(crosshairOverlay);
-//        });
-//
-//    }
-//
-//    private void updateErrorData() {
-//        double[][] ed = annModel.getErrorData();
-//        XYSeries trainingErrors = new XYSeries("Training Error");
-//        XYSeries testingErrors = new XYSeries("Testing Error");
-//        for (int i = 0;i < ed.length; i++) {
-//            trainingErrors.add(i, ed[i][1]);
-//            testingErrors.add(i, ed[i][2]);
-//        }
-//        dataset.addSeries(trainingErrors);
-//        dataset.addSeries(testingErrors);
-//    }
-//
-//    private JFreeChart createXYLineChart (XYDataset dataset) {
-//        JFreeChart chart = ChartFactory.createXYLineChart("DerNameKommtNoch", "X", "Y", dataset, PlotOrientation.HORIZONTAL, true, true, false);
-//        return chart;
-    }
 
 
     @Override
