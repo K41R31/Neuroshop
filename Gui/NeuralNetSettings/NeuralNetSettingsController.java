@@ -66,7 +66,6 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private VBox widgetSettings;
     @FXML
-    private StackPane toggleButton;
     private boolean menuIsOpen;
     private boolean epochPaneIsOpen;
     private Glow glow;
@@ -156,8 +155,6 @@ public class NeuralNetSettingsController implements Observer {
         }
     }
 
-
-
     private void glowEffect(Text node) {
 
         EventHandler<MouseEvent> onMouseEntered =
@@ -208,6 +205,16 @@ public class NeuralNetSettingsController implements Observer {
                     annModel.setLearnmode("onlineMode");
                 }
         }
+    }
+
+    @FXML
+    private void openerPaneEntered() {
+        openerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIconHover.png"));
+
+    }
+    @FXML
+    private void openerPaneExited() {
+        openerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIcon.png"));
     }
 
     @FXML
@@ -269,7 +276,7 @@ public class NeuralNetSettingsController implements Observer {
     public void update(Observable o, Object arg) {
         switch ((String)arg) {
             case "activateMenus":
-                toggleButton.setDisable(false);
+                openerIcon.setDisable(false);
                 break;
             case "menusToFront":
                 widgetSettings.toFront();
