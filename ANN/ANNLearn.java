@@ -80,7 +80,6 @@ public class ANNLearn implements Observer {
             System.out.println("Epochen:" + String.valueOf(backprop.getEpoch()));
 
             backprop.showErrorEvolution();
-
             neuralDataSetToTrain.printTargetOutput();
             neuralDataSetToTest.printTargetOutput();
 
