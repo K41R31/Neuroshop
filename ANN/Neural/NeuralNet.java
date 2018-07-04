@@ -6,6 +6,8 @@ import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Init.UniformInitialization;
 import Neuroshop.ANN.Init.WeightInitialization;
 import Neuroshop.ANN.Math.IActivationFunction;
+import Neuroshop.Models.ANNModel;
+
 import java.util.ArrayList;
 
 /**
@@ -67,6 +69,8 @@ public class NeuralNet {
     
     
     protected int[] indexesWeightPerLayer;
+
+    private ANNModel annModel;
     
     
     public enum NeuralNetMode { BUILD, TRAINING, RUN };
@@ -277,6 +281,7 @@ public class NeuralNet {
         for(int i=0;i<numberOfOutputs;i++){
             _outputs[i]=output.get(i);
         }
+        annModel.setOutputFromTrain(_outputs);
         return _outputs;
     }
     
@@ -414,6 +419,10 @@ public class NeuralNet {
     
     public NeuralNetMode getNeuralNetMode(){
         return this.neuralNetMode;
+    }
+
+    public void initModel(ANNModel annModel) {
+        this.annModel = annModel;
     }
     
 }
