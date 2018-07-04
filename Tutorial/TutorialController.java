@@ -1,12 +1,18 @@
 package Neuroshop.Tutorial;
 
+import Neuroshop.Models.TutorialModel;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 public class TutorialController {
 
     @FXML
-    private AnchorPane tutorialStart,dataPrep,importData,dataSettings,dragNeural,neuralSettings,dropDiagram,changeValues,startNetwork;
+    private AnchorPane tutorialStart, dataPrep, importData, dataSettings, dragNeural, neuralSettings, dropDiagram, changeValues, startNetwork;
+    @FXML
+    private StackPane importPane;
+
+    private TutorialModel tutorialModel;
 
     @FXML
     private void skipTutorial() {
@@ -18,13 +24,15 @@ public class TutorialController {
     }
 
     @FXML
-    private void startTutorial(){
-        dataPrep.setOpacity(1);
+    private void startTutorial() {
         dataPrep.setVisible(true);
+        dataPrep.setDisable(false);
+        tutorialStart.setVisible(false);
+        tutorialStart.setDisable(true);
     }
 
     @FXML
-    private void step1(){
+    private void step1() {
         dataPrep.setOpacity(0);
         dataPrep.setVisible(false);
         importData.setOpacity(1);
@@ -32,7 +40,7 @@ public class TutorialController {
     }
 
     @FXML
-    private void step2(){
+    private void step2() {
         importData.setOpacity(0);
         importData.setVisible(false);
         dataSettings.setOpacity(1);
@@ -40,7 +48,7 @@ public class TutorialController {
     }
 
     @FXML
-    private void step3(){
+    private void step3() {
         dataSettings.setOpacity(0);
         dataSettings.setVisible(false);
         dragNeural.setOpacity(1);
@@ -48,7 +56,7 @@ public class TutorialController {
     }
 
     @FXML
-    private void step4(){
+    private void step4() {
         dragNeural.setOpacity(0);
         dragNeural.setVisible(false);
         neuralSettings.setOpacity(1);
@@ -64,7 +72,7 @@ public class TutorialController {
     }
 
     @FXML
-    private void step6(){
+    private void step6() {
         dropDiagram.setOpacity(0);
         dropDiagram.setVisible(false);
         changeValues.setOpacity(1);
@@ -72,7 +80,7 @@ public class TutorialController {
     }
 
     @FXML
-    private void step7(){
+    private void step7() {
         changeValues.setOpacity(0);
         changeValues.setVisible(false);
         startNetwork.setOpacity(1);
@@ -80,8 +88,12 @@ public class TutorialController {
     }
 
     @FXML
-    private void stepFinal(){
+    private void stepFinal() {
         startNetwork.setOpacity(0);
         startNetwork.setVisible(false);
+    }
+
+    public void initModel(TutorialModel tutorialModel) {
+        this.tutorialModel = tutorialModel;
     }
 }

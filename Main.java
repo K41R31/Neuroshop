@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -29,20 +30,23 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
         new ScreenSize();
-        VBox root = new VBox();
-        root.setStyle("-fx-background-color: #2b2b2b");
+        AnchorPane generalRoot = new AnchorPane();
+        VBox contentRoot = new VBox();
+        contentRoot.setStyle("-fx-background-color: #2b2b2b");
+
+        generalRoot.getChildren().add(contentRoot);
 
         //Init Gui------------------------------------------------------------------------------------------------------
         FXMLLoader borderLoader = new FXMLLoader(getClass().getResource("Gui/Border/BorderView.fxml"));
         AnchorPane ap = borderLoader.load();
         ap.getStylesheets().add("Neuroshop/Gui/Border/borderStyle.css");
-        root.getChildren().add(ap);
+        contentRoot.getChildren().add(ap);
 
         FXMLLoader whiteboardLoader = new FXMLLoader(getClass().getResource("Gui/Whiteboard/WhiteboardView.fxml"));
         AnchorPane whiteboard = whiteboardLoader.load();
         whiteboard.setPrefWidth(ScreenSize.width);
         whiteboard.setPrefHeight(ScreenSize.height-70); //-70 -> 30px von Border + 40px von Taskleiste
-        root.getChildren().add(whiteboard);
+        contentRoot.getChildren().add(whiteboard);
 
         FXMLLoader optionsMenuLoader = new FXMLLoader(getClass().getResource("Gui/Options/OptionsMenuView.fxml"));
         whiteboard.getChildren().add(optionsMenuLoader.load());
@@ -55,26 +59,30 @@ public class Main extends Application {
         neuralNetSettings.getStylesheets().add("Neuroshop/Gui/NeuralNetSettings/NeuralNetSettingsStyle.css");
         whiteboard.getChildren().add(neuralNetSettings);
 
-//        FXMLLoader tutorialLoader = new FXMLLoader(getClass().getResource("Tutorial/TutorialView.fxml"));
-//        AnchorPane tutorialRoot = tutorialLoader.load();
-//        whiteboard.getChildren().add(tutorialRoot);
+        FXMLLoader tutorialLoader = new FXMLLoader(getClass().getResource("Tutorial/TutorialView.fxml"));
+        StackPane tutorialPane = tutorialLoader.load();
+        tutorialPane.getStylesheets().add("Neuroshop/Tutorial/TutorialStyle.css");
+        generalRoot.getChildren().add(tutorialPane);
+
+        tutorialPane.setPrefWidth(ScreenSize.width);
+        tutorialPane.setPrefHeight(ScreenSize.height-70);
+        tutorialPane.setLayoutY(30);
 
         //Init Ann------------------------------------------------------------------------------------------------------
         ANNLearn annLearn = new ANNLearn();
-
-        //Init Tutorial-------------------------------------------------------------------------------------------------
-//        TutorialController tutorialController = new TutorialController();
 
         //Init Model----------------------------------------------------------------------------------------------------
         ANNModel annModel = new ANNModel();
         WidgetContainerModel widgetContainerModel = new WidgetContainerModel();
         OptionsModel optionsModel = new OptionsModel();
+        TutorialModel tutorialModel = new TutorialModel();
 
         NeuralNetSettingsController widgetSettingsController = neuralNetSettingsLoader.getController();
         WidgetMenuController widgetMenuController = widgetMenuLoader.getController();
         OptionsController optionsMenuController = optionsMenuLoader.getController();
         BorderController borderController = borderLoader.getController();
         WhiteboardController whiteboardController = whiteboardLoader.getController();
+        TutorialController tutorialController = tutorialLoader.getController();
 
         annLearn.initModel(annModel);
         whiteboardController.initModel(widgetContainerModel);
@@ -82,6 +90,7 @@ public class Main extends Application {
         borderController.initModel(optionsModel);
         optionsMenuController.initModel(optionsModel);
         widgetSettingsController.initModel(annModel);
+        tutorialController.initModel(tutorialModel);
 
         annModel.addObserver(annLearn);
         widgetContainerModel.addObserver(whiteboardController);
@@ -93,7 +102,7 @@ public class Main extends Application {
         new WidgetContainer(widgetContainerModel, annModel);
 
         //Init Scene----------------------------------------------------------------------------------------------------
-        Scene scene = new Scene(root, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);
+        Scene scene = new Scene(generalRoot, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(scene);
         primaryStage.show();
