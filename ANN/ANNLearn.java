@@ -25,6 +25,7 @@ public class ANNLearn implements Observer {
 //  private IActivationFunction outputActFnc; TODO: Festgelegt auf LINEAR(1.0)
     private IActivationFunction[] actFnc;
     private DataNormalization dataNormType;
+    private Thread trainThread;
 
     public void train() {
         RandomNumberGenerator.setSeed(5);
@@ -130,8 +131,11 @@ public class ANNLearn implements Observer {
                 this.learningRate = annModel.getLearningRate();
                 break;
             case "train":
-                Thread thread = new Thread(this::train);
-                thread.start();
+                trainThread = new Thread(this::train);
+                trainThread.start();
+                break;
+            case "stop":
+                trainThread.stop();
         }
     }
 
