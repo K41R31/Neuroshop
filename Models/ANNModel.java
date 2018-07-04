@@ -104,16 +104,20 @@ public class ANNModel extends Observable {
     }
 
     public void setLearnmode(String mode) {
+<<<<<<< HEAD
         switch (mode) {
             case "BATCH":
                 this.learnMode = LearningAlgorithm.LearningMode.BATCH;
                 System.out.println("Learnmode aus Model: " + learnMode);
+=======
+        switch(mode) {
+            case "batchMode":
+                this.learnMode = LearningAlgorithm.LearningMode.BATCH;
+>>>>>>> 40bb88a66762a740cee6ea5d04ff0f1f5b704dac
                 break;
-            case "ONLINE":
+            case "onlineMode":
                 this.learnMode = LearningAlgorithm.LearningMode.ONLINE;
         }
-        setChanged();
-        notifyObservers("setLearnmode");
     }
 
     public double getDataPercentage() {
@@ -127,13 +131,12 @@ public class ANNModel extends Observable {
     }
 
     public int[] getNeuronsInHiddenLayer() {
+        System.out.println(neuronsInHiddenLayer.get(0));
         return neuronsInHiddenLayer.stream().mapToInt(i -> i).toArray();
     }
 
     public void setNeuronsInHiddenLayer(ArrayList<Integer> neuronsInHiddenLayer) {
         this.neuronsInHiddenLayer = neuronsInHiddenLayer;
-        setChanged();
-        notifyObservers("setNeuronsInHiddenLayer");
     }
 
     public IActivationFunction getOutputActFnc() {

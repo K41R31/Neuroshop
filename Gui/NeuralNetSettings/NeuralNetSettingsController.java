@@ -16,6 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -60,14 +62,12 @@ public class NeuralNetSettingsController implements Observer {
     private StackPane toggleButton;
     private boolean menuIsOpen;
     private boolean epochPaneIsOpen;
-    private String learnmethod;
     private Glow glow;
 
     @FXML
     private void initialize() {
         epochPaneIsOpen = false;
         menuIsOpen = false;
-        learnmethod = "batchMode";
         glow = new Glow(1);
         AnchorPane.setLeftAnchor(widgetSettings, (double)0);
         AnchorPane.setBottomAnchor(widgetSettings, (double)0);
@@ -175,17 +175,17 @@ public class NeuralNetSettingsController implements Observer {
     private void switchLearnmethod(String mode) {
         switch (mode) {
             case "batchMode":
-                if (learnmethod.equals("onlineMode")) {
+                if (onlineMode.getFill().toString().contains("35baff")) {
                     batchMode.setFill(Color.web("#35baff"));
                     onlineMode.setFill(Color.web("#c6c6c6"));
-                    learnmethod = "batchMode";
+                    annModel.setLearnmode("batchMode");
                 }
                 break;
             case "onlineMode":
-                if (learnmethod.equals("batchMode")) {
+                if (batchMode.getFill().toString().contains("35baff")) {
                     onlineMode.setFill(Color.web("#35baff"));
                     batchMode.setFill(Color.web("#c6c6c6"));
-                    learnmethod = "onlineMode";
+                    annModel.setLearnmode("onlineMode");
                 }
         }
     }
@@ -246,5 +246,6 @@ public class NeuralNetSettingsController implements Observer {
 
     public void initModel(ANNModel annModel) {
         this.annModel = annModel;
+        annModel.setLearnmode("batchMode");
     }
 }

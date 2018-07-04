@@ -18,14 +18,12 @@ public class ANNLearn implements Observer {
     private double dataPercentage;
     private int[] inputColumns;
     private int[] outputColumns;
-    private int[] neuronsInHiddenLayer;
     private int maxEpochs;
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
 //  private IActivationFunction outputActFnc; TODO: Festgelegt auf LINEAR(1.0)
     private IActivationFunction[] actFnc;
-    private LearningAlgorithm.LearningMode learnMode;
     private DataNormalization dataNormType;
 
     public void train() {
@@ -37,7 +35,7 @@ public class ANNLearn implements Observer {
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
         System.out.println("Sigmoid: "+String.valueOf(actFnc)+"Anzahl Sigmoide: "+actFnc.length);
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, neuronsInHiddenLayer, actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
         System.out.println(nnWidget.isBiasActive());
 
@@ -58,7 +56,11 @@ public class ANNLearn implements Observer {
 
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
+<<<<<<< HEAD
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
+=======
+        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, annModel.getLearnmode());
+>>>>>>> 40bb88a66762a740cee6ea5d04ff0f1f5b704dac
 
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
@@ -70,6 +72,10 @@ public class ANNLearn implements Observer {
         backprop.setTestingDataSet(neuralDataSetToTest);
         backprop.printTraining = true;
         backprop.showPlotError = true;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 40bb88a66762a740cee6ea5d04ff0f1f5b704dac
 
         try {
             backprop.forward();
@@ -124,14 +130,8 @@ public class ANNLearn implements Observer {
             case "setOutputColumns":
                 this.outputColumns = annModel.getOutputColums();
                 break;
-            case "setNeuronsInHiddenLayer":
-                this.neuronsInHiddenLayer = annModel.getNeuronsInHiddenLayer();
-                break;
             case "setDataPercentage":
                 this.dataPercentage = annModel.getDataPercentage();
-                break;
-            case "setLearnmode":
-                this.learnMode = annModel.getLearnmode();
                 break;
             case "setMomentumRate":
                 this.momentumRate = annModel.getMomentumRate();
