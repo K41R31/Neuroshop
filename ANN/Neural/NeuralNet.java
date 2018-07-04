@@ -281,7 +281,6 @@ public class NeuralNet {
         for(int i=0;i<numberOfOutputs;i++){
             _outputs[i]=output.get(i);
         }
-        annModel.setOutputFromTrain(_outputs);
         return _outputs;
     }
     
