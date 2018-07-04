@@ -196,6 +196,7 @@ public class Backpropagation extends DeltaRule {
                 /** Gewichte in Model schreiben */
                 annModel.setNewWeights(lastDeltaWeights);
                 annModel.setActualEpoch(epoch);
+                annModel.setActualOverallError(overallGeneralError);
                 k = 0;
                 currentRecord = 0;
                 listOfErrorsByEpoch.add(overallGeneralError);

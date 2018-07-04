@@ -60,7 +60,7 @@
                               <Font name="Champagne &amp; Limousines" size="30.0" />
                            </font>
                         </Text>
-                        <Text fx:id="actualEpoch1" fill="#cdcdcd" fontSmoothingType="LCD" layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="100.0">
+                        <Text fx:id="actualOverallError" fill="#cdcdcd" fontSmoothingType="LCD" layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="100.0">
                            <font>
                               <Font name="Champagne &amp; Limousines" size="30.0" />
                            </font>
