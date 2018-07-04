@@ -88,6 +88,7 @@ public class DataManagerWidgetController implements Observer {
         File datasetFile = fileChooser.showOpenDialog(Main.primaryStage);
 
         if (datasetFile != null) {
+            tutorialModel.step2();
             annModel.setDatasetFile(datasetFile);
             lastOpenedFiles.setLastOpened(datasetFile);
             importPane.setOpacity(0);
@@ -101,6 +102,7 @@ public class DataManagerWidgetController implements Observer {
             getStyleClass().add("lastOpenedText");
             setWrappingWidth(500);
             setOnMouseClicked(event -> {
+                tutorialModel.step2();
                 annModel.setDatasetFile(file);
                 importPane.setOpacity(0);
                 importPane.setDisable(true);
@@ -276,6 +278,7 @@ public class DataManagerWidgetController implements Observer {
             errorInfo.setVisible(true);
             return;
         }
+        tutorialModel.step3();
         errorInfo.setVisible(false);
         annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
         annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
@@ -297,7 +300,6 @@ public class DataManagerWidgetController implements Observer {
 
     @FXML
     private void showLastOpened() {
-        tutorialModel.showLastOpened();
         lastOpenedPane.setOpacity(1);
         lastOpenedPane.setDisable(false);
         for (int i = 0; i < lastOpenedFiles.getLastOpened().size(); i++) {

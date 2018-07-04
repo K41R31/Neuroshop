@@ -4,10 +4,14 @@ import java.util.Observable;
 
 public class TutorialModel extends Observable {
 
-    private boolean neuralDrag, diagramDrag;
+    private boolean neuralDrag, diagramDrag, tutorialIsRunning;
     private Object neuralNet, diagram;
     private boolean customLayers, start;
     private double valueOne, valueTwo, valueThree, valueFour;
+
+    public TutorialModel() {
+        tutorialIsRunning = false;
+    }
 
     public boolean getNeuralDrag() {return neuralDrag;}
 
@@ -68,13 +72,36 @@ public class TutorialModel extends Observable {
         notifyObservers("initDataManager");
     }
 
+    public void setTutorialIsRunning(boolean tutorialIsRunning) {
+        this.tutorialIsRunning = tutorialIsRunning;
+    }
+
+    public boolean getTutorialIsRunning() {
+        return tutorialIsRunning;
+    }
+
     public void showLastOpened() {
         setChanged();
         notifyObservers("showLastOpened");
     }
 
-    public void showDataSettings() {
+    public void step2() {
         setChanged();
-        notifyObservers("");
+        notifyObservers("step2");
+    }
+
+    public void step3() {
+        setChanged();
+        notifyObservers("step3");
+    }
+
+    public void step4() {
+        setChanged();
+        notifyObservers("step4");
+    }
+
+    public void step5() {
+        setChanged();
+        notifyObservers("step5");
     }
 }

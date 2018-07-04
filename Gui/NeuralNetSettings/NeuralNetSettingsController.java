@@ -1,6 +1,7 @@
 package Neuroshop.Gui.NeuralNetSettings;
 
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.TutorialModel;
 import javafx.animation.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ import java.util.Observer;
 
 public class NeuralNetSettingsController implements Observer {
 
+    private TutorialModel tutorialModel;
     private ANNModel annModel;
     @FXML
     private Text batchMode;
@@ -80,6 +82,10 @@ public class NeuralNetSettingsController implements Observer {
 
     @FXML
     private void toggleMenu() {
+        if (tutorialModel.getTutorialIsRunning()) {
+            tutorialModel.step5();
+            tutorialModel.setTutorialIsRunning(false);
+        }
         if (!menuIsOpen) {
             Timeline openSettingsAnimation = new Timeline();
             openSettingsAnimation.getKeyFrames().addAll(
@@ -242,8 +248,9 @@ public class NeuralNetSettingsController implements Observer {
         }
     }
 
-    public void initModel(ANNModel annModel) {
+    public void initModel(ANNModel annModel, TutorialModel tutorialModel) {
         this.annModel = annModel;
+        this.tutorialModel = tutorialModel;
         annModel.setLearnmode("batchMode");
     }
 }

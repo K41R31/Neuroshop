@@ -29,7 +29,7 @@ public class NeuralNetController extends StackPane implements Observer {
     private ANNModel annModel;
     private Backpropagation bP;
     private WidgetContainerModel widgetContainerModel;
-    private TutorialModel TutorialModel;
+    private TutorialModel tutorialModel;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
 
     @FXML
@@ -317,13 +317,14 @@ public class NeuralNetController extends StackPane implements Observer {
         switch ((String)arg) {
             case "initNeuralWidget":
                 initNeuralWidget();
+                tutorialModel.step4();
         }
     }
 
     public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel, TutorialModel tutorialModel) {
         this.annModel = annModel;
         this.widgetContainerModel = widgetContainerModel;
-        this.TutorialModel = TutorialModel;
+        this.tutorialModel = tutorialModel;
         new MakeDraggable(widgetContainerModel, rootPane);
     }
 }

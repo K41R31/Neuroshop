@@ -89,7 +89,7 @@ public class Main extends Application {
         widgetMenuController.initModel(widgetContainerModel);
         borderController.initModel(optionsModel);
         optionsMenuController.initModel(optionsModel);
-        NeuralNetSettingsController.initModel(annModel);
+        NeuralNetSettingsController.initModel(annModel, tutorialModel);
         tutorialController.initModel(tutorialModel);
 
         annModel.addObserver(annLearn);

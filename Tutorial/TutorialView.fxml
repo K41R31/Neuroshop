@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
@@ -46,55 +48,64 @@
       </AnchorPane>
       <AnchorPane fx:id="neuralSettings" visible="false">
          <children>
-            <Text fill="#00d4ff" layoutX="450.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First, add a new Hidden Layer with the symbol representing a small circle with a plus. After this try deleting this newly added layer. This is how it works. Then try to change the weightings of this layer. After this proceed to the next step by saving your choices." wrappingWidth="1056.7265625">
+            <Text fill="#d0d0d0" layoutX="236.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jetzt kannst du das Netz nach deinen Wünschen anpassen. Die schon vorhandenen Neuronen sind deine vorher ausgewählten input und output Layer" wrappingWidth="868.0">
                <font>
-                  <Font name="Champagne &amp; Limousines" size="36.0" />
+                  <Font name="Pizza by Alfredo" size="30.0" />
                </font>
             </Text>
+            <Text fill="#d0d0d0" layoutX="834.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dannach kannst du hier finale Einstellungen am Netz vornehmen" wrappingWidth="363.4453183505684">
+               <font>
+                  <Font name="Pizza by Alfredo" size="30.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="136.0" fitWidth="53.0" layoutX="968.0" layoutY="796.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/Assets/tutStep4Arrows.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="dragNeural" visible="false">
          <children>
-            <Line endX="100.0" layoutX="450.0" layoutY="540.0" startX="-100.0" stroke="#00ff2b" strokeWidth="3.0" />
-            <Text fill="#00ff2a" layoutX="550.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use this bar to get a Neural Net and place it anywhere you want" wrappingWidth="613.724609375">
+            <Text fill="#d0d0d0" layoutX="349.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ziehe das Neural Net Widget per Drag &amp; Drop auf das Fenster um es zu erstellen." wrappingWidth="476.6396484375">
                <font>
-                  <Font name="Champagne &amp; Limousines" size="36.0" />
+                  <Font name="Pizza by Alfredo" size="30.0" />
                </font>
             </Text>
-            <Line endX="100.0" layoutX="420.0" layoutY="400.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
-            <Text fill="#00d4ff" layoutX="350.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drag &amp; Drop">
-               <font>
-                  <Font name="Champagne &amp; Limousines" size="36.0" />
-               </font>
-            </Text>
+            <ImageView fitHeight="249.0" fitWidth="482.0" layoutX="79.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/Assets/tutStep3Arrows.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="dataSettings" visible="false">
          <children>
-            <Line endX="100.0" layoutX="300.0" layoutY="150.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
-            <Line endX="100.0" layoutX="500.0" layoutY="150.0" rotate="80.0" scaleX="0.7" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
-            <Line endX="100.0" layoutX="500.0" layoutY="500.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
-            <Text fill="#00d4ff" layoutX="70.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set this column as input">
+            <Text fill="#d0d0d0" layoutX="662.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eine gute Einstellung für diesen Datensatz ist:">
                <font>
-                  <Font name="Champagne &amp; Limousines" size="36.0" />
+                  <Font name="Pizza by Alfredo" size="30.0" />
                </font>
             </Text>
-            <Text fill="#00d4ff" layoutX="425.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set this column as output">
+            <Text fill="#d0d0d0" layoutX="830.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="input">
                <font>
-                  <Font name="Champagne &amp; Limousines" size="36.0" />
+                  <Font name="Pizza by Alfredo" size="30.0" />
                </font>
             </Text>
-            <Text fx:id="step3" fill="#00d4ff" layoutX="300.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apply these settings">
+            <Text fill="#d0d0d0" layoutX="1036.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="output">
                <font>
-                  <Font name="Champagne &amp; Limousines" size="36.0" />
+                  <Font name="Pizza by Alfredo" size="30.0" />
                </font>
             </Text>
+            <ImageView fitHeight="106.0" fitWidth="611.0" layoutX="662.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/Assets/tutStep2Arrows.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="importData" disable="true" visible="false">
+      <AnchorPane fx:id="importData" visible="false">
          <children>
-            <Line endX="100.0" fill="WHITE" layoutX="550.0" layoutY="400.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
-            <Text fx:id="step2" fill="#d0d0d0" layoutX="110.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="At first you need to import a dataset. You can ei" wrappingWidth="377.0">
+            <Text fx:id="step2" fill="#d0d0d0" layoutX="100.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zuerst müssen Sie einen Datensatz importieren. Wäreln Sie dazu unter &quot;Last Opened&quot; den Datensatz &quot;New_Data.CSV&quot; aus." wrappingWidth="398.0">
                <font>
                   <Font name="Pizza by Alfredo" size="36.0" />
                </font>
@@ -108,12 +119,12 @@
                   <Font name="Champagne &amp; Limousines" size="64.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="75.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Important: For this program to work you need to format your data. It should be a .csv oder .txt type of data. Furthermore they need to be in a String (one cell per String in Excel) and values should be seperated by commas. Your class needs to be defined as +/-1 or 0. For this tutorial the data is already chosen and prepared." wrappingWidth="764.130859375">
+            <Text fill="WHITE" layoutX="75.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wichtig: Damit dieses Programm funktioniert, müssen Sie Ihre Daten formatieren. Es sollte ein CSV- oder TXT-Datentyp sein. Außerdem müssen sie in einem String sein (eine Zeile pro String in Excel) und Werte sollten durch Kommas getrennt sein. Ihre Klasse muss als +/- 1 oder 0 definiert werden. Für dieses Tutorial sind die Daten bereits ausgewählt und vorbereitet." wrappingWidth="764.130859375">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
             </Text>
-            <Button layoutX="350.0" layoutY="500.0" mnemonicParsing="false" onAction="#step1" text="I Understand">
+            <Button layoutX="350.0" layoutY="500.0" mnemonicParsing="false" onAction="#step1" text="Ich verstehe">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
@@ -127,17 +138,17 @@
                   <Font name="Champagne &amp; Limousines" size="64.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="131.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this is a short introduction into neural networks, and how to create and use them with Neuroshop" wrappingWidth="605.138671875">
+            <Text fill="WHITE" layoutX="131.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dies ist eine kurze Einführng in Neurale Netze. Du wirst lernen, wie man sie mit Neuroshop erstellen und bearbeiten kann." wrappingWidth="605.138671875">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
             </Text>
-            <Button layoutX="210.0" layoutY="476.0" mnemonicParsing="false" onAction="#startTutorial" text="Start" textAlignment="CENTER">
+            <Button layoutX="210.0" layoutY="476.0" mnemonicParsing="false" onAction="#startTutorial" text="Starten" textAlignment="CENTER">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
             </Button>
-            <Button layoutX="586.0" layoutY="473.0" mnemonicParsing="false" onAction="#skipTutorial" text="Skip">
+            <Button layoutX="586.0" layoutY="473.0" mnemonicParsing="false" onAction="#skipTutorial" text="Überspringen">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
