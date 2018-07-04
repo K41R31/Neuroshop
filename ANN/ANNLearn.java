@@ -34,23 +34,15 @@ public class ANNLearn implements Observer {
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
-        System.out.println("Sigmoid: "+String.valueOf(actFnc)+"Anzahl Sigmoide: "+actFnc.length);
         NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
-        System.out.println(nnWidget.isBiasActive());
 
         double[][] dSet = annModel.getDataSet();
-
-        System.out.print("Geladener Datensatz, unverändert: " + Arrays.deepToString(dSet));
-
         double[][] dataNormalized = new double[dSet.length][dSet[0].length];
         dataNormalized = dataNormType.normalize(dSet);
-
-        System.out.println("Datensatz normalisiert: " + Arrays.deepToString(dataNormalized));
-        System.out.println("Anzahl der Einträge im Datensatz: " + dataNormalized.length);
-
         double[][] dataNormToTrain = Arrays.copyOfRange(dataNormalized, 0, (int) Math.ceil(dataNormalized.length * (dataPercentage)));
         double[][] dataNormToTest = Arrays.copyOfRange(dataNormalized, (int) Math.ceil(dataNormalized.length * (dataPercentage)) + 1, dataNormalized.length);
+
         System.out.println("Datensatz zum Trainieren: " + Arrays.deepToString(dataNormToTrain));
         System.out.println("Datensatz zum Testen: " + Arrays.deepToString(dataNormToTest));
 
@@ -68,6 +60,7 @@ public class ANNLearn implements Observer {
         backprop.setTestingDataSet(neuralDataSetToTest);
         backprop.printTraining = true;
         backprop.showPlotError = true;
+
 
         try {
             backprop.forward();
