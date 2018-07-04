@@ -11,15 +11,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
 import javafx.util.Duration;
 
+import javax.xml.bind.annotation.XmlAnyAttribute;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -32,35 +31,47 @@ public class NeuralNetController extends StackPane implements Observer {
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
 
     @FXML
+    private StackPane hdnLayerControl;
+    @FXML
+    private ImageView closerIcon;
+    @FXML
+    private ImageView addLayerButton;
+    @FXML
+    private ImageView removeLayerButton;
+    @FXML
+    private HBox bodyPane;
+    @FXML
+    private HBox menuPane;
+    @FXML
     private AnchorPane splinesPane;
     @FXML
     private StackPane rootPane;
-    @FXML
-    private HBox vBoxContainer;
     @FXML
     private VBox inputLayer;
     @FXML
     private HBox hiddenLayer;
     @FXML
-    private HBox menuPane;
-    @FXML
     private VBox outputLayer;
     private double splineTangent = 50; //TODO um Kurvität von Splines zu ändern
     private double splineWidth = 1;
+    private boolean menuIsOpen = false;
+    private boolean menuIsBusy = false;
+    private boolean initializedAlready = false;
 
 
     private void initNeuralWidget() {
-        if (hiddenLayer.getChildren().size() == 0) {
+        if (!initializedAlready) {
             for (int i = 0; i < annModel.getInputColumns().length; i++) {
-                inputLayer.getChildren().add(new Neuron());
-                drawSplines();
+                inputLayer.getChildren().add(new Neuron("input"));
             }
             for (int i = 0; i < annModel.getOutputColums().length; i++) {
-                outputLayer.getChildren().add(new Neuron());
-                drawSplines();
+                outputLayer.getChildren().add(new Neuron("output"));
             }
-            hiddenLayer.getChildren().add(new HiddenLayer());
+            initializedAlready = true;
+            addLayerButton.setPickOnBounds(true);
+            removeLayerButton.setPickOnBounds(true);
         }
+        drawSplines();
     }
 
     private void drawSplines() {
@@ -73,10 +84,10 @@ public class NeuralNetController extends StackPane implements Observer {
                         Circle endCircle, startCircle;
                         double startX, startY, endX, endY, controlX1, controlX2;
                         Bounds startPaneBounds, endPaneBounds, startCircleBounds, endCircleBounds;
-                        for (int c = 0; c < hiddenLayer.getChildren().size(); c++) {
+                        for (int c = 0; c < hiddenLayer.getChildren().size()+1; c++) {
                             if (c == 0) startPane = inputLayer;
                             else startPane = (VBox)hiddenLayer.getChildren().get(c-1);
-                            if (c < hiddenLayer.getChildren().size()-1) endPane = (VBox)hiddenLayer.getChildren().get(c);
+                            if (c < hiddenLayer.getChildren().size()) endPane = (VBox)hiddenLayer.getChildren().get(c);
                             else endPane = outputLayer;
                             for (int x = 0; x < endPane.getChildren().size(); x++) { //2. Spalte 1. Neuron
                                 endCircle = (Circle)endPane.getChildren().get(x);
@@ -89,7 +100,7 @@ public class NeuralNetController extends StackPane implements Observer {
                                     if (c == 0) {
                                         startX = startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
                                         endX = endCircle.getParent().getParent().getBoundsInParent().getMinX() + endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
-                                    } else if (c < hiddenLayer.getChildren().size()-1) {
+                                    } else if (c < hiddenLayer.getChildren().size()) {
                                         startX = startCircle.getParent().getParent().getBoundsInParent().getMinX() + startPaneBounds.getMinX() + startCircleBounds.getMinX() + 20;
                                         endX = endCircle.getParent().getParent().getBoundsInParent().getMinX() + endPaneBounds.getMinX() + endCircleBounds.getMinX() + 20;
                                     } else {
@@ -116,9 +127,65 @@ public class NeuralNetController extends StackPane implements Observer {
     }
 
     private class Neuron extends Circle {
-        Neuron() {
-            setFill(Color.WHITE);
+        Neuron(String type) {
+            switch (type) {
+                case "input":
+                    setFill(new ImagePattern(new Image("Neuroshop/Ressources/Assets/inputLayerNeuron.png")));
+                    break;
+                case "output":
+                    setFill(new ImagePattern(new Image("Neuroshop/Ressources/Assets/outputLayerNeuron.png")));
+                    break;
+                case "normal":
+                    setFill(Color.WHITE);
+            }
             setRadius(20);
+        }
+    }
+
+    @FXML
+    private void toggleMenu() {
+        if (!menuIsOpen & !menuIsBusy) {
+            menuIsBusy = true;
+            Timeline openMenuAnimation = new Timeline();
+            openMenuAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(200), new KeyValue(bodyPane.prefHeightProperty(), 100, Interpolator.EASE_BOTH),
+                            new KeyValue(closerIcon.scaleYProperty(), 1, Interpolator.EASE_BOTH))
+            );
+            Timeline openHdnLayerControlAnimation = new Timeline();
+            openHdnLayerControlAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(100), new KeyValue(hdnLayerControl.translateYProperty(), 0, Interpolator.EASE_BOTH),
+                            new KeyValue(hdnLayerControl.opacityProperty(), 1, Interpolator.EASE_BOTH))
+            );
+            openMenuAnimation.play();
+            openMenuAnimation.setOnFinished(event -> {
+                menuPane.setVisible(true);
+                openHdnLayerControlAnimation.play();
+                openHdnLayerControlAnimation.setOnFinished(event1 -> {
+                    menuIsOpen = true;
+                    menuIsBusy = false;
+                });
+            });
+        } else if (!menuIsBusy) {
+            menuIsBusy = true;
+            Timeline closeHdnLayerControlAnimation = new Timeline();
+            closeHdnLayerControlAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(100), new KeyValue(hdnLayerControl.translateYProperty(), 40, Interpolator.EASE_BOTH),
+                            new KeyValue(hdnLayerControl.opacityProperty(), 0, Interpolator.EASE_BOTH))
+            );
+            Timeline closeMenuAnimation = new Timeline();
+            closeMenuAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(200), new KeyValue(bodyPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH),
+                            new KeyValue(closerIcon.scaleYProperty(), -1, Interpolator.EASE_BOTH))
+            );
+            menuPane.setVisible(false);
+            closeHdnLayerControlAnimation.play();
+            closeHdnLayerControlAnimation.setOnFinished(event -> {
+                closeMenuAnimation.play();
+                closeMenuAnimation.setOnFinished(event1 -> {
+                    menuIsOpen = false;
+                    menuIsBusy = false;
+                });
+            });
         }
     }
 
@@ -129,33 +196,28 @@ public class NeuralNetController extends StackPane implements Observer {
             setPrefWidth(130);
             setPrefHeight(USE_COMPUTED_SIZE);
             setMaxWidth(USE_PREF_SIZE);
+            setSpacing(10);
             ImageView addNeuronButton = new ImageView(new Image("Neuroshop/Ressources/Assets/addNeuron.png"));
-            ImageView removeNeuronButton = new ImageView(new Image("Neuroshop/Ressources/Assets/deleteHdnLayer.png"));
+            ImageView removeNeuronButton = new ImageView(new Image("Neuroshop/Ressources/Assets/deleteNeuron.png"));
             addNeuronButton.setPickOnBounds(true);
             removeNeuronButton.setPickOnBounds(true);
 
-            addNeuronButton.setOnMouseEntered(event -> {
-                addNeuronButton.setImage(new Image("Neuroshop/Ressources/Assets/addNeuronHover.png"));
-            });
-            addNeuronButton.setOnMouseExited(event -> {
-                addNeuronButton.setImage(new Image("Neuroshop/Ressources/Assets/addNeuron.png"));
-            });
+            addNeuronButton.setOnMouseEntered(event -> addNeuronButton.setImage(new Image("Neuroshop/Ressources/Assets/addNeuronHover.png")));
+            addNeuronButton.setOnMouseExited(event -> addNeuronButton.setImage(new Image("Neuroshop/Ressources/Assets/addNeuron.png")));
 
-            removeNeuronButton.setOnMouseEntered(event -> {
-                removeNeuronButton.setImage(new Image("Neuroshop/Ressources/Assets/deleteHdnLayerHover.png"));
-            });
-            removeNeuronButton.setOnMouseExited(event -> {
-                removeNeuronButton.setImage(new Image("Neuroshop/Ressources/Assets/deleteHdnLayer.png"));
-            });
+            removeNeuronButton.setOnMouseEntered(event -> removeNeuronButton.setImage(new Image("Neuroshop/Ressources/Assets/deleteNeuronHover.png")));
+            removeNeuronButton.setOnMouseExited(event -> removeNeuronButton.setImage(new Image("Neuroshop/Ressources/Assets/deleteNeuron.png")));
 
             addNeuronButton.setOnMouseClicked(event -> {
-                ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this)-1)).addNeuron();
+                ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this))).addNeuron();
                 updateNeuronsInModel();
                 drawSplines();
             });
             removeNeuronButton.setOnMouseClicked(event -> {
-                ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this)-1)).removeNeuron();
-                drawSplines();
+                if (((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this))).getChildren().size() > 1) {
+                    ((HiddenLayer)hiddenLayer.getChildren().get(menuPane.getChildren().indexOf(this))).removeNeuron();
+                    drawSplines();
+                }
             });
             getChildren().add(addNeuronButton);
             getChildren().add(removeNeuronButton);
@@ -171,79 +233,9 @@ public class NeuralNetController extends StackPane implements Observer {
             setPadding(new Insets(30, 0, 30, 0));
             setSpacing(30);
             setAlignment(Pos.CENTER);
-            ImageView addLayerButton = new ImageView(new Image("Neuroshop/Ressources/Assets/crossButton.png"));
-            ImageView removeLayerButton = new ImageView(new Image("Neuroshop/Ressources/Assets/deleteHdnLayer.png"));
-            addLayerButton.setFitWidth(20);
-            addLayerButton.setFitHeight(20);
-            addLayerButton.setPickOnBounds(true);
-            addLayerButton.setOpacity(0.2);
-
-            addLayerButton.setOnMouseEntered(event -> {
-                Timeline openMenuAnimation = new Timeline();
-                openMenuAnimation.getKeyFrames().addAll(
-                        new KeyFrame(new Duration(50), new KeyValue(addLayerButton.opacityProperty(), 1, Interpolator.EASE_BOTH))
-                );
-                openMenuAnimation.play();
-            });
-            addLayerButton.setOnMouseExited(event -> {
-                Timeline openMenuAnimation = new Timeline();
-                openMenuAnimation.getKeyFrames().addAll(
-                        new KeyFrame(new Duration(50), new KeyValue(addLayerButton.opacityProperty(), 0.2, Interpolator.EASE_BOTH))
-                );
-                openMenuAnimation.play();
-            });
-            addLayerButton.setOnMouseClicked(event -> {
-                Timeline openMenuAnimation = new Timeline();
-                openMenuAnimation.getKeyFrames().addAll(
-                        new KeyFrame(new Duration(100), new KeyValue(this.prefWidthProperty(), 130, Interpolator.EASE_BOTH))
-                );
-                openMenuAnimation.play();
-                openMenuAnimation.setOnFinished(event1 -> {
-                    this.getChildren().add(new Neuron());
-                    drawSplines();
-                });
-                this.getChildren().clear();
-                hiddenLayer.getChildren().add(new HiddenLayer());
-                menuPane.getChildren().add(new OptionsPane());
-                drawSplines();
-            });
-
-            removeLayerButton.setFitWidth(20);
-            removeLayerButton.setFitHeight(20);
-            removeLayerButton.setPickOnBounds(true);
-            removeLayerButton.setOpacity(0.2);
-
-            removeLayerButton.setOnMouseEntered(event -> {
-                removeLayerButton.setImage(new Image("Neuroshop/Ressources/Assets/deleteHdnLayerHover.png"));
-                Timeline openMenuAnimation = new Timeline();
-                openMenuAnimation.getKeyFrames().addAll(
-                        new KeyFrame(new Duration(50), new KeyValue(removeLayerButton.opacityProperty(), 1, Interpolator.EASE_BOTH))
-                );
-                openMenuAnimation.play();
-            });
-            removeLayerButton.setOnMouseExited(event -> {
-                removeLayerButton.setImage(new Image("Neuroshop/Ressources/Assets/deleteHdnLayer.png"));
-                Timeline openMenuAnimation = new Timeline();
-                openMenuAnimation.getKeyFrames().addAll(
-                        new KeyFrame(new Duration(50), new KeyValue(removeLayerButton.opacityProperty(), 0.2, Interpolator.EASE_BOTH))
-                );
-                openMenuAnimation.play();
-            });
-            removeLayerButton.setOnMouseClicked(event -> {
-                drawSplines();
-                this.getChildren().clear();
-                hiddenLayer.getChildren().remove(hiddenLayer.getChildren().size()-2);
-                menuPane.getChildren().remove(hiddenLayer.getChildren().size()-1);
-                hiddenLayer.getChildren().add(new HiddenLayer());
-                menuPane.getChildren().add(new OptionsPane());
-                drawSplines();
-            });
-
-            getChildren().add(addLayerButton);
-            getChildren().add(removeLayerButton);
         }
         void addNeuron() {
-            getChildren().add(new Neuron());
+            getChildren().add(new Neuron("normal"));
         }
         void removeNeuron() {
             if (getChildren().size() > 0) getChildren().remove(0);
@@ -256,6 +248,63 @@ public class NeuralNetController extends StackPane implements Observer {
             arrayList.add(((VBox)hiddenLayer.getChildren().get(i)).getChildren().size());
         }
         annModel.setNeuronsInHiddenLayer(arrayList);
+    }
+
+    @FXML
+    private void closerPaneEntered() {
+        closerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIconHover.png"));
+    }
+
+    @FXML
+    private void closerPaneExited() {
+        closerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIcon.png"));
+    }
+
+    @FXML
+    private void addLayerButtonEntered() {
+        addLayerButton.setImage(new Image("Neuroshop/Ressources/Assets/addHdnLayerHover.png"));
+    }
+
+    @FXML
+    private void addLayerButtonExited() {
+        addLayerButton.setImage(new Image("Neuroshop/Ressources/Assets/addHdnLayer.png"));
+    }
+
+    @FXML
+    private void addLayer() {
+        if (hiddenLayer.getChildren().size() < 8) {
+            HiddenLayer hiddenLayerPane = new HiddenLayer();
+            hiddenLayer.getChildren().add(hiddenLayerPane);
+            Timeline openMenuAnimation = new Timeline();
+            openMenuAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(100), new KeyValue(hiddenLayerPane.prefWidthProperty(), 130, Interpolator.EASE_BOTH))
+            );
+            openMenuAnimation.play();
+            openMenuAnimation.setOnFinished(event1 -> {
+                hiddenLayerPane.getChildren().add(new Neuron("normal"));
+                menuPane.getChildren().add(new OptionsPane());
+                drawSplines();
+            });
+        }
+    }
+
+    @FXML
+    private void removeLayerButtonEntered() {
+        removeLayerButton.setImage(new Image("Neuroshop/Ressources/Assets/deleteHdnLayerHover.png"));
+    }
+
+    @FXML
+    private void removeLayerButtonExited() {
+        removeLayerButton.setImage(new Image("Neuroshop/Ressources/Assets/deleteHdnLayer.png"));
+    }
+
+    @FXML
+    private void removeLayer() {
+        if (hiddenLayer.getChildren().size() > 0) {
+            hiddenLayer.getChildren().remove(hiddenLayer.getChildren().size() - 1);
+            menuPane.getChildren().remove(menuPane.getChildren().size() - 1);
+            drawSplines();
+        }
     }
 
     @Override

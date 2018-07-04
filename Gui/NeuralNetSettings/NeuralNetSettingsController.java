@@ -85,23 +85,21 @@ public class NeuralNetSettingsController implements Observer {
         if (!menuIsOpen) {
             Timeline openSettingsAnimation = new Timeline();
             openSettingsAnimation.getKeyFrames().addAll(
-                    new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 244, Interpolator.EASE_BOTH)),
-                    new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), -1, Interpolator.EASE_BOTH)),
-                    new KeyFrame(new Duration(200), new KeyValue(contentPane.opacityProperty(), 1, Interpolator.EASE_BOTH))
+                    new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 244, Interpolator.EASE_BOTH),
+                            new KeyValue(openerIcon.scaleXProperty(), -1, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(400), new KeyValue(contentPane.opacityProperty(), 1, Interpolator.EASE_BOTH))
             );
             openSettingsAnimation.play();
             openSettingsAnimation.setOnFinished(event -> menuPane.setDisable(false));
-            contentPane.setVisible(true);
             menuIsOpen = true;
         } else {
             Timeline closeSettingsAnimation = new Timeline();
             closeSettingsAnimation.getKeyFrames().addAll(
-                    new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH)),
-                    new KeyFrame(new Duration(200), new KeyValue(openerIcon.scaleXProperty(), 1, Interpolator.EASE_BOTH)),
-                    new KeyFrame(new Duration(200), new KeyValue(contentPane.opacityProperty(), 0, Interpolator.EASE_BOTH))
+                    new KeyFrame(new Duration(200), new KeyValue(menuPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH),
+                            new KeyValue(openerIcon.scaleXProperty(), 1, Interpolator.EASE_BOTH),
+                            new KeyValue(contentPane.opacityProperty(), 0, Interpolator.EASE_BOTH))
             );
             closeSettingsAnimation.play();
-            closeSettingsAnimation.setOnFinished(event -> contentPane.setVisible(false));
             menuPane.setDisable(true);
             menuIsOpen = false;
         }
