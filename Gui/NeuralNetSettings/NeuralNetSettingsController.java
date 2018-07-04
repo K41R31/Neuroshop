@@ -57,6 +57,8 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private HBox epochInnerPane;
     @FXML
+    private HBox minOverallErrorPane;
+    @FXML
     private VBox widgetSettings;
     @FXML
     private StackPane toggleButton;
@@ -128,7 +130,9 @@ public class NeuralNetSettingsController implements Observer {
             Timeline openEpochPaneAnimation = new Timeline();
             openEpochPaneAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(epochPane.layoutYProperty(), 30, Interpolator.EASE_BOTH)),
-                    new KeyFrame(new Duration(400), new KeyValue(epochInnerPane.opacityProperty(), 1, Interpolator.EASE_BOTH))
+                    new KeyFrame(new Duration(400), new KeyValue(epochInnerPane.opacityProperty(), 1, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(400), new KeyValue(minOverallErrorPane.opacityProperty(), 1, Interpolator.EASE_BOTH))
+
             );
             openEpochPaneAnimation.play();
             epochPaneIsOpen = true;
@@ -136,12 +140,15 @@ public class NeuralNetSettingsController implements Observer {
             Timeline closeEpochPaneAnimation = new Timeline();
             closeEpochPaneAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(epochPane.layoutYProperty(), 120, Interpolator.EASE_BOTH)),
-                    new KeyFrame(new Duration(400), new KeyValue(epochInnerPane.opacityProperty(), 0, Interpolator.EASE_BOTH))
+                    new KeyFrame(new Duration(400), new KeyValue(epochInnerPane.opacityProperty(), 0, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(400), new KeyValue(minOverallErrorPane.opacityProperty(), 0, Interpolator.EASE_BOTH))
             );
             closeEpochPaneAnimation.play();
             epochPaneIsOpen = false;
         }
     }
+
+
 
     private void glowEffect(Text node) {
 
