@@ -209,12 +209,23 @@ public class DataManagerWidgetController implements Observer {
         return processing;
     }
 
+    private void coloriseData(int value) {
+        for (int c = 0; c < columnPane.getChildren().size(); c++) {
+            VBox vBox = (VBox)columnPane.getChildren().get(c);
+            for (int r = 0; r < annModel.getNumberOfRecords(); r++) {
+                if (r < value) ((Text)vBox.getChildren().get(r)).setFill(Color.web("#3e94ff"));
+                else ((Text)vBox.getChildren().get(r)).setFill(Color.web("#ff3b3b"));
+            }
+        }
+    }
+
     @FXML
     private void testLearnSliderSlided() {
         int value = (int)testLearnSlider.getValue();
         trainValue.setText(String.valueOf(value));
         testValue.setText(String.valueOf((int)(testLearnSlider.getMax() - value)));
-        annModel.setDataPercentage((roundDouble(value)) / testLearnSlider.getMax()); //TODO Vielleicht noch etwas viele Nachkommastellen
+        annModel.setDataPercentage((roundDouble(value)) / testLearnSlider.getMax());
+        coloriseData(value);
     }
 
     @FXML

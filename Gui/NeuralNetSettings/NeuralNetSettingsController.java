@@ -169,10 +169,9 @@ public class NeuralNetSettingsController implements Observer {
     private void updateEpochPane() {
         Timeline updateEpochPane = new Timeline();
         updateEpochPane.getKeyFrames().addAll(
-
                 new KeyFrame(new Duration(100), event -> actualEpoch.setText(String.valueOf(annModel.getActualEpoch()))),
-                new KeyFrame(new Duration(100), event -> actualOverallError.setText(String.valueOf(roundDouble(annModel.getOverallError(), 5)))));
-
+                new KeyFrame(new Duration(100), event -> actualOverallError.setText(String.valueOf(roundDouble(annModel.getOverallError(), 5))))
+        );
         updateEpochPane.setCycleCount(Animation.INDEFINITE);
         updateEpochPane.play();
     }
