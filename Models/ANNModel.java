@@ -234,6 +234,7 @@ public class ANNModel extends Observable {
     }
 
     public double getOverallError() {
+        System.out.println(overallError);
         return overallError;
     }
 

@@ -169,9 +169,15 @@ public class NeuralNetSettingsController implements Observer {
     private void updateEpochPane() {
         Timeline updateEpochPane = new Timeline();
         updateEpochPane.getKeyFrames().addAll(
+<<<<<<< HEAD
                 new KeyFrame(new Duration(100), event -> actualEpoch.setText(String.valueOf(annModel.getActualEpoch()))));
                 new KeyFrame(new Duration(100), event -> actualOverallError.setText(String.valueOf(annModel.getOverallError())));
                 System.out.print(annModel.getOverallError());
+=======
+                new KeyFrame(new Duration(100), event -> actualEpoch.setText(String.valueOf(annModel.getActualEpoch()))),
+                new KeyFrame(new Duration(100), event -> actualOverallError.setText(String.valueOf(roundDouble(annModel.getOverallError(), 5))))
+        );
+>>>>>>> e046ce126b9fa0c24335d326d7c8a8d058e9c3b8
         updateEpochPane.setCycleCount(Animation.INDEFINITE);
         updateEpochPane.play();
     }
@@ -261,6 +267,11 @@ public class NeuralNetSettingsController implements Observer {
     public void initModel(ANNModel annModel, TutorialModel tutorialModel) {
         this.annModel = annModel;
         this.tutorialModel = tutorialModel;
+        annModel.setLearnmode("batchMode");
+        maxEpochsSliderDragged();
+        minOverallErrorSliderDragged();
+        momentumRateDragged();
+        learningRateDragged();
         annModel.setLearnmode("batchMode");
     }
 }
