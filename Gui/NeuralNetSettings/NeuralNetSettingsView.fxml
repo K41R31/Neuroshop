@@ -25,11 +25,11 @@
             </ImageView>
          </children>
       </StackPane>
-      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="244.0" style="-fx-background-color: TRANSPARENT;">
+      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: TRANSPARENT;">
          <children>
-            <AnchorPane fx:id="epochPane" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" style="-fx-background-color: #666666;" AnchorPane.rightAnchor="0.0">
+            <AnchorPane fx:id="epochPane" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" style="-fx-background-color: #666666;" AnchorPane.rightAnchor="0.0">
                <children>
-                  <HBox fx:id="epochInnerPane" alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="20.0">
+                  <HBox fx:id="epochInnerPane" alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                      <children>
                         <Text fill="#e4e4e4" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Epochen:" wrappingWidth="107.0">
                            <font>
@@ -43,7 +43,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox fx:id="minOverallErrorPane" alignment="CENTER_LEFT" layoutX="130.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
+                  <HBox fx:id="minOverallErrorPane" alignment="CENTER_LEFT" layoutX="130.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
                      <children>
                         <Text fill="#e4e4e4" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Ø Fehler:" wrappingWidth="107.0">
                            <font>
@@ -56,9 +56,6 @@
                            </font>
                         </Text>
                      </children>
-                     <padding>
-                        <Insets top="25.0" />
-                     </padding>
                   </HBox>
                </children>
             </AnchorPane>
