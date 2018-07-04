@@ -1,34 +1,4 @@
-package Neuroshop.Gui.Widgets.DiagramWidget;/* ----------------------------
- * CrosshairOverlayFXDemo1.java
- * ----------------------------
- * Copyright (c) 2014, 2017, Object Refinery Limited.
- * All rights reserved.
- *
- * https://github.com/jfree/jfree-fxdemos
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *   - Neither the name of the Object Refinery Limited nor the
- *     names of its contributors may be used to endorse or promote products
- *     derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED. IN NO EVENT SHALL OBJECT REFINERY LIMITED BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- */
+package Neuroshop.Gui.Widgets.DiagramWidget;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -67,9 +37,9 @@ public class CrosshairOverlayFXDemo extends Application {
         private Crosshair yCrosshair;
 
         public MyDemoPane() {
-            XYDataset dataset = createDataset();
-            JFreeChart chart = createChart(dataset);
-            this.chartViewer = new ChartViewer(chart);
+//            XYDataset dataset = createDataset();
+//            JFreeChart chart = createChart(dataset);
+//            this.chartViewer = new ChartViewer(chart);
             this.chartViewer.addChartMouseListener(this);
             getChildren().add(this.chartViewer);
 
@@ -118,14 +88,19 @@ public class CrosshairOverlayFXDemo extends Application {
 
     }
 
-    private static XYDataset createDataset() {
-        XYSeries series = new XYSeries("S1");
-        for (int x = 0; x < 10; x++) {
-            series.add(x, x + Math.random() * 4.0);
-        }
-        XYSeriesCollection dataset = new XYSeriesCollection(series);
-        return dataset;
-    }
+//    private static XYDataset createDataset() {
+//        XYSeriesCollection dataset = new XYSeriesCollection();
+//        XYSeries series = new XYSeries("S1");
+//        for (int x = 0; x < 10; x++) {
+//            for (int i = 0; i < trainingErrors.length; i++)
+//                trainerr.add(i, trainingErrors[i]);
+//                testerr.add(i, testingErrors[i]);
+//                dataset.addSeries(trainerr);
+//                dataset.addSeries(testerr);
+//        }
+//        XYSeriesCollection dataset = new XYSeriesCollection(series);
+//        return dataset;
+//    }
 
     private static JFreeChart createChart(XYDataset dataset) {
         JFreeChart chart = ChartFactory.createXYLineChart(

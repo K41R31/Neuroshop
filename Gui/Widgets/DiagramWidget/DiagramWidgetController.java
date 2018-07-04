@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.util.Duration;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.event.ChartProgressListener;
 import org.jfree.chart.fx.ChartViewer;
 import org.jfree.chart.fx.overlay.CrosshairOverlayFX;
 import org.jfree.chart.plot.Crosshair;
@@ -21,7 +20,6 @@ import java.util.Observer;
 import javafx.scene.layout.StackPane;
 
 import java.awt.*;
-import org.jfree.data.time.TimeSeries;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;

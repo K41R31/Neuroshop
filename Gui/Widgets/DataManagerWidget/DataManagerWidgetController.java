@@ -7,10 +7,15 @@ import Neuroshop.Main;
 import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.TutorialModel;
 import Neuroshop.Models.WidgetContainerModel;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -18,6 +23,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,8 +45,6 @@ public class DataManagerWidgetController implements Observer {
     @FXML
     private AnchorPane importPane;
     @FXML
-    private StackPane applyButtonPane;
-    @FXML
     private StackPane button1Pane;
     @FXML
     private StackPane button2Pane;
@@ -49,7 +53,7 @@ public class DataManagerWidgetController implements Observer {
     @FXML
     private Text testValue;
     @FXML
-    private Text applyButtonText;
+    private ImageView closerIcon;
     @FXML
     private Text button1Text;
     @FXML
@@ -68,10 +72,12 @@ public class DataManagerWidgetController implements Observer {
     private HBox columnPane;
     @FXML
     private AnchorPane lastOpenedPane;
+    private boolean menuIsOpen;
 
 
     @FXML
     private void initialize() {
+        menuIsOpen = true;
     }
 
     @FXML
@@ -220,25 +226,71 @@ public class DataManagerWidgetController implements Observer {
     }
 
     @FXML
+    private void toggleDataManager() {
+        ArrayList<Integer> inputList = new ArrayList<>();
+        ArrayList<Integer> outputList = new ArrayList<>();
+
+        /**TODO: Kai hier bitte das machen was du immer so machst mit JavaFx
+         >> Animation das sich der Datamanager so zuklappt das nur die Scrollpane weg ist.
+         >>Alles andere sollte noch zu sehen sein :)
+         >>DIe Zuklappnase ersetzt das Apply
+         */
+        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
+            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
+                errorInfo.setText("Set each column to input or output");
+                errorInfo.setVisible(true);
+                return;
+            } else {
+                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
+                    inputList.add(i);
+                } else {
+                    outputList.add(i);
+                }
+            }
+        }
+        if (inputList.size() == 0) {
+            errorInfo.setText("You have to set at least one column as output");
+            errorInfo.setVisible(true);
+            return;
+        } else if (outputList.size() == 0) {
+            errorInfo.setText("You have to set at least one column as input");
+            errorInfo.setVisible(true);
+            return;
+        }
+    }
+
+    @FXML
     private void testLearnSliderSlided() {
+        ArrayList<Integer> inputList = new ArrayList<>();
+        ArrayList<Integer> outputList = new ArrayList<>();
         int value = (int)testLearnSlider.getValue();
         trainValue.setText(String.valueOf(value));
         testValue.setText(String.valueOf((int)(testLearnSlider.getMax() - value)));
         annModel.setDataPercentage((roundDouble(value)) / testLearnSlider.getMax());
         coloriseData(value);
+
+        tutorialModel.step3();
+        errorInfo.setVisible(false);
+        annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
+        annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
+        widgetContainerModel.activateMenus();
+
+        widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
+        widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
+        DataManager.setTranslateX(0);
+        DataManager.setTranslateY(0);
     }
 
     @FXML
-    private void applyButtonEntered() {
-        applyButtonPane.setStyle("-fx-background-color: #4490ff");
-        applyButtonText.setFill(Color.web("#222222"));
+    private void closerPaneEntered() {
+        closerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIconHover.png"));
     }
 
     @FXML
-    private void applyButtonExited() {
-        applyButtonPane.setStyle("-fx-background-color: TRANSPARENT; -fx-border-color: #4490ff; -fx-border-width: 2");
-        applyButtonText.setFill(Color.web("#4490ff"));
+    private void closerPaneExited() {
+        closerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIcon.png"));
     }
+
     @FXML
     private void button1Entered() {
         button1Pane.setStyle("-fx-background-color: #4490ff");
@@ -263,42 +315,10 @@ public class DataManagerWidgetController implements Observer {
         button2Text.setFill(Color.web("#4490ff"));
     }
 
+
     @FXML
     private void apply() {
-        ArrayList<Integer> inputList = new ArrayList<>();
-        ArrayList<Integer> outputList = new ArrayList<>();
-        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
-            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
-                errorInfo.setText("Set each column to input or output");
-                errorInfo.setVisible(true);
-                return;
-            } else {
-                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
-                    inputList.add(i);
-                } else {
-                    outputList.add(i);
-                }
-            }
-        }
-        if (inputList.size() == 0) {
-            errorInfo.setText("You have to set at least one column as output");
-            errorInfo.setVisible(true);
-            return;
-        } else if (outputList.size() == 0) {
-            errorInfo.setText("You have to set at least one column as input");
-            errorInfo.setVisible(true);
-            return;
-        }
-        tutorialModel.step3();
-        errorInfo.setVisible(false);
-        annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
-        annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
-        widgetContainerModel.activateMenus();
 
-        widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
-        widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
-        DataManager.setTranslateX(0);
-        DataManager.setTranslateY(0);
     }
 
     @FXML
