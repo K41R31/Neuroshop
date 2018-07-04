@@ -36,7 +36,7 @@ public class ANNLearn implements Observer {
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), actFnc, outputActFnc, new UniformInitialization(0, 1.0));
         nnWidget.print();
 
         double[][] dSet = annModel.getDataSet();
