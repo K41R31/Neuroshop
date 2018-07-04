@@ -10,6 +10,8 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
+import org.jfree.chart.fx.interaction.ChartMouseListenerFX;
+
 import java.util.*;
 
 public class ANNLearn implements Observer {
@@ -56,11 +58,7 @@ public class ANNLearn implements Observer {
 
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
-<<<<<<< HEAD
-        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
-=======
         Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, annModel.getLearnmode());
->>>>>>> 40bb88a66762a740cee6ea5d04ff0f1f5b704dac
 
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
@@ -72,10 +70,6 @@ public class ANNLearn implements Observer {
         backprop.setTestingDataSet(neuralDataSetToTest);
         backprop.printTraining = true;
         backprop.showPlotError = true;
-<<<<<<< HEAD
-=======
-
->>>>>>> 40bb88a66762a740cee6ea5d04ff0f1f5b704dac
 
         try {
             backprop.forward();

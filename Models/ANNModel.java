@@ -104,21 +104,16 @@ public class ANNModel extends Observable {
     }
 
     public void setLearnmode(String mode) {
-<<<<<<< HEAD
-        switch (mode) {
-            case "BATCH":
-                this.learnMode = LearningAlgorithm.LearningMode.BATCH;
-                System.out.println("Learnmode aus Model: " + learnMode);
-=======
-        switch(mode) {
-            case "batchMode":
-                this.learnMode = LearningAlgorithm.LearningMode.BATCH;
->>>>>>> 40bb88a66762a740cee6ea5d04ff0f1f5b704dac
-                break;
-            case "onlineMode":
-                this.learnMode = LearningAlgorithm.LearningMode.ONLINE;
+
+                switch (mode) {
+                    case "batchMode":
+                        this.learnMode = LearningAlgorithm.LearningMode.BATCH;
+
+                        break;
+                    case "onlineMode":
+                        this.learnMode = LearningAlgorithm.LearningMode.ONLINE;
+                }
         }
-    }
 
     public double getDataPercentage() {
         return this.dataPercentage;

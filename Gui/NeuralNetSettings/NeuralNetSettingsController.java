@@ -16,8 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
