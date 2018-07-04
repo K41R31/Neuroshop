@@ -3,6 +3,7 @@ package Neuroshop.Gui.Widgets.NeuralNetWidget;
 import Neuroshop.Gui.Widgets.MakeDraggable;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.ANN.Learn.Backpropagation;
+import Neuroshop.Models.TutorialModel;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.animation.*;
 import javafx.fxml.FXML;
@@ -28,6 +29,7 @@ public class NeuralNetController extends StackPane implements Observer {
     private ANNModel annModel;
     private Backpropagation bP;
     private WidgetContainerModel widgetContainerModel;
+    private TutorialModel TutorialModel;
     private ArrayList<ArrayList<ArrayList<Double>>> newWeights;
 
     @FXML
@@ -318,9 +320,10 @@ public class NeuralNetController extends StackPane implements Observer {
         }
     }
 
-    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel) {
+    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel, TutorialModel tutorialModel) {
         this.annModel = annModel;
         this.widgetContainerModel = widgetContainerModel;
+        this.TutorialModel = TutorialModel;
         new MakeDraggable(widgetContainerModel, rootPane);
     }
 }

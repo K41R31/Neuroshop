@@ -7,9 +7,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="150.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Tutorial.TutorialController">
+<StackPane fx:id="tutorialRoot" style="-fx-background-color: TRANSPARENT;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Tutorial.TutorialController">
    <children>
-      <AnchorPane fx:id="startNetwork" opacity="0.0" style="-fx-background-color: #2b2b2b;">
+      <AnchorPane fx:id="startNetwork" visible="false">
          <children>
             <Text fill="#00d4ff" layoutX="600.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finally use the start button to start your Neural Network">
                <font>
@@ -19,7 +19,7 @@
             <Line endX="100.0" layoutX="950.0" layoutY="600.0" rotate="90.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="changeValues" opacity="0.0" style="-fx-background-color: #2b2b2b;">
+      <AnchorPane fx:id="changeValues" visible="false">
          <children>
             <Line endX="100.0" layoutX="1000.0" layoutY="700.0" rotate="90.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
             <Text fill="#00d4ff" layoutX="600.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Open the bottom bar and try sliding these four bars">
@@ -34,7 +34,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dragDiagram" opacity="0.0" style="-fx-background-color: #2b2b2b;">
+      <AnchorPane fx:id="dragDiagram" visible="false">
          <children>
             <Line endX="100.0" layoutX="450.0" layoutY="200.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
             <Text fill="#00d4ff" layoutX="350.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Now try dragging a diagram somewhere">
@@ -44,7 +44,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="neuralSettings" opacity="0.0" style="-fx-background-color: #2b2b2b;">
+      <AnchorPane fx:id="neuralSettings" visible="false">
          <children>
             <Text fill="#00d4ff" layoutX="450.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First, add a new Hidden Layer with the symbol representing a small circle with a plus. After this try deleting this newly added layer. This is how it works. Then try to change the weightings of this layer. After this proceed to the next step by saving your choices." wrappingWidth="1056.7265625">
                <font>
@@ -53,7 +53,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dragNeural" opacity="0.0" style="-fx-background-color: #2b2b2b;">
+      <AnchorPane fx:id="dragNeural" visible="false">
          <children>
             <Line endX="100.0" layoutX="450.0" layoutY="540.0" startX="-100.0" stroke="#00ff2b" strokeWidth="3.0" />
             <Text fill="#00ff2a" layoutX="550.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use this bar to get a Neural Net and place it anywhere you want" wrappingWidth="613.724609375">
@@ -69,7 +69,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dataSettings" opacity="0.0" style="-fx-background-color: #2b2b2b;">
+      <AnchorPane fx:id="dataSettings" visible="false">
          <children>
             <Line endX="100.0" layoutX="300.0" layoutY="150.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
             <Line endX="100.0" layoutX="500.0" layoutY="150.0" rotate="80.0" scaleX="0.7" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
@@ -91,18 +91,17 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="importData" opacity="0.0" style="-fx-background-color: #2b2b2b;">
+      <AnchorPane fx:id="importData" disable="true" visible="false">
          <children>
             <Line endX="100.0" fill="WHITE" layoutX="550.0" layoutY="400.0" rotate="45.0" startX="-100.0" stroke="#00d4ff" strokeWidth="3.0" />
-            <Text fx:id="step2" fill="#00d4ff" layoutX="300.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import &quot;Art einer Lilie&quot;">
+            <Text fx:id="step2" fill="#d0d0d0" layoutX="110.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="At first you need to import a dataset. You can ei" wrappingWidth="377.0">
                <font>
-                  <Font name="Champagne &amp; Limousines" size="36.0" />
+                  <Font name="Pizza by Alfredo" size="36.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <StackPane fx:id="importPane" prefHeight="150.0" prefWidth="200.0" />
-      <AnchorPane fx:id="dataPrep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;" visible="false">
+      <AnchorPane fx:id="dataPrep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" visible="false">
          <children>
             <Text fill="WHITE" layoutX="250.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Preparation">
                <font>
@@ -123,7 +122,7 @@
       </AnchorPane>
       <AnchorPane fx:id="tutorialStart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;">
          <children>
-            <Text fill="WHITE" layoutX="336.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi," textAlignment="CENTER" wrappingWidth="225.265625">
+            <Text fill="WHITE" layoutX="334.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi," textAlignment="CENTER" wrappingWidth="225.265625">
                <font>
                   <Font name="Champagne &amp; Limousines" size="64.0" />
                </font>

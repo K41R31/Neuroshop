@@ -1,15 +1,13 @@
 package Neuroshop.Models;
 
-import Neuroshop.Tutorial.TutorialController;
-
 import java.util.Observable;
 
 public class TutorialModel extends Observable {
 
     private boolean neuralDrag, diagramDrag;
-    private Object neuralNet,diagram;
-    private boolean customLayers,start;
-    private double valueOne,valueTwo,valueThree,valueFour;
+    private Object neuralNet, diagram;
+    private boolean customLayers, start;
+    private double valueOne, valueTwo, valueThree, valueFour;
 
     public boolean getNeuralDrag() {return neuralDrag;}
 
@@ -63,5 +61,20 @@ public class TutorialModel extends Observable {
         this.setChanged();
         this.notifyObservers("setDiagramDrag");
 //        TutorialController.stepFinal();
+    }
+
+    public void initDataManager() {
+        setChanged();
+        notifyObservers("initDataManager");
+    }
+
+    public void showLastOpened() {
+        setChanged();
+        notifyObservers("showLastOpened");
+    }
+
+    public void showDataSettings() {
+        setChanged();
+        notifyObservers("");
     }
 }

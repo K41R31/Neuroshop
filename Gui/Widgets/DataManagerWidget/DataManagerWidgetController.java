@@ -5,14 +5,13 @@ import Neuroshop.Models.ANNModel;
 import Neuroshop.Main;
 
 import Neuroshop.Models.Presets.LastOpenedFiles;
+import Neuroshop.Models.TutorialModel;
 import Neuroshop.Models.WidgetContainerModel;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -31,6 +30,7 @@ public class DataManagerWidgetController implements Observer {
     private LastOpenedFiles lastOpenedFiles;
     private WidgetContainerModel widgetContainerModel;
     private ArrayList<ChoiceBox> choosedColumns;
+    private TutorialModel tutorialModel;
 
     @FXML
     private Slider testLearnSlider;
@@ -297,6 +297,7 @@ public class DataManagerWidgetController implements Observer {
 
     @FXML
     private void showLastOpened() {
+        tutorialModel.showLastOpened();
         lastOpenedPane.setOpacity(1);
         lastOpenedPane.setDisable(false);
         for (int i = 0; i < lastOpenedFiles.getLastOpened().size(); i++) {
@@ -314,10 +315,11 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
-    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel, LastOpenedFiles lastOpenedFiles) {
+    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel, LastOpenedFiles lastOpenedFiles, TutorialModel tutorialModel) {
         this.annModel = annModel;
         this.widgetContainerModel = widgetContainerModel;
         this.lastOpenedFiles = lastOpenedFiles;
+        this.tutorialModel = tutorialModel;
         new MakeDraggable(widgetContainerModel, DataManager);
     }
 }

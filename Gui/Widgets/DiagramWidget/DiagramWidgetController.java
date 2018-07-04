@@ -2,6 +2,7 @@ package Neuroshop.Gui.Widgets.DiagramWidget;
 
 import Neuroshop.Gui.Widgets.MakeDraggable;
 import Neuroshop.Models.ANNModel;
+import Neuroshop.Models.TutorialModel;
 import Neuroshop.Models.WidgetContainerModel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -34,6 +35,8 @@ public class DiagramWidgetController extends StackPane implements Observer {
 
     private Crosshair xCrosshair;
     private Crosshair yCrosshair;
+
+    private TutorialModel tutorialModel;
 
     @FXML
     private void initialize() {
@@ -91,9 +94,10 @@ public class DiagramWidgetController extends StackPane implements Observer {
     }
 
 
-    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel) {
+    public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel, TutorialModel tutorialModel) {
         this.annModel = annModel;
         this.widgetContainerModel = widgetContainerModel;
+        this.tutorialModel = tutorialModel;
         new MakeDraggable(widgetContainerModel, rootPane);
     }
 

@@ -77,7 +77,7 @@ public class Main extends Application {
         OptionsModel optionsModel = new OptionsModel();
         TutorialModel tutorialModel = new TutorialModel();
 
-        NeuralNetSettingsController widgetSettingsController = neuralNetSettingsLoader.getController();
+        NeuralNetSettingsController NeuralNetSettingsController = neuralNetSettingsLoader.getController();
         WidgetMenuController widgetMenuController = widgetMenuLoader.getController();
         OptionsController optionsMenuController = optionsMenuLoader.getController();
         BorderController borderController = borderLoader.getController();
@@ -89,17 +89,18 @@ public class Main extends Application {
         widgetMenuController.initModel(widgetContainerModel);
         borderController.initModel(optionsModel);
         optionsMenuController.initModel(optionsModel);
-        widgetSettingsController.initModel(annModel);
+        NeuralNetSettingsController.initModel(annModel);
         tutorialController.initModel(tutorialModel);
 
         annModel.addObserver(annLearn);
         widgetContainerModel.addObserver(whiteboardController);
         widgetContainerModel.addObserver(widgetMenuController);
-        widgetContainerModel.addObserver(widgetSettingsController);
+        widgetContainerModel.addObserver(NeuralNetSettingsController);
         optionsModel.addObserver(optionsMenuController);
+        tutorialModel.addObserver(tutorialController);
 
         //Init WidgetContainer------------------------------------------------------------------------------------------
-        new WidgetContainer(widgetContainerModel, annModel);
+        tutorialModel.addObserver(new WidgetContainer(widgetContainerModel, annModel, tutorialModel));
 
         //Init Scene----------------------------------------------------------------------------------------------------
         Scene scene = new Scene(generalRoot, ScreenSize.width/1.2, (ScreenSize.height-40)/1.2);
