@@ -1,6 +1,7 @@
 package Neuroshop.Models;
 
 import Neuroshop.ANN.Data.DataNormalization;
+import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
@@ -13,11 +14,10 @@ import java.util.Observable;
 
 public class ANNModel extends Observable {
 
-    private String filename;
-    private File file;
+    private Backpropagation bP;
     private File dataSetFile;
     private double[][] dataSet;
-
+    private double[][] errors;
     private int numberOfRecords;
     private int dataColumns;
     private int[] inputColumns;
@@ -224,6 +224,15 @@ public class ANNModel extends Observable {
 
     public void setActualEpoch(int actualEpoch) {
         this.actualEpoch = actualEpoch;
+    }
+
+    public void setErrorData(double[][] errors) {
+        errors = bP.getErrorData();
+        this.errors = errors;
+    }
+
+    public double[][] getErrors() {
+        return this.errors;
     }
 
     public int getActualEpoch() {

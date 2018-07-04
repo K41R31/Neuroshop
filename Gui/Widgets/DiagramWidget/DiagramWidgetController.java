@@ -1,6 +1,5 @@
 package Neuroshop.Gui.Widgets.DiagramWidget;
 
-import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.Gui.Widgets.MakeDraggable;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.WidgetContainerModel;
@@ -12,30 +11,27 @@ import org.jfree.chart.fx.ChartViewer;
 import org.jfree.chart.fx.interaction.ChartMouseListenerFX;
 import org.jfree.chart.fx.overlay.CrosshairOverlayFX;
 import org.jfree.chart.plot.Crosshair;
-import java.awt.geom.Rectangle2D;
+
+import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
-import java.awt.BasicStroke;
-import java.awt.Color;
 import javafx.scene.layout.StackPane;
-import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.fx.interaction.ChartMouseEventFX;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.data.general.DatasetUtils;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import org.jfree.chart.ui.RectangleEdge;
 
-public class DiagramWidgetController implements Observer {
+public class DiagramWidgetController extends StackPane implements Observer {
 
     private ANNModel annModel;
-    private Backpropagation bP;
     private WidgetContainerModel widgetContainerModel;
 
+    private JFreeChart chart;
+    private ChartViewer chartViewer;
+    private XYSeriesCollection dataset;
     @FXML
     private StackPane rootPane;
-    private ChartViewer chartViewer;
+
     private Crosshair xCrosshair;
     private Crosshair yCrosshair;
 
@@ -43,19 +39,52 @@ public class DiagramWidgetController implements Observer {
     private void initialize() {
     }
 
-//    private void chart() {
-//        XYDataset dataset = createDataset();
-//    }
-//
-//    private XYDataset createDataset() {
-//        double[][] ed = bP.getErrorData();
-//        XYSeries series = new XYSeries("S1");
-//        for (int i = 0; x < 10; x++) {
-//            series.add(x, x + Math.random() * 4.0);
-//        }
-//        XYSeriesCollection dataset = new XYSeriesCollection(series);
-//        return dataset;
-//    }
+    private void chart() {
+
+        XYDataset dataset = this.dataset;
+        JFreeChart chart = this.chart;
+        this.chartViewer = new ChartViewer(chart);
+        this.chartViewer.addChartMouseListener();
+
+        CrosshairOverlayFX crosshairOverlay = new CrosshairOverlayFX();
+        this.xCrosshair = new Crosshair(Double.NaN, Color.GRAY,
+                new BasicStroke(0f));
+        this.xCrosshair.setStroke(new BasicStroke(1.5f,
+                BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
+                new float[]{2.0f, 2.0f}, 0));
+        this.xCrosshair.setLabelVisible(true);
+        this.yCrosshair = new Crosshair(Double.NaN, Color.GRAY,
+                new BasicStroke(0f));
+        this.yCrosshair.setStroke(new BasicStroke(1.5f,
+                BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
+                new float[] {2.0f, 2.0f}, 0));
+        this.yCrosshair.setLabelVisible(true);
+        crosshairOverlay.addDomainCrosshair(xCrosshair);
+        crosshairOverlay.addRangeCrosshair(yCrosshair);
+
+        Platform.runLater(() -> {
+            this.chartViewer.getCanvas().addOverlay(crosshairOverlay);
+        });
+
+    }
+
+    private void updateErrorData() {
+        double[][] ed = annModel.getErrors();
+        XYSeries trainingErrors = new XYSeries("Training Error");
+        XYSeries testingErrors = new XYSeries("Testing Error");
+        for (int i = 0;i < ed.length; i++) {
+            trainingErrors.add(i, ed[i][1]);
+            testingErrors.add(i, ed[i][2]);
+        }
+        dataset.addSeries(trainingErrors);
+        dataset.addSeries(testingErrors);
+    }
+
+    private JFreeChart createXYLineChart (XYDataset dataset) {
+        JFreeChart chart = ChartFactory.createXYLineChart("DerNameKommtNoch", "X", "Y", dataset, PlotOrientation.HORIZONTAL, true, true, false);
+        return chart;
+    }
+
 
     @Override
     public void update(Observable o, Object arg) {
@@ -64,7 +93,6 @@ public class DiagramWidgetController implements Observer {
 
     public void initModel(ANNModel annModel, WidgetContainerModel widgetContainerModel) {
         this.annModel = annModel;
-        this.bP = bP;
         this.widgetContainerModel = widgetContainerModel;
         new MakeDraggable(widgetContainerModel, rootPane);
     }
