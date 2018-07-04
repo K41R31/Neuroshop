@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
@@ -21,16 +14,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
+<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
    <children>
       <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0">
          <children>
-            <ImageView fitHeight="36.0" fitWidth="113.0" onMouseClicked="#toggleMenu" onMouseEntered="#closerPaneEntered" onMouseExited="#closerPaneExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="36.0" fitWidth="113.0" onMouseClicked="#toggleMenu" onMouseEntered="#openerPaneEntered" onMouseExited="#openerPaneExited" pickOnBounds="true" preserveRatio="true" scaleY="-1.0">
                <image>
                   <Image url="@../../Ressources/Assets/nnOpener.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="closerIcon" disable="true" fitHeight="20.0" fitWidth="40.0" layoutX="86.0" layoutY="10.0" onMouseClicked="#toggleMenu" pickOnBounds="true" preserveRatio="true" scaleY="-1.0">
+            <ImageView fx:id="openerIcon" disable="true" fitHeight="20.0" fitWidth="40.0" layoutX="86.0" layoutY="10.0" onMouseClicked="#toggleMenu" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Ressources/Assets/nnOpenerIcon.png" />
                </image>
