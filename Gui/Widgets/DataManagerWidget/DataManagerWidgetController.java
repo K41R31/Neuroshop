@@ -334,5 +334,8 @@ public class DataManagerWidgetController implements Observer {
         this.lastOpenedFiles = lastOpenedFiles;
         this.tutorialModel = tutorialModel;
         new MakeDraggable(widgetContainerModel, DataManager);
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(0);
+        annModel.setNeuronsInHiddenLayer(arrayList);
     }
 }
