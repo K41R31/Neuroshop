@@ -4,15 +4,18 @@ import Neuroshop.Gui.Widgets.MakeDraggable;
 import Neuroshop.Models.ANNModel;
 import Neuroshop.Models.TutorialModel;
 import Neuroshop.Models.WidgetContainerModel;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
-<<<<<<< HEAD
 import org.jfree.chart.fx.ChartViewer;
+import org.jfree.chart.fx.interaction.ChartMouseEventFX;
+import org.jfree.chart.fx.interaction.ChartMouseListenerFX;
+import org.jfree.chart.fx.overlay.CrosshairOverlayFX;
 import org.jfree.chart.plot.Crosshair;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.layout.StackPane;
-=======
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.Crosshair;
 
@@ -26,7 +29,6 @@ import org.jfree.chart.ui.RectangleEdge;
 import org.jfree.data.general.DatasetUtils;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
->>>>>>> b40f66ed502c0d3097466a1162e18c0d439df2f1
 import org.jfree.data.xy.XYSeriesCollection;
 
 public class DiagramWidgetController implements Observer {
