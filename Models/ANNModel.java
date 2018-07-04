@@ -1,19 +1,12 @@
 package Neuroshop.Models;
 
 import Neuroshop.ANN.Data.DataNormalization;
-import Neuroshop.ANN.Learn.Backpropagation;
-import Neuroshop.ANN.Learn.DeltaRule;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
-import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
-import Neuroshop.Gui.Widgets.MakeDraggable;
-import Neuroshop.Models.Presets.LastOpenedFiles;
-import Neuroshop.Models.TempWeights.TempweightList;
+
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Observable;
 
 public class ANNModel extends Observable {
@@ -38,6 +31,7 @@ public class ANNModel extends Observable {
     private double overallError;
     private int maxEpoch;
     private int actualEpoch;
+    private boolean isTraining = false;
 
     public void addActFnc() {
         actFnc = new ArrayList<>();
@@ -250,5 +244,16 @@ public class ANNModel extends Observable {
     public void train() {
         setChanged();
         notifyObservers("train");
+        isTraining = true;
+    }
+
+    public void stop() {
+        setChanged();
+        notifyObservers("stop");
+        isTraining = false;
+    }
+
+    public boolean getIsTraining() {
+        return isTraining;
     }
 }

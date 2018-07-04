@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -51,6 +52,8 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private ImageView openerIcon;
     @FXML
+    private ImageView startButton;
+    @FXML
     private AnchorPane menuPane;
     @FXML
     private AnchorPane epochPane;
@@ -82,6 +85,9 @@ public class NeuralNetSettingsController implements Observer {
         learningRateValue.setText(String.valueOf(learningRateSlider.getValue()));
         glowEffect(batchMode);
         glowEffect(onlineMode);
+        startButton.setImage(new Image("Neuroshop/Ressources/Assets/playButton.png"));
+        startButton.setOnMouseEntered(event -> new Image("Neuroshop/Ressources/Assets/playButtonHover.png"));
+        startButton.setOnMouseExited(event -> new Image("Neuroshop/Ressources/Assets/playButton.png"));
     }
 
     @FXML
@@ -242,9 +248,21 @@ public class NeuralNetSettingsController implements Observer {
 
     @FXML
     private void train() {
-        annModel.train();
-        toggleEpochPane();
-        updateEpochPane();
+        if (!annModel.getIsTraining()) {
+            annModel.train();
+            toggleEpochPane();
+            updateEpochPane();
+            startButton.setImage(new Image("Neuroshop/Ressources/Assets/stopButton.png"));
+            startButton.setOnMouseEntered(event -> new Image("Neuroshop/Ressources/Assets/stopButtonHover.png"));
+            startButton.setOnMouseExited(event -> new Image("Neuroshop/Ressources/Assets/stopButton.png"));
+        } else {
+            annModel.stop();
+            toggleEpochPane();
+            updateEpochPane();
+            startButton.setImage(new Image("Neuroshop/Ressources/Assets/playButton.png"));
+            startButton.setOnMouseEntered(event -> new Image("Neuroshop/Ressources/Assets/playButtonHover.png"));
+            startButton.setOnMouseExited(event -> new Image("Neuroshop/Ressources/Assets/playButton.png"));
+        }
     }
 
     @Override
