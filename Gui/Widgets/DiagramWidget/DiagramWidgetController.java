@@ -68,22 +68,22 @@ public class DiagramWidgetController extends StackPane implements Observer {
 
     }
 
-    private void updateErrorData() {
-        double[][] ed = annModel.getErrorData();
-        XYSeries trainingErrors = new XYSeries("Training Error");
-        XYSeries testingErrors = new XYSeries("Testing Error");
-        for (int i = 0;i < ed.length; i++) {
-            trainingErrors.add(i, ed[i][1]);
-            testingErrors.add(i, ed[i][2]);
-        }
-        dataset.addSeries(trainingErrors);
-        dataset.addSeries(testingErrors);
-    }
-
-    private JFreeChart createXYLineChart (XYDataset dataset) {
-        JFreeChart chart = ChartFactory.createXYLineChart("DerNameKommtNoch", "X", "Y", dataset, PlotOrientation.HORIZONTAL, true, true, false);
-        return chart;
-    }
+//    private void updateErrorData() {
+//        double[][] ed = annModel.getErrorData();
+//        XYSeries trainingErrors = new XYSeries("Training Error");
+//        XYSeries testingErrors = new XYSeries("Testing Error");
+//        for (int i = 0;i < ed.length; i++) {
+//            trainingErrors.add(i, ed[i][1]);
+//            testingErrors.add(i, ed[i][2]);
+//        }
+//        dataset.addSeries(trainingErrors);
+//        dataset.addSeries(testingErrors);
+//    }
+//
+//    private JFreeChart createXYLineChart (XYDataset dataset) {
+//        JFreeChart chart = ChartFactory.createXYLineChart("DerNameKommtNoch", "X", "Y", dataset, PlotOrientation.HORIZONTAL, true, true, false);
+//        return chart;
+//    }
 
 
     @Override

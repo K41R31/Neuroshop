@@ -84,11 +84,10 @@ public class ANNLearn implements Observer {
                 System.out.println("Training ist gescheitert!");
             }
 
-            System.out.println("Overall Error:" + String.valueOf(backprop.getOverallGeneralError()));
-            System.out.println("Min Overall Error:" + String.valueOf(backprop.getMinOverallError()));
+            System.out.println("Gesamter Fehler:" + String.valueOf(backprop.getOverallGeneralError()));
+            System.out.println("Minimaler Fehler:" + String.valueOf(backprop.getMinOverallError()));
             System.out.println("Epochen:" + String.valueOf(backprop.getEpoch()));
 
-            System.out.println(errors);
             backprop.showErrorEvolution();
 
             neuralDataSetToTrain.printTargetOutput();
