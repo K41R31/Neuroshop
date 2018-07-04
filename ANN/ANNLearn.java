@@ -10,20 +10,16 @@ import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class ANNLearn implements Observer {
 
     private ANNModel annModel;
-
     private double dataPercentage;
     private int[] inputColumns;
     private int[] outputColumns;
     private int[] neuronsInHiddenLayer;
     private int maxEpochs;
-
     private double minOverallError;
     private double learningRate;
     private double momentumRate;
@@ -31,7 +27,6 @@ public class ANNLearn implements Observer {
     private IActivationFunction[] actFnc;
     private LearningAlgorithm.LearningMode learnMode;
     private DataNormalization dataNormType;
-    private List<Sigmoid> sgmList;
 
     public void train() {
         RandomNumberGenerator.setSeed(5);
@@ -63,7 +58,7 @@ public class ANNLearn implements Observer {
 
         NeuralDataSet neuralDataSetToTrain = new NeuralDataSet(dataNormToTrain, inputColumns, outputColumns);
         NeuralDataSet neuralDataSetToTest = new NeuralDataSet(dataNormToTest, inputColumns, outputColumns);
-        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, learnMode);
+        Backpropagation backprop = new Backpropagation(nnWidget, neuralDataSetToTrain, LearningAlgorithm.LearningMode.BATCH);
 
         backprop.initModel(annModel);
         backprop.setLearningRate(learningRate);
@@ -75,12 +70,9 @@ public class ANNLearn implements Observer {
         backprop.setTestingDataSet(neuralDataSetToTest);
         backprop.printTraining = true;
         backprop.showPlotError = true;
-        System.out.println(Arrays.toString(backprop.getErrorData()));
-
 
         try {
             backprop.forward();
-
             backprop.train();
 
             neuralDataSetToTest.printInput();
@@ -96,6 +88,7 @@ public class ANNLearn implements Observer {
             System.out.println("Min Overall Error:" + String.valueOf(backprop.getMinOverallError()));
             System.out.println("Epochen:" + String.valueOf(backprop.getEpoch()));
 
+            System.out.println(errors);
             backprop.showErrorEvolution();
 
             neuralDataSetToTrain.printTargetOutput();

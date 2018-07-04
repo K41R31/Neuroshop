@@ -2,6 +2,7 @@
 package Neuroshop.ANN.Learn;
 
 import Neuroshop.ANN.Data.NeuralDataSet;
+import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Neural.*;
 
 import java.util.ArrayList;
@@ -99,7 +100,9 @@ public class DeltaRule extends LearningAlgorithm {
         this(_neuralNet,_trainDataSet);
         this.learningMode=_learningMode;
     }
-    
+
+
+
     @Override
     public void setTestingDataSet(NeuralDataSet _testingDataSet){
         this.testingDataSet=_testingDataSet;

@@ -44,7 +44,7 @@ public class DiagramWidgetController extends StackPane implements Observer {
         XYDataset dataset = this.dataset;
         JFreeChart chart = this.chart;
         this.chartViewer = new ChartViewer(chart);
-        this.chartViewer.addChartMouseListener();
+//        this.chartViewer.addChartMouseListener();
 
         CrosshairOverlayFX crosshairOverlay = new CrosshairOverlayFX();
         this.xCrosshair = new Crosshair(Double.NaN, Color.GRAY,
@@ -69,7 +69,7 @@ public class DiagramWidgetController extends StackPane implements Observer {
     }
 
     private void updateErrorData() {
-        double[][] ed = annModel.getErrors();
+        double[][] ed = annModel.getErrorData();
         XYSeries trainingErrors = new XYSeries("Training Error");
         XYSeries testingErrors = new XYSeries("Testing Error");
         for (int i = 0;i < ed.length; i++) {

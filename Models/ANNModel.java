@@ -2,9 +2,13 @@ package Neuroshop.Models;
 
 import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Learn.Backpropagation;
+import Neuroshop.ANN.Learn.DeltaRule;
 import Neuroshop.ANN.Learn.LearningAlgorithm;
+import Neuroshop.ANN.Math.ArrayOperations;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
+import Neuroshop.Gui.Widgets.MakeDraggable;
+import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.TempWeights.TempweightList;
 import java.io.File;
 import java.util.ArrayList;
@@ -14,10 +18,8 @@ import java.util.Observable;
 
 public class ANNModel extends Observable {
 
-    private Backpropagation bP;
     private File dataSetFile;
     private double[][] dataSet;
-    private double[][] errors;
     private int numberOfRecords;
     private int dataColumns;
     private int[] inputColumns;
@@ -37,14 +39,14 @@ public class ANNModel extends Observable {
 
     public void addActFnc() {
         actFnc = new ArrayList<>();
-        for(int i = 0; i < neuronsInHiddenLayer.size(); i++) {
+        for (int i = 0; i < neuronsInHiddenLayer.size(); i++) {
             actFnc.add(new Sigmoid(1.0));
         }
     }
 
     public IActivationFunction[] getActFnc() {
         IActivationFunction[] ia = new IActivationFunction[actFnc.size()];
-        for(int i = 0; i < actFnc.size(); i++) {
+        for (int i = 0; i < actFnc.size(); i++) {
             ia[i] = actFnc.get(i);
         }
         return ia;
@@ -86,7 +88,7 @@ public class ANNModel extends Observable {
         double _min = -1.0;
         double _max = 1.0;
         double _score = 1.0;
-        switch(normtype) {
+        switch (normtype) {
             case "minMax":
                 this.dataNormType = new DataNormalization(_min, _max);
                 break;
@@ -102,10 +104,10 @@ public class ANNModel extends Observable {
     }
 
     public void setLearnmode(String mode) {
-        switch(mode) {
+        switch (mode) {
             case "BATCH":
                 this.learnMode = LearningAlgorithm.LearningMode.BATCH;
-                System.out.println("Learnmode aus Model: "+learnMode);
+                System.out.println("Learnmode aus Model: " + learnMode);
                 break;
             case "ONLINE":
                 this.learnMode = LearningAlgorithm.LearningMode.ONLINE;
@@ -214,8 +216,8 @@ public class ANNModel extends Observable {
 
     public void setNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
         this.newWeights = newWeights;
-       setChanged();
-       notifyObservers("setNewWeights");
+        setChanged();
+        notifyObservers("setNewWeights");
     }
 
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
@@ -226,18 +228,10 @@ public class ANNModel extends Observable {
         this.actualEpoch = actualEpoch;
     }
 
-    public void setErrorData(double[][] errors) {
-        errors = bP.getErrorData();
-        this.errors = errors;
-    }
-
-    public double[][] getErrors() {
-        return this.errors;
-    }
-
     public int getActualEpoch() {
         return actualEpoch;
     }
+
     public void train() {
         setChanged();
         notifyObservers("train");

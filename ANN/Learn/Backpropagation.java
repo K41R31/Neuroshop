@@ -419,17 +419,35 @@ public class Backpropagation extends DeltaRule {
         this.MomentumRate=_momentumRate;
     }
 
-    public double[][] getErrorData() {
-        double[] trainingErrors = ArrayOperations.arrayListToVector(getListOfErrorsByEpoch());
-        double[] testingErrors = ArrayOperations.arrayListToVector(getListOfTestErrorsByEpoch());
-        double[][] errors = new double[trainingErrors.length][3];
-        for(int i=0;i<trainingErrors.length;i++){
-            errors[i][0]=i;
-            errors[i][1]=trainingErrors[i];
-            errors[i][2]=testingErrors[i];
-        }
-        return errors;
-    }
+//    @Override
+//    public void showErrorEvolution(){
+//
+////        Chart Charts = new Chart("Training",rndDataSet,seriesNames,0,seriesColor);
+////            ChartFrame frame = new ChartFrame("Training", Charts.scatterPlot("X", "Y"));
+////            frame.pack();
+////            frame.setVisible(true);
+//        double[] trainingErrors = ArrayOperations.arrayListToVector(getListOfErrorsByEpoch());
+//        double[] testingErrors = ArrayOperations.arrayListToVector(getListOfTestErrorsByEpoch());
+//        double[][] errors = new double[trainingErrors.length][3];
+//        for(int i=0;i<trainingErrors.length;i++){
+//            errors[i][0]=i;
+//            errors[i][1]=trainingErrors[i];
+//            errors[i][2]=testingErrors[i];
+//        }
+//
+//        String[] seriesNames = {"Train Error","Test Error"};
+//        Paint[] seriesColor = {Color.BLUE, Color.GREEN};
+//        Chart c = new Chart("Error Evolution",errors,seriesNames,0,seriesColor,Chart.SeriesType.LINES);
+//        if(plotErrorEvolution == null){
+//            plotErrorEvolution = new ChartFrame("Error Evolution",c.scatterPlot("Epoch","Error"));
+//            plotErrorEvolution.pack();
+//            plotErrorEvolution.setVisible(true);
+//        }
+//        else{
+//            plotErrorEvolution.getChartPanel().setChart(c.scatterPlot("Epoch","Error"));
+//        }
+//
+//    }
 
     @Override
     public void showErrorEvolution(){
