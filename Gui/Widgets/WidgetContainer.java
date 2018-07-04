@@ -39,7 +39,7 @@ public class WidgetContainer implements Observer {
         neuralNetWidgetRoot = neuralNetWidgetLoader.load();
         neuralNetWidgetRoot.setId("Neural Net");
 
-        dataManagerPrevRoot = new PreviewWidget("Data Manager", new Image("Neuroshop/Ressources/Assets/thumbKommtNoch.png"), this.widgetContainerModel);
+        dataManagerPrevRoot = new PreviewWidget("Data Manager", new Image("Neuroshop/Ressources/Assets/dataManagerThumb.png"), this.widgetContainerModel);
         diagramPrevRoot = new PreviewWidget("Diagram", new Image("Neuroshop/Ressources/Assets/resultDiagramThumb.png"), this.widgetContainerModel);
         neuralNetPrevRoot = new PreviewWidget("Neural Net", new Image("Neuroshop/Ressources/Assets/netThumb.png"), this.widgetContainerModel);
 

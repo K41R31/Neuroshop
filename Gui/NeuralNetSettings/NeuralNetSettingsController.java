@@ -252,5 +252,10 @@ public class NeuralNetSettingsController implements Observer {
         this.annModel = annModel;
         this.tutorialModel = tutorialModel;
         annModel.setLearnmode("batchMode");
+        maxEpochsSliderDragged();
+        minOverallErrorSliderDragged();
+        momentumRateDragged();
+        learningRateDragged();
+        annModel.setLearnmode("batchMode");
     }
 }
