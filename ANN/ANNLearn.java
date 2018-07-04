@@ -18,6 +18,7 @@ public class ANNLearn implements Observer {
     private double dataPercentage;
     private int[] inputColumns;
     private int[] outputColumns;
+    private double[] nOutTrain;
     private int maxEpochs;
     private double minOverallError;
     private double learningRate;
