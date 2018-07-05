@@ -38,7 +38,8 @@ public class DiagramWidgetController implements Observer {
     @FXML
     private void initialize() {
         final NumberAxis xAxis = new NumberAxis();
-        xAxis.setTickUnit(1000);
+        xAxis.setTickUnit(100);
+        xAxis.setTickLabelGap(0);
         xAxis.setTickLabelFill(Color.web("#888888"));
         xAxis.setTickLabelFont(new Font(10));
         final NumberAxis yAxis = new NumberAxis();
@@ -78,14 +79,16 @@ public class DiagramWidgetController implements Observer {
     public void update(Observable o, Object arg) {
         switch ((String)arg) {
             case "train":
+                if (overallErrorSeries.getData().size() > 0 & trainErrorSeries.getData().size() > 0) {
+                    overallErrorSeries.getData().clear();
+                    trainErrorSeries.getData().clear();
+                }
                 updateThread = new Thread(this::updateErrorsInSeries);
                 updateThread.start();
                 break;
             case "stop":
                 updateErrors.stop();
                 updateThread.stop();
-                overallErrorSeries.getData().clear();
-                trainErrorSeries.getData().clear();
         }
     }
 
