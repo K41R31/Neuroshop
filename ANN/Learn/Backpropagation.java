@@ -206,9 +206,6 @@ public class Backpropagation extends DeltaRule {
                     test();
                     listOfTestErrorsByEpoch.add(testingOverallGeneralError);
                 }
-                System.out.println(listOfErrorsByEpoch);
-//                annModel.setActualOverallError(listOfErrorsByEpoch);
-//                annModel.setActualTestError(listOfTestErrorsByEpoch);
                 epoch++;
                 trainingErrorVariation = listOfErrorsByEpoch.get(epoch) - listOfErrorsByEpoch.get(epoch - 1);
                 if (testingDataSet != null) {

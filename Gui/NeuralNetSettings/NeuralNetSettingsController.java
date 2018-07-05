@@ -184,8 +184,8 @@ public class NeuralNetSettingsController implements Observer {
         Timeline updateEpochPane = new Timeline();
         updateEpochPane.getKeyFrames().addAll(
                 new KeyFrame(new Duration(100), event -> actualEpoch.setText(String.valueOf(annModel.getActualEpoch()))),
-                new KeyFrame(new Duration(100), event -> actualOverallError.setText(String.valueOf(roundDouble(annModel.getOverallError(), 5)))),
-        new KeyFrame(new Duration(100), event -> actualTestError.setText(String.valueOf(roundDouble(annModel.getActualTestError(), 5))))
+                new KeyFrame(new Duration(100), event -> actualOverallError.setText(String.valueOf(roundDouble(annModel.getActualOverallError(), 5)))),
+                new KeyFrame(new Duration(100), event -> actualTestError.setText(String.valueOf(roundDouble(annModel.getActualTestError(), 5))))
         );
         updateEpochPane.setCycleCount(Animation.INDEFINITE);
         updateEpochPane.play();
@@ -221,7 +221,7 @@ public class NeuralNetSettingsController implements Observer {
 
     @FXML
     private void openerPaneEntered() {
-        openerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIconHover.png"));
+        openerIcon.setImage(new Image("Neurosho p/Ressources/Assets/nnOpenerIconHover.png"));
 
     }
     @FXML

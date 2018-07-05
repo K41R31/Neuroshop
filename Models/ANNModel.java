@@ -233,7 +233,7 @@ public class ANNModel extends Observable {
         this.overallError = overallError;
     }
 
-    public double getOverallError() {
+    public double getActualOverallError() {
         return overallError;
     }
 
