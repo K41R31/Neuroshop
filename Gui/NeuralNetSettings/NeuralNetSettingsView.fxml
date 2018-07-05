@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
@@ -21,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
+<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
    <children>
       <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0">
          <children>
@@ -78,7 +71,7 @@
             </ImageView>
             <Line endX="350.0" endY="214.0" startX="350.0" startY="30.0" stroke="#4d4e55" />
             <Line endX="710.0" endY="214.0" startX="710.0" startY="30.0" stroke="#4d4e55" />
-            <Line endX="1000.0" endY="214.0" startX="1000.0" startY="30.0" stroke="#4d4e55" />
+            <Line endX="1020.0" endY="214.0" startX="1020.0" startY="30.0" stroke="#4d4e55" />
             <HBox fx:id="contentPane" alignment="CENTER_LEFT" layoutX="-11.0" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="10.0" HBox.hgrow="ALWAYS">
@@ -181,7 +174,7 @@
                         </Text>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="30.0">
                            <children>
-                              <Text fx:id="batchMode" fill="#35baff" fontSmoothingType="LCD" onMouseClicked="#batchModeClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="BATCH" wrappingWidth="100.0">
+                              <Text fx:id="batchMode" fill="#35baff" fontSmoothingType="LCD" onMouseClicked="#batchModeClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="BATCH" wrappingWidth="80.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines Italic" size="22.0" />
                                  </font>
@@ -207,27 +200,27 @@
                         <Insets top="25.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="10.0">
                      <children>
-                        <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewicht Initialisierung" wrappingWidth="210.0">
+                        <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewichts Initialisierung" wrappingWidth="250.0">
                            <font>
                               <Font name="Champagne &amp; Limousines Bold" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Text>
-                        <Text fx:id="weightInit1" fill="#35baff" fontSmoothingType="LCD" onMouseClicked="#batchModeClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Uniform" wrappingWidth="100.0">
-                           <font>
-                              <Font name="Champagne &amp; Limousines Italic" size="22.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="-40.0" />
+                              <Insets top="-70.0" />
                            </VBox.margin>
                         </Text>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="30.0">
                            <children>
-                              <TextField fx:id="epochCount1" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
+                              <Text fx:id="weightInit1" fill="#c6c6c6" fontSmoothingType="LCD" onMouseClicked="#batchModeClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Uniform" wrappingWidth="130.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="7.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <TextField fx:id="epochCount1" alignment="CENTER_RIGHT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
                                  <text>
                                  <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Seed" wrappingWidth="160.0">
                                     <font>
@@ -238,20 +231,28 @@
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets top="7.0" />
+                                 </HBox.margin>
                               </TextField>
                            </children>
                            <VBox.margin>
-                              <Insets top="25.0" />
+                              <Insets bottom="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="50.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="seedTextField" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#seedChanged" prefHeight="30.0" prefWidth="50.0" text="0">
+                              <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Seed" wrappingWidth="100.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="22.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="seedTextField" alignment="CENTER_RIGHT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#seedChanged" prefHeight="30.0" prefWidth="50.0" text="0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets top="27.0" />
+                                    <Insets top="7.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
