@@ -221,7 +221,7 @@ public class NeuralNetSettingsController implements Observer {
 
     @FXML
     private void openerPaneEntered() {
-        openerIcon.setImage(new Image("Neurosho p/Ressources/Assets/nnOpenerIconHover.png"));
+        openerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIconHover.png"));
 
     }
     @FXML
@@ -279,14 +279,13 @@ public class NeuralNetSettingsController implements Observer {
     private void train() {
         if (!annModel.getIsTraining()) {
             annModel.train();
-            toggleEpochPane();
+            if (!epochPaneIsOpen) toggleEpochPane();
             updateEpochPane();
             startButton.setImage(new Image("Neuroshop/Ressources/Assets/stopButton.png"));
             startButton.setOnMouseEntered(event -> new Image("Neuroshop/Ressources/Assets/stopButtonHover.png"));
             startButton.setOnMouseExited(event -> new Image("Neuroshop/Ressources/Assets/stopButton.png"));
         } else {
             annModel.stop();
-            toggleEpochPane();
             updateEpochPane();
             startButton.setImage(new Image("Neuroshop/Ressources/Assets/playButton.png"));
             startButton.setOnMouseEntered(event -> new Image("Neuroshop/Ressources/Assets/playButtonHover.png"));
