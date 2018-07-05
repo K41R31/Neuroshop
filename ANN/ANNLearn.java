@@ -33,10 +33,6 @@ public class ANNLearn implements Observer {
     public void train() {
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
         annModel.addActFnc();
-<<<<<<< HEAD
-//        annModel.save();
-=======
->>>>>>> 53c976e355109308c5f9973ad3679967718efcea
         this.actFnc = annModel.getActFnc();
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);

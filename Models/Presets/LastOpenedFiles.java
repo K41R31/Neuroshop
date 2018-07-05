@@ -36,8 +36,15 @@ public class LastOpenedFiles {
         for (File savedFiles : lastOpened) {
             if (fileName.equals(savedFiles.getName())) return;
         }
+        File saveFile = new File(fileLocation+"\\"+fileName);
+        try {
+            saveFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter (
                 new FileOutputStream(fileLocation+"\\"+fileName), "utf-8"))) {
+
             writer.write(readFile(file));
             writer.close();
         } catch (IOException e) {

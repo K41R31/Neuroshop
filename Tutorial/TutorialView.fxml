@@ -119,7 +119,7 @@
                   <Font name="Champagne &amp; Limousines" size="64.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="75.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wichtig: Damit dieses Programm funktioniert, müssen Sie Ihre Daten formatieren. Es sollte ein CSV- oder TXT-Datentyp sein. Außerdem müssen sie in einem String sein (eine Zeile pro String in Excel) und Werte sollten durch Kommas getrennt sein. Ihre Klasse muss als +/- 1 oder 0 definiert werden. Für dieses Tutorial sind die Daten bereits ausgewählt und vorbereitet." wrappingWidth="764.130859375">
+            <Text fill="WHITE" layoutX="75.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wichtig: Damit dieses Programm funktioniert, müssen die Daten formatiert werden. Es sollte ein CSV- oder TXT-Datentyp sein. Außerdem müssen die einzelnen Werte durch Kommas getrennt sein. Die Output Werte müssen im Bereich 1 – -1 definiert werden. Für dieses Tutorial haben wir einen Datensatz bereitgestellt." wrappingWidth="764.130859375">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
@@ -138,7 +138,7 @@
                   <Font name="Champagne &amp; Limousines" size="64.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="131.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dies ist eine kurze Einführng in Neurale Netze. Du wirst lernen, wie man sie mit Neuroshop erstellen und bearbeiten kann." wrappingWidth="605.138671875">
+            <Text fill="WHITE" layoutX="131.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dies ist eine kurze Einführung in Neuronale Netze. Du wirst lernen, wie man sie mit Neuroshop erstellen und bearbeiten kann." wrappingWidth="605.138671875">
                <font>
                   <Font name="Champagne &amp; Limousines" size="36.0" />
                </font>
