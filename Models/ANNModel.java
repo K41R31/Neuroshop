@@ -214,9 +214,6 @@ public class ANNModel extends Observable {
         this.newWeights = newWeights;
     }
 
-    public void addNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
-        }
-
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
         return newWeights;
     }
@@ -272,23 +269,18 @@ public class ANNModel extends Observable {
         isTraining = false;
     }
 
-    public void setFilename(String filename) {
-    this.filename = filename;
-    }
-
-    public String getFilename() {
-    return filename;
-    }
-
-
     public void save() throws IOException {
-        File file = new File("tempWeights.txt");
+        try(
+                FileWriter fw = new FileWriter("Neuroshop\\\\Ressources\\\\SavedDate\\\\Tempweights\\\\tempWeights.txt", true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(newWeights);
 
+        } catch (IOException e) {
 
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(this);
         }
-    }
+ }
 
     public boolean getIsTraining() {
         return isTraining;
