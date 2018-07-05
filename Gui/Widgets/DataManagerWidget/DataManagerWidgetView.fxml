@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
@@ -44,6 +45,62 @@
             </StackPane>
             <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="150.0" spacing="30.0" style="-fx-background-color: #2f2f2f; -fx-border-color: #151515; -fx-background-insets: 0 0 -50 0; -fx-border-insets: 0 0 -50 0;">
                <children>
+                  <VBox alignment="TOP_CENTER" spacing="10.0">
+                     <children>
+                        <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Daten Normalisierung">
+                           <font>
+                              <Font name="Champagne &amp; Limousines Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="70.0">
+                           <children>
+                              <Text fx:id="dNormMinMax" fill="#35baff" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="MinMax">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="24.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Text fx:id="dNormZScore" fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Z-Score">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines Italic" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="20.0">
+                           <children>
+                              <TextField fx:id="minMaxValue" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #666666;" text="-1.0, 1.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines" size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                              <TextField fx:id="zScoreValue" alignment="CENTER" disable="true" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #666666;" text="1.0">
+                                 <font>
+                                    <Font name="Champagne &amp; Limousines" size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="40.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Line endY="100.0" stroke="#404040" />
                   <VBox alignment="TOP_CENTER">
                      <children>
                         <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Daten Verteilung" textAlignment="CENTER">
@@ -108,65 +165,22 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Line endY="100.0" stroke="#404040" />
-                  <VBox alignment="TOP_CENTER" spacing="10.0">
+                  <Line endY="100.0" layoutX="539.0" layoutY="46.0" stroke="#404040" />
+                  <VBox alignment="CENTER" layoutX="573.0" layoutY="31.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" spacing="10.0">
                      <children>
-                        <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Daten Normalisierung">
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #666666; -fx-padding: 0;" text="Apply" textAlignment="CENTER" textFill="#282828">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                            <font>
-                              <Font name="Champagne &amp; Limousines Bold" size="24.0" />
+                              <Font name="Champagne &amp; Limousines" size="22.0" />
                            </font>
-                        </Text>
-                        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="70.0">
-                           <children>
-                              <Text fx:id="dNormMinMax" fill="#35baff" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="MinMax">
-                                 <font>
-                                    <Font name="Champagne &amp; Limousines Italic" size="22.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="24.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <Text fx:id="dNormZScore" fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Z-Score">
-                                 <font>
-                                    <Font name="Champagne &amp; Limousines Italic" size="22.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                           <padding>
-                              <Insets top="20.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="20.0">
-                           <children>
-                              <TextField fx:id="minMaxValue" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #666666;" text="-1.0, 1.0">
-                                 <font>
-                                    <Font name="Champagne &amp; Limousines" size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextField>
-                              <TextField fx:id="zScoreValue" alignment="CENTER" disable="true" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #666666;" text="1.0">
-                                 <font>
-                                    <Font name="Champagne &amp; Limousines" size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="40.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
+                        </Button>
                      </children>
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
                   </VBox>
                </children>
                <padding>
-                  <Insets top="20.0" />
+                  <Insets left="10.0" right="10.0" top="20.0" />
                </padding>
             </HBox>
             <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0">
