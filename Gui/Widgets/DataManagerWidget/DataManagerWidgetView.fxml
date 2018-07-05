@@ -75,7 +75,7 @@
                               <Insets top="20.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="20.0">
+                        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="60.0">
                            <children>
                               <TextField fx:id="minMaxValue" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #666666;" text="-1.0, 1.0">
                                  <font>
@@ -90,7 +90,7 @@
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="40.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </TextField>
                            </children>
@@ -168,7 +168,7 @@
                   <Line endY="100.0" layoutX="539.0" layoutY="46.0" stroke="#404040" />
                   <VBox alignment="CENTER" layoutX="573.0" layoutY="31.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" spacing="10.0">
                      <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #666666; -fx-padding: 0;" text="Apply" textAlignment="CENTER" textFill="#282828">
+                        <Button fx:id="applyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#apply" onMouseEntered="#applyButtonEntered" onMouseExited="#applyButtonExited" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #666666; -fx-padding: 0;" text="Apply" textAlignment="CENTER" textFill="#282828">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>

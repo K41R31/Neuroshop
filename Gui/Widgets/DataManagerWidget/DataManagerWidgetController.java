@@ -13,6 +13,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
@@ -76,6 +77,8 @@ public class DataManagerWidgetController implements Observer {
     private HBox columnPane;
     @FXML
     private AnchorPane lastOpenedPane;
+    @FXML
+    private Button applyButton;
     private boolean menuIsOpen;
     private ArrayList<Integer> inputList;
     private ArrayList<Integer> outputList;
@@ -235,20 +238,6 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
-    /*
-        tutorialModel.step3();
-        widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
-        widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
-        DataManager.setTranslateX(0);
-        DataManager.setTranslateY(0);
-        ArrayList<Integer> inputList = new ArrayList<>();
-        ArrayList<Integer> outputList = new ArrayList<>();
-        errorInfo.setVisible(false);
-        annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
-        annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
-        widgetContainerModel.activateMenus();
-     */
-
     @FXML
     private void toggleMenu() {
         if (!menuIsOpen) {
@@ -278,6 +267,44 @@ public class DataManagerWidgetController implements Observer {
             datasetOverview.setDisable(true);
             menuIsOpen = false;
         }
+    }
+
+    @FXML
+    private void apply() {
+        ArrayList<Integer> inputList = new ArrayList<>();
+        ArrayList<Integer> outputList = new ArrayList<>();
+        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
+            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
+                errorInfo.setText("Set each column to input or output");
+                errorInfo.setVisible(true);
+                return;
+            } else {
+                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
+                    inputList.add(i);
+                } else {
+                    outputList.add(i);
+                }
+            }
+        }
+        if (inputList.size() == 0) {
+            errorInfo.setText("You have to set at least one column as output");
+            errorInfo.setVisible(true);
+            return;
+        } else if (outputList.size() == 0) {
+            errorInfo.setText("You have to set at least one column as input");
+            errorInfo.setVisible(true);
+            return;
+        }
+
+        tutorialModel.step3();
+        widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
+        widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
+        DataManager.setTranslateX(0);
+        DataManager.setTranslateY(0);
+        errorInfo.setVisible(false);
+        annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
+        annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
+        widgetContainerModel.activateMenus();
     }
 
     @FXML
@@ -323,33 +350,6 @@ public class DataManagerWidgetController implements Observer {
         button2Text.setFill(Color.web("#4490ff"));
     }
 
-//
-//    @FXML
-//    private void apply() {
-//        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
-//            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
-//                errorInfo.setText("Set each column to input or output");
-//                errorInfo.setVisible(true);
-//                return;
-//            } else {
-//                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
-//                    inputList.add(i);
-//                } else {
-//                    outputList.add(i);
-//                }
-//            }
-//        }
-//        if (inputList.size() == 0) {
-//            errorInfo.setText("You have to set at least one column as output");
-//            errorInfo.setVisible(true);
-//            return;
-//        } else if (outputList.size() == 0) {
-//            errorInfo.setText("You have to set at least one column as input");
-//            errorInfo.setVisible(true);
-//            return;
-//        }
-//    }
-
     @FXML
     private void back() {
         lastOpenedPane.setOpacity(0);
@@ -367,6 +367,16 @@ public class DataManagerWidgetController implements Observer {
             filesPane.getChildren().add(new lastOpenedItem(actualFile.getName(), actualFile));
             deleterPane.getChildren().add(new lastOpenedItemDeleter(actualFile));
         }
+    }
+
+    @FXML
+    private void applyButtonEntered() {
+        applyButton.setStyle("-fx-background-color: #444444");
+    }
+
+    @FXML
+    private void applyButtonExited() {
+        applyButton.setStyle("-fx-background-color: #666666");
     }
 
     @Override
