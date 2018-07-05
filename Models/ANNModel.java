@@ -270,17 +270,6 @@ public class ANNModel extends Observable {
     }
 
     public void save() {
-//        try (
-//                FileWriter fw = new FileWriter(, true);
-//                BufferedWriter bw = new BufferedWriter(fw);
-//                bw.write();
-//                PrintWriter out = new PrintWriter(bw))
-//        {
-//            out.println(newWeights);
-//
-//        } catch (IOException e) {
-//
-//        }
     String fileLocation = "Neuroshop\\Ressources\\SavedData\\Tempweights\\tempWeights.txt";
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter (
             new FileOutputStream(fileLocation), "utf-8"))) {
