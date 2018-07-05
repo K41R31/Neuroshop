@@ -41,6 +41,8 @@ public class DataManagerWidgetController implements Observer {
     @FXML
     private Slider testLearnSlider;
     @FXML
+    private StackPane toggleMenuPane;
+    @FXML
     private StackPane DataManager;
     @FXML
     private AnchorPane importPane;
@@ -49,11 +51,13 @@ public class DataManagerWidgetController implements Observer {
     @FXML
     private StackPane button2Pane;
     @FXML
+    private StackPane datasetOverview;
+    @FXML
     private Text trainValue;
     @FXML
     private Text testValue;
     @FXML
-    private ImageView closerIcon;
+    private ImageView toggleMenuIcon;
     @FXML
     private Text button1Text;
     @FXML
@@ -73,6 +77,8 @@ public class DataManagerWidgetController implements Observer {
     @FXML
     private AnchorPane lastOpenedPane;
     private boolean menuIsOpen;
+    private ArrayList<Integer> inputList;
+    private ArrayList<Integer> outputList;
 
 
     @FXML
@@ -132,6 +138,10 @@ public class DataManagerWidgetController implements Observer {
     }
 
     private void initDataManager() {
+        if (annModel.getDataColumns() > 0) {
+            toggleMenuPane.setVisible(true);
+            toggleMenuPane.setDisable(false);
+        }
         testLearnSlider.setMin(0);
         testLearnSlider.setMax(annModel.getNumberOfRecords());
         testLearnSlider.setValue(testLearnSlider.getMax() / 2);
@@ -226,6 +236,7 @@ public class DataManagerWidgetController implements Observer {
     }
 
     @FXML
+<<<<<<< HEAD
     private void toggleDataManager() {
         ArrayList<Integer> inputList = new ArrayList<>();
         ArrayList<Integer> outputList = new ArrayList<>();
@@ -256,6 +267,35 @@ public class DataManagerWidgetController implements Observer {
             errorInfo.setText("You have to set at least one column as input");
             errorInfo.setVisible(true);
             return;
+=======
+    private void toggleMenu() {
+        if (!menuIsOpen) {
+            Timeline openOptionsAnimation = new Timeline();
+            openOptionsAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(200), new KeyValue(datasetOverview.prefHeightProperty(), 300, Interpolator.EASE_BOTH),
+                            new KeyValue(toggleMenuIcon.scaleYProperty(), -1, Interpolator.EASE_BOTH),
+                            new KeyValue(DataManager.prefHeightProperty(), 600, Interpolator.EASE_BOTH),
+                            new KeyValue(toggleMenuPane.translateYProperty(), 600, Interpolator.EASE_BOTH))
+            );
+            openOptionsAnimation.play();
+            openOptionsAnimation.setOnFinished(event -> {
+                datasetOverview.setVisible(true);
+                datasetOverview.setDisable(false);
+            });
+            menuIsOpen = true;
+        } else {
+            Timeline closeMenuAnimation = new Timeline();
+            closeMenuAnimation.getKeyFrames().addAll(
+                    new KeyFrame(new Duration(200), new KeyValue(datasetOverview.prefHeightProperty(), 0, Interpolator.EASE_BOTH),
+                            new KeyValue(toggleMenuIcon.scaleYProperty(), 1, Interpolator.EASE_BOTH),
+                            new KeyValue(DataManager.prefHeightProperty(), 300, Interpolator.EASE_BOTH),
+                            new KeyValue(toggleMenuPane.translateYProperty(), 300, Interpolator.EASE_BOTH))
+            );
+            closeMenuAnimation.play();
+            datasetOverview.setVisible(false);
+            datasetOverview.setDisable(true);
+            menuIsOpen = false;
+>>>>>>> e2bb0796d92dcd2d224388105a5dfe9426ebc73c
         }
     }
 
@@ -269,12 +309,12 @@ public class DataManagerWidgetController implements Observer {
         annModel.setDataPercentage((roundDouble(value)) / testLearnSlider.getMax());
         coloriseData(value);
 
-        tutorialModel.step3();
         errorInfo.setVisible(false);
         annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
         annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
         widgetContainerModel.activateMenus();
 
+        tutorialModel.step3();
         widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
         widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
         DataManager.setTranslateX(0);
@@ -283,12 +323,12 @@ public class DataManagerWidgetController implements Observer {
 
     @FXML
     private void closerPaneEntered() {
-        closerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIconHover.png"));
+        toggleMenuIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIconHover.png"));
     }
 
     @FXML
     private void closerPaneExited() {
-        closerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIcon.png"));
+        toggleMenuIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIcon.png"));
     }
 
     @FXML
@@ -318,7 +358,28 @@ public class DataManagerWidgetController implements Observer {
 
     @FXML
     private void apply() {
-
+        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
+            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
+                errorInfo.setText("Set each column to input or output");
+                errorInfo.setVisible(true);
+                return;
+            } else {
+                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
+                    inputList.add(i);
+                } else {
+                    outputList.add(i);
+                }
+            }
+        }
+        if (inputList.size() == 0) {
+            errorInfo.setText("You have to set at least one column as output");
+            errorInfo.setVisible(true);
+            return;
+        } else if (outputList.size() == 0) {
+            errorInfo.setText("You have to set at least one column as input");
+            errorInfo.setVisible(true);
+            return;
+        }
     }
 
     @FXML

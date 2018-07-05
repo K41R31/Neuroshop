@@ -3,11 +3,16 @@ package Neuroshop.Gui.Widgets.DiagramWidget;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
+
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.ValueAxis;
@@ -28,65 +33,55 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class CrosshairOverlayFXDemo extends Application {
 
-    static class MyDemoPane extends StackPane implements ChartMouseListenerFX {
+//    series = new XYSeries("S1");
+//    series2 = new XYSeries("S2");
+//    XYSeriesCollection datasetCollection = new XYSeriesCollection();
+//        datasetCollection.addSeries(series);
+//        datasetCollection.addSeries(series2);
+//    JFreeChart chart = createChart(datasetCollection);
+//    chartViewer = new ChartViewer(chart);
+//        rootPane.getChildren().add(chartViewer);
+//    CrosshairOverlayFX crosshairOverlay = new CrosshairOverlayFX();
+//    xCrosshair = new Crosshair(Double.NaN, Color.GRAY,
+//                new BasicStroke(0f));
+//        xCrosshair.setStroke(new BasicStroke(1.5f,
+//                                             BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
+//                                                     new float[]{2.0f, 2.0f}, 0));
+//        xCrosshair.setLabelVisible(true);
+//    yCrosshair = new Crosshair(Double.NaN, Color.GRAY,
+//                new BasicStroke(0f));
+//        yCrosshair.setStroke(new BasicStroke(1.5f,
+//                                             BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
+//                                                     new float[] {2.0f, 2.0f}, 0));
+//        yCrosshair.setLabelVisible(true);
+//        crosshairOverlay.addDomainCrosshair(xCrosshair);
+//        crosshairOverlay.addRangeCrosshair(yCrosshair);
+//        Platform.runLater(() -> {
+//        chartViewer.getCanvas().addOverlay(crosshairOverlay);
+//    });
+//    updateChart();
+//}
+//
+//    private JFreeChart createChart(XYDataset dataset) {
+//        JFreeChart chart = ChartFactory.createXYLineChart(
+//                "CrosshairOverlayDemo1", "X", "Y", dataset);
+//        return chart;
+//    }
+//
+//    private void updateChart() {
+//        Timeline timeline = new Timeline();
+//        timeline.getKeyFrames().addAll(
+//                new KeyFrame(new Duration(500), event -> {
+//                    series.add(i, Math.random() * 4.0);
+//                    series2.add(i, Math.random() * 4.0);
+//                    i++;
+//                })
+//        );
+//        timeline.setCycleCount(Animation.INDEFINITE);
+//        timeline.play();
+//    }
 
-        private ChartViewer chartViewer;
-
-        private Crosshair xCrosshair;
-
-        private Crosshair yCrosshair;
-
-        public MyDemoPane() {
-//            XYDataset dataset = createDataset();
-//            JFreeChart chart = createChart(dataset);
-//            this.chartViewer = new ChartViewer(chart);
-            this.chartViewer.addChartMouseListener(this);
-            getChildren().add(this.chartViewer);
-
-            CrosshairOverlayFX crosshairOverlay = new CrosshairOverlayFX();
-            this.xCrosshair = new Crosshair(Double.NaN, Color.GRAY,
-                    new BasicStroke(0f));
-            this.xCrosshair.setStroke(new BasicStroke(1.5f,
-                    BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
-                    new float[]{2.0f, 2.0f}, 0));
-            this.xCrosshair.setLabelVisible(true);
-            this.yCrosshair = new Crosshair(Double.NaN, Color.GRAY,
-                    new BasicStroke(0f));
-            this.yCrosshair.setStroke(new BasicStroke(1.5f,
-                    BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
-                    new float[] {2.0f, 2.0f}, 0));
-            this.yCrosshair.setLabelVisible(true);
-            crosshairOverlay.addDomainCrosshair(xCrosshair);
-            crosshairOverlay.addRangeCrosshair(yCrosshair);
-
-            Platform.runLater(() -> {
-                this.chartViewer.getCanvas().addOverlay(crosshairOverlay);
-            });
-        }
-
-        @Override
-        public void chartMouseClicked(ChartMouseEventFX event) {
-            // ignore
-        }
-
-        @Override
-        public void chartMouseMoved(ChartMouseEventFX event) {
-            Rectangle2D dataArea = this.chartViewer.getCanvas().getRenderingInfo().getPlotInfo().getDataArea();
-            JFreeChart chart = event.getChart();
-            XYPlot plot = (XYPlot) chart.getPlot();
-            ValueAxis xAxis = plot.getDomainAxis();
-            double x = xAxis.java2DToValue(event.getTrigger().getX(), dataArea,
-                    RectangleEdge.BOTTOM);
-            // make the crosshairs disappear if the mouse is out of range
-            if (!xAxis.getRange().contains(x)) {
-                x = Double.NaN;
-            }
-            double y = DatasetUtils.findYValue(plot.getDataset(), 0, x);
-            this.xCrosshair.setValue(x);
-            this.yCrosshair.setValue(y);
-        }
-
-    }
+//    }
 
 //    private static XYDataset createDataset() {
 //        XYSeriesCollection dataset = new XYSeriesCollection();
@@ -116,7 +111,7 @@ public class CrosshairOverlayFXDemo extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(new MyDemoPane()));
+//        stage.setScene(new Scene(new MyDemoPane()));
         stage.setTitle("JFreeChart: CrosshairOverlayFXDemo1.java");
         stage.setWidth(700);
         stage.setHeight(390);

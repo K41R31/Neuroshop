@@ -46,6 +46,8 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private TextField momentumRateValue;
     @FXML
+    private TextField seedTextField;
+    @FXML
     private Slider maxEpochsSlider;
     @FXML
     private Slider minOverallErrorSlider;
@@ -255,6 +257,16 @@ public class NeuralNetSettingsController implements Observer {
         momentumRateSlider.setMax(1.0);
         annModel.setMomentumRate(roundDouble(value, 1));
         momentumRateValue.setText(String.valueOf(roundDouble(value, 1)));
+    }
+
+    @FXML
+    private void seedChanged() { //TODO
+        String seedText = seedTextField.getText();
+        try {
+            annModel.setSeed(Double.parseDouble(seedText));
+        } catch(NumberFormatException e) {
+            seedTextField.setText("Nur Ziffern");
+        }
     }
 
     @FXML

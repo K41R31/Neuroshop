@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class NeuralNetController extends StackPane implements Observer {
+public class NeuralNetController implements Observer {
 
     private ANNModel annModel;
     private Backpropagation bP;
