@@ -11,6 +11,7 @@ import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
 
+import java.io.IOException;
 import java.util.*;
 
 public class ANNLearn implements Observer {
@@ -32,12 +33,12 @@ public class ANNLearn implements Observer {
     public void train() {
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
         annModel.addActFnc();
-        annModel.save();
+//        annModel.save();
         this.actFnc = annModel.getActFnc();
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
-        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), actFnc, outputActFnc, new UniformInitialization(0, 1.0));
+        NeuralNet nnWidget = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), actFnc, outputActFnc, new UniformInitialization(-1.0, 1.0));
         nnWidget.print();
 
         double[][] dSet = annModel.getDataSet();
@@ -84,7 +85,7 @@ public class ANNLearn implements Observer {
             System.out.println("Minimaler Fehler:" + String.valueOf(backprop.getMinOverallError()));
             System.out.println("Epochen:" + String.valueOf(backprop.getEpoch()));
 
-            backprop.showErrorEvolution();
+//            backprop.showErrorEvolution();
             neuralDataSetToTrain.printTargetOutput();
             neuralDataSetToTest.printTargetOutput();
 
@@ -145,7 +146,7 @@ public class ANNLearn implements Observer {
                 this.learningRate = annModel.getLearningRate();
                 break;
             case "train":
-                trainThread = new Thread(this::train);
+                trainThread = new Thread((this::train));
                 trainThread.start();
                 break;
             case "stop":
