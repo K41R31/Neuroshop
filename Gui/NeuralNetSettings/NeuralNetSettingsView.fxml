@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
+<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
    <children>
       <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0">
          <children>
@@ -30,7 +30,7 @@
             </ImageView>
          </children>
       </StackPane>
-      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="244.0" style="-fx-background-color: TRANSPARENT;">
+      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: TRANSPARENT;">
          <children>
             <AnchorPane fx:id="epochPane" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" style="-fx-background-color: #666666;" AnchorPane.rightAnchor="0.0">
                <children>
@@ -70,9 +70,9 @@
                </image>
             </ImageView>
             <Line endX="350.0" endY="214.0" startX="350.0" startY="30.0" stroke="#4d4e55" />
-            <Line endX="710.0" endY="214.0" startX="710.0" startY="30.0" stroke="#4d4e55" />
+            <Line endX="720.0" endY="214.0" startX="720.0" startY="30.0" stroke="#4d4e55" />
             <Line endX="1020.0" endY="214.0" startX="1020.0" startY="30.0" stroke="#4d4e55" />
-            <HBox fx:id="contentPane" alignment="CENTER_LEFT" layoutX="-11.0" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="0.0">
+            <HBox fx:id="contentPane" alignment="CENTER_LEFT" opacity="0.0" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
@@ -192,34 +192,35 @@
                               </Text>
                            </children>
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </HBox>
                      </children>
                      <HBox.margin>
-                        <Insets top="25.0" />
+                        <Insets left="20.0" top="25.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="10.0">
+                  <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" spacing="10.0">
                      <children>
                         <Text fill="#9d9d9d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewichts Initialisierung" wrappingWidth="250.0">
                            <font>
                               <Font name="Champagne &amp; Limousines Bold" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="-70.0" />
+                              <Insets />
                            </VBox.margin>
                         </Text>
-                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="30.0">
+                        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="30.0">
                            <children>
-                              <Text fx:id="weightInit1" fill="#c6c6c6" fontSmoothingType="LCD" onMouseClicked="#batchModeClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Uniform" wrappingWidth="130.0">
+                              <Text fx:id="weightInit1" fill="#c6c6c6" fontSmoothingType="LCD" onMouseClicked="#batchModeClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Uniform" wrappingWidth="100.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines Italic" size="22.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets top="7.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </Text>
+                              <Region HBox.hgrow="ALWAYS" />
                               <TextField fx:id="epochCount1" alignment="CENTER_RIGHT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
                                  <text>
                                  <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Seed" wrappingWidth="160.0">
@@ -232,27 +233,28 @@
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets top="7.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </TextField>
                            </children>
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox prefHeight="50.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
                            <children>
                               <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Seed" wrappingWidth="100.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines Italic" size="22.0" />
                                  </font>
                               </Text>
+                              <Region HBox.hgrow="ALWAYS" />
                               <TextField fx:id="seedTextField" alignment="CENTER_RIGHT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#seedChanged" prefHeight="30.0" prefWidth="50.0" text="0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets top="7.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </TextField>
                            </children>
@@ -262,6 +264,7 @@
                         <Insets top="25.0" />
                      </HBox.margin>
                   </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
                   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="300.0">
                      <children>
                         <ImageView id="playButton" fx:id="startButton" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#train" pickOnBounds="true" preserveRatio="true" styleClass="playButton">
@@ -290,7 +293,7 @@
                         </HBox>
                      </children>
                      <HBox.margin>
-                        <Insets left="250.0" top="115.0" />
+                        <Insets top="115.0" />
                      </HBox.margin>
                   </AnchorPane>
                </children>
