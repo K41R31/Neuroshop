@@ -32,6 +32,7 @@ public class DiagramWidgetController implements Observer {
     private XYChart.Series trainErrorSeries;
     private Timeline updateErrors;
     private LineChart<Number,Number> lineChart;
+    private Thread updateThread;
 
 
     @FXML
@@ -57,8 +58,6 @@ public class DiagramWidgetController implements Observer {
         lineChart.setPrefWidth(Region.USE_COMPUTED_SIZE);
         lineChart.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-        updateErrorsInSeries();
-
         rootPane.getChildren().add(lineChart);
     }
 
@@ -66,12 +65,12 @@ public class DiagramWidgetController implements Observer {
         updateErrors = new Timeline();
         updateErrors.getKeyFrames().addAll(
                 new KeyFrame(new Duration(50), event -> {
-                    System.out.println(annModel.getActualTestError());
                     overallErrorSeries.getData().add(new XYChart.Data(annModel.getActualEpoch(), annModel.getActualOverallError()));
                     trainErrorSeries.getData().add(new XYChart.Data(annModel.getActualEpoch(), annModel.getActualTestError()));
                 })
         );
         updateErrors.setCycleCount(Animation.INDEFINITE);
+        updateErrors.play();
     }
 
 
@@ -79,10 +78,12 @@ public class DiagramWidgetController implements Observer {
     public void update(Observable o, Object arg) {
         switch ((String)arg) {
             case "train":
-                updateErrors.play();
+                updateThread = new Thread(this::updateErrorsInSeries);
+                updateThread.start();
                 break;
             case "stop":
                 updateErrors.stop();
+                updateThread.stop();
                 overallErrorSeries.getData().clear();
                 trainErrorSeries.getData().clear();
         }

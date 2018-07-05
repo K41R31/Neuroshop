@@ -221,7 +221,7 @@ public class NeuralNetSettingsController implements Observer {
 
     @FXML
     private void openerPaneEntered() {
-        openerIcon.setImage(new Image("Neuroshop/Ressources/Assets/nnOpenerIconHover.png"));
+        openerIcon.setImage(new Image("Neurosho p/Ressources/Assets/nnOpenerIconHover.png"));
 
     }
     @FXML
