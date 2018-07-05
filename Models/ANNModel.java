@@ -269,18 +269,33 @@ public class ANNModel extends Observable {
         isTraining = false;
     }
 
-    public void save() throws IOException {
-        try(
-                FileWriter fw = new FileWriter("Neuroshop\\\\Ressources\\\\SavedDate\\\\Tempweights\\\\tempWeights.txt", true);
-                BufferedWriter bw = new BufferedWriter(fw);
-                PrintWriter out = new PrintWriter(bw))
-        {
-            out.println(newWeights);
-
-        } catch (IOException e) {
-
-        }
- }
+    public void save() {
+//        try (
+//                FileWriter fw = new FileWriter(, true);
+//                BufferedWriter bw = new BufferedWriter(fw);
+//                bw.write();
+//                PrintWriter out = new PrintWriter(bw))
+//        {
+//            out.println(newWeights);
+//
+//        } catch (IOException e) {
+//
+//        }
+    String fileLocation = "Neuroshop\\Ressources\\SavedData\\Tempweights\\tempWeights.txt";
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter (
+            new FileOutputStream(fileLocation), "utf-8"))) {
+            for (int i = 0; i < newWeights.size(); i++) {
+                for (int o = 0; o < newWeights.get(i).size(); o++) {
+                    for (int p = 0; p < newWeights.get(i).get(o).size(); p++) {
+                        writer.write(String.valueOf(newWeights.get(i).get(o).get(p)));
+                    }
+                }
+            }
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
 
     public boolean getIsTraining() {
         return isTraining;

@@ -11,6 +11,7 @@ import Neuroshop.ANN.Neural.NeuralException;
 import Neuroshop.ANN.Neural.NeuralNet;
 import Neuroshop.Models.ANNModel;
 
+import java.io.IOException;
 import java.util.*;
 
 public class ANNLearn implements Observer {
@@ -32,7 +33,6 @@ public class ANNLearn implements Observer {
     public void train() {
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
         annModel.addActFnc();
-        annModel.save();
         this.actFnc = annModel.getActFnc();
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
@@ -62,8 +62,8 @@ public class ANNLearn implements Observer {
         backprop.setMomentumRate(momentumRate);
         backprop.setMinOverallError(minOverallError);
         backprop.setTestingDataSet(neuralDataSetToTest);
-        backprop.printTraining = true;
-        backprop.showPlotError = true;
+//        backprop.printTraining = true;
+//        backprop.showPlotError = true;
 
 
         try {
@@ -89,7 +89,9 @@ public class ANNLearn implements Observer {
             neuralDataSetToTest.printTargetOutput();
 
             backprop.forward();
-            backprop.print();
+//            backprop.print();
+            
+            annModel.save();
 
             neuralDataSetToTrain.printNeuralOutput();
 
