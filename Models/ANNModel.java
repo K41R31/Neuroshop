@@ -283,7 +283,12 @@ public class ANNModel extends Observable {
 
 
     public void save() throws IOException {
-        File file = new File("Neuroshop\\Ressoruces\\SavedData\\Tempweights" + File.separator + this.filename);
+        File file = new File(new File("tempWeights.txt"));
+        try{
+            while(isTraining == true) {
+
+            }
+        }
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(this);
         }
