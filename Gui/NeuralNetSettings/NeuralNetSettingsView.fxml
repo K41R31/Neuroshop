@@ -220,12 +220,13 @@
                         </Text>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="30.0">
                            <children>
-                              <TextField fx:id="epochCount1" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0"/>
+                              <TextField fx:id="epochCount1" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
                               <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Seed" wrappingWidth="160.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
                               </Text>
+                              </TextField>
                               <TextField fx:id="seedTextField" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#seedChanged" prefHeight="30.0" prefWidth="50.0" text="0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />

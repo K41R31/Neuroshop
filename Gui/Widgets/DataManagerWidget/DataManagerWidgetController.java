@@ -322,32 +322,32 @@ public class DataManagerWidgetController implements Observer {
         button2Text.setFill(Color.web("#4490ff"));
     }
 
-
-    @FXML
-    private void apply() {
-        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
-            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
-                errorInfo.setText("Set each column to input or output");
-                errorInfo.setVisible(true);
-                return;
-            } else {
-                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
-                    inputList.add(i);
-                } else {
-                    outputList.add(i);
-                }
-            }
-        }
-        if (inputList.size() == 0) {
-            errorInfo.setText("You have to set at least one column as output");
-            errorInfo.setVisible(true);
-            return;
-        } else if (outputList.size() == 0) {
-            errorInfo.setText("You have to set at least one column as input");
-            errorInfo.setVisible(true);
-            return;
-        }
-    }
+//
+//    @FXML
+//    private void apply() {
+//        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
+//            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
+//                errorInfo.setText("Set each column to input or output");
+//                errorInfo.setVisible(true);
+//                return;
+//            } else {
+//                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
+//                    inputList.add(i);
+//                } else {
+//                    outputList.add(i);
+//                }
+//            }
+//        }
+//        if (inputList.size() == 0) {
+//            errorInfo.setText("You have to set at least one column as output");
+//            errorInfo.setVisible(true);
+//            return;
+//        } else if (outputList.size() == 0) {
+//            errorInfo.setText("You have to set at least one column as input");
+//            errorInfo.setVisible(true);
+//            return;
+//        }
+//    }
 
     @FXML
     private void back() {
