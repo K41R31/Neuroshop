@@ -30,11 +30,7 @@
             </ImageView>
          </children>
       </StackPane>
-<<<<<<< HEAD
-      <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="244.0" style="-fx-background-color: TRANSPARENT;">
-=======
       <AnchorPane fx:id="menuPane" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" style="-fx-background-color: TRANSPARENT;">
->>>>>>> e2bb0796d92dcd2d224388105a5dfe9426ebc73c
          <children>
             <AnchorPane fx:id="epochPane" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" style="-fx-background-color: #666666;" AnchorPane.rightAnchor="0.0">
                <children>
@@ -224,16 +220,13 @@
                         </Text>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="30.0">
                            <children>
-<<<<<<< HEAD
-                              <TextField fx:id="epochCount1" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
-=======
+                              <TextField fx:id="epochCount1" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0"/>
                               <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Seed" wrappingWidth="160.0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
                               </Text>
                               <TextField fx:id="seedTextField" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#seedChanged" prefHeight="30.0" prefWidth="50.0" text="0">
->>>>>>> e2bb0796d92dcd2d224388105a5dfe9426ebc73c
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
@@ -243,11 +236,8 @@
                               </TextField>
                            </children>
                            <VBox.margin>
-<<<<<<< HEAD
                               <Insets />
-=======
                               <Insets left="10.0" />
->>>>>>> e2bb0796d92dcd2d224388105a5dfe9426ebc73c
                            </VBox.margin>
                         </HBox>
                      </children>

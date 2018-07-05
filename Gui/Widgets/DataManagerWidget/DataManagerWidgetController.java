@@ -236,38 +236,6 @@ public class DataManagerWidgetController implements Observer {
     }
 
     @FXML
-<<<<<<< HEAD
-    private void toggleDataManager() {
-        ArrayList<Integer> inputList = new ArrayList<>();
-        ArrayList<Integer> outputList = new ArrayList<>();
-
-        /**TODO: Kai hier bitte das machen was du immer so machst mit JavaFx
-         >> Animation das sich der Datamanager so zuklappt das nur die Scrollpane weg ist.
-         >>Alles andere sollte noch zu sehen sein :)
-         >>Die Zuklappnase ersetzt das Apply
-         */
-        for (int i = 0; i < chooserPane.getChildren().size(); i++) {
-            if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
-                errorInfo.setText("Set each column to input or output");
-                errorInfo.setVisible(true);
-                return;
-            } else {
-                if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
-                    inputList.add(i);
-                } else {
-                    outputList.add(i);
-                }
-            }
-        }
-        if (inputList.size() == 0) {
-            errorInfo.setText("You have to set at least one column as output");
-            errorInfo.setVisible(true);
-            return;
-        } else if (outputList.size() == 0) {
-            errorInfo.setText("You have to set at least one column as input");
-            errorInfo.setVisible(true);
-            return;
-=======
     private void toggleMenu() {
         if (!menuIsOpen) {
             Timeline openOptionsAnimation = new Timeline();
@@ -295,7 +263,6 @@ public class DataManagerWidgetController implements Observer {
             datasetOverview.setVisible(false);
             datasetOverview.setDisable(true);
             menuIsOpen = false;
->>>>>>> e2bb0796d92dcd2d224388105a5dfe9426ebc73c
         }
     }
 
