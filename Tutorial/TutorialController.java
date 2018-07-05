@@ -31,6 +31,7 @@ public class TutorialController implements Observer {
         dataPrep.setVisible(true);
         tutorialStart.setVisible(false);
         tutorialStart.setDisable(true);
+        tutorialModel.initDataManager();
     }
 
     @FXML
@@ -38,7 +39,6 @@ public class TutorialController implements Observer {
         tutorialRoot.setDisable(true);
         dataPrep.setVisible(false);
         importData.setVisible(true);
-        tutorialModel.initDataManager();
     }
 
     @FXML

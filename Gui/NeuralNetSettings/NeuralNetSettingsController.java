@@ -258,6 +258,11 @@ public class NeuralNetSettingsController implements Observer {
     }
 
     @FXML
+    private void seedChanged() {
+        annModel.set
+    }
+
+    @FXML
     private void train() {
         if (!annModel.getIsTraining()) {
             annModel.train();

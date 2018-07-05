@@ -9,6 +9,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.util.Duration;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -32,63 +35,38 @@ public class DiagramWidgetController implements Observer {
 
     @FXML
     private StackPane rootPane;
-    private ChartViewer chartViewer;
-    private Crosshair xCrosshair;
-    private Crosshair yCrosshair;
-    private XYSeries series;
-    private XYSeries series2;
-    private int i = 0;
 
 
     @FXML
     private void initialize() {
-        series = new XYSeries("S1");
-        series2 = new XYSeries("S2");
-        XYSeriesCollection datasetCollection = new XYSeriesCollection();
-        datasetCollection.addSeries(series);
-        datasetCollection.addSeries(series2);
-        JFreeChart chart = createChart(datasetCollection);
-        chartViewer = new ChartViewer(chart);
-        rootPane.getChildren().add(chartViewer);
-        CrosshairOverlayFX crosshairOverlay = new CrosshairOverlayFX();
-        xCrosshair = new Crosshair(Double.NaN, Color.GRAY,
-                new BasicStroke(0f));
-        xCrosshair.setStroke(new BasicStroke(1.5f,
-                BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
-                new float[]{2.0f, 2.0f}, 0));
-        xCrosshair.setLabelVisible(true);
-        yCrosshair = new Crosshair(Double.NaN, Color.GRAY,
-                new BasicStroke(0f));
-        yCrosshair.setStroke(new BasicStroke(1.5f,
-                BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
-                new float[] {2.0f, 2.0f}, 0));
-        yCrosshair.setLabelVisible(true);
-        crosshairOverlay.addDomainCrosshair(xCrosshair);
-        crosshairOverlay.addRangeCrosshair(yCrosshair);
-        Platform.runLater(() -> {
-            chartViewer.getCanvas().addOverlay(crosshairOverlay);
-        });
-        updateChart();
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Number of Month");
+        //creating the chart
+        final LineChart<Number,Number> lineChart =
+                new LineChart<Number,Number>(xAxis,yAxis);
+
+        lineChart.setTitle("Stock Monitoring, 2010");
+        //defining a series
+        XYChart.Series series = new XYChart.Series();
+        series.setName("My portfolio");
+        //populating the series with data
+        series.getData().add(new XYChart.Data(1, 23));
+        series.getData().add(new XYChart.Data(2, 14));
+        series.getData().add(new XYChart.Data(3, 15));
+        series.getData().add(new XYChart.Data(4, 24));
+        series.getData().add(new XYChart.Data(5, 34));
+        series.getData().add(new XYChart.Data(6, 36));
+        series.getData().add(new XYChart.Data(7, 22));
+        series.getData().add(new XYChart.Data(8, 45));
+        series.getData().add(new XYChart.Data(9, 43));
+        series.getData().add(new XYChart.Data(10, 17));
+        series.getData().add(new XYChart.Data(11, 29));
+        series.getData().add(new XYChart.Data(12, 25));
+
+        rootPane.getChildren().add(lineChart);
     }
 
-    private JFreeChart createChart(XYDataset dataset) {
-        JFreeChart chart = ChartFactory.createXYLineChart(
-                "CrosshairOverlayDemo1", "X", "Y", dataset);
-        return chart;
-    }
-
-    private void updateChart() {
-        Timeline timeline = new Timeline();
-        timeline.getKeyFrames().addAll(
-                new KeyFrame(new Duration(500), event -> {
-                    series.add(i, Math.random() * 4.0);
-                    series2.add(i, Math.random() * 4.0);
-                    i++;
-                })
-        );
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
-    }
 
     @Override
     public void update(Observable o, Object arg) {

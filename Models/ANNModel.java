@@ -240,6 +240,10 @@ public class ANNModel extends Observable {
         return output;
     }
 
+    public void setSeed() {
+
+    }
+
     public void train() {
         setChanged();
         notifyObservers("train");
