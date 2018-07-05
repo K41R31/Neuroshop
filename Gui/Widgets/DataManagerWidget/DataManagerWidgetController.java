@@ -235,6 +235,20 @@ public class DataManagerWidgetController implements Observer {
         }
     }
 
+    /*
+        tutorialModel.step3();
+        widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
+        widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
+        DataManager.setTranslateX(0);
+        DataManager.setTranslateY(0);
+        ArrayList<Integer> inputList = new ArrayList<>();
+        ArrayList<Integer> outputList = new ArrayList<>();
+        errorInfo.setVisible(false);
+        annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
+        annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
+        widgetContainerModel.activateMenus();
+     */
+
     @FXML
     private void toggleMenu() {
         if (!menuIsOpen) {
@@ -268,24 +282,11 @@ public class DataManagerWidgetController implements Observer {
 
     @FXML
     private void testLearnSliderSlided() {
-        ArrayList<Integer> inputList = new ArrayList<>();
-        ArrayList<Integer> outputList = new ArrayList<>();
         int value = (int)testLearnSlider.getValue();
         trainValue.setText(String.valueOf(value));
         testValue.setText(String.valueOf((int)(testLearnSlider.getMax() - value)));
         annModel.setDataPercentage((roundDouble(value)) / testLearnSlider.getMax());
         coloriseData(value);
-
-        errorInfo.setVisible(false);
-        annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
-        annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
-        widgetContainerModel.activateMenus();
-
-        tutorialModel.step3();
-        widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
-        widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
-        DataManager.setTranslateX(0);
-        DataManager.setTranslateY(0);
     }
 
     @FXML
