@@ -33,10 +33,6 @@ public class ANNLearn implements Observer {
     public void train() {
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
         annModel.addActFnc();
-<<<<<<< HEAD
-//        annModel.save();
-=======
->>>>>>> 53c976e355109308c5f9973ad3679967718efcea
         this.actFnc = annModel.getActFnc();
 
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
@@ -112,6 +108,7 @@ public class ANNLearn implements Observer {
         dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
         IActivationFunction outputActFnc = new Linear(1.0);
         NeuralNet nnValid = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), actFnc, outputActFnc);
+
 
 
     }
