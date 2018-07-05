@@ -244,7 +244,7 @@ public class DataManagerWidgetController implements Observer {
             Timeline openOptionsAnimation = new Timeline();
             openOptionsAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(datasetOverview.prefHeightProperty(), 300, Interpolator.EASE_BOTH),
-                            new KeyValue(toggleMenuIcon.scaleYProperty(), -1, Interpolator.EASE_BOTH),
+                            new KeyValue(toggleMenuIcon.scaleYProperty(), 1, Interpolator.EASE_BOTH),
                             new KeyValue(DataManager.prefHeightProperty(), 600, Interpolator.EASE_BOTH),
                             new KeyValue(toggleMenuPane.translateYProperty(), 600, Interpolator.EASE_BOTH))
             );
@@ -258,7 +258,7 @@ public class DataManagerWidgetController implements Observer {
             Timeline closeMenuAnimation = new Timeline();
             closeMenuAnimation.getKeyFrames().addAll(
                     new KeyFrame(new Duration(200), new KeyValue(datasetOverview.prefHeightProperty(), 0, Interpolator.EASE_BOTH),
-                            new KeyValue(toggleMenuIcon.scaleYProperty(), 1, Interpolator.EASE_BOTH),
+                            new KeyValue(toggleMenuIcon.scaleYProperty(), -1, Interpolator.EASE_BOTH),
                             new KeyValue(DataManager.prefHeightProperty(), 300, Interpolator.EASE_BOTH),
                             new KeyValue(toggleMenuPane.translateYProperty(), 300, Interpolator.EASE_BOTH))
             );
