@@ -197,6 +197,7 @@ public class Backpropagation extends DeltaRule {
                 annModel.setNewWeights(lastDeltaWeights);
                 annModel.setActualEpoch(epoch);
                 annModel.setActualOverallError(overallGeneralError);
+                annModel.setActualTestError(testingOverallGeneralError);
                 annModel.setOutputFromTrain(neuralNet.getOutputs());
                 k = 0;
                 currentRecord = 0;

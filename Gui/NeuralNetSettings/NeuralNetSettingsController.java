@@ -50,6 +50,8 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private TextField seedTextField;
     @FXML
+    private TextField weightInit;
+    @FXML
     private Slider maxEpochsSlider;
     @FXML
     private Slider minOverallErrorSlider;
@@ -144,7 +146,7 @@ public class NeuralNetSettingsController implements Observer {
         if (!epochPaneIsOpen) {
             Timeline openEpochPaneAnimation = new Timeline();
             openEpochPaneAnimation.getKeyFrames().addAll(
-                    new KeyFrame(new Duration(200), new KeyValue(epochPane.layoutYProperty(), 30, Interpolator.EASE_BOTH)),
+                    new KeyFrame(new Duration(200), new KeyValue(epochPane.layoutYProperty(), 10, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(400), new KeyValue(epochInnerPane.opacityProperty(), 1, Interpolator.EASE_BOTH)),
                     new KeyFrame(new Duration(400), new KeyValue(minOverallErrorPane.opacityProperty(), 1, Interpolator.EASE_BOTH))
 
@@ -181,7 +183,8 @@ public class NeuralNetSettingsController implements Observer {
         Timeline updateEpochPane = new Timeline();
         updateEpochPane.getKeyFrames().addAll(
                 new KeyFrame(new Duration(100), event -> actualEpoch.setText(String.valueOf(annModel.getActualEpoch()))),
-                new KeyFrame(new Duration(100), event -> actualOverallError.setText(String.valueOf(roundDouble(annModel.getOverallError(), 5))))
+                new KeyFrame(new Duration(100), event -> actualOverallError.setText(String.valueOf(roundDouble(annModel.getOverallError(), 5)))),
+        new KeyFrame(new Duration(100), event -> actualTestError.setText(String.valueOf(roundDouble(annModel.getActualTestError(), 5))))
         );
         updateEpochPane.setCycleCount(Animation.INDEFINITE);
         updateEpochPane.play();

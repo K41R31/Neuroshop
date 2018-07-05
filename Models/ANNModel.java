@@ -6,6 +6,9 @@ import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -34,6 +37,7 @@ public class ANNModel extends Observable {
     private int maxEpoch;
     private int actualEpoch;
     private boolean isTraining = false;
+    private String filename;
 
     public void addActFnc() {
         actFnc = new ArrayList<>();
@@ -235,7 +239,7 @@ public class ANNModel extends Observable {
     }
 
     public void setActualTestError(double testError) {
-        this.overallError = testError;
+        this.testError = testError;
     }
 
     public double getActualTestError() {
@@ -269,6 +273,20 @@ public class ANNModel extends Observable {
         isTraining = false;
     }
 
+    public void setFilename(String filename() {
+    this.filename = filename;
+    }
+
+    public String getFilename() {
+    
+    }
+
+
+    public void save() throws IOException {
+        File file = new File("Neuroshop\\Ressoruces\\SavedData\\Tempweights"+ File.separator + this.filename);
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(this);
+        }
 
 
     public boolean getIsTraining() {
