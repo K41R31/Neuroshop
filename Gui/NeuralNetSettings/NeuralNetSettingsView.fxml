@@ -206,7 +206,7 @@
                                     <Font name="Champagne &amp; Limousines" size="24.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="seed" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#seedChanged" prefHeight="30.0" prefWidth="50.0" text="0">
+                              <TextField fx:id="seedTextField" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#seedChanged" prefHeight="30.0" prefWidth="50.0" text="0">
                                  <font>
                                     <Font name="Champagne &amp; Limousines" size="20.0" />
                                  </font>
