@@ -261,6 +261,8 @@ public class ANNModel extends Observable {
         isTraining = false;
     }
 
+
+
     public boolean getIsTraining() {
         return isTraining;
     }
