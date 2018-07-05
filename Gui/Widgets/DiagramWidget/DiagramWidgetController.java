@@ -51,7 +51,7 @@ public class DiagramWidgetController implements Observer {
         lineChart.setCreateSymbols(false);
 
         overallErrorSeries = new XYChart.Series();
-        overallErrorSeries.setName("overall error");
+        overallErrorSeries.setName("test error");
         trainErrorSeries = new XYChart.Series();
         trainErrorSeries.setName("train error");
 

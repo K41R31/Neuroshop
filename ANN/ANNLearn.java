@@ -90,7 +90,7 @@ public class ANNLearn implements Observer {
 
             backprop.forward();
 //            backprop.print();
-            
+
             annModel.save();
 
             neuralDataSetToTrain.printNeuralOutput();
