@@ -5,8 +5,9 @@ import Neuroshop.ANN.Learn.LearningAlgorithm;
 import Neuroshop.ANN.Math.IActivationFunction;
 import Neuroshop.ANN.Math.Sigmoid;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 public class ANNModel extends Observable {
@@ -34,6 +35,7 @@ public class ANNModel extends Observable {
     private int maxEpoch;
     private int actualEpoch;
     private boolean isTraining = false;
+    private String filename;
 
     public void addActFnc() {
         actFnc = new ArrayList<>();
@@ -210,8 +212,10 @@ public class ANNModel extends Observable {
 
     public void setNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
         this.newWeights = newWeights;
-        setChanged();
-        notifyObservers("setNewWeights");
+    }
+
+    public void addNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
+//        FileWriter file = new File("Neuroshop\\Ressources\\SavedData\\Tempweights");
     }
 
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
@@ -269,7 +273,21 @@ public class ANNModel extends Observable {
         isTraining = false;
     }
 
+    public void setFilename(String filename) {
+    this.filename = filename;
+    }
 
+    public String getFilename() {
+    return filename;
+    }
+
+
+    public void save() throws IOException {
+        File file = new File("Neuroshop\\Ressoruces\\SavedData\\Tempweights" + File.separator + this.filename);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(this);
+        }
+    }
 
     public boolean getIsTraining() {
         return isTraining;

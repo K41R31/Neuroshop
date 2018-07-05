@@ -14,7 +14,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
+<VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
+=======
 <VBox fx:id="neuralNetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
+>>>>>>> 5f550587c9095bc8abda87b558982888087058c5
    <children>
       <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0">
          <children>
@@ -34,9 +38,9 @@
          <children>
             <AnchorPane fx:id="epochPane" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" style="-fx-background-color: #666666;" AnchorPane.rightAnchor="0.0">
                <children>
-                  <HBox fx:id="epochInnerPane" alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
+                  <HBox fx:id="epochInnerPane" alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
                      <children>
-                        <Text fill="#e4e4e4" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Epochen:" wrappingWidth="107.0">
+                        <Text fill="#e4e4e4" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Epochen:" wrappingWidth="170.0">
                            <font>
                               <Font name="Champagne &amp; Limousines" size="25.0" />
                            </font>
@@ -48,14 +52,28 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox fx:id="minOverallErrorPane" alignment="CENTER_LEFT" layoutX="130.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
+                  <HBox fx:id="minOverallErrorPane" alignment="CENTER_LEFT" layoutX="130.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
                      <children>
-                        <Text fill="#e4e4e4" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Ø Fehler:" wrappingWidth="107.0">
+                        <Text fill="#e4e4e4" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Ø Trainings Fehler:" wrappingWidth="170.0">
                            <font>
                               <Font name="Champagne &amp; Limousines" size="25.0" />
                            </font>
                         </Text>
                         <Text fx:id="actualOverallError" fill="#cdcdcd" fontSmoothingType="LCD" layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="150.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="25.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="testErrorPane" alignment="CENTER_LEFT" layoutX="130.0" layoutY="50.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0">
+                     <children>
+                        <Text fill="#e4e4e4" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Ø Test Fehler:" wrappingWidth="170.0">
+                           <font>
+                              <Font name="Champagne &amp; Limousines" size="25.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="actualTestError" fill="#cdcdcd" fontSmoothingType="LCD" layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="150.0">
                            <font>
                               <Font name="Champagne &amp; Limousines" size="25.0" />
                            </font>
@@ -221,7 +239,7 @@
                                  </HBox.margin>
                               </Text>
                               <Region HBox.hgrow="ALWAYS" />
-                              <TextField fx:id="epochCount1" alignment="CENTER_RIGHT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" text="0">
+                              <TextField fx:id="weightInit" alignment="CENTER_RIGHT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="70.0" text="0">
                                  <text>
                                  <Text fill="#c6c6c6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Seed" wrappingWidth="160.0">
                                     <font>

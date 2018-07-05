@@ -31,7 +31,6 @@ public class ANNLearn implements Observer {
 
     public void train() {
         RandomNumberGenerator.setSeed(System.currentTimeMillis());
-
         annModel.addActFnc();
         this.actFnc = annModel.getActFnc();
 
