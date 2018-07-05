@@ -112,7 +112,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dataPrep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" visible="false">
+      <AnchorPane fx:id="dataPrep" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;" visible="false">
          <children>
             <Text fill="WHITE" layoutX="250.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Preparation">
                <font>
