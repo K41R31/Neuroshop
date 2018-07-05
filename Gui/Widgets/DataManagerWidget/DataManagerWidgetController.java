@@ -233,7 +233,7 @@ public class DataManagerWidgetController implements Observer {
         /**TODO: Kai hier bitte das machen was du immer so machst mit JavaFx
          >> Animation das sich der Datamanager so zuklappt das nur die Scrollpane weg ist.
          >>Alles andere sollte noch zu sehen sein :)
-         >>DIe Zuklappnase ersetzt das Apply
+         >>Die Zuklappnase ersetzt das Apply
          */
         for (int i = 0; i < chooserPane.getChildren().size(); i++) {
             if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
