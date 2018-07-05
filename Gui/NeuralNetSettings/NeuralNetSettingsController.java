@@ -259,7 +259,7 @@ public class NeuralNetSettingsController implements Observer {
 
     @FXML
     private void seedChanged() {
-        annModel.set
+        annModel.setSeed();
     }
 
     @FXML

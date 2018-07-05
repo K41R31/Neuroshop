@@ -29,6 +29,7 @@ public class ANNModel extends Observable {
     private double learningRate;
     private double momentumRate;
     private double overallError;
+    private double seed;
     private int maxEpoch;
     private int actualEpoch;
     private boolean isTraining = false;
@@ -240,8 +241,12 @@ public class ANNModel extends Observable {
         return output;
     }
 
-    public void setSeed() {
+    public void setSeed(double seed) {
+        this.seed = seed;
+    }
 
+    public double getSeed() {
+        return seed;
     }
 
     public void train() {
