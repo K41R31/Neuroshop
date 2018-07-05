@@ -215,8 +215,7 @@ public class ANNModel extends Observable {
     }
 
     public void addNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
-//        FileWriter file = new File("Neuroshop\\Ressources\\SavedData\\Tempweights");
-    }
+        }
 
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
         return newWeights;
@@ -283,12 +282,9 @@ public class ANNModel extends Observable {
 
 
     public void save() throws IOException {
-        File file = new File(new File("tempWeights.txt"));
-        try{
-            while(isTraining == true) {
+        File file = new File("tempWeights.txt");
 
-            }
-        }
+
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(this);
         }
