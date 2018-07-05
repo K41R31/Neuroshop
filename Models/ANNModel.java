@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 public class ANNModel extends Observable {
@@ -214,8 +215,6 @@ public class ANNModel extends Observable {
 
     public void setNewWeights(ArrayList<ArrayList<ArrayList<Double>>> newWeights) {
         this.newWeights = newWeights;
-        setChanged();
-        notifyObservers("setNewWeights");
     }
 
     public ArrayList<ArrayList<ArrayList<Double>>> getNewWeights() {
@@ -273,21 +272,21 @@ public class ANNModel extends Observable {
         isTraining = false;
     }
 
-    public void setFilename(String filename() {
+    public void setFilename(String filename) {
     this.filename = filename;
     }
 
     public String getFilename() {
-    
+    return filename;
     }
 
 
     public void save() throws IOException {
-        File file = new File("Neuroshop\\Ressoruces\\SavedData\\Tempweights"+ File.separator + this.filename);
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+        File file = new File("Neuroshop\\Ressoruces\\SavedData\\Tempweights" + File.separator + this.filename);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(this);
         }
-
+    }
 
     public boolean getIsTraining() {
         return isTraining;
