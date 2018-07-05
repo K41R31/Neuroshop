@@ -287,7 +287,7 @@ public class ANNModel extends Observable {
             for (int i = 0; i < newWeights.size(); i++) {
                 for (int o = 0; o < newWeights.get(i).size(); o++) {
                     for (int p = 0; p < newWeights.get(i).get(o).size(); p++) {
-                        writer.write(String.valueOf(newWeights.get(i).get(o).get(p)));
+                        writer.write(String.valueOf(newWeights.get(i).get(o).get(p))+"\n");
                     }
                 }
             }
