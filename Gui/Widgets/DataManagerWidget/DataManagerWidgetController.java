@@ -7,10 +7,7 @@ import Neuroshop.Main;
 import Neuroshop.Models.Presets.LastOpenedFiles;
 import Neuroshop.Models.TutorialModel;
 import Neuroshop.Models.WidgetContainerModel;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -64,7 +61,7 @@ public class DataManagerWidgetController implements Observer {
     @FXML
     private Text button2Text;
     @FXML
-    private Text errorInfo;
+    private Text infoText;
     @FXML
     private VBox filesPane;
     @FXML
@@ -163,6 +160,7 @@ public class DataManagerWidgetController implements Observer {
                 vColumn.addText(Double.toString(dataset[r][c]));
             }
         }
+        coloriseData((int)testLearnSlider.getValue());
     }
 
     private class IOChooser extends StackPane {
@@ -232,8 +230,8 @@ public class DataManagerWidgetController implements Observer {
         for (int c = 0; c < columnPane.getChildren().size(); c++) {
             VBox vBox = (VBox)columnPane.getChildren().get(c);
             for (int r = 0; r < annModel.getNumberOfRecords(); r++) {
-                if (r < value) ((Text)vBox.getChildren().get(r)).setFill(Color.web("#3e94ff"));
-                else ((Text)vBox.getChildren().get(r)).setFill(Color.web("#ff3b3b"));
+                if (r < value) ((Text)vBox.getChildren().get(r)).setFill(Color.web("#56aaff"));
+                else ((Text)vBox.getChildren().get(r)).setFill(Color.web("ceff58"));
             }
         }
     }
@@ -275,8 +273,9 @@ public class DataManagerWidgetController implements Observer {
         ArrayList<Integer> outputList = new ArrayList<>();
         for (int i = 0; i < chooserPane.getChildren().size(); i++) {
             if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("nothing")) {
-                errorInfo.setText("Set each column to input or output");
-                errorInfo.setVisible(true);
+                infoText.setOpacity(1);
+                infoText.setText("Set each column to input or output");
+                fadeInfoText();
                 return;
             } else {
                 if (((StackPane)chooserPane.getChildren().get(i)).getChildren().get(0).getId().contains("input")) {
@@ -287,24 +286,30 @@ public class DataManagerWidgetController implements Observer {
             }
         }
         if (inputList.size() == 0) {
-            errorInfo.setText("You have to set at least one column as output");
-            errorInfo.setVisible(true);
+            infoText.setOpacity(1);
+            infoText.setText("You have to set at least one column as output");
+            fadeInfoText();
             return;
         } else if (outputList.size() == 0) {
-            errorInfo.setText("You have to set at least one column as input");
-            errorInfo.setVisible(true);
+            infoText.setOpacity(1);
+            infoText.setText("You have to set at least one column as input");
+            fadeInfoText();
             return;
         }
-
+        infoText.setOpacity(1);
+        infoText.setText("Submitted");
+        fadeInfoText();
         tutorialModel.step3();
-        widgetContainerModel.changeWidgetStateById(DataManager.getId(), 0);
-        widgetContainerModel.removeWidgetFromWhiteboard(DataManager.getId());
-        DataManager.setTranslateX(0);
-        DataManager.setTranslateY(0);
-        errorInfo.setVisible(false);
         annModel.setInputColumns(inputList.stream().mapToInt(i -> i).toArray());
         annModel.setOutputColumns(outputList.stream().mapToInt(i -> i).toArray());
         widgetContainerModel.activateMenus();
+    }
+
+    private void fadeInfoText() {
+        FadeTransition fade = new FadeTransition(Duration.millis(8000), infoText);
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+        fade.play();
     }
 
     @FXML

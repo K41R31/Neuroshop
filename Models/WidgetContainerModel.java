@@ -113,6 +113,11 @@ public class WidgetContainerModel extends Observable {
         notifyObservers("menusToFront");
     }
 
+    public void neuralNetSettingsToFront() {
+        setChanged();
+        notifyObservers("neuralNetSettingsToFront");
+    }
+
     public boolean menusAreActive() {
         return menusAreActive;
     }

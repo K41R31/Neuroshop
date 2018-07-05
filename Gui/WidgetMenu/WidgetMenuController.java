@@ -84,6 +84,7 @@ public class WidgetMenuController implements Observer {
                 break;
             case "menusToFront":
                 widgetMenuRootPane.toFront();
+                widgetContainerModel.neuralNetSettingsToFront();
         }
     }
 

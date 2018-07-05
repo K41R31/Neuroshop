@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -64,6 +63,8 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private ImageView startButton;
     @FXML
+    private ImageView openerButton;
+    @FXML
     private AnchorPane menuPane;
     @FXML
     private AnchorPane epochPane;
@@ -74,7 +75,7 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private HBox minOverallErrorPane;
     @FXML
-    private VBox widgetSettings;
+    private VBox neuralNetSettings;
     @FXML
     private boolean menuIsOpen;
     private boolean epochPaneIsOpen;
@@ -85,9 +86,9 @@ public class NeuralNetSettingsController implements Observer {
         epochPaneIsOpen = false;
         menuIsOpen = false;
         glow = new Glow(1);
-        AnchorPane.setLeftAnchor(widgetSettings, (double)0);
-        AnchorPane.setBottomAnchor(widgetSettings, (double)0);
-        AnchorPane.setRightAnchor(widgetSettings, (double)0);
+        AnchorPane.setLeftAnchor(neuralNetSettings, (double)0);
+        AnchorPane.setBottomAnchor(neuralNetSettings, (double)0);
+        AnchorPane.setRightAnchor(neuralNetSettings, (double)0);
         maxEpochsValue.setText(String.valueOf(maxEpochsSlider.getValue()));
         minOverallErrorValue.setText(String.valueOf(minOverallErrorSlider.getValue()));
         momentumRateValue.setText(String.valueOf(momentumRateSlider.getValue()));
@@ -265,7 +266,7 @@ public class NeuralNetSettingsController implements Observer {
     }
 
     @FXML
-    private void seedChanged() { //TODO
+    private void seedChanged() { //TODO---------------------------------------------------------------------------------
         String seedText = seedTextField.getText();
         try {
             annModel.setSeed(Double.parseDouble(seedText));
@@ -297,10 +298,10 @@ public class NeuralNetSettingsController implements Observer {
     public void update(Observable o, Object arg) {
         switch ((String)arg) {
             case "activateMenus":
-                openerIcon.setDisable(false);
+                openerButton.setDisable(false);
                 break;
-            case "menusToFront":
-                widgetSettings.toFront();
+            case "neuralNetSettingsToFront":
+                neuralNetSettings.toFront();
         }
     }
 

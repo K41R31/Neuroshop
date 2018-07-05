@@ -14,11 +14,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
 <VBox fx:id="widgetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
+=======
+<VBox fx:id="neuralNetSettings" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Neuroshop.Gui.NeuralNetSettings.NeuralNetSettingsController">
+>>>>>>> 5f550587c9095bc8abda87b558982888087058c5
    <children>
       <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0">
          <children>
-            <ImageView fitHeight="36.0" fitWidth="113.0" onMouseClicked="#toggleMenu" onMouseEntered="#openerPaneEntered" onMouseExited="#openerPaneExited" pickOnBounds="true" preserveRatio="true" scaleY="-1.0">
+            <ImageView fx:id="openerButton" disable="true" fitHeight="36.0" fitWidth="113.0" onMouseClicked="#toggleMenu" onMouseEntered="#openerPaneEntered" onMouseExited="#openerPaneExited" pickOnBounds="true" preserveRatio="true" scaleY="-1.0">
                <image>
                   <Image url="@../../Ressources/Assets/nnOpener.png" />
                </image>
