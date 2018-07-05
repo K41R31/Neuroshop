@@ -4,6 +4,7 @@ import Neuroshop.ANN.Data.DataNormalization;
 import Neuroshop.ANN.Data.DataSet;
 import Neuroshop.ANN.Data.NeuralDataSet;
 import Neuroshop.ANN.Init.UniformInitialization;
+import Neuroshop.ANN.Init.WeightInitialization;
 import Neuroshop.ANN.Learn.Backpropagation;
 import Neuroshop.ANN.Math.*;
 import Neuroshop.ANN.Neural.NeuralException;
@@ -98,6 +99,16 @@ public class ANNLearn implements Observer {
         }
     }
 
+
+    public void validate() {
+
+        this.actFnc = annModel.getActFnc();
+        dataNormType = new DataNormalization(DataNormalization.NormalizationTypes.MIN_MAX);
+        IActivationFunction outputActFnc = new Linear(1.0);
+        NeuralNet nnValid = new NeuralNet(inputColumns.length, outputColumns.length, annModel.getNeuronsInHiddenLayer(), actFnc, outputActFnc);
+
+
+    }
     private void loadDataSet() {
         String datasetPath = annModel.getDatasetFile().getAbsolutePath();
         DataSet dataset = new DataSet(datasetPath); // Spalten müssen mit "," getrennt werden
