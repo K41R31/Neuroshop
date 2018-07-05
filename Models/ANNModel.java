@@ -29,6 +29,7 @@ public class ANNModel extends Observable {
     private double learningRate;
     private double momentumRate;
     private double overallError;
+    private double testError;
     private double seed;
     private int maxEpoch;
     private int actualEpoch;
@@ -233,6 +234,13 @@ public class ANNModel extends Observable {
         return overallError;
     }
 
+    public void setActualTestError(double testError) {
+        this.overallError = testError;
+    }
+
+    public double getActualTestError() {
+        return testError;
+    }
     public void setOutputFromTrain(double[] output) {
         this.output = output;
     }

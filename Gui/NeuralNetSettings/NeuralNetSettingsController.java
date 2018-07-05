@@ -38,6 +38,8 @@ public class NeuralNetSettingsController implements Observer {
     @FXML
     private Text actualOverallError;
     @FXML
+    private Text actualTestError;
+    @FXML
     private TextField maxEpochsValue;
     @FXML
     private TextField minOverallErrorValue;
