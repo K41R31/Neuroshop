@@ -41,30 +41,19 @@ public class DiagramWidgetController implements Observer {
     private void initialize() {
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Number of Month");
-        //creating the chart
         final LineChart<Number,Number> lineChart =
-                new LineChart<Number,Number>(xAxis,yAxis);
+                new LineChart<>(xAxis, yAxis);
 
-        lineChart.setTitle("Stock Monitoring, 2010");
-        //defining a series
+        xAxis.setLabel("test");
+
         XYChart.Series series = new XYChart.Series();
-        series.setName("My portfolio");
-        //populating the series with data
+        series.setName("train error");
+        lineChart.setCreateSymbols(false);
+
         series.getData().add(new XYChart.Data(1, 23));
-        series.getData().add(new XYChart.Data(2, 14));
-        series.getData().add(new XYChart.Data(3, 15));
-        series.getData().add(new XYChart.Data(4, 24));
-        series.getData().add(new XYChart.Data(5, 34));
-        series.getData().add(new XYChart.Data(6, 36));
-        series.getData().add(new XYChart.Data(7, 22));
-        series.getData().add(new XYChart.Data(8, 45));
-        series.getData().add(new XYChart.Data(9, 43));
-        series.getData().add(new XYChart.Data(10, 17));
-        series.getData().add(new XYChart.Data(11, 29));
-        series.getData().add(new XYChart.Data(12, 25));
 
         rootPane.getChildren().add(lineChart);
+        lineChart.getData().add(series);
     }
 
 
@@ -72,7 +61,6 @@ public class DiagramWidgetController implements Observer {
     public void update(Observable o, Object arg) {
         switch ((String)arg) {
             case "initDiagram":
-
         }
     }
 
