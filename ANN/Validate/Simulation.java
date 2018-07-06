@@ -13,8 +13,6 @@ public class Simulation extends DeltaRule {
 
     private ANNModel annModel;
 
-    public ArrayList<ArrayList<Double>> deltaNeuron;
-
     public ArrayList<ArrayList<ArrayList<Double>>> simWeights;
 
     public Simulation (NeuralNet _neuralNet, NeuralDataSet _trainDataSet) {
@@ -32,7 +30,9 @@ public class Simulation extends DeltaRule {
         int numberOfHiddenLayers = this.neuralNet.getNumberOfHiddenLayers();
         for (int l = 0; l <= numberOfHiddenLayers; l++) {
             int numberOfNeuronsInLayer, numberOfInputsInNeuron;
-            this.simWeights.add(new ArrayList<ArrayList<Double>>());
+            boolean add = this.simWeights.add(new ArrayList<ArrayList<Double>>());
+
+
             if (l < numberOfHiddenLayers) {
                 numberOfNeuronsInLayer = this.neuralNet.getHiddenLayer(l)
                         .getNumberOfNeuronsInLayer();

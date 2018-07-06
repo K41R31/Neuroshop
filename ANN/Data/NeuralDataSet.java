@@ -163,7 +163,7 @@ public class NeuralDataSet {
     public void setNeuralOutput(int i,ArrayList<Double> _neuralData,boolean isNorm){
         this.outputData.setNeuralData(i, _neuralData,isNorm);
     }
-    
+
     public void setNeuralOutput(int i,double[] _neuralData){
         this.outputData.setNeuralData(i, _neuralData);
     }

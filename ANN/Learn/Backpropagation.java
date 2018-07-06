@@ -180,7 +180,7 @@ public class Backpropagation extends DeltaRule {
 
         int countRiseError = 0;
 
-        while (epoch < MaxEpochs && overallGeneralError > MinOverallError
+        while (epoch < MaxEpochs && overallGeneralError > MinOverallError /** Abbruchbedingungen lockern oder rausnehmen! */
                 && (testingDataSet == null || testErrorVariation < 0.0 || countRiseError < 100)) {
             backward();
             switch (learningMode) {
@@ -193,7 +193,7 @@ public class Backpropagation extends DeltaRule {
             }
             currentRecord = ++k;
             if (k >= trainingDataSet.numberOfRecords) {
-                /** Gewichte in Model schreiben */
+                /** Gewichte in Model schreiben, nicht vergessen! */
                 annModel.setNewWeights(lastDeltaWeights);
                 annModel.setActualEpoch(epoch);
                 annModel.setActualOverallError(overallGeneralError);
@@ -228,7 +228,7 @@ public class Backpropagation extends DeltaRule {
 
         }
         //setListOfErrorsByEpoch( listOfErrorsByEpoch );
-        //TODO: While Schleife einfügen zum unterbrechen
+
         neuralNet.setNeuralNetMode(NeuralNet.NeuralNetMode.RUN);
     }
 
@@ -418,11 +418,6 @@ public class Backpropagation extends DeltaRule {
 
     @Override
     public void showErrorEvolution(){
-
-//        Chart Charts = new Chart("Training",rndDataSet,seriesNames,0,seriesColor);
-//            ChartFrame frame = new ChartFrame("Training", Charts.scatterPlot("X", "Y"));
-//            frame.pack();
-//            frame.setVisible(true);
         double[] trainingErrors = ArrayOperations.arrayListToVector(getListOfErrorsByEpoch());
         double[] testingErrors = ArrayOperations.arrayListToVector(getListOfTestErrorsByEpoch());
         double[][] errors = new double[trainingErrors.length][3];
@@ -445,48 +440,6 @@ public class Backpropagation extends DeltaRule {
         }
 
     }
-
-//    @Override
-   /* public void showErrorEvolution(ChartMouseListenerFX listener) {
-
-        XYSeriesCollection dataset = new XYSeriesCollection();
-        XYSeries trainerr = new XYSeries("Training Error");
-        XYSeries testerr = new XYSeries("Testing Error");
-        double[] trainingErrors = ArrayOperations.arrayListToVector(getListOfErrorsByEpoch());
-        double[] testingErrors = ArrayOperations.arrayListToVector(getListOfTestErrorsByEpoch());
-        for (int i = 0; i < trainingErrors.length; i++) {
-            trainerr.add(i, trainingErrors[i]);
-            testerr.add(i, testingErrors[i]);
-            dataset.addSeries(trainerr);
-            dataset.addSeries(testerr);
-        }
-
-        JFreeChart chart = ChartFactory.createXYLineChart("Error Evolution", "X", "Y", dataset, PlotOrientation.HORIZONTAL, true, true, false);
-        ChartViewer chartViewer = new ChartViewer(chart);
-        chartViewer.addChartMouseListener(listener);
-        chartViewer.getCanvas().setChart(chart);
-
-        CrosshairOverlayFX crosshairOverlay = new CrosshairOverlayFX();
-        Crosshair xCrosshair = new Crosshair(Double.NaN, Color.GRAY,
-                new BasicStroke(0f));
-        xCrosshair.setStroke(new BasicStroke(1.5f,
-                BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
-                new float[]{2.0f, 2.0f}, 0));
-        xCrosshair.setLabelVisible(true);
-        Crosshair yCrosshair = new Crosshair(Double.NaN, Color.GRAY,
-                new BasicStroke(0f));
-        yCrosshair.setStroke(new BasicStroke(1.5f,
-                BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1,
-                new float[]{2.0f, 2.0f}, 0));
-        yCrosshair.setLabelVisible(true);
-        crosshairOverlay.addDomainCrosshair(xCrosshair);
-        crosshairOverlay.addRangeCrosshair(yCrosshair);
-
-        Platform.runLater(() -> {
-            chartViewer.getCanvas().addOverlay(crosshairOverlay);
-        });
-
-}*/
 
     @Override
     public void showFittingEvolution(){
